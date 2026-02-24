@@ -39,7 +39,9 @@
   )
 ])])
 
-#align(bottom + right, location_and_date)
+#v(2cm)
+
+#align(right, location_and_date)
 
 #pagebreak(to: "odd")
 
@@ -273,7 +275,7 @@ L'objectif de ce TB consiste à réaliser un outil de vérification de la sécur
 
 // Chapitres
 
-#include "chapitres/01_introduction.typ"
+#include "chapitres/01-introduction.typ"
 
 #set heading(numbering: none)
 #show heading.where(level: 1): it => {
@@ -308,4 +310,4 @@ L'objectif de ce TB consiste à réaliser un outil de vérification de la sécur
 
 #include "chapitres/bibliographie.typ"
 
-#include "chapitres/table_des_figures.typ"
+#include "chapitres/table-des-figures.typ"
