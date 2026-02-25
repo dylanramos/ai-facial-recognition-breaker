@@ -75,7 +75,7 @@ Les services de génération de vidéo aggrégateurs mettent à disposition des 
 
 - *Qualité maximale de la vidéo* : la qualité de la vidéo doit être assez bonne pour tromper les systèmes de reconnaissance faciale.
 
-- *Vidéo à partir d'images possible* : il doit être possible de générer une vidéo à partir d'une ou plusieurs images, afin que le visage de la personne corresponde à ses documents d'identité.
+- *Vidéo à partir d'images* : il doit être possible de générer une vidéo à partir d'une ou plusieurs images, afin que le visage de la personne corresponde à ses documents d'identité.
 
 #pagebreak()
 
@@ -83,7 +83,7 @@ Les services de génération de vidéo aggrégateurs mettent à disposition des 
 
 = Services testés
 
-== Tableau comparatif
+== Tableau comparatif des abonnements standards
 
 Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du service.
 
@@ -96,10 +96,104 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
   [*Type*],
   [*Temps de vidéo maximum*],
   [*Nombre de vidéos mensuel*],
-  [*API disponible*],
-  [*Prix*],
+  [*Prix mensuel*],
   [*Qualité maximale de la vidéo*],
-  [*Vidéo à partir d'images possible*],
+  [*Vidéo à partir d'images*],
+  [*Remarques*],
 
-  [*Veo 3.1*], [Propriétaire], [8s], [2], [Oui], [3.5 CHF / mois \ 0.15-0.60\$], [1080p], [Oui],
+  [*Veo 3.1*], [Propriétaire], [8s], [2], [3.5 CHF], [1080p], [Oui], [Réaliste],
+  [*Sora 2*], [Propriétaire], [10s], [12], [20\$], [720p], [Oui], [Réaliste],
+  [*Kling AI*],
+  [Propriétaire],
+  [10s],
+  [6],
+  [6.99\$],
+  [1080p],
+  [Oui],
+  [Possibilité d'acheter des crédits; 1 vidéo = \~100 crédits],
+
+  [*Invideo AI*],
+  [Aggrégateur],
+  [30s],
+  [50 min],
+  [35\$],
+  [1080],
+  [Oui],
+  [Offre la génération d'images avec l'abonnement; 1 vidéo par semaine gratuite],
+
+  [*Veed IO*], [Aggrégateur], [Dépend du modèle], [150], [19\$], [1080p], [Oui], [Permet d'éditer les vidéos],
+  [*2.Video*],
+  [Aggrégateur],
+  [Dépend du modèle],
+  [24],
+  [49\$],
+  [1080p],
+  [Oui],
+  [Possibilité d'acheter des crédits; 1 vidéo = \~50 crédits; Crédits offerts chaque jours],
+
+  [*JoggAI*],
+  [Propriétaire],
+  [3 min],
+  [200],
+  [24\$],
+  [1080p],
+  [Oui],
+  [Permet de créer des deepfakes (remplacer des gens dans une vidéo); 1 vidéo = ~1 crédit],
+
+  [*Artlist*],
+  [Aggrégateur],
+  [Dépend du modèle],
+  [103],
+  [19.99€],
+  [1080p],
+  [Oui],
+  [Permet de générer \~1650 images avec l'abonnement],
+
+  [*HeyGen*], [Propriétaire], [3 min], [Illimité], [29\$], [1080p], [Oui], [3 vidéos par mois gratuites de 3 min],
+  [*D-ID*],
+  [-],
+  [10 min],
+  [10 min],
+  [5.9\$],
+  [1080p],
+  [Oui],
+  [Pas adapté (la personne ne bouge que les lèvres, pas de génération)],
+
+  [*Stable Diffusion*],
+  [Propriétaire],
+  [5s],
+  [50],
+  [20\$],
+  [720p],
+  [Oui],
+  [10 crédits gratuits par jour; 1 vidéo = ~25 crédits],
+
+  [*Grok Imagine*], [Propriétaire], [10s], [3000], [30\$], [720p], [Oui], [10 vidéos gratuites par jour],
 )
+
+#pagebreak()
+
+== Tableau comparatif des API
+
+#table(
+  columns: (auto, auto, auto, auto),
+  align: horizon + center,
+  [*Service*], [*API disponible*], [*Option gratuite*], [*Prix*],
+
+  [*Veo 3.1*], [Oui], [Non], [0.15-0.60\$ / vidéo (en fonction de la qualité)],
+  [*Sora 2*], [Oui], [Non], [0.10-0.50\$ / vidéo (en fonction de la qualtié)],
+  [*Kling AI*], [Oui], [Non], [~0.10\$ / vidéo (dépend du modèle)],
+  [*Invideo AI*], [Non], [-], [-],
+  [*Veed IO*], [Non], [-], [-],
+  [*2.Video*], [Non], [-], [-],
+  [*JoggAI*], [Oui], [Oui (10 crédits)], [99\$ / mois],
+  [*Artlist*], [Non], [-], [-],
+  [*HeyGen*], [Oui], [Non], [1-6\$ / min],
+  [*D-ID*], [Oui], [Oui], [18\$ / mois],
+  [*Stable Diffusion*], [Non], [-], [-],
+  [*Grok Imagine*], [Oui], [Non], [0.05\$ / sec],
+)
+
+= Kie.ai
+
+Kie.ai est une plateforme qui centralise des API de différents fournisseurs (Veo, Sora, etc.). Elle propose des API gratuites pour certains modèles.
