@@ -71,6 +71,224 @@
 
 = Sites d'enregistrement
 
+== Création de comptes
+
+J'utilise des alias pour chaque compte pour les adresses email afin que les sites ne puissent pas déduire des informations d'un compte google par exemple (localisation).
+
+== Tests avec les réseaux sociaux
+
+J'ai fait des tests avec les réseaux sociaux car la plupart n'ont pas de vérification d'identité, contrairement aux services sensibles comme les banques.
+
+Légende :
+
+#table(
+  columns: (auto, auto),
+  [*Couleur*], [*Signification*],
+  table.cell(fill: red)[], [Aucune vérification d'identité demandée.],
+  table.cell(fill: yellow)[], [Vérification d'identité sous certaines conditions],
+  table.cell(fill: green)[], [Vérification d'identité demandée.],
+)
+
+=== TikTok
+
+Une vérification est nécessaire (18 ans) si on veut lancer un live mais il faut avoir au moins 1000 followers. Difficile à tester.
+
+#text(fill: red)[
+  *Sans VPN*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#text(fill: red)[
+  *Avec VPN en France*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#grid(
+  columns: (1fr, 1fr),
+  [
+
+    #text(fill: red)[
+      *Avec VPN en Australie*
+      - Sur PC
+      - Navigation privée
+      - Inscription avec email + mot de passe
+    ]
+  ],
+  grid.cell(
+    align: right,
+    image("../images/annexe_b/tiktok-australie.png", width: 80%),
+  ),
+)
+
+=== Facebook
+
+#text(fill: green)[*Résultat : * demande un selfie pour vérifier que je suis humain.]
+
+=== Instagram
+
+#text(fill: red)[
+  *Sans VPN*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#grid(
+  columns: (1fr, 1fr),
+  [
+    #text(fill: yellow)[
+      *Avec VPN en France*
+
+      - Sur PC
+      - Navigation privée
+      - Inscription avec email + mot de passe
+      - Demande de remplir un captcha puis un numéro de téléphone.
+    ]
+  ],
+  grid.cell(
+    align: right,
+    image("../images/annexe_b/instagram-france.png", width: 80%),
+  ),
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  [
+    #text(fill: yellow)[
+      *Meta Verified (sans VPN)*
+
+      - Vérification des documents d'identité (photo)
+      - Page inaccessible, probablement car le compte n'est pas éligible.
+    ]
+  ],
+  grid.cell(
+    align: right,
+    image("../images/annexe_b/instagram-verified.png", width: 60%),
+  ),
+)
+
+=== Snapchat
+
+#text(fill: red)[
+  *Sans VPN*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#text(fill: red)[
+  *Avec VPN en France*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#text(fill: red)[
+  *Avec VPN en Australie*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+=== LinkedIn
+
+#text(fill: red)[
+  *Création d'un compte*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#text(fill: yellow)[
+  *Badge*
+
+  - Vérification si on veut obtenir le badge mais il y a une liste d'attente.
+]
+
+=== Discord
+
+#text(fill: red)[
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#text(fill: yellow)[
+  *Info*
+
+  - Vérification des mineurs dès mars 2026.
+]
+
+=== Youtube
+
+#text(fill: red)[
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
+
+#text(fill: yellow)[
+  *Info*
+
+  - Vérification uniquement si détecté comme mineur.
+]
+
+=== X
+
+#grid(
+  columns: (1fr, 1fr),
+  [
+    #text(fill: red)[
+      *Avec un alias*
+
+      - Sur PC
+      - Navigation privée
+      - Inscription avec email + mot de passe
+    ]
+  ],
+  grid.cell(
+    align: right,
+    image("../images/annexe_b/x.png", width: 60%),
+  ),
+)
+
+#text(fill: red)[
+      *Avec un compte google*
+      
+      - Sur PC
+      - Navigation privée
+      - Inscription avec email + mot de passe
+    ]
+
+== Obstacles
+
+=== Swissborg
+
+Mon numéro de téléphone a déjà été utilisé pour créer un compte, je ne peux pas le réutiliser.
+
+=== Portail Etat de Vaud
+
+Je dois mettre un numéro AVS valide.
+
+=== Lotterie Romande
+
+#image("../images/annexe_b/loro.jpg", width: 20%)
+
+=== Casino777
+
+#image("../images/annexe_b/casino777.png", width: 30%)
+
 == Critères de sélection
 
 - *Type* : identification par photo, vidéo, ou les deux.
@@ -78,132 +296,6 @@
 - *Documents d'identité* : nécessité ou non de fournir des documents d'identité.
 - *Uniquement via smartphone* : certains sites ne permettent pas de créer un compte sur ordinateur.
 - *Vérification* : email, numéro de téléphone, ou les deux. Bon à savoir dans le cas où l'on voudrait une automatisation totale.
-
-#pagebreak()
-
-== TikTok
-
-Une vérification est nécessaire (18 ans) si on veut lancer un live mais il faut avoir au moins 1000 followers. Difficile à tester.
-
-=== Sans VPN
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-=== Avec VPN en France
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-=== Avec VPN en Australie
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * impossible de s'inscrire. Probablement à cause du VPN.]
-
-#image("../images/annexe_b/tiktok-australie.png", width: 50%)
-
-== Facebook
-
-=== Sans VPN
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: green)[*Résultat : * demande un selfie pour vérifier que je suis humain.]
-
-== Instagram
-
-=== Sans VPN
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-=== Avec VPN en France
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: yellow)[*Résultat : * demande de remplir un captcha puis un numéro de téléphone.]
-
-#image("../images/annexe_b/instagram-france.png", width: 30%)
-
-=== Meta Verified (sans VPN)
-
-- Vérification des documents d'identité (photo)
-
-#text(fill: yellow)[*Résultat : * page inaccessible, probablement car le compte n'est pas éligible.]
-
-#image("../images/annexe_b/instagram-verified.png", width: 30%)
-
-== Snapchat
-
-=== Sans VPN
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-=== Avec VPN en France
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-=== Avec VPN en Australie
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-== LinkedIn
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée pour la création du compte.]
-
-#text(fill: yellow)[*Badge : * vérification si on veut obtenir le badge mais il y a une liste d'attente.]
-
-== Discord
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-#text(fill: yellow)[*Info : * vérification des mineurs dès mars 2026.]
-
-== Youtube
-
-- Sur PC
-- Navigation privée
-- Inscription avec email + mot de passe
-
-#text(fill: red)[*Résultat : * aucune vérification demandée.]
-
-#text(fill: yellow)[*Info : * vérification uniquement si détecté comme mineur.]
 
 #set page(flipped: true)
 
@@ -221,21 +313,27 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   [*Uniquement via smartphone*],
   [*Vérification*],
 
-  [*TikTok*], [-], [-], [-], [-], [-],
-  [*Facebook*], [-], [-], [-], [-], [-],
-  [*Instagram*], [-], [-], [-], [-], [-],
-  [*Snapchat*], [-], [-], [-], [-], [-],
-  [*LinkedIn*], [-], [-], [-], [-], [-],
-  [*Discord*], [-], [-], [-], [-], [-],
-  [*Youtube*], [-], [-], [-], [-], [-],
-  [*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [?],
-  [*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
-  [*Swissquote*], [Photo], [Non], [Oui], [Non], [Email + n° de téléphone],
-  [*E-ID*], [-], [-], [-], [-], [-],
-  [*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
-  [*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
-  [*UBS*], [Photo ou vidéo], [Oui ou non], [Oui], [Oui], [N° de téléphone],
-  [*Coinbase*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
-  [*Swissborg*], [?], [?], [Oui], [Oui], [?],
-  [*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [Email],
+  table.cell(fill: red)[*TikTok*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Facebook*], [Photo], [?], [Non], [Non], [Email],
+  table.cell(fill: yellow)[*Instagram*], [-], [-], [-], [-], [-],
+  table.cell(fill: red)[*Snapchat*], [-], [-], [-], [-], [-],
+  table.cell(fill: yellow)[*LinkedIn*], [-], [-], [-], [-], [-],
+  table.cell(fill: yellow)[*Discord*], [-], [-], [-], [-], [-],
+  table.cell(fill: yellow)[*Youtube*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [?],
+  table.cell(fill: green)[*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Swissquote*], [Photo], [Non], [Oui], [Non], [Email + n° de téléphone],
+  table.cell(fill: red)[*E-ID*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*UBS*], [Photo ou vidéo], [Oui ou non], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Coinbase*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
+  table.cell(fill: green)[*Swissborg*], [?], [?], [Oui], [Oui], [?],
+  table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [Email],
+  table.cell(fill: red)[*X*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Portail Etat de Vaud*], [Vidéo], [Oui], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Lotterie Romande*], [Photo], [?], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Mycasino*], [Photo], [?], [Oui], [Non], [-],
+  table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
 )
