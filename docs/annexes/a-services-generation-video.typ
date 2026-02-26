@@ -1,61 +1,86 @@
-// Paramètres globaux
-#set text(font: "New Computer Modern", size: 11pt)
-
-// Variables
-
 #let author = "Dylan Oliveira Ramos"
-#let professor = "Prof. Jean-Marc Bost"
-#let title = "Services de génération de vidéo"
-#let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
-#let academic_year = "2025-2026"
 
-// Page de garde
+#set text(font: "New Computer Modern", size: 11pt)
+#set page(
+  margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm),
+  numbering: "1",
+  header: context [
+    #set text(size: 9pt)
+    #let selector = selector(heading).before(here())
+    #let headings = query(selector).filter(it => it.level == 1)
+    #let is_even = calc.even(counter(page).get().first())
 
-#grid(
-  columns: (1fr, 2fr),
-  align: (left, right),
-  image("../images/logo-heig-vd.png", width: 3cm),
-  [
-    Département des Technologies de l'information et de la communication (TIC) \
-    Filière Informatique et systèmes de communication \
-    Orientation Sécurité informatique
+    #if headings.len() == 0 and is_even {
+      line(length: 100%, stroke: 0.5pt)
+    } else if (is_even) {
+      let current_heading = headings.last()
+
+      grid(
+        columns: (auto, 1fr),
+        align: bottom + right,
+        upper(current_heading.body), line(length: 99%, stroke: 0.5pt),
+      )
+    } else {
+      grid(
+        columns: (1fr, auto),
+        align: bottom,
+        line(length: 99%, stroke: 0.5pt), author,
+      )
+    }
+  ],
+  footer: context [
+    #set text(size: 9pt)
+    #let selector = selector(heading).before(here())
+    #let headings = query(selector)
+    #let is_even = calc.even(counter(page).get().first())
+
+    #if (is_even) {
+      grid(
+        columns: (auto, 1fr),
+        align: bottom + right,
+        counter(page).display(), line(length: 99%, stroke: 0.5pt),
+      )
+    } else {
+      grid(
+        columns: (1fr, auto),
+        align: bottom,
+        line(length: 99%, stroke: 0.5pt), counter(page).display(),
+      )
+    }
   ],
 )
-
-#v(4cm)
-#align(center + horizon, text(weight: "bold", size: 14pt)[Annexe A])
-#align(center, text(weight: "bold", size: 26pt)[#title])
-#v(4cm)
-
-#align(left + bottom, [#block(width: 70%, [
-  #table(
-    stroke: none,
-    columns: (50%, 50%),
-    [*Étudiant*], [*#author*],
-    [*Enseignant responsable*], [#professor],
-    [*Année académique*], [#academic_year],
-  )
-])])
-
-#v(2cm)
-
-#align(right, location_and_date)
-
-#pagebreak()
-
 #set par(justify: true)
-#set heading(numbering: "1.1.")
+#set heading(numbering: "1.1")
 
-= Types de services
+#show heading.where(level: 1): it => {
+  v(2.5cm)
+  text(size: 20pt)[Annexe A]
+  v(0.3cm)
+  text(size: 26pt)[#it.body]
+  v(0.7cm)
+}
+#show heading.where(level: 2): it => {
+  set text(size: 16pt)
+  v(0.5cm)
+  it
+  v(0.5cm)
+}
+#show heading.where(level: 3): it => {
+  block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
+}
 
-== Propriétaires
+= Services de génération de vidéo
+
+== Types de services
+
+=== Propriétaires
 
 Les services de génération de vidéo propriétaires générent des vidéos avec leur propres modèles d'IA.
 
 *Avantages*:
 - Coûts réduits (on ne paie que ce dont on a besoin)
 
-== Aggrégateurs
+=== Aggrégateurs
 
 Les services de génération de vidéo aggrégateurs mettent à disposition des modèles d'IA de différents fournisseurs, laissant ainsi le choix du modèle aux utilisateurs.
 
@@ -63,7 +88,7 @@ Les services de génération de vidéo aggrégateurs mettent à disposition des 
 - Choix du modèle en fonction des besoins (réalisme, rapidité, etc.)
 - Comparaison facile entre les différents modèles
 
-= Critères de sélection
+== Critères de sélection
 
 - *Temps de vidéo maximum* : la vidéo générée doit être suffisament longue pour que la vérification de l'identité puisse se faire.
 
@@ -81,9 +106,9 @@ Les services de génération de vidéo aggrégateurs mettent à disposition des 
 
 #set page(flipped: true)
 
-= Services testés
+== Services testés
 
-== Tableau comparatif des abonnements standards
+=== Tableau comparatif des abonnements standards
 
 Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du service.
 
@@ -173,7 +198,7 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
 
 #pagebreak()
 
-== Tableau comparatif des API
+=== Tableau comparatif des API
 
 #table(
   columns: (auto, auto, auto, auto),
@@ -194,6 +219,6 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
   [*Grok Imagine*], [Oui], [Non], [0.05\$ / sec],
 )
 
-= Kie.ai
+== Kie.ai
 
 Kie.ai est une plateforme qui centralise des API de différents fournisseurs (Veo, Sora, etc.). Elle propose des API gratuites pour certains modèles.
