@@ -264,12 +264,12 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
 )
 
 #text(fill: red)[
-      *Avec un compte google*
-      
-      - Sur PC
-      - Navigation privée
-      - Inscription avec email + mot de passe
-    ]
+  *Avec un compte google*
+
+  - Sur PC
+  - Navigation privée
+  - Inscription avec email + mot de passe
+]
 
 == Obstacles
 
@@ -288,6 +288,10 @@ Je dois mettre un numéro AVS valide.
 === Casino777
 
 #image("../images/annexe_b/casino777.png", width: 30%)
+
+=== Bet365
+
+#image("../images/annexe_b/bet365.png", width: 40%)
 
 == Critères de sélection
 
@@ -336,4 +340,6 @@ Je dois mettre un numéro AVS valide.
   table.cell(fill: green)[*Mycasino*], [Photo], [?], [Oui], [Non], [-],
   table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [Email],
   table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
+  table.cell(fill: red)[*Polymarket*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Bet365*], [Photo], [?], [Oui], [Non], [N° de téléphone],
 )
