@@ -275,7 +275,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
 
 == Remarques
 
-Vérification du numéro de téléphone.
+Vérification du numéro de téléphone complique l'automatisation.
 
 === Swissborg
 
@@ -332,6 +332,12 @@ Corée du Sud mais il faut un numéro coréen.
 === Parship
 
 #image("../images/annexe_b/parship.png", width: 40%)
+
+=== Compte Google
+
+Vérification pour changer son âge (de mineur à majeur).
+
+#image("../images/annexe_b/google.png", width: 40%)
 
 == Critères de sélection
 
@@ -393,4 +399,5 @@ Corée du Sud mais il faut un numéro coréen.
   table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
   table.cell(fill: red)[*Grindr*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*OkCupid*], [Photo], [?], [Non], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Google*], [Photo], [?], [Non], [Non], [-],
 )
