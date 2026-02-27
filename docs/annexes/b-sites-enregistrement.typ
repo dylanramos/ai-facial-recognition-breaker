@@ -73,7 +73,9 @@
 
 == Création de comptes
 
-J'utilise des alias pour chaque compte pour les adresses email afin que les sites ne puissent pas déduire des informations d'un compte google par exemple (localisation).
+J'utilise des alias pour chaque compte pour les adresses email.
+
+Observations : avec un alias on demande souvent de remplir un captcha, peut-être utiliser un compte google?
 
 == Tests avec les réseaux sociaux
 
@@ -271,7 +273,9 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   - Inscription avec email + mot de passe
 ]
 
-== Obstacles
+== Remarques
+
+Vérification du numéro de téléphone.
 
 === Swissborg
 
@@ -292,6 +296,42 @@ Je dois mettre un numéro AVS valide.
 === Bet365
 
 #image("../images/annexe_b/bet365.png", width: 40%)
+
+=== Binance
+
+#image("../images/annexe_b/binance.png", width: 40%)
+
+=== Bybit
+
+#image("../images/annexe_b/bybit.png", width: 40%)
+
+=== Kraken
+
+#image("../images/annexe_b/kraken.png", width: 40%)
+
+=== Okx
+
+#image("../images/annexe_b/okx.png", width: 40%)
+
+=== Tea Dating Safety for Women
+
+#image("../images/annexe_b/tea.png", width: 40%)
+
+=== Upwork
+
+Il faut une vérification pour obtenir un badge mais il faut avoir 35 connects (en achetant)
+
+=== Roblox
+
+#image("../images/annexe_b/roblox.png", width: 40%)
+
+=== Riot Games
+
+Corée du Sud mais il faut un numéro coréen.
+
+=== Parship
+
+#image("../images/annexe_b/parship.png", width: 40%)
 
 == Critères de sélection
 
@@ -342,4 +382,15 @@ Je dois mettre un numéro AVS valide.
   table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
   table.cell(fill: red)[*Polymarket*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Bet365*], [Photo], [?], [Oui], [Non], [N° de téléphone],
+  table.cell(fill: green)[*Binance*], [Vidéo], [?], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Bybit*], [Photo], [?], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [Email],
+  table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Tea Dating Safety for Women*], [Photo], [?], [Non], [Non], [-],
+  table.cell(fill: green)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Roblox*], [Vidéo], [?], [Non], [Non], [-],
+  table.cell(fill: green)[*Parship*], [Vidéo], [?], [Non], [Non], [-],
+  table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
+  table.cell(fill: red)[*Grindr*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*OkCupid*], [Photo], [?], [Non], [Oui], [N° de téléphone],
 )
