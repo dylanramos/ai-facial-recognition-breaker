@@ -167,7 +167,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
       *Meta Verified (sans VPN)*
 
       - Vérification des documents d'identité (photo)
-      - Page inaccessible, probablement car le compte n'est pas éligible.
+      - Payant
     ]
   ],
   grid.cell(
@@ -393,7 +393,7 @@ Vérification pour changer son âge (de mineur à majeur).
   table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [Email],
   table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [Email + n° de téléphone],
   table.cell(fill: green)[*Tea Dating Safety for Women*], [Photo], [?], [Non], [Non], [-],
-  table.cell(fill: green)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [Email],
+  table.cell(fill: yellow)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [Email],
   table.cell(fill: green)[*Roblox*], [Vidéo], [?], [Non], [Non], [-],
   table.cell(fill: green)[*Parship*], [Vidéo], [?], [Non], [Non], [-],
   table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
