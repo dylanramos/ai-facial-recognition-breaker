@@ -164,3 +164,7 @@ echo "Starting video stream to virtual camera..."
 echo "Press Ctrl+C to stop streaming"
 ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
+
+== CLI en python
+
+J'ai commencé un CLI en python qui utilise la librairie `Typer`. J'ai réussi à générer une vidéo en passant par l'API de Kie.ai, mais je n'ai plus de crédits.

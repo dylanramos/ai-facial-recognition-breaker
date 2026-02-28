@@ -219,10 +219,14 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
   [*Grok Imagine*], [Oui], [Non], [0.05\$ / sec],
 )
 
-== Example de prompt
+#set page(flipped: false)
+
+== Exemple de prompt
 
 A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements.
 
 == Kie.ai
 
 Kie.ai est une plateforme qui centralise des API de différents fournisseurs (Veo, Sora, etc.). Elle propose des API gratuites pour certains modèles. Les prix sont moins chers que les prix des API des fournisseurs : https://docs.kie.ai/#2-pricing.
+
+Mais il y a d'autres plateformes, Luma AI, AI4Chat, VidgoAI, etc.
