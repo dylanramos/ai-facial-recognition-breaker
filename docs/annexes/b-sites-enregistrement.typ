@@ -124,7 +124,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/annexe_b/tiktok-australie.png", width: 80%),
+    image("../images/b-sites-enregistrement/tiktok-australie.png", width: 80%),
   ),
 )
 
@@ -156,7 +156,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/annexe_b/instagram-france.png", width: 80%),
+    image("../images/b-sites-enregistrement/instagram-france.png", width: 80%),
   ),
 )
 
@@ -172,7 +172,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/annexe_b/instagram-verified.png", width: 60%),
+    image("../images/b-sites-enregistrement/instagram-verified.png", width: 60%),
   ),
 )
 
@@ -261,7 +261,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/annexe_b/x.png", width: 60%),
+    image("../images/b-sites-enregistrement/x.png", width: 60%),
   ),
 )
 
@@ -287,35 +287,35 @@ Je dois mettre un numéro AVS valide.
 
 === Lotterie Romande
 
-#image("../images/annexe_b/loro.jpg", width: 20%)
+#image("../images/b-sites-enregistrement/loro.jpg", width: 20%)
 
 === Casino777
 
-#image("../images/annexe_b/casino777.png", width: 30%)
+#image("../images/b-sites-enregistrement/casino777.png", width: 30%)
 
 === Bet365
 
-#image("../images/annexe_b/bet365.png", width: 40%)
+#image("../images/b-sites-enregistrement/bet365.png", width: 40%)
 
 === Binance
 
-#image("../images/annexe_b/binance.png", width: 40%)
+#image("../images/b-sites-enregistrement/binance.png", width: 40%)
 
 === Bybit
 
-#image("../images/annexe_b/bybit.png", width: 40%)
+#image("../images/b-sites-enregistrement/bybit.png", width: 40%)
 
 === Kraken
 
-#image("../images/annexe_b/kraken.png", width: 40%)
+#image("../images/b-sites-enregistrement/kraken.png", width: 40%)
 
 === Okx
 
-#image("../images/annexe_b/okx.png", width: 40%)
+#image("../images/b-sites-enregistrement/okx.png", width: 40%)
 
 === Tea Dating Safety for Women
 
-#image("../images/annexe_b/tea.png", width: 40%)
+#image("../images/b-sites-enregistrement/tea.png", width: 40%)
 
 === Upwork
 
@@ -323,7 +323,7 @@ Il faut une vérification pour obtenir un badge mais il faut avoir 35 connects (
 
 === Roblox
 
-#image("../images/annexe_b/roblox.png", width: 40%)
+#image("../images/b-sites-enregistrement/roblox.png", width: 40%)
 
 === Riot Games
 
@@ -331,13 +331,13 @@ Corée du Sud mais il faut un numéro coréen.
 
 === Parship
 
-#image("../images/annexe_b/parship.png", width: 40%)
+#image("../images/b-sites-enregistrement/parship.png", width: 40%)
 
 === Compte Google
 
 Vérification pour changer son âge (de mineur à majeur).
 
-#image("../images/annexe_b/google.png", width: 40%)
+#image("../images/b-sites-enregistrement/google.png", width: 40%)
 
 == Critères de sélection
 
