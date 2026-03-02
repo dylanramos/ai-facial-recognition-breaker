@@ -196,19 +196,7 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 
 #pagebreak(to: "odd")
 
-= Cahier des charges
-
-#text(weight: "bold", size: 14pt)[Problématique]
-
-La reconnaissance faciale se développe un peu partout. De plus de services proposent maintenant l'enregistrement en ligne avec vérification de l'identité via ces techniques. Certains sont même assez sensibles, comme les comptes bancaires @migros-bank @swisscom-video-authentication. En parallèle, la fiabilité des techniques de reconnaissances faciales est de plus en plus chalengée par les experts sécurité @securing-pl-attacking-the-face-recognition-authentication, surtout avec l'IA qui fait des progrès un peu partout et en particulier dans la génération de vidéo à la demande @artilist-io. Cet article @securing-pl-before-you-implement-face-recognition-to-your-app publié par un expert de la société securing.pl en est l'illustration.
-
-#v(0.5cm)
-
-#text(weight: "bold", size: 14pt)[Objectifs]
-
-L'objectif de ce TB consiste à réaliser un outil de vérification de la sécurité des mécanismes d'enregistrement en ligne en s'appuyant sur un outil de génération de vidéo à la demande. Il s'agira, dans un premier temps, de documenter les techniques d'attaques sur les systèmes de reconnaissance faciales puis de choisir un générateur de vidéos à la demande ainsi qu'un service d'enregistrement en ligne pour les tests. Fort des connaissances ainsi acquises, l'étudiant/e devra ensuite concevoir un pilote de caméra capable d'interroger l'outil IA plutôt que capturer une vidéo avec une véritable caméra. Le TB se terminera avec un benchmark pour vérifier l'efficacité de la réalisation sur le service en ligne choisi pour les tests.
-
-#pagebreak(to: "odd")
+#include "chapitres/cahier-des-charges.typ"
 
 #show outline.entry.where(level: 1): it => [
   #strong(it)
