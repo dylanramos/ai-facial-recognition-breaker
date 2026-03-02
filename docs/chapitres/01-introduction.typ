@@ -7,5 +7,3 @@
 === Sous-test
 
 #lorem(50)
-
-#pagebreak(to: "odd")

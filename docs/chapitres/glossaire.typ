@@ -1,3 +1,0 @@
-= Glossaire
-
-#pagebreak(to: "odd")

@@ -1,4 +1,4 @@
-#let author = "Dylan Oliveira Ramos"
+/* #let author = "Dylan Oliveira Ramos"
 
 #set text(font: "New Computer Modern", size: 11pt)
 #set page(
@@ -68,6 +68,7 @@
 #show heading.where(level: 3): it => {
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
+ */
 
 = Services de génération de vidéo
 
