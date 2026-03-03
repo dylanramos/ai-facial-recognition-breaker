@@ -14,10 +14,11 @@ Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les syst�
 
 Ce travail de bachelor vise à analyser les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par l'IA. Les objectifs sont les suivants :
 
-+ Analyser les différents services de generation de vidéos IA.
-+ Analyser les sites nécessitant une vérification d'identité par reconnaissance faciale.
-+ Étudier la faisabilité des attaques contre les sites proposant une vérification d'identité par reconnaissance faciale.
-+ Développer un outil permettant de diffuser une vidéo générée par l'IA sur les sites ciblés.
++ Analyser des services de génération de vidéos IA afin de déterminer lesquels sont les plus adaptés pour générer des vidéos réalistes de personnes effectuant une vérification d'identité.
++ Analyser des sites proposant une vérification d'identité par reconnaissance faciale afin d'identifier les différentes méthodes de vérification utilisées.
++ Savoir comment utiliser une caméra virtuelle sur Linux afin de rediriger un flux vidéo vers une application.
++ Choisir des sites cibles et savoir s'il est possible d'attaquer leur système de vérification d'identité.
++ Développer un outil en ligne de commande permettant de générer une vidéo via une API et de la rediriger vers une caméra virtuelle afin de pouvoir attaquer les sites cibles.
 
 En fonction des résultats obtenus et si le temps le permet :
 
@@ -29,22 +30,41 @@ En fonction des résultats obtenus et si le temps le permet :
 
 *Phase 1 : recherches et analyses*
 
-- Trouver et analyser des services de génération de vidéos IA.
-- Trouver et analyser des sites nécessitant une vérification d'identité par reconnaissance faciale.
+- Analyse des services de génération de vidéos IA.
+- Analyse des sites proposant une vérification d'identité par reconnaissance faciale.
+- Étude de l'utilisation d'une caméra virtuelle sur Linux.
 
 *Phase 2 : tests de faisabilité*
 
-- Effectuer des tests manuels sur les sites qui ne demandent qu'une vérification d'identité par image dans un premier temps, puis sur les sites qui demandent une vérification d'identité par vidéo.
-- Documenter les différents tests effectués et leurs résultats.
+- Séléction des sites avec une vérification d'indentité simple (photos).
+- Séléction des sites avec une vérification d'indentité plus complexe (vidéos).
+- Évaluation des résultats obtenus lors des attaques manuelles.
 
-*Phase 3 : développement de l'outil*
+*Phase 3 : conception de l'outil en ligne de commande*
 
-- Tester le fonctionnement d'une caméra virtuelle et de la redirection d'un flux vidéo sur Linux.
-- Développer une interface en ligne de commande permettant de générer des vidéos via une API de génération de vidéos IA, puis de rediriger le flux vidéo vers une caméra virtuelle.
+- Schématisation du fonctionnement de l'outil.
+- Identification des fonctionnalités nécessaires.
+
+*Phase 4 : développement de l'outil en ligne de commande*
+
+- Implémentation des différentes fonctionnalités de l'outil.
+- Mise en place d'un environnement de test reproductible.
+- Documentation de la mise en place de l'outil.
+- Documentation de l'utilisation de l'outil.
 
 *(Phase 4 : automatisation de l'attaque)*
 
-- Modifier l'interface en ligne de commande pour automatiser tout le processus d'attaque (simuler les interactions utilisateur dans un navigateur).
+- Modifier l'outil pour automatiser tout le processus d'attaque (simuler les interactions utilisateur dans un navigateur).
+- Modifier l'outil pour vérifier automatiquement les emails et les numéros de téléphone.
+
+*Phase 5 : retour sur expérience*
+
+- Documentation des succès et des échecs rencontrés lors des attaques.
+
+*Phase 6 : publication du projet en open source*
+
+- Création d'un dépôt GitHub dédié au projet.
+- Documentation des pistes d'amélioration et des idées pour de futurs travaux.
 
 #v(0.5cm)
 
