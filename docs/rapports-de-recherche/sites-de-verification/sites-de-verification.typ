@@ -1,12 +1,115 @@
-= Sites de vérification d'identité
+// Paramètres globaux
+#set page(margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm))
+#set text(font: "New Computer Modern", size: 11pt)
+#show bibliography: set text(lang: "fr")
 
-== Création de comptes
+// Variables
+
+#let author = "Dylan Oliveira Ramos"
+#let professor = "Prof. Jean-Marc Bost"
+#let title = "Sites de vérification d'identité"
+#let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
+#let academic_year = "2025-2026"
+
+// Page de garde
+
+#grid(
+  columns: (1fr, 2fr),
+  align: (left, right),
+  image("images/logo-heig-vd.png", width: 3cm),
+  [
+    Département des Technologies de l'information et de la communication (TIC) \
+    Filière Informatique et systèmes de communication \
+    Orientation Sécurité informatique
+  ],
+)
+
+#v(4cm)
+#align(center, text(weight: "bold", size: 14pt)[Rapport de recherche])
+#align(center, text(weight: "bold", size: 26pt)[#title])
+#v(4cm)
+
+#align(left, [#block(width: 70%, [
+  #table(
+    stroke: none,
+    columns: (50%, 50%),
+    [*Étudiant*], [*#author*],
+    [*Enseignant responsable*], [#professor],
+    [*Année académique*], [#academic_year],
+  )
+])])
+
+#v(2cm)
+
+#align(right, location_and_date)
+
+#set page(
+  margin: 2.5cm,
+  header: context [
+    #set text(size: 9pt)
+    #let is_even = calc.even(counter(page).get().first())
+
+    #if (is_even) {
+      grid(
+        columns: (auto, 1fr),
+        align: bottom + right,
+        upper(title), line(length: 99%, stroke: 0.5pt),
+      )
+    } else {
+      grid(
+        columns: (1fr, auto),
+        align: bottom,
+        line(length: 99%, stroke: 0.5pt), author,
+      )
+    }
+  ],
+  footer: context [
+    #set text(size: 9pt)
+    #let selector = selector(heading).before(here())
+    #let headings = query(selector)
+    #let is_even = calc.even(counter(page).get().first())
+
+    #if (is_even) {
+      grid(
+        columns: (auto, 1fr),
+        align: bottom + right,
+        counter(page).display(), line(length: 99%, stroke: 0.5pt),
+      )
+    } else {
+      grid(
+        columns: (1fr, auto),
+        align: bottom,
+        line(length: 99%, stroke: 0.5pt), counter(page).display(),
+      )
+    }
+  ],
+)
+#set par(justify: true)
+
+// Configuration des titres
+
+#set heading(numbering: "1.1")
+#show heading.where(level: 1): it => {
+  set text(size: 15pt)
+  block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
+  v(0.2cm)
+}
+#show heading.where(level: 2): it => {
+  set text(size: 13pt)
+  block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
+  v(0.1cm)
+}
+#show heading.where(level: 3): it => {
+  block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
+}
+
+= Création de comptes
 
 J'utilise des alias pour chaque compte pour les adresses email.
 
 Observations : avec un alias on demande souvent de remplir un captcha, peut-être utiliser un compte google?
 
-== Tests avec les réseaux sociaux
+= Tests avec les réseaux sociaux
 
 J'ai fait des tests avec les réseaux sociaux car la plupart n'ont pas de vérification d'identité, contrairement aux services sensibles comme les banques.
 
@@ -20,7 +123,7 @@ Légende :
   table.cell(fill: green)[], [Vérification d'identité demandée.],
 )
 
-=== TikTok
+== TikTok
 
 Une vérification est nécessaire (18 ans) si on veut lancer un live mais il faut avoir au moins 1000 followers. Difficile à tester.
 
@@ -53,15 +156,15 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/b-sites-enregistrement/tiktok-australie.png", width: 80%),
+    image("images/tiktok-australie.png", width: 80%),
   ),
 )
 
-=== Facebook
+== Facebook
 
 #text(fill: green)[*Résultat : * demande un selfie pour vérifier que je suis humain.]
 
-=== Instagram
+== Instagram
 
 #text(fill: red)[
   *Sans VPN*
@@ -85,7 +188,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/b-sites-enregistrement/instagram-france.png", width: 80%),
+    image("images/instagram-france.png", width: 80%),
   ),
 )
 
@@ -101,11 +204,11 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/b-sites-enregistrement/instagram-verified.png", width: 60%),
+    image("images/instagram-verified.png", width: 60%),
   ),
 )
 
-=== Snapchat
+== Snapchat
 
 #text(fill: red)[
   *Sans VPN*
@@ -131,7 +234,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   - Inscription avec email + mot de passe
 ]
 
-=== LinkedIn
+== LinkedIn
 
 #text(fill: red)[
   *Création d'un compte*
@@ -147,7 +250,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   - Vérification si on veut obtenir le badge mais il y a une liste d'attente.
 ]
 
-=== Discord
+== Discord
 
 #text(fill: red)[
   - Sur PC
@@ -161,7 +264,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   - Vérification des mineurs dès mars 2026.
 ]
 
-=== Youtube
+== Youtube
 
 #text(fill: red)[
   - Sur PC
@@ -175,7 +278,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   - Vérification uniquement si détecté comme mineur.
 ]
 
-=== X
+== X
 
 #grid(
   columns: (1fr, 1fr),
@@ -190,7 +293,7 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   ],
   grid.cell(
     align: right,
-    image("../images/b-sites-enregistrement/x.png", width: 60%),
+    image("images/x.png", width: 60%),
   ),
 )
 
@@ -202,73 +305,73 @@ Une vérification est nécessaire (18 ans) si on veut lancer un live mais il fau
   - Inscription avec email + mot de passe
 ]
 
-== Remarques
+= Remarques
 
 Vérification du numéro de téléphone complique l'automatisation.
 
-=== Swissborg
+== Swissborg
 
 Mon numéro de téléphone a déjà été utilisé pour créer un compte, je ne peux pas le réutiliser.
 
-=== Portail Etat de Vaud
+== Portail Etat de Vaud
 
 Je dois mettre un numéro AVS valide.
 
-=== Lotterie Romande
+== Lotterie Romande
 
-#image("../images/b-sites-enregistrement/loro.jpg", width: 20%)
+#image("images/loro.jpg", width: 20%)
 
-=== Casino777
+== Casino777
 
-#image("../images/b-sites-enregistrement/casino777.png", width: 30%)
+#image("images/casino777.png", width: 30%)
 
-=== Bet365
+== Bet365
 
-#image("../images/b-sites-enregistrement/bet365.png", width: 40%)
+#image("images/bet365.png", width: 40%)
 
-=== Binance
+== Binance
 
-#image("../images/b-sites-enregistrement/binance.png", width: 40%)
+#image("images/binance.png", width: 40%)
 
-=== Bybit
+== Bybit
 
-#image("../images/b-sites-enregistrement/bybit.png", width: 40%)
+#image("images/bybit.png", width: 40%)
 
-=== Kraken
+== Kraken
 
-#image("../images/b-sites-enregistrement/kraken.png", width: 40%)
+#image("images/kraken.png", width: 40%)
 
-=== Okx
+== Okx
 
-#image("../images/b-sites-enregistrement/okx.png", width: 40%)
+#image("images/okx.png", width: 40%)
 
-=== Tea Dating Safety for Women
+== Tea Dating Safety for Women
 
-#image("../images/b-sites-enregistrement/tea.png", width: 40%)
+#image("images/tea.png", width: 40%)
 
-=== Upwork
+== Upwork
 
 Il faut une vérification pour obtenir un badge mais il faut avoir 35 connects (en achetant)
 
-=== Roblox
+== Roblox
 
-#image("../images/b-sites-enregistrement/roblox.png", width: 40%)
+#image("images/roblox.png", width: 40%)
 
-=== Riot Games
+== Riot Games
 
 Corée du Sud mais il faut un numéro coréen.
 
-=== Parship
+== Parship
 
-#image("../images/b-sites-enregistrement/parship.png", width: 40%)
+#image("images/parship.png", width: 40%)
 
-=== Compte Google
+== Compte Google
 
 Vérification pour changer son âge (de mineur à majeur).
 
-#image("../images/b-sites-enregistrement/google.png", width: 40%)
+#image("images/google.png", width: 40%)
 
-== Critères de sélection
+= Critères de sélection
 
 - *Type* : identification par photo, vidéo, ou les deux.
 - *Interlocuteur humain* : présence ou non d'un interlocuteur humain pour guider l'utilisateur.
@@ -278,7 +381,7 @@ Vérification pour changer son âge (de mineur à majeur).
 
 #set page(flipped: true)
 
-== Tableau comparatif des sites
+= Tableau comparatif des sites
 
 #set par(justify: false)
 

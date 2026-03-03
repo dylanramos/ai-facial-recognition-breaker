@@ -115,7 +115,7 @@
 
 *Résumé publiable*
 
-#lorem(150)
+TODO
 
 #v(0.5cm)
 
@@ -305,52 +305,4 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/00-table-des-figures.typ"
 #pagebreak(to: "odd")
 
-// Annexes
-
-#set heading(numbering: "A.1")
-#counter(heading).update(0)
-
-#show heading.where(level: 1): it => {
-  let current_heading = query(selector(heading.where(level: 1)).before(here())).last()
-  let chapter_number = counter(heading).at(current_heading.location()).first()
-  let chapter_letter = numbering("A", chapter_number)
-  v(2.5cm)
-  text(size: 20pt)[Annexe #chapter_letter]
-  v(0.3cm)
-  text(size: 26pt)[#it.body]
-  v(0.7cm)
-}
-#set page(
-  header: context [
-    #set text(size: 9pt)
-    #let current_heading = query(selector(heading.where(level: 1)).before(here())).last()
-    #let chapter_number = counter(heading).at(current_heading.location()).first()
-    #let chapter_letter = numbering("A", chapter_number)
-    #let is_even = calc.even(counter(page).get().first())
-
-    #if (is_even) {
-      grid(
-        columns: (auto, 1fr),
-        align: bottom + right,
-        upper("Annexe " + str(chapter_letter) + ".  " + current_heading.body), line(length: 99%, stroke: 0.5pt),
-      )
-    } else {
-      grid(
-        columns: (1fr, auto),
-        align: bottom,
-        line(length: 99%, stroke: 0.5pt), author,
-      )
-    }
-  ],
-)
-
-#include "chapitres/a-services-de-generation.typ"
-#pagebreak(to: "odd")
-
-#include "chapitres/b-sites-de-verification.typ"
-#pagebreak(to: "odd")
-
-#include "chapitres/c-tests-de-faisabilite-des-attaques.typ"
-#pagebreak(to: "odd")
-
-#include "chapitres/d-camera-virtuelle.typ"
+= Annexes

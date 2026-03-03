@@ -1,24 +1,59 @@
-/* #let author = "Dylan Oliveira Ramos"
-
+// Paramètres globaux
+#set page(margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm))
 #set text(font: "New Computer Modern", size: 11pt)
+#show bibliography: set text(lang: "fr")
+
+// Variables
+
+#let author = "Dylan Oliveira Ramos"
+#let professor = "Prof. Jean-Marc Bost"
+#let title = "Services de génération de vidéos IA"
+#let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
+#let academic_year = "2025-2026"
+
+// Page de garde
+
+#grid(
+  columns: (1fr, 2fr),
+  align: (left, right),
+  image("images/logo-heig-vd.png", width: 3cm),
+  [
+    Département des Technologies de l'information et de la communication (TIC) \
+    Filière Informatique et systèmes de communication \
+    Orientation Sécurité informatique
+  ],
+)
+
+#v(4cm)
+#align(center, text(weight: "bold", size: 14pt)[Rapport de recherche])
+#align(center, text(weight: "bold", size: 26pt)[#title])
+#v(4cm)
+
+#align(left, [#block(width: 70%, [
+  #table(
+    stroke: none,
+    columns: (50%, 50%),
+    [*Étudiant*], [*#author*],
+    [*Enseignant responsable*], [#professor],
+    [*Année académique*], [#academic_year],
+  )
+])])
+
+#v(2cm)
+
+#align(right, location_and_date)
+
 #set page(
-  margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm),
-  numbering: "1",
+  margin: 2.5cm,
   header: context [
     #set text(size: 9pt)
-    #let selector = selector(heading).before(here())
-    #let headings = query(selector).filter(it => it.level == 1)
     #let is_even = calc.even(counter(page).get().first())
 
-    #if headings.len() == 0 and is_even {
-      line(length: 100%, stroke: 0.5pt)
-    } else if (is_even) {
-      let current_heading = headings.last()
-
+    #if (is_even) {
       grid(
         columns: (auto, 1fr),
         align: bottom + right,
-        upper(current_heading.body), line(length: 99%, stroke: 0.5pt),
+        upper(title), line(length: 99%, stroke: 0.5pt),
       )
     } else {
       grid(
@@ -50,46 +85,42 @@
   ],
 )
 #set par(justify: true)
-#set heading(numbering: "1.1")
 
+// Configuration des titres
+
+#set heading(numbering: "1.1")
 #show heading.where(level: 1): it => {
-  v(2.5cm)
-  text(size: 20pt)[Annexe A]
-  v(0.3cm)
-  text(size: 26pt)[#it.body]
-  v(0.7cm)
+  set text(size: 15pt)
+  block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
+  v(0.2cm)
 }
 #show heading.where(level: 2): it => {
-  set text(size: 16pt)
-  v(0.5cm)
-  it
-  v(0.5cm)
+  set text(size: 13pt)
+  block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
+  v(0.1cm)
 }
 #show heading.where(level: 3): it => {
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
- */
 
-= Services de génération de vidéo
+= Types de services
 
-== Types de services
-
-=== Propriétaires
+== Propriétaires
 
 Les services de génération de vidéo propriétaires générent des vidéos avec leur propres modèles d'IA.
 
-*Avantages*:
+=== Avantages
 - Coûts réduits (on ne paie que ce dont on a besoin)
 
-=== Aggrégateurs
+== Aggrégateurs
 
 Les services de génération de vidéo aggrégateurs mettent à disposition des modèles d'IA de différents fournisseurs, laissant ainsi le choix du modèle aux utilisateurs.
 
-*Avantages*:
+=== Avantages
 - Choix du modèle en fonction des besoins (réalisme, rapidité, etc.)
 - Comparaison facile entre les différents modèles
 
-== Critères de sélection
+= Critères de sélection
 
 - *Temps de vidéo maximum* : la vidéo générée doit être suffisament longue pour que la vérification de l'identité puisse se faire.
 
@@ -107,9 +138,9 @@ Les services de génération de vidéo aggrégateurs mettent à disposition des 
 
 #set page(flipped: true)
 
-== Services testés
+= Services testés
 
-=== Tableau comparatif des abonnements standards
+== Tableau comparatif des abonnements standards
 
 Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du service.
 
@@ -199,7 +230,7 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
 
 #pagebreak()
 
-=== Tableau comparatif des API
+== Tableau comparatif des API
 
 #table(
   columns: (auto, auto, auto, auto),
@@ -221,12 +252,13 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
 )
 
 #set page(flipped: false)
+#set par(justify: true)
 
-== Exemple de prompt
+= Exemple de prompt
 
 A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements.
 
-== Kie.ai
+= Kie.ai
 
 Kie.ai est une plateforme qui centralise des API de différents fournisseurs (Veo, Sora, etc.). Elle propose des API gratuites pour certains modèles. Les prix sont moins chers que les prix des API des fournisseurs : https://docs.kie.ai/#2-pricing.
 
