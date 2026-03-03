@@ -1,6 +1,6 @@
 #import "@preview/codelst:2.0.2": sourcecode
 
-= Interface en ligne de commande
+= Caméra virtuelle et redirection de flux vidéo
 
 == v4l2loopback
 
@@ -8,7 +8,7 @@ Module kernel de Linux qui permet de créer des périphériques de caméra virtu
 
 === Installation
 
-#sourcecode[```
+#sourcecode[```sh
 sudo apt install v4l2loopback-dkms v4l2loopback-utils
 ```]
 
@@ -16,7 +16,7 @@ Note: si le secure boot est activé, il faut enroll la clé de signature en red�
 
 === Création d'une caméra virtuelle
 
-#sourcecode[```
+#sourcecode[```sh
 sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
 ```]
 
@@ -34,13 +34,13 @@ Outil en ligne de commande pour manipuler des flux vidéo.
 
 === Installation
 
-#sourcecode[```
+#sourcecode[```sh
 sudo apt install ffmpeg
 ```]
 
 === Envoyer un flux vidéo vers la caméra virtuelle
 
-#sourcecode[```
+#sourcecode[```sh
 ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
 
@@ -53,7 +53,7 @@ ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
 
 Important : il faut reload le module `v4l2loopback` avant chaque vidéo :
 
-#sourcecode[```
+#sourcecode[```sh
 sudo modprobe -r v4l2loopback
 sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
 ```]
@@ -62,7 +62,7 @@ sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusiv
 
 Ci-dessous un script qui automatise la création de la caméra virtuelle et l'envoi d'une vidéo :
 
-#sourcecode[```
+#sourcecode[```sh
 #!/bin/bash
 
 # Check if video file argument is provided
@@ -97,3 +97,9 @@ ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
 == CLI en python
 
 J'ai commencé un CLI en python qui utilise la librairie `Typer`. J'ai réussi à générer une vidéo en passant par l'API de Kie.ai, mais je n'ai plus de crédits.
+
+#sourcecode[```sh
+python main.py generate \
+--prompt "A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements." \
+--image ~/Downloads/TB/boy.png
+```]

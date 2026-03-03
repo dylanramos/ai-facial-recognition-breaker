@@ -14,10 +14,10 @@ Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les syst�
 
 Ce travail de bachelor vise à analyser les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par l'IA. Les objectifs sont les suivants :
 
-+ Comparer les différents services de generation de vidéos IA.
-+ Trouver des sites nécessitant une vérification d'identité par reconnaissance faciale.
-+ Étudier la faisabilité des attaques contre ces systèmes de reconnaissance faciale.
-+ Développer un outil permettant de diffuser une vidéo générée par l'IA sur un site de vérification d'identité.
++ Analyser les différents services de generation de vidéos IA.
++ Analyser les sites nécessitant une vérification d'identité par reconnaissance faciale.
++ Étudier la faisabilité des attaques contre les sites proposant une vérification d'identité par reconnaissance faciale.
++ Développer un outil permettant de diffuser une vidéo générée par l'IA sur les sites ciblés.
 
 En fonction des résultats obtenus et si le temps le permet :
 
@@ -34,7 +34,7 @@ En fonction des résultats obtenus et si le temps le permet :
 
 *Phase 2 : tests de faisabilité*
 
-- Effectuer des tests manuels sur les sites qui ne demandent qu'une vérification d'identité par image, puis sur les sites qui demandent une vérification d'identité par vidéo.
+- Effectuer des tests manuels sur les sites qui ne demandent qu'une vérification d'identité par image dans un premier temps, puis sur les sites qui demandent une vérification d'identité par vidéo.
 - Documenter les différents tests effectués et leurs résultats.
 
 *Phase 3 : développement de l'outil*
@@ -94,7 +94,7 @@ Ce travail de bachelor débute le *16 février 2026* et se termine le *26 juin 2
   - Services de génération de vidéos IA.
   - Sites de vérification d'identité.
   - Tests de faisabilité des attaques.
-  - Interface en ligne de commande.
+  - Caméra virtuelle et redirection de flux vidéo.
 
 *Livrables finaux*
 

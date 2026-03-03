@@ -353,4 +353,4 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/c-tests-de-faisabilite-des-attaques.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/d-interface-ligne-de-commande.typ"
+#include "chapitres/d-camera-virtuelle.typ"
