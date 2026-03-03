@@ -45,7 +45,6 @@ def generate_video_kling(prompt: str, image_url: str) -> str:
     url = "https://api.kie.ai/api/v1/jobs/createTask"
     payload = {
         "model": "kling-3.0/video",
-        "callBackUrl": "https://your-domain.com/api/callback",
         "input": {
             "mode": "std",
             "image_urls": [
