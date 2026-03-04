@@ -92,12 +92,12 @@
 
 #set heading(numbering: "1.1")
 #show heading.where(level: 1): it => {
-  set text(size: 15pt)
+  set text(size: 17pt)
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
   v(0.2cm)
 }
 #show heading.where(level: 2): it => {
-  set text(size: 13pt)
+  set text(size: 14pt)
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
   v(0.1cm)
 }
@@ -105,56 +105,68 @@
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
 
-= v4l2loopback
+= Introduction
 
-Module kernel de Linux qui permet de créer des périphériques de caméra virtuelle.
+Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique. Sur Linux, il existe un module noyau appelé `v4l2loopback` qui permet de créer de tels périphériques. En utilisant `FFmpeg`, il est ensuite possible d'envoyer un flux vidéo vers la caméra virtuelle, qui sera alors détectée par les applications comme une caméra réelle.
 
-== Installation
+== Pourquoi Linux ?
+
+Linux est particulièrement adapté pour ce type de tâche car les différentes opérations peuvent être scriptées et automatisées facilement. De plus, Linux permet de reproduire les configurations sur d'autres machines via Docker par exemple, ce qui est idéal pour tester et déployer la solution.
+
+= Installation
+
+Les commandes qui vont suivre ont été effectuées sur une machine #underline("Ubuntu 24.04").
+
+== v4l2loopback
 
 #sourcecode[```sh
 sudo apt install v4l2loopback-dkms v4l2loopback-utils
 ```]
 
-Note: si le secure boot est activé, il faut enroll la clé de signature en redémarrant la machine
-
-== Création d'une caméra virtuelle
-
-#sourcecode[```sh
-sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
-```]
-
-- `modprobe v4l2loopback` : charge le module kernel
-- `devices=1` : crée 1 device virtuel
-- `video_nr=2` : spécifie le numéro du device (erreur s'il existe déjà)
-- `card_label="VirtualCam"` : spécifie le nom du device
-- `exclusive_caps=1` : pour la compatibilité avec les applications (simulation d'une caméra réelle, OUTPUT + CAPTURE)
-
-Pour lister les caméras : `v4l2-ctl --list-devices`
-
-= ffmpeg
-
-Outil en ligne de commande pour manipuler des flux vidéo.
-
-== Installation
+== FFmpeg
 
 #sourcecode[```sh
 sudo apt install ffmpeg
 ```]
 
-== Envoyer un flux vidéo vers la caméra virtuelle
+= Création d'une caméra virtuelle
+
+La commande ci-dessous crée une caméra virtuelle appelée `VirtualCam` :
+
+#sourcecode[```sh
+sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
+```]
+
+- `modprobe v4l2loopback` : charge le module noyau
+- `devices=1` : crée 1 périphérique virtuel
+- `video_nr=2` : spécifie le numéro du périphérique (erreur s'il existe déjà)
+- `card_label="VirtualCam"` : spécifie le nom du périphérique
+- `exclusive_caps=1` : rend la caméra compatible avec les applications (simule une caméra réelle)
+
+Il est ensuite possible de lister les caméras disponibles :
+
+#sourcecode[```sh
+v4l2-ctl --list-devices
+```]
+
+= Envoi d'un flux vidéo vers la caméra virtuelle
+
+La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle :
 
 #sourcecode[```sh
 ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
 
-- `re` : real time (simule une vrai caméra sans envoyer toutes les frames en une fois)
-- `stream_loop -1` : boucle infinie
-- `i video.mp4` : vidéo à lancer
-- `f v4l2` : format de sortie
-- `pix_fmt yuv420p` : format utilisé par les vrai caméras
-- `/dev/video2` : device de sortie
+- `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois)
+- `stream_loop -1` : boucle indéfiniment
+- `i video.mp4` : spécifie la vidéo à lancer
+- `f v4l2` : spécifie le format de sortie
+- `pix_fmt yuv420p` : spécifie le format de la vidéo (utilisé par les vraies caméras)
+- `/dev/video2` : spécifie le périphérique de sortie
 
-Important : il faut reload le module `v4l2loopback` avant chaque vidéo :
+== Rechargement du module
+
+Avant chaque diffusion de vidéo, il faut recharger le module `v4l2loopback` pour éviter les problèmes de conflits. Cela garantit que la caméra virtuelle est correctement réinitialisée et prête à recevoir le flux vidéo :
 
 #sourcecode[```sh
 sudo modprobe -r v4l2loopback
@@ -163,7 +175,7 @@ sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusiv
 
 = Script d'automatisation
 
-Ci-dessous un script qui automatise la création de la caméra virtuelle et l'envoi d'une vidéo :
+Le script ci-dessous automatise le processus de rechargement du module et de diffusion de la vidéo sur la caméra virtuelle :
 
 #sourcecode[```sh
 #!/bin/bash
@@ -195,14 +207,4 @@ sleep 1
 echo "Starting video stream to virtual camera..."
 echo "Press Ctrl+C to stop streaming"
 ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
-```]
-
-= CLI en python
-
-J'ai commencé un CLI en python qui utilise la librairie `Typer`. J'ai réussi à générer une vidéo en passant par l'API de Kie.ai, mais je n'ai plus de crédits.
-
-#sourcecode[```sh
-python main.py generate \
---prompt "A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements." \
---image ~/Downloads/TB/boy.png
 ```]

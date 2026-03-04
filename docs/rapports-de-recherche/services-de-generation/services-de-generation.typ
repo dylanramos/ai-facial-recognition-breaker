@@ -90,12 +90,12 @@
 
 #set heading(numbering: "1.1")
 #show heading.where(level: 1): it => {
-  set text(size: 15pt)
+  set text(size: 17pt)
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
   v(0.2cm)
 }
 #show heading.where(level: 2): it => {
-  set text(size: 13pt)
+  set text(size: 14pt)
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
   v(0.1cm)
 }
