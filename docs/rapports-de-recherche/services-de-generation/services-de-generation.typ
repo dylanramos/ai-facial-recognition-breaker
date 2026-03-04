@@ -103,152 +103,83 @@
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
 
-= Types de services
+= Introduction
 
-== Propriétaires
+Les services de génération de vidéos IA doivent permettre de générer des vidéos réalistes de personnes effectuant une vérification d'identité (regarder la caméra, tourner la tête, sourire, etc.). Chaque service utilise des modèles d'IA différents, qui ont leurs avantages et leurs inconvénients.
 
-Les services de génération de vidéo propriétaires générent des vidéos avec leur propres modèles d'IA.
-
-=== Avantages
-- Coûts réduits (on ne paie que ce dont on a besoin)
-
-== Aggrégateurs
-
-Les services de génération de vidéo aggrégateurs mettent à disposition des modèles d'IA de différents fournisseurs, laissant ainsi le choix du modèle aux utilisateurs.
-
-=== Avantages
-- Choix du modèle en fonction des besoins (réalisme, rapidité, etc.)
-- Comparaison facile entre les différents modèles
+Les services d'APIs sont des plateformes qui regroupent les APIs des différents services de génération. Ils permettent d'utiliser plusieurs modèles d'IA de manière centralisée sans avoir à gérer plusieurs abonnements et leurs prix sont souvent plus avantageux.
 
 = Critères de sélection
 
-- *Temps de vidéo maximum* : la vidéo générée doit être suffisament longue pour que la vérification de l'identité puisse se faire.
+== Services de génération
 
-- *Nombre de vidéos mensuel* : le nombre de vidéos généré par mois doit être suffisant pour pouvoir faire des tests et des démonstrations.
++ *API disponible* : une API doit être disponible pour pouvoir automatiser la génération de vidéos.
++ *Temps de vidéo* : la vidéo générée doit être suffisament longue pour que la vérification de l'identité puisse se faire.
++ *Qualité de la vidéo* : la qualité de la vidéo doit être assez bonne pour tromper les systèmes de reconnaissance faciale.
++ *Vidéo à partir d'images* : il doit être possible de générer une vidéo à partir d'images afin que le visage de la personne corresponde à ses documents d'identité.
 
-- *API disponible* : une API permet d'automatiser la génération de vidéos et ainsi le cassage de la reconnaissance faciale.
+== Services d'APIs
 
-- *Prix* : les prix des abonnements et de l'API doivent être résonnables.
-
-- *Qualité maximale de la vidéo* : la qualité de la vidéo doit être assez bonne pour tromper les systèmes de reconnaissance faciale.
-
-- *Vidéo à partir d'images* : il doit être possible de générer une vidéo à partir d'une ou plusieurs images, afin que le visage de la personne corresponde à ses documents d'identité.
++ *Modèles proposés* : les modèles de génération choisis doivent être disponibles.
++ *Nombre de vidéos* : le nombre de vidéos générées possible doit être suffisant pour pouvoir faire plusieurs tentatives de vérification d'identité.
++ *Prix* : le prix doit être resonnable.
++ *Génération d'images* : être en mesure de générer des documents d'identité avec le visage d'une personne fictive est un plus.
++ *Option gratuite* : tester l'API avant de payer est un plus.
 
 #pagebreak()
 
 #set page(flipped: true)
 
-= Services testés
+= Tableaux comparatifs
 
-== Tableau comparatif des abonnements standards
-
-Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du service.
+== Services de génération
 
 #set par(justify: false)
 
 #table(
-  columns: (auto, auto, auto, auto, auto, auto, auto, auto),
+  columns: (auto, auto, auto, auto, auto, auto),
   align: horizon + center,
   [*Service*],
-  [*Type*],
-  [*Temps de vidéo maximum*],
-  [*Nombre de vidéos mensuel*],
-  [*Prix mensuel*],
-  [*Qualité maximale de la vidéo*],
+  [*API disponible*],
+  [*Temps de vidéo*],
+  [*Qualité de la vidéo*],
   [*Vidéo à partir d'images*],
   [*Remarques*],
 
-  [*Veo 3.1*], [Propriétaire], [8s], [2], [3.5 CHF], [1080p], [Oui], [Réaliste],
-  [*Sora 2*], [Propriétaire], [10s], [12], [20\$], [720p], [Oui], [Réaliste],
-  [*Kling AI*],
-  [Propriétaire],
-  [10s],
-  [6],
-  [6.99\$],
-  [1080p],
-  [Oui],
-  [Possibilité d'acheter des crédits; 1 vidéo = \~100 crédits],
-
-  [*Invideo AI*],
-  [Aggrégateur],
-  [30s],
-  [50 min],
-  [35\$],
-  [1080],
-  [Oui],
-  [Offre la génération d'images avec l'abonnement; 1 vidéo par semaine gratuite],
-
-  [*Veed IO*], [Aggrégateur], [Dépend du modèle], [150], [19\$], [1080p], [Oui], [Permet d'éditer les vidéos],
-  [*2.Video*],
-  [Aggrégateur],
-  [Dépend du modèle],
-  [24],
-  [49\$],
-  [1080p],
-  [Oui],
-  [Possibilité d'acheter des crédits; 1 vidéo = \~50 crédits; Crédits offerts chaque jours],
-
+  [*Veo 3.1*], [Oui], [8s], [1080p], [Oui], [Réaliste],
+  [*Sora 2*], [Oui], [10s], [720p], [Oui], [Réaliste],
+  [*Kling AI*], [Oui], [10s], [1080p], [Oui], [Possibilité d'acheter des crédits; 1 vidéo = \~100 crédits],
   [*JoggAI*],
-  [Propriétaire],
+  [Oui],
   [3 min],
-  [200],
-  [24\$],
   [1080p],
   [Oui],
   [Permet de créer des deepfakes (remplacer des gens dans une vidéo); 1 vidéo = ~1 crédit],
 
-  [*Artlist*],
-  [Aggrégateur],
-  [Dépend du modèle],
-  [103],
-  [19.99€],
-  [1080p],
-  [Oui],
-  [Permet de générer \~1650 images avec l'abonnement],
-
-  [*HeyGen*], [Propriétaire], [3 min], [Illimité], [29\$], [1080p], [Oui], [3 vidéos par mois gratuites de 3 min],
-  [*D-ID*],
-  [-],
-  [10 min],
-  [10 min],
-  [5.9\$],
-  [1080p],
-  [Oui],
-  [Pas adapté (la personne ne bouge que les lèvres, pas de génération)],
-
-  [*Stable Diffusion*],
-  [Propriétaire],
-  [5s],
-  [50],
-  [20\$],
-  [720p],
-  [Oui],
-  [10 crédits gratuits par jour; 1 vidéo = ~25 crédits],
-
-  [*Grok Imagine*], [Propriétaire], [10s], [3000], [30\$], [720p], [Oui], [10 vidéos gratuites par jour],
+  [*HeyGen*], [Oui], [3 min], [1080p], [Oui], [3 vidéos par mois gratuites de 3 min],
+  [*Stable Diffusion*], [Oui], [5s], [720p], [Oui], [10 crédits gratuits par jour; 1 vidéo = ~25 crédits],
+  [*Grok Imagine*], [Oui], [10s], [720p], [Oui], [10 vidéos gratuites par jour],
 )
 
 #pagebreak()
 
-== Tableau comparatif des API
+== Services d'APIs
 
 #table(
-  columns: (auto, auto, auto, auto),
+  columns: (auto, auto, auto, auto, auto, auto, auto),
   align: horizon + center,
-  [*Service*], [*API disponible*], [*Option gratuite*], [*Prix*],
+  [*Service*],
+  [*Modèles proposés*],
+  [*Nombre de vidéos*],
+  [*Prix*],
+  [*Génération d'images*],
+  [*Option gratuite*],
+  [*Remarques*],
 
-  [*Veo 3.1*], [Oui], [Non], [0.15-0.60\$ / vidéo (en fonction de la qualité)],
-  [*Sora 2*], [Oui], [Non], [0.10-0.50\$ / vidéo (en fonction de la qualtié)],
-  [*Kling AI*], [Oui], [Non], [~0.10\$ / vidéo (dépend du modèle)],
-  [*Invideo AI*], [Non], [-], [-],
-  [*Veed IO*], [Non], [-], [-],
-  [*2.Video*], [Non], [-], [-],
-  [*JoggAI*], [Oui], [Oui (10 crédits)], [99\$ / mois],
-  [*Artlist*], [Non], [-], [-],
-  [*HeyGen*], [Oui], [Non], [1-6\$ / min],
-  [*D-ID*], [Oui], [Oui], [18\$ / mois],
-  [*Stable Diffusion*], [Non], [-], [-],
-  [*Grok Imagine*], [Oui], [Non], [0.05\$ / sec],
+  [*KIE AI*], [], [], [], [], [Oui], [80 crédits gratuits à l'inscription; minimum 60 crédits pour une vidéo],
+  [*Luma AI*], [], [], [], [], [], [],
+  [*AI4Chat*], [], [], [], [], [], [],
+  [*VidgoAI*], [], [], [], [], [], [],
 )
 
 #set page(flipped: false)
@@ -257,9 +188,3 @@ Chaque donnée du tableau ci-dessous correspond à l'abonnement standard du serv
 = Exemple de prompt
 
 A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements.
-
-= Kie.ai
-
-Kie.ai est une plateforme qui centralise des API de différents fournisseurs (Veo, Sora, etc.). Elle propose des API gratuites pour certains modèles. Les prix sont moins chers que les prix des API des fournisseurs : https://docs.kie.ai/#2-pricing.
-
-Mais il y a d'autres plateformes, Luma AI, AI4Chat, VidgoAI, etc.
