@@ -7,7 +7,7 @@
 
 #let author = "Dylan Oliveira Ramos"
 #let professor = "Prof. Jean-Marc Bost"
-#let title = "Services de génération de vidéos IA"
+#let title = "Génération de vidéos IA"
 #let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
 #let academic_year = "2025-2026"
 
@@ -105,85 +105,89 @@
 
 = Introduction
 
-Les services de génération de vidéos IA doivent permettre de générer des vidéos réalistes de personnes effectuant une vérification d'identité (regarder la caméra, tourner la tête, sourire, etc.). Chaque service utilise des modèles d'IA différents, qui ont leurs avantages et leurs inconvénients.
+Les modèles de génération de vidéos IA doivent permettre de générer des vidéos réalistes de personnes effectuant une vérification d'identité (regarder la caméra, tourner la tête, sourire, etc.), il en existe deux catégories :
+- Text-to-Video
+- Image-to-Video
 
-Les services d'APIs sont des plateformes qui regroupent les APIs des différents services de génération. Ils permettent d'utiliser plusieurs modèles d'IA de manière centralisée sans avoir à gérer plusieurs abonnements et leurs prix sont souvent plus avantageux.
+Les deux générent des vidéos mais ce qui les différencie sont les données d'entrée nécessaires.
 
-= Critères de sélection
+== Text-to-Video
 
-== Services de génération
+Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les visuels et les mouvements à partir de zéro. Cela leur laisse beaucoup de créativité mais rend plus difficile le contrôle du résultat final, ce qui peut être problématique pour la vérification d'identité.
+
+== Image-to-Video
+
+Les modèles de type Image-to-Video partent d'une image fournie et génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la vidéo avec celui des documents d'identité s'il viennent à être demandés.
+
+= Choix des modèles
+
+== Critères de sélection
+
+Plusieurs modèles de type Image-to-Video ont été analysés, les critères de séléction sont les suivants :
 
 + *API disponible* : une API doit être disponible pour pouvoir automatiser la génération de vidéos.
 + *Temps de vidéo* : la vidéo générée doit être suffisament longue pour que la vérification de l'identité puisse se faire.
 + *Qualité de la vidéo* : la qualité de la vidéo doit être assez bonne pour tromper les systèmes de reconnaissance faciale.
-+ *Vidéo à partir d'images* : il doit être possible de générer une vidéo à partir d'images afin que le visage de la personne corresponde à ses documents d'identité.
++ *Audio* : la possibilité d'ajouter de l'audio est un plus.
 
-== Services d'APIs
+À noter que le prix n'est pas mentionné dans les critères car il dépend de la qualité de la vidéo, de l'audio, etc. Celui-ci est analysé plus bas dans la @service-d-api.
 
-+ *Modèles proposés* : les modèles de génération choisis doivent être disponibles.
-+ *Nombre de vidéos* : le nombre de vidéos générées possible doit être suffisant pour pouvoir faire plusieurs tentatives de vérification d'identité.
-+ *Prix* : le prix doit être resonnable.
-+ *Génération d'images* : être en mesure de générer des documents d'identité avec le visage d'une personne fictive est un plus.
-+ *Option gratuite* : tester l'API avant de payer est un plus.
-
-#pagebreak()
-
-#set page(flipped: true)
-
-= Tableaux comparatifs
-
-== Services de génération
-
-#set par(justify: false)
+== Tableau comparatif
 
 #table(
-  columns: (auto, auto, auto, auto, auto, auto),
+  columns: (1fr, auto, auto, auto, auto),
   align: horizon + center,
-  [*Service*],
-  [*API disponible*],
-  [*Temps de vidéo*],
-  [*Qualité de la vidéo*],
-  [*Vidéo à partir d'images*],
-  [*Remarques*],
+  [*Service*], [*API disponible*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*],
 
-  [*Veo 3.1*], [Oui], [8s], [1080p], [Oui], [Réaliste],
-  [*Sora 2*], [Oui], [10s], [720p], [Oui], [Réaliste],
-  [*Kling AI*], [Oui], [10s], [1080p], [Oui], [Possibilité d'acheter des crédits; 1 vidéo = \~100 crédits],
-  [*JoggAI*],
-  [Oui],
-  [3 min],
-  [1080p],
-  [Oui],
-  [Permet de créer des deepfakes (remplacer des gens dans une vidéo); 1 vidéo = ~1 crédit],
-
-  [*HeyGen*], [Oui], [3 min], [1080p], [Oui], [3 vidéos par mois gratuites de 3 min],
-  [*Stable Diffusion*], [Oui], [5s], [720p], [Oui], [10 crédits gratuits par jour; 1 vidéo = ~25 crédits],
-  [*Grok Imagine*], [Oui], [10s], [720p], [Oui], [10 vidéos gratuites par jour],
+  [*Veo 3.1*], [Oui], [8s], [1080p], [Oui],
+  [*Sora 2*], [Oui], [15s], [720p], [Oui],
+  [*Kling 3.0*], [Oui], [15s], [1080p], [Oui],
+  [*Wan 2.6*], [Oui], [15s], [1080p], [Oui],
+  [*Grok Imagine*], [Oui], [15s], [720p], [Oui],
+  [*Hailuo 2.3*], [Oui], [10s], [1080p], [Non],
 )
 
-#pagebreak()
+= Service d'API <service-d-api>
 
-== Services d'APIs
+Un service d'API est une plateforme qui regroupe les APIs des différents services de génération. Il met à disposition une API qui permet d'utiliser plusieurs modèles d'IA de manière centralisée et moins coûteuse que chez les fournisseurs directement.
+
+== Kie.ai
+
+Le service d'API choisi est #link("https://kie.ai/")[Kie.ai]. Il a été choisi pour sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 crédits lors de l'inscription. Il regroupe également des modèles de génération d'images, ce qui peut être utile pour générer des visages et des documents d'identité.
+
+== Comparaison des prix des modèles
+
+Les tableaux ci-dessous comparent les prix de chaque modèle dans leur configuration minimale (moins bonne qualité, plus courte durée, etc.) et maximale (meilleure qualité, durée plus longue, etc.).
+
+=== Prix minimum
 
 #table(
-  columns: (auto, auto, auto, auto, auto, auto, auto),
+  columns: (1fr, auto, auto, auto, auto),
   align: horizon + center,
-  [*Service*],
-  [*Modèles proposés*],
-  [*Nombre de vidéos*],
-  [*Prix*],
-  [*Génération d'images*],
-  [*Option gratuite*],
-  [*Remarques*],
+  [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
 
-  [*KIE AI*], [], [], [], [], [Oui], [80 crédits gratuits à l'inscription; minimum 60 crédits pour une vidéo],
-  [*Luma AI*], [], [], [], [], [], [],
-  [*AI4Chat*], [], [], [], [], [], [],
-  [*VidgoAI*], [], [], [], [], [], [],
+  [*Veo 3.1*], [], [], [], [],
+  [*Sora 2*], [10s], [720p], [Oui], [0.175\$],
+  [*Kling 3.0*], [], [], [], [],
+  [*Wan 2.6*], [5s], [720p], [Oui], [0.35\$],
+  [*Grok Imagine*], [6s], [480p], [Oui], [0.05\$],
+  [*Hailuo 2.3*], [6s], [768p], [Non], [0.15\$],
 )
 
-#set page(flipped: false)
-#set par(justify: true)
+=== Prix maximum
+
+#table(
+  columns: (1fr, auto, auto, auto, auto),
+  align: horizon + center,
+  [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
+
+  [*Veo 3.1*], [], [], [], [],
+  [*Sora 2*], [15s], [720p], [Oui], [0.20\$],
+  [*Kling 3.0*], [], [], [], [],
+  [*Wan 2.6*], [15s], [1080p], [Oui], [1.575\$],
+  [*Grok Imagine*], [15s], [720p], [Oui], [0.20\$],
+  [*Hailuo 2.3*], [], [], [], [],
+)
 
 = Exemple de prompt
 
