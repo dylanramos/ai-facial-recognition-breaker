@@ -9,7 +9,7 @@
 
 #let author = "Dylan Oliveira Ramos"
 #let professor = "Prof. Jean-Marc Bost"
-#let title = "Caméra virtuelle et redirection de flux vidéo"
+#let title = "Caméras virtuelles et redirection de flux vidéo"
 #let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
 #let academic_year = "2025-2026"
 
@@ -107,29 +107,39 @@
 
 = Introduction
 
-Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique. Sur Linux, il existe un module noyau appelé `v4l2loopback` qui permet de créer de tels périphériques. En utilisant `FFmpeg`, il est ensuite possible d'envoyer un flux vidéo vers la caméra virtuelle, qui sera alors détectée par les applications comme une caméra réelle.
+Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
-== Pourquoi Linux ?
+== Comparaison des solutions
 
-Linux est particulièrement adapté pour ce type de tâche car les différentes opérations peuvent être scriptées et automatisées facilement. De plus, Linux permet de reproduire les configurations sur d'autres machines via Docker par exemple, ce qui est idéal pour tester et déployer la solution.
+Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles.
 
-= Installation
+#set par(justify: false)
+
+#table(
+  columns: (auto, auto, auto, auto, auto),
+  align: horizon + center,
+  [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
+  [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
+  [*OBS Virtual Camera*], [Linux, Windows, macOS], [Oui], [Abstraction de l'OS], [Doit exécuter OBS, haute latence],
+  [*UnityCapture / DirectShow*], [Windows], [Oui (UnityCapture)], [Caméra Windows native], [Windows uniquement, ecosystème complexe],
+  [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
+)
+
+#set par(justify: true)
+
+= v4l2loopback
+
+`v4l2loopback` est un module du noyau Linux permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de rediriger un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
 
 Les commandes qui vont suivre ont été effectuées sur une machine #underline("Ubuntu 24.04").
 
-== v4l2loopback
+== Installation
 
 #sourcecode[```sh
-sudo apt install v4l2loopback-dkms v4l2loopback-utils
+sudo apt install v4l2loopback-dkms v4l2loopback-utils ffmpeg
 ```]
 
-== FFmpeg
-
-#sourcecode[```sh
-sudo apt install ffmpeg
-```]
-
-= Création d'une caméra virtuelle
+== Création d'une caméra virtuelle
 
 La commande ci-dessous crée une caméra virtuelle appelée `VirtualCam` :
 
@@ -149,7 +159,7 @@ Il est ensuite possible de lister les caméras disponibles :
 v4l2-ctl --list-devices
 ```]
 
-= Envoi d'un flux vidéo vers la caméra virtuelle
+== Envoi d'un flux vidéo vers la caméra virtuelle
 
 La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle :
 
@@ -164,7 +174,7 @@ ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
 - `pix_fmt yuv420p` : spécifie le format de la vidéo (utilisé par les vraies caméras)
 - `/dev/video2` : spécifie le périphérique de sortie
 
-== Rechargement du module
+=== Rechargement du module
 
 Avant chaque diffusion de vidéo, il faut recharger le module `v4l2loopback` pour éviter les problèmes de conflits. Cela garantit que la caméra virtuelle est correctement réinitialisée et prête à recevoir le flux vidéo :
 
@@ -173,7 +183,7 @@ sudo modprobe -r v4l2loopback
 sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
 ```]
 
-= Script d'automatisation
+== Script d'automatisation
 
 Le script ci-dessous automatise le processus de rechargement du module et de diffusion de la vidéo sur la caméra virtuelle :
 
@@ -208,3 +218,7 @@ echo "Starting video stream to virtual camera..."
 echo "Press Ctrl+C to stop streaming"
 ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
+
+= OBS Virtual Camera
+
+`OBS Virtual Camera` est une fonctionnalité du logiciel de streaming `OBS Studio` qui utilise la scène comme caméra virtuelle.
