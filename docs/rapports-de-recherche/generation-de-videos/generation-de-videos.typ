@@ -166,9 +166,9 @@ Les tableaux ci-dessous comparent les prix de chaque modèle dans leur configura
   align: horizon + center,
   [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
 
-  [*Veo 3.1*], [], [], [], [],
+  [*Veo 3.1*], [8s], [1080p], [Oui], [0.30\$],
   [*Sora 2*], [10s], [720p], [Oui], [0.175\$],
-  [*Kling 3.0*], [], [], [], [],
+  [*Kling 3.0*], [3s], [720p], [Non], [0.10\$],
   [*Wan 2.6*], [5s], [720p], [Oui], [0.35\$],
   [*Grok Imagine*], [6s], [480p], [Oui], [0.05\$],
   [*Hailuo 2.3*], [6s], [768p], [Non], [0.15\$],
@@ -181,12 +181,27 @@ Les tableaux ci-dessous comparent les prix de chaque modèle dans leur configura
   align: horizon + center,
   [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
 
-  [*Veo 3.1*], [], [], [], [],
+  [*Veo 3.1*], [8s], [1080p], [Oui], [1.25\$],
   [*Sora 2*], [15s], [720p], [Oui], [0.20\$],
-  [*Kling 3.0*], [], [], [], [],
+  [*Kling 3.0*], [15s], [1080p], [Oui], [3.00\$],
   [*Wan 2.6*], [15s], [1080p], [Oui], [1.575\$],
   [*Grok Imagine*], [15s], [720p], [Oui], [0.20\$],
-  [*Hailuo 2.3*], [], [], [], [],
+  [*Hailuo 2.3*], [10s], [768p], [Non], [0.45\$],
+)
+
+=== Pour un budget de 100\$
+
+#table(
+  columns: (1fr, auto, auto),
+  align: horizon + center,
+  [*Modèle*], [*Nombre de vidéos minimum*], [*Nombre de vidéos maximum*],
+
+  [*Veo 3.1*], [333], [80],
+  [*Sora 2*], [571], [500],
+  [*Kling 3.0*], [1000], [33],
+  [*Wan 2.6*], [285], [63],
+  [*Grok Imagine*], [2000], [500],
+  [*Hailuo 2.3*], [666], [222],
 )
 
 = Exemple de prompt

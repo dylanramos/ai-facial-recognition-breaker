@@ -12,13 +12,14 @@ Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les syst�
 
 #text(weight: "bold", size: 14pt)[Objectifs]
 
-Ce travail de bachelor vise à analyser les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par l'IA. Les objectifs sont les suivants :
+Ce travail de bachelor vise à analyser les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
 
 + Analyser des services de génération de vidéos IA afin de déterminer lesquels sont les plus adaptés pour générer des vidéos réalistes de personnes effectuant une vérification d'identité.
 + Analyser des sites proposant une vérification d'identité par reconnaissance faciale afin d'identifier les différentes méthodes de vérification utilisées.
-+ Savoir comment utiliser une caméra virtuelle sur Linux afin de rediriger un flux vidéo vers une application.
-+ Choisir des sites cibles et savoir s'il est possible d'attaquer leur système de vérification d'identité avec des vidéos générées par l'IA.
++ Savoir comment utiliser une caméra virtuelle afin de rediriger un flux vidéo vers une application.
++ Choisir des sites cibles et savoir s'il est possible d'attaquer leur système de vérification d'identité avec des vidéos générées par IA.
 + Avoir un outil en ligne de commande permettant de générer des vidéos via une API et de les rediriger vers une caméra virtuelle afin de pouvoir attaquer les sites cibles.
++ Avoir un environnement de test reproductible afin que l'outil fonctionne sur tous les environnements.
 
 En fonction des résultats obtenus et si le temps le permet :
 
@@ -32,12 +33,12 @@ En fonction des résultats obtenus et si le temps le permet :
 
 - Analyse des services de génération de vidéos IA.
 - Analyse des sites proposant une vérification d'identité par reconnaissance faciale.
-- Étude de l'utilisation d'une caméra virtuelle sur Linux.
+- Étude de l'utilisation d'une caméra virtuelle sur Linux et Windows.
 
 *Phase 2 : tests de faisabilité*
 
-- Séléction des sites avec une vérification d'identité simple (photos).
-- Séléction des sites avec une vérification d'identité plus complexe (vidéos).
+- Séléction des sites avec une vérification d'identité simple (photos) et attaques manuelles.
+- Séléction des sites avec une vérification d'identité plus complexe (vidéos) et attaques manuelles.
 - Séléction des services de génération de vidéos IA les plus adaptés.
 - Évaluation des résultats obtenus lors des attaques manuelles.
 
@@ -53,20 +54,20 @@ En fonction des résultats obtenus et si le temps le permet :
 - Documentation de la mise en place de l'outil.
 - Documentation de l'utilisation de l'outil.
 
-*(Phase 5 : automatisation de l'attaque)*
-
-- Modification de l'outil pour automatiser tout le processus d'attaque (simuler les interactions utilisateur dans un navigateur).
-- Modification de l'outil pour vérifier automatiquement les emails et les numéros de téléphone.
-
-*Phase 6 : retour sur expérience*
+*Phase 5 : retour sur expérience*
 
 - Documentation des succès et des échecs rencontrés lors des attaques.
 - Documentation des pistes d'amélioration possibles.
 
-*Phase 7 : publication du projet en open source*
+*Phase 6 : publication du projet en open source*
 
 - Création d'un dépôt GitHub dédié au projet.
 - Mise en place des directives de contribution et de la documentation pour les futurs contributeurs.
+
+*(Phase 7 : automatisation de l'attaque)*
+
+- Modification de l'outil pour automatiser tout le processus d'attaque (simuler les interactions utilisateur dans un navigateur).
+- Modification de l'outil pour vérifier automatiquement les emails et les numéros de téléphone.
 
 #v(0.5cm)
 
@@ -77,7 +78,7 @@ En fonction des résultats obtenus et si le temps le permet :
 - Cahier des charges.
 - Rapport intermédiaire.
 - Rapports de recherche :
-  - Services de génération de vidéos IA.
+  - Génération de vidéos IA.
   - Sites de vérification d'identité.
   - Tests de faisabilité des attaques.
   - Caméra virtuelle et redirection de flux vidéo.
@@ -88,7 +89,7 @@ En fonction des résultats obtenus et si le temps le permet :
 - Dépôt GitHub contenant le code source de l'outil développé ainsi que :
   - Le guide d'installation de l'outil.
   - Le guide d'utilisation de l'outil.
-  - La documentation de maintenance
+  - La documentation de maintenance.
   - Le script de mise en place de l'environnement de test.
 
 #v(0.5cm)
@@ -115,6 +116,7 @@ Phase 1 :
 *Semaine 3 (02.03 - 08.03)*
 
 Phase 1 :
+- Étude de l'utilisation d'une caméra virtuelle sur Windows.
 - Rédaction du cahier des charges.
 - Rédaction du rapport de recherche sur les services de génération de vidéos IA.
 - Rédaction du rapport de recherche sur les sites de vérification d'identité.
@@ -178,38 +180,38 @@ Phase 4 :
 *Semaine 12 (11.05 - 17.05)*
 
 Phase 5 :
-- Simulation des interactions utilisateur dans le navigateur.
-- Vérification automatique des emails et des numéros de téléphone.
+- Documentation des succès et des échecs rencontrés lors des attaques.
+- Documentation des pistes d'amélioration possibles.
 
 *Semaine 13 (18.05 - 24.05)*
 
 Phase 5 :
-- Simulation des interactions utilisateur dans le navigateur.
-- Vérification automatique des emails et des numéros de téléphone.
+- Documentation des succès et des échecs rencontrés lors des attaques.
+- Documentation des pistes d'amélioration possibles.
 
 *Semaine 14 (25.05 - 31.05)*
 
-Phase 5 :
-- Simulation des interactions utilisateur dans le navigateur.
-- Vérification automatique des emails et des numéros de téléphone.
+Phase 6 :
+- Création d'un dépôt GitHub dédié au projet.
+- Mise en place des directives de contribution et de la documentation pour les futurs contributeurs.
 
 *Semaine 15 (01.06 - 07.06)*
 
-Phase 6 :
-- Documentation des succès et des échecs rencontrés lors des attaques.
-- Documentation des pistes d'amélioration possibles.
+Phase 7 :
+- Simulation des interactions utilisateur dans le navigateur.
+- Vérification automatique des emails et des numéros de téléphone.
 
 *Semaine 16 (08.06 - 14.06)*
 
-Phase 6 :
-- Documentation des succès et des échecs rencontrés lors des attaques.
-- Documentation des pistes d'amélioration possibles.
+Phase 7 :
+- Simulation des interactions utilisateur dans le navigateur.
+- Vérification automatique des emails et des numéros de téléphone.
 
 *Semaine 17 (15.06 - 21.06)*
 
 Phase 7 :
-- Création d'un dépôt GitHub dédié au projet.
-- Mise en place des directives de contribution et de la documentation pour les futurs contributeurs.
+- Simulation des interactions utilisateur dans le navigateur.
+- Vérification automatique des emails et des numéros de téléphone.
 
 *Semaine 18 (22.06 - 26.06)*
 
