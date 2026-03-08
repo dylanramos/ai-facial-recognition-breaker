@@ -81,7 +81,7 @@ En fonction des résultats obtenus et si le temps le permet :
   - Génération de vidéos IA.
   - Sites de vérification d'identité.
   - Tests de faisabilité des attaques.
-  - Caméra virtuelle et redirection de flux vidéo.
+  - Caméras virtuelles et redirection de flux vidéo.
 
 *Livrables finaux*
 
