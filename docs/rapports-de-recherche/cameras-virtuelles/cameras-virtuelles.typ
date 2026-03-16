@@ -120,8 +120,13 @@ Le tableau ci-dessous compare les différentes solutions permettant de créer de
   align: horizon + center,
   [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
   [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
-  [*OBS Virtual Camera*], [Linux, Windows, macOS], [Oui], [Abstraction de l'OS], [Doit exécuter OBS, haute latence],
-  [*UnityCapture / DirectShow*], [Windows], [Oui (UnityCapture)], [Caméra Windows native], [Windows uniquement, ecosystème complexe],
+  [*OBS Studio*],
+  [Linux, Windows, macOS],
+  [Oui],
+  [Abstraction de l'OS],
+  [Nécessite des actions manuelles, haute latence],
+
+  [*UnityCapture*], [Windows], [Oui], [Caméra Windows native], [Windows uniquement],
   [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
 )
 
@@ -131,7 +136,7 @@ Le tableau ci-dessous compare les différentes solutions permettant de créer de
 
 `v4l2loopback` est un module du noyau Linux permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de rediriger un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
 
-Les commandes qui vont suivre ont été effectuées sur une machine #underline("Ubuntu 24.04").
+Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 24.04*.
 
 == Installation
 
@@ -147,11 +152,11 @@ La commande ci-dessous crée une caméra virtuelle appelée `VirtualCam` :
 sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
 ```]
 
-- `modprobe v4l2loopback` : charge le module noyau
-- `devices=1` : crée 1 périphérique virtuel
-- `video_nr=2` : spécifie le numéro du périphérique (erreur s'il existe déjà)
-- `card_label="VirtualCam"` : spécifie le nom du périphérique
-- `exclusive_caps=1` : rend la caméra compatible avec les applications (simule une caméra réelle)
+- `modprobe v4l2loopback` : charge le module noyau.
+- `devices=1` : crée 1 périphérique virtuel.
+- `video_nr=2` : spécifie le numéro du périphérique (erreur s'il existe déjà).
+- `card_label="VirtualCam"` : spécifie le nom du périphérique.
+- `exclusive_caps=1` : rend la caméra compatible avec les applications (simule une caméra réelle).
 
 Il est ensuite possible de lister les caméras disponibles :
 
@@ -167,12 +172,12 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
 
-- `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois)
-- `stream_loop -1` : boucle indéfiniment
-- `i video.mp4` : spécifie la vidéo à lancer
-- `f v4l2` : spécifie le format de sortie
-- `pix_fmt yuv420p` : spécifie le format de la vidéo (utilisé par les vraies caméras)
-- `/dev/video2` : spécifie le périphérique de sortie
+- `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois).
+- `stream_loop -1` : boucle indéfiniment.
+- `i video.mp4` : spécifie la vidéo à lancer.
+- `f v4l2` : spécifie le format de sortie.
+- `pix_fmt yuv420p` : spécifie le format de la vidéo (utilisé par les vraies caméras).
+- `/dev/video2` : spécifie le périphérique de sortie.
 
 === Rechargement du module
 
@@ -219,6 +224,131 @@ echo "Press Ctrl+C to stop streaming"
 ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
 
-= OBS Virtual Camera
+= OBS Studio
 
-`OBS Virtual Camera` est une fonctionnalité du logiciel de streaming `OBS Studio` qui utilise la scène comme caméra virtuelle.
+Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un driver customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
+`OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de rediriger un flux vidéo vers celle-ci.
+
+Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 10 22H2*.
+
+== Installation <obs-install>
+
+Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.com/")). Une fois le logiciel installé, la caméra virtuelle est automatiquement créée et disponible sous le nom de `OBS Virtual Camera`.
+
+== Envoi d'un flux vidéo vers la caméra virtuelle
+
++ Lancer `OBS Studio`.
++ Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner "Media Source".
++ Insérer le nom de la source.
++ Cocher `Local File` et `Loop`, sélectionner la vidéo à lancer dans `Local File`, puis cliquer sur `OK`.
++ Dans la section `Controls`, cliquer sur `Start Virtual Camera`.
+
+La caméra virtuelle est maintenant disponible dans les applications sous le nom de `OBS Virtual Camera`.
+
+== Automatisation
+
+Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible d'envoyer un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec `OBS Studio`, le flux doit être envoyé via le protocole `UDP`.
+
+=== Création de la source vidéo
+
++ Lancer `OBS Studio`.
++ Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner "Media Source".
++ Insérer le nom de la source.
++ Décocher `Local File`.
++ Dans `Input`, entrer : `udp://127.0.0.1:1234` et cliquer sur `OK`.
+
+Cette source vidéo est maintenant prête à recevoir un flux vidéo via `UDP` sur le port `1234`.
+
+=== Envoi d'un flux vidéo vers la caméra virtuelle
+
+La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle de `OBS Studio` :
+
+#sourcecode[```sh
+ffmpeg.exe -re -stream_loop -1 -i video.mp4 -c:v libx264 -preset ultrafast -tune zerolatency -f mpegts "udp://127.0.0.1:1234?pkt_size=1316"
+```]
+
+- `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois).
+- `stream_loop -1` : boucle indéfiniment.
+- `i video.mp4` : spécifie la vidéo à lancer.
+- `c:v libx264` : encode la vidéo en H.264 (format compatible avec OBS).
+- `preset ultrafast` : utilise le preset d'encodage le plus rapide (réduit la qualité mais permet d'avoir une latence plus faible).
+- `tune zerolatency` : optimise l'encodage pour réduire la latence.
+- `f mpegts` : spécifie le format de sortie (MPEG-TS est un format de conteneur compatible avec le streaming en direct).
+- `udp://127.0.0.1:1234?pkt_size=1316` : spécifie l'adresse et le port de destination du flux UDP, ainsi que la taille des paquets (1316 est une taille courante pour le streaming en direct).
+
+= pyvirtualcam
+
+La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux, Windows ou macOS. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les systèmes d'exploitation.
+
+== Exemple d'utilisation sur Windows
+
+Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtuelle disponible. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir @obs-install pour l'installation).
+
+=== Création de l'environnement virtuel
+
+#sourcecode[```sh
+python -m venv .venv
+.venv\Scripts\activate
+pip install pyvirtualcam opencv-python
+```]
+
+=== Exemple de code
+
+#text(style: "italic")[Source : https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py]
+
+#sourcecode[```python
+# This script plays back a video file on the virtual camera.
+# It also shows how to:
+# - select a specific camera device
+# - use BGR as pixel format
+
+import argparse
+import pyvirtualcam
+from pyvirtualcam import PixelFormat
+import cv2
+
+parser = argparse.ArgumentParser()
+parser.add_argument("video_path", help="path to input video file")
+parser.add_argument("--fps", action="store_true", help="output fps every second")
+parser.add_argument("--device", help="virtual camera device, e.g. /dev/video0 (optional)")
+args = parser.parse_args()
+
+video = cv2.VideoCapture(args.video_path)
+if not video.isOpened():
+    raise ValueError("error opening video")
+length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = video.get(cv2.CAP_PROP_FPS)
+
+with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,
+                         device=args.device, print_fps=args.fps) as cam:
+    print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
+    count = 0
+    while True:
+        # Restart video on last frame.
+        if count == length:
+            count = 0
+            video.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
+        # Read video frame.
+        ret, frame = video.read()
+        if not ret:
+            raise RuntimeError('Error fetching frame')
+
+        # Send to virtual cam.
+        cam.send(frame)
+
+        # Wait until it's time for the next frame
+        cam.sleep_until_next_frame()
+
+        count += 1
+```]
+
+=== Utilisation
+
+#sourcecode[```sh
+python video.py video.mp4
+```]
+
+La vidéo `video.mp4` est maintenant diffusée en boucle sur la caméra virtuelle de `OBS Studio`.
