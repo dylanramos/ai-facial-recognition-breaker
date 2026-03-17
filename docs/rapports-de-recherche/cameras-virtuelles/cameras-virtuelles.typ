@@ -233,7 +233,7 @@ Les instructions qui vont suivre ont été effectuées sur une machine virtuelle
 
 == Installation <obs-install>
 
-Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.com/")). Une fois le logiciel installé, la caméra virtuelle est automatiquement créée et disponible sous le nom de `OBS Virtual Camera`.
+Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.com/")). Une fois le logiciel installé, la caméra virtuelle est automatiquement créée et est disponible sous le nom de `OBS Virtual Camera`.
 
 == Envoi d'un flux vidéo vers la caméra virtuelle
 
@@ -243,7 +243,7 @@ Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.co
 + Cocher `Local File` et `Loop`, sélectionner la vidéo à lancer dans `Local File`, puis cliquer sur `OK`.
 + Dans la section `Controls`, cliquer sur `Start Virtual Camera`.
 
-La caméra virtuelle est maintenant disponible dans les applications sous le nom de `OBS Virtual Camera`.
+La vidéo est maintenant diffusée en boucle sur la caméra virtuelle.
 
 == Automatisation
 
