@@ -12,18 +12,18 @@ Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les syst�
 
 #text(weight: "bold", size: 14pt)[Objectifs]
 
-Ce travail de bachelor vise à analyser les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
+Ce travail de bachelor cherche à comprendre les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
 
-+ Analyser des services de génération de vidéos IA afin de déterminer lesquels sont les plus adaptés pour générer des vidéos réalistes de personnes effectuant une vérification d'identité.
-+ Analyser des sites proposant une vérification d'identité par reconnaissance faciale afin d'identifier les différentes méthodes de vérification utilisées.
-+ Savoir comment utiliser une caméra virtuelle afin de rediriger un flux vidéo vers une application.
-+ Choisir des sites cibles et savoir s'il est possible d'attaquer leur système de vérification d'identité avec des vidéos générées par IA.
-+ Avoir un outil en ligne de commande permettant de générer des vidéos via une API et de les rediriger vers une caméra virtuelle afin de pouvoir attaquer les sites cibles.
-+ Avoir un environnement de test reproductible afin que l'outil fonctionne sur tous les environnements.
++ Connaître les offres de génération de vidéos IA disponibles sur le marché.
++ Connaître les différentes méthodes de vérification d'identité par reconnaissance faciale utilisées par les sites en ligne.
++ Savoir comment fonctionne et comment utiliser une caméra virtuelle sur Linux et Windows.
++ Avoir un démonstrateur capable de générer des photos et des vidéos à la demande à partir d'un prompt et de quelques images d'une personne.
++ Avoir un démonstrateur capable de rediriger un flux vidéo vers une caméra virtuelle.
++ Connaître les sites en ligne dont la vérification d'identité est vulnérable à des images ou des vidéos générées par IA.
 
-En fonction des résultats obtenus et si le temps le permet :
+En option :
 
-- Automatiser tout le processus d'attaque pour ne nécessiter aucune intervention humaine.
+- Avoir un démonstrateur complétement autonome capable d'enregistrer en ligne une personne donnée à l'aide d'une photo ou d'une vidéo sur un site choisi.
 
 #v(0.5cm)
 
@@ -31,40 +31,36 @@ En fonction des résultats obtenus et si le temps le permet :
 
 *Phase 1 : recherches et analyses*
 
-- Analyse des services de génération de vidéos IA.
-- Analyse des sites proposant une vérification d'identité par reconnaissance faciale.
-- Étude de l'utilisation d'une caméra virtuelle sur Linux et Windows.
+- Analyse des offres de génération de vidéos IA.
+- Analyse des sites proposant une vérification d'identité par image.
+- Analyse des sites proposant une vérification d'identité par vidéo.
+- Analyse de l'utilisation d'une caméra virtuelle sur Linux et Windows.
 
-*Phase 2 : tests de faisabilité*
+*Phase 2 : conception*
 
-- Séléction des sites avec une vérification d'identité simple (photos) et attaques manuelles.
-- Séléction des sites avec une vérification d'identité plus complexe (vidéos) et attaques manuelles.
-- Séléction des services de génération de vidéos IA les plus adaptés.
-- Évaluation des résultats obtenus lors des attaques manuelles.
+- Rédaction des User Stories.
+- Rédaction des cas de test.
+- Schématisation de l'architecture du démonstrateur.
+- Schématisation du diagramme de séquence du démonstrateur.
 
-*Phase 3 : conception de l'outil en ligne de commande*
-
-- Schématisation du fonctionnement de l'outil.
-- Identification des fonctionnalités nécessaires.
-
-*Phase 4 : développement de l'outil en ligne de commande*
+*Phase 3 : développement*
 
 - Implémentation des différentes fonctionnalités de l'outil.
 - Mise en place d'un environnement de test reproductible (Docker).
 - Documentation de la mise en place de l'outil.
 - Documentation de l'utilisation de l'outil.
 
-*Phase 5 : retour sur expérience*
+*Phase 4 : retour sur expérience*
 
 - Documentation des succès et des échecs rencontrés lors des attaques.
 - Documentation des pistes d'amélioration possibles.
 
-*Phase 6 : publication du projet en open source*
+*Phase 5 : publication du projet en open source*
 
 - Création d'un dépôt GitHub dédié au projet.
 - Mise en place des directives de contribution et de la documentation pour les futurs contributeurs.
 
-*(Phase 7 : automatisation de l'attaque)*
+*(Phase 6 : automatisation de l'attaque)*
 
 - Modification de l'outil pour automatiser tout le processus d'attaque (simuler les interactions utilisateur dans un navigateur).
 - Modification de l'outil pour vérifier automatiquement les emails et les numéros de téléphone.

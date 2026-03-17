@@ -243,7 +243,13 @@ Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.co
 + Cocher `Local File` et `Loop`, sélectionner la vidéo à lancer dans `Local File`, puis cliquer sur `OK`.
 + Dans la section `Controls`, cliquer sur `Start Virtual Camera`.
 
-La vidéo est maintenant diffusée en boucle sur la caméra virtuelle.
+La vidéo est maintenant diffusée en boucle sur la caméra virtuelle et est accessible aux applications, mais attention, la caméra n'apparaît pas dans le gestionnaire de périphériques Windows.
+
+En effet, cela est dû au fait que c'est une caméra logicielle qui utilise le framework DirectShow, elle est donc enregistrée dynamiquement à l'exécution et n'est pas détectée comme un périphérique physique par le système d'exploitation #footnote[https://medium.com/deelvin-machine-learning/how-does-obs-virtual-camera-plugin-work-on-windows-e92ab8986c4e#0878]. Il est néanmoins possible de vérifier qu'elle existe vraiment en utilisant `FFmpeg` pour lister les périphériques vidéo disponibles :
+
+#sourcecode[```sh
+ffmpeg.exe -list_devices true -f dshow -i dummy
+```]
 
 == Automatisation
 
