@@ -267,6 +267,18 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/01-introduction.typ"
 #pagebreak(to: "odd")
 
+#include "chapitres/02-etat-de-lart.typ"
+#pagebreak(to: "odd")
+
+#include "chapitres/03-conception.typ"
+#pagebreak(to: "odd")
+
+#include "chapitres/04-developpement.typ"
+#pagebreak(to: "odd")
+
+#include "chapitres/05-retour-sur-experience.typ"
+#pagebreak(to: "odd")
+
 #set heading(numbering: none)
 #show heading.where(level: 1): it => {
   v(3cm)

@@ -103,15 +103,23 @@
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
 
-= Création de comptes
+= Introduction
 
-J'utilise des alias pour chaque compte pour les adresses email.
+Plusieurs sites demandent aujourd'hui une vérification d'identité, que ce soit pour créer un compte ou pour accéder à certaines fonctionnalités. L'objectif est de trouver des sites qui demandent une vérification d'identité et d'analyser comment ils vérifient l'identité des utilisateurs.
 
-Observations : avec un alias on demande souvent de remplir un captcha, peut-être utiliser un compte google?
+= Recherches
 
-= Tests avec les réseaux sociaux
+Plusieurs catégories de sites ont été testées : les réseaux sociaux, les banques, les casinos en ligne, les plateformes de trading, les sites de rencontre, etc. Certains sites demandent obligatoirement une vérification d'identité, tandis que d'autres ne le font pas ou seulement dans certaines conditions. Les méthodes de vérification varient également : certaines demandent une photo du visage ou d'un document d'identité, d'autres demandent une vidéo de la personne, cela dépend de la sensibilité du service proposé par le site.
 
-J'ai fait des tests avec les réseaux sociaux car la plupart n'ont pas de vérification d'identité, contrairement aux services sensibles comme les banques.
+== Tableau récapitulatif <tableau>
+
+Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettront par la suite d'établir une échelle de difficulté pour les attaques :
+
+- *Type* : identification par photo, vidéo, ou les deux.
+- *Interlocuteur humain* : présence ou non d'un interlocuteur humain pour guider l'utilisateur.
+- *Documents d'identité* : nécessité ou non de fournir des documents d'identité.
+- *Uniquement via smartphone* : certains sites ne permettent pas de créer un compte sur ordinateur.
+- *Vérification* : e-mail, numéro de téléphone, ou les deux. Bon à savoir dans le cas où l'on voudrait une automatisation totale de l'attaque.
 
 Légende :
 
@@ -121,6 +129,68 @@ Légende :
   table.cell(fill: red)[], [Aucune vérification d'identité demandée.],
   table.cell(fill: yellow)[], [Vérification d'identité sous certaines conditions],
   table.cell(fill: green)[], [Vérification d'identité demandée.],
+)
+
+#set par(justify: false)
+
+#table(
+  columns: (auto, auto, auto, auto, auto, auto),
+  align: horizon + center,
+  [*Site*],
+  [*Type*],
+  [*Interlocuteur humain*],
+  [*Documents d'identité*],
+  [*Uniquement via smartphone*],
+  [*Vérification*],
+
+  table.cell(fill: red)[*TikTok*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Facebook*], [Photo], [?], [Non], [Non], [Email],
+  table.cell(fill: red)[*Instagram*], [-], [-], [-], [-], [-],
+  table.cell(fill: red)[*Snapchat*], [-], [-], [-], [-], [-],
+  table.cell(fill: yellow)[*LinkedIn*], [-], [-], [-], [-], [-],
+  table.cell(fill: yellow)[*Discord*], [-], [-], [-], [-], [-],
+  table.cell(fill: yellow)[*Youtube*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [?],
+  table.cell(fill: green)[*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Swissquote*], [Photo], [Non], [Oui], [Non], [Email + n° de téléphone],
+  table.cell(fill: red)[*E-ID*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*UBS*], [Photo ou vidéo], [Oui ou non], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Coinbase*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
+  table.cell(fill: green)[*Swissborg*], [?], [?], [Oui], [Oui], [?],
+  table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [Email],
+  table.cell(fill: red)[*X*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Portail Etat de Vaud*], [Vidéo], [Oui], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Lotterie Romande*], [Photo], [?], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Mycasino*], [Photo], [?], [Oui], [Non], [-],
+  table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
+  table.cell(fill: red)[*Polymarket*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*Bet365*], [Photo], [?], [Oui], [Non], [N° de téléphone],
+  table.cell(fill: green)[*Binance*], [Vidéo], [?], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Bybit*], [Photo], [?], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [Email],
+  table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Tea Dating Safety for Women*], [Photo], [?], [Non], [Non], [-],
+  table.cell(fill: yellow)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Roblox*], [Vidéo], [?], [Non], [Non], [-],
+  table.cell(fill: green)[*Parship*], [Vidéo], [?], [Non], [Non], [-],
+  table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
+  table.cell(fill: red)[*Grindr*], [-], [-], [-], [-], [-],
+  table.cell(fill: green)[*OkCupid*], [Photo], [?], [Non], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Google*], [Photo], [?], [Non], [Non], [-],
+)
+
+#set par(justify: true)
+
+= Sites sans vérification d'identité
+
+Comme le montre le tableau de la @tableau, certains sites (en rouge) ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseau sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir car ces sites sont ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
+
+#grid(
+  columns: (1fr, 1fr),
+  image("images/tiktok-australie.png"), image("images/x.png"),
 )
 
 == TikTok
@@ -370,66 +440,3 @@ Corée du Sud mais il faut un numéro coréen.
 Vérification pour changer son âge (de mineur à majeur).
 
 #image("images/google.png", width: 40%)
-
-= Critères de sélection
-
-- *Type* : identification par photo, vidéo, ou les deux.
-- *Interlocuteur humain* : présence ou non d'un interlocuteur humain pour guider l'utilisateur.
-- *Documents d'identité* : nécessité ou non de fournir des documents d'identité.
-- *Uniquement via smartphone* : certains sites ne permettent pas de créer un compte sur ordinateur.
-- *Vérification* : email, numéro de téléphone, ou les deux. Bon à savoir dans le cas où l'on voudrait une automatisation totale.
-
-#set page(flipped: true)
-
-= Tableau comparatif des sites
-
-#set par(justify: false)
-
-#table(
-  columns: (auto, auto, auto, auto, auto, auto),
-  align: horizon + center,
-  [*Site*],
-  [*Type*],
-  [*Interlocuteur humain*],
-  [*Documents d'identité*],
-  [*Uniquement via smartphone*],
-  [*Vérification*],
-
-  table.cell(fill: red)[*TikTok*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Facebook*], [Photo], [?], [Non], [Non], [Email],
-  table.cell(fill: yellow)[*Instagram*], [-], [-], [-], [-], [-],
-  table.cell(fill: red)[*Snapchat*], [-], [-], [-], [-], [-],
-  table.cell(fill: yellow)[*LinkedIn*], [-], [-], [-], [-], [-],
-  table.cell(fill: yellow)[*Discord*], [-], [-], [-], [-], [-],
-  table.cell(fill: yellow)[*Youtube*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [?],
-  table.cell(fill: green)[*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
-  table.cell(fill: green)[*Swissquote*], [Photo], [Non], [Oui], [Non], [Email + n° de téléphone],
-  table.cell(fill: red)[*E-ID*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
-  table.cell(fill: green)[*UBS*], [Photo ou vidéo], [Oui ou non], [Oui], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Coinbase*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
-  table.cell(fill: green)[*Swissborg*], [?], [?], [Oui], [Oui], [?],
-  table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [Email],
-  table.cell(fill: red)[*X*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Portail Etat de Vaud*], [Vidéo], [Oui], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Lotterie Romande*], [Photo], [?], [Oui], [Oui], [Email + n° de téléphone],
-  table.cell(fill: green)[*Mycasino*], [Photo], [?], [Oui], [Non], [-],
-  table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
-  table.cell(fill: red)[*Polymarket*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Bet365*], [Photo], [?], [Oui], [Non], [N° de téléphone],
-  table.cell(fill: green)[*Binance*], [Vidéo], [?], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Bybit*], [Photo], [?], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [Email],
-  table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [Email + n° de téléphone],
-  table.cell(fill: green)[*Tea Dating Safety for Women*], [Photo], [?], [Non], [Non], [-],
-  table.cell(fill: yellow)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Roblox*], [Vidéo], [?], [Non], [Non], [-],
-  table.cell(fill: green)[*Parship*], [Vidéo], [?], [Non], [Non], [-],
-  table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
-  table.cell(fill: red)[*Grindr*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*OkCupid*], [Photo], [?], [Non], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Google*], [Photo], [?], [Non], [Non], [-],
-)
