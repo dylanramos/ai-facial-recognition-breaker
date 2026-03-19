@@ -144,36 +144,36 @@ Légende :
   [*Vérification*],
 
   table.cell(fill: red)[*TikTok*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Facebook*], [Photo], [?], [Non], [Non], [Email],
+  table.cell(fill: green)[*Facebook*], [Photo], [?], [Non], [Non], [E-mail],
   table.cell(fill: red)[*Instagram*], [-], [-], [-], [-], [-],
   table.cell(fill: red)[*Snapchat*], [-], [-], [-], [-], [-],
   table.cell(fill: yellow)[*LinkedIn*], [-], [-], [-], [-], [-],
   table.cell(fill: yellow)[*Discord*], [-], [-], [-], [-], [-],
   table.cell(fill: yellow)[*Youtube*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [?],
-  table.cell(fill: green)[*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
-  table.cell(fill: green)[*Swissquote*], [Photo], [Non], [Oui], [Non], [Email + n° de téléphone],
+  table.cell(fill: green)[*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [E-mail + n° de téléphone],
+  table.cell(fill: green)[*Swissquote*], [Photo], [Non], [Oui], [Non], [E-mail + n° de téléphone],
   table.cell(fill: red)[*E-ID*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [Email + n° de téléphone],
-  table.cell(fill: green)[*UBS*], [Photo ou vidéo], [Oui ou non], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [E-mail + n° de téléphone],
+  table.cell(fill: green)[*UBS*], [Photo], [?], [Oui], [Oui], [N° de téléphone],
   table.cell(fill: green)[*Coinbase*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
-  table.cell(fill: green)[*Swissborg*], [?], [?], [Oui], [Oui], [?],
-  table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [Email],
+  table.cell(fill: green)[*Swissborg*], [Photo], [?], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [E-mail],
   table.cell(fill: red)[*X*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Portail Etat de Vaud*], [Vidéo], [Oui], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Lotterie Romande*], [Photo], [?], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Portail Etat de Vaud*], [Vidéo], [Oui], [Oui], [Non], [E-mail],
+  table.cell(fill: green)[*Lotterie Romande*], [Photo], [?], [Oui], [Oui], [E-mail + n° de téléphone],
   table.cell(fill: green)[*Mycasino*], [Photo], [?], [Oui], [Non], [-],
-  table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [Email],
+  table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [E-mail],
   table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
   table.cell(fill: red)[*Polymarket*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Bet365*], [Photo], [?], [Oui], [Non], [N° de téléphone],
-  table.cell(fill: green)[*Binance*], [Vidéo], [?], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Bybit*], [Photo], [?], [Oui], [Non], [Email],
-  table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [Email],
-  table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [Email + n° de téléphone],
+  table.cell(fill: green)[*Binance*], [Vidéo], [?], [Oui], [Non], [E-mail],
+  table.cell(fill: green)[*Bybit*], [Photo], [?], [Oui], [Non], [E-mail],
+  table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [E-mail],
+  table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [E-mail + n° de téléphone],
   table.cell(fill: green)[*Tea Dating Safety for Women*], [Photo], [?], [Non], [Non], [-],
-  table.cell(fill: yellow)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [Email],
+  table.cell(fill: yellow)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [E-mail],
   table.cell(fill: green)[*Roblox*], [Vidéo], [?], [Non], [Non], [-],
   table.cell(fill: green)[*Parship*], [Vidéo], [?], [Non], [Non], [-],
   table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
@@ -186,257 +186,114 @@ Légende :
 
 = Sites sans vérification d'identité
 
-Comme le montre le tableau de la @tableau, certains sites (en rouge) ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseau sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir car ces sites sont ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
+Comme le montre le tableau de la @tableau, les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir car ces sites sont ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
 
 #grid(
   columns: (1fr, 1fr),
-  image("images/tiktok-australie.png"), image("images/x.png"),
+  inset: 3pt,
+  figure(rect(image("images/tiktok-australie.png"), stroke: 1pt), caption: "Erreur lors de la création d'un compte TikTok."),
+  figure(rect(image("images/x.png"), stroke: 1pt), caption: "Erreur lors de la création d'un compte X."),
 )
 
-== TikTok
+= Sites avec vérification d'identité sous certaines conditions
 
-Une vérification est nécessaire (18 ans) si on veut lancer un live mais il faut avoir au moins 1000 followers. Difficile à tester.
+Ci-dessous, les conditions de vérification d'identité pour les sites en jaune dans le tableau de la @tableau.
 
-#text(fill: red)[
-  *Sans VPN*
+- LinkedIn : vérification d'identité pour obtenir un badge de vérification, mais il y a une liste d'attente.
+- Discord : vérification d'identité si le compte est suspecté d'être utilisé par un mineur.
+- Youtube : vérification d'identité si le compte est suspecté d'être utilisé par un mineur.
+- Upwork : vérification d'identité pour obtenir un badge de vérification, mais il faut avoir 35 "connects" (en payant).
 
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
+= Sites avec vérification d'identité
 
-#text(fill: red)[
-  *Avec VPN en France*
+Les sites en vert dans le tableau de la @tableau demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer. Certains semblent plus faciles à attaquer que d'autres, notamment ceux qui demandent uniquement une photo ou ceux qui ne vérifient pas le numéro de téléphone ou l'adresse e-mail.
 
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
+== Classement des sites par difficulté
+
+Ci-dessous, les sites sont classés par difficulté d'attaque, du plus facile au plus difficile :
+
+=== Vérification par photo
+
+#emph[Sans vérification du numéro de téléphone et de l'adresse e-mail :]
+
+1. Tea Dating Safety for Women
+2. Google
+3. Mycasino
+4. Casino777
+
+
+#emph[Avec vérification de l'adresse e-mail :]
+
+5. Facebook
+6. Bybit
+
+#emph[Avec vérification du numéro de téléphone :]
+
+7. Bet365
+
+#emph[Avec vérification du numéro de téléphone et de l'adresse e-mail :]
+
+8. Swissquote
+
+#emph[Uniquement via smartphone et avec vérification du numéro de téléphone :]
+
+9. UBS
+10. Swissborg
+11. OkCupid
+
+#emph[Uniquement via smartphone et avec vérification du numéro de téléphone et de l'adresse e-mail :]
+
+12. Lotterie Romande
+
+=== Vérification par vidéo
+
+#emph[Sans vérification du numéro de téléphone et de l'adresse e-mail :]
+
+13. Migros Bank
+14. Roblox
+15. Parship
+
+#emph[Avec vérification de l'adresse e-mail :]
+
+16. Portail Etat de Vaud
+17. Swiss Casinos
+18. Binance
+
+#emph[Avec vérification du numéro de téléphone :]
+
+19. Coinbase
+
+#emph[Uniquement via smartphone et avec vérification de l'adresse e-mail :]
+
+20. Zak Cler
+21. Kraken
+
+#emph[Uniquement via smartphone et avec vérification du numéro de téléphone :]
+
+22. Revolut
+
+#emph[Uniquement via smartphone et avec vérification du numéro de téléphone et de l'adresse e-mail :]
+
+23. Neon Bank
+24. Yuh
+25. Okx
+
+== Captures d'écran
+
+Des captures d'écran de ce qui est demandé pour la vérification d'identité ont été prises pour certains sites lorsque cela était possible.
 
 #grid(
-  columns: (1fr, 1fr),
-  [
-
-    #text(fill: red)[
-      *Avec VPN en Australie*
-      - Sur PC
-      - Navigation privée
-      - Inscription avec email + mot de passe
-    ]
-  ],
-  grid.cell(
-    align: right,
-    image("images/tiktok-australie.png", width: 80%),
-  ),
+  columns: (1fr, 1fr, 1fr),
+  inset: 3pt,
+  figure(rect(image("images/loro.jpg"), stroke: 1pt), caption: "Lotterie Romande."),
+  figure(rect(image("images/casino777.png"), stroke: 1pt), caption: "Casino777."),
+  figure(rect(image("images/bet365.png"), stroke: 1pt), caption: "Bet365."),
+  figure(rect(image("images/binance.png"), stroke: 1pt), caption: "Binance."),
+  figure(rect(image("images/bybit.png"), stroke: 1pt), caption: "Bybit."),
+  figure(rect(image("images/kraken.png"), stroke: 1pt), caption: "Kraken."),
+  figure(rect(image("images/okx.png"), stroke: 1pt), caption: "Okx."),
+  figure(rect(image("images/tea.png"), stroke: 1pt), caption: "Tea Dating Safety for Women."),
+  figure(rect(image("images/roblox.png"), stroke: 1pt), caption: "Roblox."),
+  figure(rect(image("images/parship.png"), stroke: 1pt), caption: "Parship."),
+  figure(rect(image("images/google.png"), stroke: 1pt), caption: "Google."),
 )
-
-== Facebook
-
-#text(fill: green)[*Résultat : * demande un selfie pour vérifier que je suis humain.]
-
-== Instagram
-
-#text(fill: red)[
-  *Sans VPN*
-
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-#grid(
-  columns: (1fr, 1fr),
-  [
-    #text(fill: yellow)[
-      *Avec VPN en France*
-
-      - Sur PC
-      - Navigation privée
-      - Inscription avec email + mot de passe
-      - Demande de remplir un captcha puis un numéro de téléphone.
-    ]
-  ],
-  grid.cell(
-    align: right,
-    image("images/instagram-france.png", width: 80%),
-  ),
-)
-
-#grid(
-  columns: (1fr, 1fr),
-  [
-    #text(fill: yellow)[
-      *Meta Verified (sans VPN)*
-
-      - Vérification des documents d'identité (photo)
-      - Payant
-    ]
-  ],
-  grid.cell(
-    align: right,
-    image("images/instagram-verified.png", width: 60%),
-  ),
-)
-
-== Snapchat
-
-#text(fill: red)[
-  *Sans VPN*
-
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-#text(fill: red)[
-  *Avec VPN en France*
-
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-#text(fill: red)[
-  *Avec VPN en Australie*
-
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-== LinkedIn
-
-#text(fill: red)[
-  *Création d'un compte*
-
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-#text(fill: yellow)[
-  *Badge*
-
-  - Vérification si on veut obtenir le badge mais il y a une liste d'attente.
-]
-
-== Discord
-
-#text(fill: red)[
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-#text(fill: yellow)[
-  *Info*
-
-  - Vérification des mineurs dès mars 2026.
-]
-
-== Youtube
-
-#text(fill: red)[
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-#text(fill: yellow)[
-  *Info*
-
-  - Vérification uniquement si détecté comme mineur.
-]
-
-== X
-
-#grid(
-  columns: (1fr, 1fr),
-  [
-    #text(fill: red)[
-      *Avec un alias*
-
-      - Sur PC
-      - Navigation privée
-      - Inscription avec email + mot de passe
-    ]
-  ],
-  grid.cell(
-    align: right,
-    image("images/x.png", width: 60%),
-  ),
-)
-
-#text(fill: red)[
-  *Avec un compte google*
-
-  - Sur PC
-  - Navigation privée
-  - Inscription avec email + mot de passe
-]
-
-= Remarques
-
-Vérification du numéro de téléphone complique l'automatisation.
-
-== Swissborg
-
-Mon numéro de téléphone a déjà été utilisé pour créer un compte, je ne peux pas le réutiliser.
-
-== Portail Etat de Vaud
-
-Je dois mettre un numéro AVS valide.
-
-== Lotterie Romande
-
-#image("images/loro.jpg", width: 20%)
-
-== Casino777
-
-#image("images/casino777.png", width: 30%)
-
-== Bet365
-
-#image("images/bet365.png", width: 40%)
-
-== Binance
-
-#image("images/binance.png", width: 40%)
-
-== Bybit
-
-#image("images/bybit.png", width: 40%)
-
-== Kraken
-
-#image("images/kraken.png", width: 40%)
-
-== Okx
-
-#image("images/okx.png", width: 40%)
-
-== Tea Dating Safety for Women
-
-#image("images/tea.png", width: 40%)
-
-== Upwork
-
-Il faut une vérification pour obtenir un badge mais il faut avoir 35 connects (en achetant)
-
-== Roblox
-
-#image("images/roblox.png", width: 40%)
-
-== Riot Games
-
-Corée du Sud mais il faut un numéro coréen.
-
-== Parship
-
-#image("images/parship.png", width: 40%)
-
-== Compte Google
-
-Vérification pour changer son âge (de mineur à majeur).
-
-#image("images/google.png", width: 40%)
