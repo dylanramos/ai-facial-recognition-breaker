@@ -12,4 +12,6 @@
 
 *User Story :* description concise et informelle d'une fonctionnalité logicielle, rédigée du point de vue de l'utilisateur final et mettant l'accent sur la valeur qu'elle apporte.
 
+*Selfie :* photo ou une courte vidéo de soi-même, généralement prise à l'aide d'un smartphone ou d'une webcam.
+
 *v4l2loopback :* module du noyau Linux permettant de créer des périphériques vidéo virtuels.
