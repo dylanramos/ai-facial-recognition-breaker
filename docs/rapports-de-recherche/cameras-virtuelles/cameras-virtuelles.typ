@@ -1,9 +1,9 @@
 #import "@preview/codelst:2.0.2": sourcecode
 
 // Paramètres globaux
+
 #set page(margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm))
-#set text(font: "New Computer Modern", size: 11pt)
-#show bibliography: set text(lang: "fr")
+#set text(font: "New Computer Modern", size: 11pt, lang: "fr")
 
 // Variables
 

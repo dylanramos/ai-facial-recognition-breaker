@@ -1,7 +1,7 @@
 // Paramètres globaux
+
 #set page(margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm))
-#set text(font: "New Computer Modern", size: 11pt)
-#show bibliography: set text(lang: "fr")
+#set text(font: "New Computer Modern", size: 11pt, lang: "fr")
 
 // Variables
 
@@ -191,7 +191,10 @@ Comme le montre le tableau de la @tableau, les sites en rouge ne demandent aucun
 #grid(
   columns: (1fr, 1fr),
   inset: 3pt,
-  figure(rect(image("images/tiktok-australie.png"), stroke: 1pt), caption: "Erreur lors de la création d'un compte TikTok."),
+  figure(
+    rect(image("images/tiktok-australie.png"), stroke: 1pt),
+    caption: "Erreur lors de la création d'un compte TikTok.",
+  ),
   figure(rect(image("images/x.png"), stroke: 1pt), caption: "Erreur lors de la création d'un compte X."),
 )
 
@@ -288,12 +291,15 @@ Des captures d'écran de ce qui est demandé pour la vérification d'identité o
   figure(rect(image("images/loro.jpg"), stroke: 1pt), caption: "Lotterie Romande."),
   figure(rect(image("images/casino777.png"), stroke: 1pt), caption: "Casino777."),
   figure(rect(image("images/bet365.png"), stroke: 1pt), caption: "Bet365."),
+
   figure(rect(image("images/binance.png"), stroke: 1pt), caption: "Binance."),
   figure(rect(image("images/bybit.png"), stroke: 1pt), caption: "Bybit."),
   figure(rect(image("images/kraken.png"), stroke: 1pt), caption: "Kraken."),
+
   figure(rect(image("images/okx.png"), stroke: 1pt), caption: "Okx."),
   figure(rect(image("images/tea.png"), stroke: 1pt), caption: "Tea Dating Safety for Women."),
   figure(rect(image("images/roblox.png"), stroke: 1pt), caption: "Roblox."),
+
   figure(rect(image("images/parship.png"), stroke: 1pt), caption: "Parship."),
   figure(rect(image("images/google.png"), stroke: 1pt), caption: "Google."),
 )
