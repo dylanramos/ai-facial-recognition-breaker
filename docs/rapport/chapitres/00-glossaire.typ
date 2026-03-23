@@ -1,12 +1,18 @@
 = Glossaire
 
+*Application Programming Interface (API) :* ensemble de règles et de protocoles permettant à différentes applications de communiquer entre elles.
+
 *Caméra virtuelle :* logiciel simulant une caméra physique permettant d'envoyer des flux vidéo personnalisés.
+
+*Command Line Interface (CLI) :* interface utilisateur permettant d'interagir avec un programme en tapant des commandes textuelles.
 
 *Deepfake :* contenu multimédia synthétique créé ou modifié à l'aide de l'intelligence artificielle représentant une personne en train de faire quelque chose qu'elle n'a jamais fait.
 
 *FFmpeg :* outil en ligne de commande permettant de manipuler des fichiers multimédia.
 
 *Intelligence artificielle (IA) :* capacité des machines ou des systèmes informatiques à accomplir des tâches qui requièrent généralement l'intelligence humaine.
+
+*Operating System (OS) :* logiciel de base qui gère les ressources matérielles et logicielles d'un ordinateur.
 
 *Prompt :* instruction, question ou entrée fournie à un système d'intelligence artificielle afin d'obtenir une réponse ou une action spécifique.
 

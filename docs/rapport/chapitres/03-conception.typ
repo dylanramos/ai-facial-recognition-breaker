@@ -1,6 +1,6 @@
 = Conception
 
-== User Stories
+== User Stories <user_stories>
 
 === Vérification d'âge par photo
 
@@ -25,3 +25,21 @@
 *Scénario 2 :* le site vulnérable demande à l'attaquant de fournir une photo du document d'identité puis d'effectuer un selfie avec sa caméra. L'attaquant rédige un prompt pour le moteur de génération d'images qui remplace la photo d'identité du document d'identité volé par une image d'une personne fictive. L'attaquant récupère l'image puis la soumet au formulaire d'enregistrement. L'attaquant rédige ensuite un prompt pour le moteur de génération de vidéos qui crée une vidéo de cette personne fictive face à la caméra prête à effectuer un selfie. L'attaquant récupère la vidéo, la diffuse sur sa caméra virtuelle puis clique sur le bouton de prise de selfie.
 
 *Scénario 3 :* le site vulnérable demande à l'attaquant de fournir une photo du document d'identité puis d'effectuer une vérification vidéo en direct. L'attaquant rédige un prompt pour le moteur de génération d'images qui remplace la photo d'identité du document d'identité volé par une image d'une personne fictive. L'attaquant récupère l'image puis la soumet au formulaire d'enregistrement. L'attaquant rédige ensuite un prompt pour le moteur de génération de vidéos qui crée une vidéo de cette personne fictive effectuant les mouvements demandés par le site vulnérable. L'attaquant récupère la vidéo puis la diffuse sur sa caméra virtuelle pour la soumettre au formulaire d'enregistrement.
+
+== Fonctionnalités du démonstrateur
+
+En se basant sur les scénarios décrits dans la @user_stories, les fonctionnalités du démonstrateur sont les suivantes :
+
+- Génération d'images à partir de prompts textuels (génération de personnes fictives).
+- Modification d'images à partir de prompts textuels et d'images (modification de documents d'identité avec des visages fictifs).
+- Génération de vidéos à partir de prompts textuels et d'images (génération de vidéos de personnes fictives).
+- Diffusion de vidéos sur une caméra virtuelle.
+
+== Architecture
+
+La @architecture ci-dessous présente l'architecture du démonstrateur. Le démonstrateur est un CLI qui communique avec l'API de Kie.ai pour générer des images et des vidéos à partir de commandes entrées par l'utilisateur. Une fois les images et les vidéos générées, le démonstrateur les récupère puis offre la possibilité à l'utilisateur de diffuser les vidéos sur une caméra virtuelle de l'OS.
+
+#figure(
+    rect(image("../images/03-conception/architecture.png"), stroke: 0.1pt),
+    caption: "Architecture du démonstrateur."
+) <architecture>
