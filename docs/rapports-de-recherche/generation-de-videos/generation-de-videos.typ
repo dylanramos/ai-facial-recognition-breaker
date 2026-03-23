@@ -109,7 +109,7 @@ Les modèles de génération de vidéos IA doivent permettre de générer des vi
 - Text-to-Video
 - Image-to-Video
 
-Les deux générent des vidéos mais ce qui les différencie sont les données d'entrée nécessaires.
+Les deux génèrent des vidéos mais ce qui les différencie sont les données d'entrée nécessaires.
 
 == Text-to-Video
 

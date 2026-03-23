@@ -238,7 +238,7 @@ Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.co
 == Envoi d'un flux vidéo vers la caméra virtuelle
 
 + Lancer `OBS Studio`.
-+ Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner "Media Source".
++ Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner `Media Source`.
 + Insérer le nom de la source.
 + Cocher `Local File` et `Loop`, sélectionner la vidéo à lancer dans `Local File`, puis cliquer sur `OK`.
 + Dans la section `Controls`, cliquer sur `Start Virtual Camera`.
@@ -258,7 +258,7 @@ Comme vu dans le point précédent, la création de la source vidéo nécessite 
 === Création de la source vidéo
 
 + Lancer `OBS Studio`.
-+ Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner "Media Source".
++ Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner `Media Source`.
 + Insérer le nom de la source.
 + Décocher `Local File`.
 + Dans `Input`, entrer : `udp://127.0.0.1:1234` et cliquer sur `OK`.

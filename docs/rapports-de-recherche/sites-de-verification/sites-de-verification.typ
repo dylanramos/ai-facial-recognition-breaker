@@ -109,7 +109,7 @@ Plusieurs sites demandent aujourd'hui une vérification d'identité, que ce soit
 
 = Recherches
 
-Plusieurs catégories de sites ont été testées : les réseaux sociaux, les banques, les casinos en ligne, les plateformes de trading, les sites de rencontre, etc. Certains sites demandent obligatoirement une vérification d'identité, tandis que d'autres ne le font pas ou seulement dans certaines conditions. Les méthodes de vérification varient également : certaines demandent une photo du visage ou d'un document d'identité, d'autres demandent une vidéo de la personne, cela dépend de la sensibilité du service proposé par le site.
+Plusieurs catégories de sites ont été testées, les réseaux sociaux, les banques, les casinos en ligne, les plateformes de trading, les sites de rencontre, etc. Certains sites demandent obligatoirement une vérification d'identité, tandis que d'autres ne le font pas ou seulement dans certaines conditions. Les méthodes de vérification varient également, certaines demandent une photo du visage ou d'un document d'identité, d'autres demandent une vidéo de la personne, cela dépend de la sensibilité du service proposé par le site.
 
 == Tableau récapitulatif <tableau>
 
@@ -121,7 +121,7 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettro
 - *Uniquement via smartphone* : certains sites ne permettent pas de créer un compte sur ordinateur.
 - *Vérification* : e-mail, numéro de téléphone, ou les deux. Bon à savoir dans le cas où l'on voudrait une automatisation totale de l'attaque.
 
-Légende :
+*Légende :*
 
 #table(
   columns: (auto, auto),
@@ -186,7 +186,7 @@ Légende :
 
 = Sites sans vérification d'identité
 
-Comme le montre le tableau de la @tableau, les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir car ces sites sont ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
+Comme le montre le tableau de la @tableau, les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir, car ces sites ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
 
 #grid(
   columns: (1fr, 1fr),
