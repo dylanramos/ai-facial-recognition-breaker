@@ -211,7 +211,7 @@ Ci-dessous, les conditions de vérification d'identité pour les sites en jaune 
 
 Les sites en vert dans le tableau de la @tableau demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer. Certains semblent plus faciles à attaquer que d'autres, notamment ceux qui demandent uniquement une photo ou ceux qui ne vérifient pas le numéro de téléphone ou l'adresse e-mail.
 
-== Classement des sites par difficulté
+== Classement des sites par difficulté d'attaque
 
 Ci-dessous, les sites sont classés par difficulté d'attaque, du plus facile au plus difficile :
 

@@ -2,7 +2,39 @@
 
 == Sites de vérification d'identité
 
-Plusieurs sites demandent aujourd'hui une vérification d'identité, que ce soit pour créer un compte ou pour accéder à certaines fonctionnalités. C'est notamment le cas pour les banques, les casinos en ligne, les plateformes de trading, les sites de rencontre, etc. Le rapport de recherche #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#emph("sites-de-verification.pdf")] détaille les différents sites analysés et les classe en fonction de leur difficulté à vérifier l'identité d'une personne.
+*Analyses détaillées* : #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("sites-de-verification.pdf")]
+
+Les sites demandant une vérification d'identité sont plus ou moins sensibles, parmi ceux-ci, on peut trouver des réseaux sociaux, des sites de rencontres, des casinos en ligne ou encore des banques. Ils ne demandent pas tous les mêmes informations, certains se contentent d'une simple photo d'un document d'identité, tandis que d'autres demandent une vérification via une caméra en direct. Un autre facteur à prendre en compte est qu'il faut souvent vérifier une adresse e-mail et/ou un numéro de téléphone, ce qui peut constituer une barrière supplémentaire pour les attaquants.
+
+=== Classement des sites par difficulté d'attaque
+
+Ci-dessous, les sites sont classés par difficulté d'attaque, du plus facile au plus difficile :
+
+1. Tea Dating Safety for Women
+2. Google
+3. Mycasino
+4. Casino777
+5. Facebook
+6. Bybit
+7. Bet365
+8. Swissquote
+9. UBS
+10. Swissborg
+11. OkCupid
+12. Lotterie Romande
+13. Migros Bank
+14. Roblox
+15. Parship
+16. Portail Etat de Vaud
+17. Swiss Casinos
+18. Binance
+19. Coinbase
+20. Zak Cler
+21. Kraken
+22. Revolut
+23. Neon Bank
+24. Yuh
+25. Okx
 
 == Génération de vidéos IA
 

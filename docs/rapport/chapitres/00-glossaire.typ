@@ -1,5 +1,9 @@
 = Glossaire
 
+Ce glossaire présente les termes techniques utilisés dans ce travail de Bachelor. Les différents rapports de recherche se référent également à ce glossaire, il est donc conseillé de le consulter pour comprendre pleinement le contenu de ces rapports. 
+
+#v(0.5cm)
+
 *Application Programming Interface (API) :* ensemble de règles et de protocoles permettant à différentes applications de communiquer entre elles.
 
 *Caméra virtuelle :* logiciel simulant une caméra physique permettant d'envoyer des flux vidéo personnalisés.
