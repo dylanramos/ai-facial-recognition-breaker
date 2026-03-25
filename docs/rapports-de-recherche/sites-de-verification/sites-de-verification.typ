@@ -115,11 +115,11 @@ Plusieurs catégories de sites ont été testées, les réseaux sociaux, les ban
 
 Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettront par la suite d'établir une échelle de difficulté pour les attaques :
 
-- *Type* : identification par photo, vidéo, ou les deux.
-- *Interlocuteur humain* : présence ou non d'un interlocuteur humain pour guider l'utilisateur.
-- *Documents d'identité* : nécessité ou non de fournir des documents d'identité.
-- *Uniquement via smartphone* : certains sites ne permettent pas de créer un compte sur ordinateur.
-- *Vérification* : e-mail, numéro de téléphone, ou les deux. Bon à savoir dans le cas où l'on voudrait une automatisation totale de l'attaque.
+- *Type* : vérification par photo ou vidéo.
+- *Interlocuteur humain* : présence d'un interlocuteur humain pour guider l'utilisateur.
+- *Documents d'identité* : nécessité de fournir des documents d'identité.
+- *Uniquement via smartphone* : obligation d'utiliser un smartphone.
+- *Vérification* : vérification de l'adresse e-mail ou du numéro de téléphone.
 
 *Légende :*
 
@@ -186,7 +186,7 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettro
 
 = Sites sans vérification d'identité
 
-Comme le montre le tableau de la @tableau, les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir, car ces sites ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
+Comme le montre le tableau du #underline()[@tableau], les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir, car ces sites ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
 
 #grid(
   columns: (1fr, 1fr),
@@ -200,7 +200,7 @@ Comme le montre le tableau de la @tableau, les sites en rouge ne demandent aucun
 
 = Sites avec vérification d'identité sous certaines conditions
 
-Ci-dessous, les conditions de vérification d'identité pour les sites en jaune dans le tableau de la @tableau.
+Ci-dessous, les conditions de vérification d'identité pour les sites en jaune dans le tableau de la #underline()[@tableau].
 
 - LinkedIn : vérification d'identité pour obtenir un badge de vérification, mais il y a une liste d'attente.
 - Discord : vérification d'identité si le compte est suspecté d'être utilisé par un mineur.
@@ -209,11 +209,27 @@ Ci-dessous, les conditions de vérification d'identité pour les sites en jaune 
 
 = Sites avec vérification d'identité
 
-Les sites en vert dans le tableau de la @tableau demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer. Certains semblent plus faciles à attaquer que d'autres, notamment ceux qui demandent uniquement une photo ou ceux qui ne vérifient pas le numéro de téléphone ou l'adresse e-mail.
+Les sites en vert dans le tableau du #underline()[@tableau] demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer. Certains semblent plus faciles à attaquer que d'autres, par exemple, ceux qui ne demandent qu'une photo et qui ne vérifient ni adresse e-mail ni numéro de téléphone.
 
 == Classement des sites par difficulté d'attaque
 
-Ci-dessous, les sites sont classés par difficulté d'attaque, du plus facile au plus difficile :
+En fonction des critères établis au #underline()[@tableau], il est possible de classer les sites par difficulté d'attaque, par exemple :
+
+- Le site le plus facile à attaquer :
+  - Vérifie une photo.
+  - N'a pas d'interlocuteur humain.
+  - Ne demande pas de documents d'identité.
+  - N'oblige pas d'utiliser un smartphone.
+  - Ne vérifie pas l'adresse e-mail ni le numéro de téléphone.
+
+- Le site le plus difficile à attaquer :
+  - Vérifie une vidéo.
+  - A un interlocuteur humain.
+  - Demande des documents d'identité.
+  - N'autorise pas la création de compte sur ordinateur.
+  - Vérifie l'adresse e-mail et le numéro de téléphone.
+
+Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus facile au plus difficile :
 
 === Vérification par photo
 

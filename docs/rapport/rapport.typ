@@ -119,7 +119,7 @@ Dans un monde de plus en plus numérisé, les technologies de reconnaissance fac
 
 L'intelligence artificielle permet aujourd'hui de facilement générer des contenus multimédia réalistes. Photos, vidéos ou encore voix, les possibilités sont nombreuses et les outils de génération sont de plus en plus accessibles au grand public. Évidemment, cette démocratisation n'est pas sans risques, ces contenus peuvent être utilisés à des fins malveillantes, falsification de documents, usurpation d'identité ou encore désinformation, la nécessité de comprendre les risques liés à ces technologies est plus que jamais d'actualité.
 
-Ce travail de Bachelor cherche à comprendre les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne et à démontrer si oui ou non il est possible de contourner ces systèmes de vérification d'identité en utilisant l'intelligence artificielle.
+Ce travail de Bachelor cherche à comprendre les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne et à démontrer s'il est possible de contourner ces systèmes de vérification d'identité en utilisant l'intelligence artificielle.
 
 #v(0.5cm)
 

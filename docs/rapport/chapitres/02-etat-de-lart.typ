@@ -8,7 +8,16 @@ Les sites demandant une vérification d'identité sont plus ou moins sensibles, 
 
 === Classement des sites par difficulté d'attaque
 
-Ci-dessous, les sites sont classés par difficulté d'attaque, du plus facile au plus difficile :
+Pour classer les sites par difficulté d'attaque, les critères suivants ont été pris en compte :
+
+- *Type* : vérification par photo ou vidéo.
+- *Interlocuteur humain* : présence d'un interlocuteur humain pour guider l'utilisateur.
+- *Documents d'identité* : nécessité de fournir des documents d'identité.
+- *Uniquement via smartphone* : obligation d'utiliser un smartphone.
+- *Vérification* : vérification de l'adresse e-mail ou du numéro de téléphone.
+
+
+Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus facile au plus difficile :
 
 1. Tea Dating Safety for Women
 2. Google
