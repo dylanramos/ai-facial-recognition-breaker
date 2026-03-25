@@ -117,7 +117,7 @@ Ainsi, la solution la plus simple pour utiliser ces différents modèles est de 
 
 == Kie.ai
 
-Le service d'API choisi est #link("https://kie.ai/")[Kie.ai]. Il a été choisi pour sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants notamment pour les comparaisons de prix.
+Le service d'API choisi est #link("https://kie.ai/")[#underline("Kie.ai")]. Il a été choisi pour sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants notamment pour les comparaisons de prix.
 
 = Génération d'images
 
@@ -178,7 +178,7 @@ Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les
 
 Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 
-Ces deux types de modèles sont interchangeables, les vidéos ont donc les mêmes caractéristiques et le même prix, qu'elles soient générées à partir d'une image ou non. C'est pourquoi les tableaux du #underline()[@comparaison-videos] s'appliquent à ces deux catégories.
+Comme pour les modèles de génération d'images, les modèles de génération de vidéos proposent généralement une version Text-to-Video et une version Image-to-Video avec les mêmes paramètres et les mêmes prix. C'est pourquoi les tableaux du #underline()[@comparaison-videos] ne font pas de distinction entre ces deux types.
 
 === Critères de sélection des modèles
 
@@ -230,7 +230,3 @@ Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo f
 
 - Pour une vidéo en 720p : *0.10\$ par seconde*.
 - Pour une vidéo en 1080p : *0.135\$ par seconde*.
-
-= Exemple de prompt
-
-A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements.

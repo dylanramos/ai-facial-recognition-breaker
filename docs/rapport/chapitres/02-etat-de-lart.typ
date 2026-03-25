@@ -45,10 +45,17 @@ Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus fa
 24. Yuh
 25. Okx
 
-== Génération de vidéos IA
+== Génération d'images et de vidéos IA
 
-Les modèles de génération de vidéos IA doivent permettre de générer des vidéos réalistes de personnes effectuant une vérification d'identité (regarder la caméra, tourner la tête, sourire, etc.). Le rapport de recherche #link("../rapports-de-recherche/generation-de-videos/generation-de-videos.pdf")[#emph("generation-de-videos.pdf")] présente les différents modèles de génération de vidéos IA analysés, leurs capacités et leurs limites. Ce document fournit également un tableau comparatif des prix de chaque modèle sur la plateforme Kie.ai, qui est un service proposant une API qui regroupe les modèles des différents fournisseurs de génération de vidéos IA.
+*Analyses détaillées* : #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")]
 
-== Caméras virtuelles et redirection de flux vidéo
+Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant une vérification d'identité, il doit utiliser des modèles de génération d'images et de vidéos IA.
 
-Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique. Le rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#emph("cameras-virtuelles.pdf")] présente les différentes solutions de caméras virtuelles en fonction des systèmes d'exploitation ainsi que les étapes nécessaires pour les configurer et les utiliser.
+Ainsi, la solution la plus simple pour utiliser ces différents modèles est de passer par un service d'API. Un service d'API est une plateforme qui regroupe les APIs des différents services de génération. Il met à disposition une API qui permet d'utiliser plusieurs modèles d'IA de manière centralisée et moins coûteuse que chez les fournisseurs directement. Le service d'API choisi est #link("https://kie.ai/")[#underline("Kie.ai")].
+
+=== Modèles de génération d'images
+
+Il y a deux catégories de modèles de génération d'images :
+
+- *Text-to-Image :* qui sont des modèles créatifs qui créent des images à partir de rien.
+- *Image-to-Image :* qui sont des modèles d'édition d'images qui modifient une image fournie.

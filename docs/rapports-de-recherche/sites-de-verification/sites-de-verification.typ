@@ -103,6 +103,12 @@
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
 
+// Configuration des tableaux
+
+#set table(
+  fill: (x, y) => if x == 0 or y == 0 { silver },
+)
+
 = Introduction
 
 Plusieurs sites demandent aujourd'hui une vérification d'identité, que ce soit pour créer un compte ou pour accéder à certaines fonctionnalités. L'objectif est de trouver des sites qui demandent une vérification d'identité et d'analyser comment ils vérifient l'identité des utilisateurs.
@@ -299,7 +305,7 @@ Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus fa
 
 == Captures d'écran
 
-Des captures d'écran de ce qui est demandé pour la vérification d'identité ont été prises pour certains sites lorsque cela était possible.
+Des captures d'écran de ce qui est demandé pour la vérification d'identité ont été prises pour certains sites lorsque cela était possible. Cela permet d'avoir une idée plus précise des scénarios d'attaque.
 
 #grid(
   columns: (1fr, 1fr, 1fr),

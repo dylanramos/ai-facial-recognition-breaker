@@ -81,7 +81,7 @@ En option :
 - Cahier des charges.
 - Rapport intermédiaire.
 - Rapports de recherche :
-  - Génération de vidéos IA.
+  - Génération d'images et de vidéos IA.
   - Sites de vérification d'identité.
   - Caméras virtuelles et redirection de flux vidéo.
 

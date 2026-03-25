@@ -105,13 +105,20 @@
   block(counter(heading).display(it.numbering) + h(0.5cm) + it.body)
 }
 
+// Configuration des tableaux
+
+#set table(
+  fill: (x, y) => if x == 0 or y == 0 { silver },
+)
+
+
 = Introduction
 
 Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
 == Comparaison des solutions
 
-Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles.
+Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
 
 #set par(justify: false)
 
@@ -132,9 +139,9 @@ Le tableau ci-dessous compare les différentes solutions permettant de créer de
 
 #set par(justify: true)
 
-= v4l2loopback
+= Caméras virtuelles sous Linux
 
-`v4l2loopback` est un module du noyau Linux permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de rediriger un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
+Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de rediriger un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
 
 Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 24.04*.
 
@@ -224,7 +231,13 @@ echo "Press Ctrl+C to stop streaming"
 ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
 ```]
 
-= OBS Studio
+Pour l'utiliser, il suffit de lancer la commande suivante :
+
+#sourcecode[```sh
+./runvirtcam.sh video.mp4
+```]
+
+= Caméras virtuelles sous Windows
 
 Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un driver customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
 `OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de rediriger un flux vidéo vers celle-ci.
@@ -288,7 +301,7 @@ La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une cam�
 
 == Exemple d'utilisation sur Windows
 
-Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtuelle disponible. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir @obs-install pour l'installation).
+Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtuelle disponible. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir le #underline()[@obs-install] pour l'installation).
 
 === Création de l'environnement virtuel
 

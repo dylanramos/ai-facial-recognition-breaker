@@ -16,9 +16,13 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *Intelligence artificielle (IA) :* capacité des machines ou des systèmes informatiques à accomplir des tâches qui requièrent généralement l'intelligence humaine.
 
+*OBS Studio :* logiciel gratuit et open source, multiplateforme, permettant de réaliser des captures d'écran et des diffusions en direct.
+
 *Operating System (OS) :* logiciel de base qui gère les ressources matérielles et logicielles d'un ordinateur.
 
 *Prompt :* instruction, question ou entrée fournie à un système d'intelligence artificielle afin d'obtenir une réponse ou une action spécifique.
+
+*pyvirtualcam :* librairie Python permettant d'envoyer des flux vidéo à une caméra virtuelle sur Linux, Windows et macOS.
 
 *User Story :* description concise et informelle d'une fonctionnalité logicielle, rédigée du point de vue de l'utilisateur final et mettant l'accent sur la valeur qu'elle apporte.
 
