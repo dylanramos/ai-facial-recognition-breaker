@@ -321,4 +321,4 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/00-table-des-figures.typ"
 #pagebreak(to: "odd")
 
-= Annexes
+#include "chapitres/00-annexes.typ"
