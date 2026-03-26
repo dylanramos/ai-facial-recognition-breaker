@@ -135,7 +135,7 @@ Les modèles de type Image-to-Image (édition d'images) partent d'une image four
 
 == Tableaux comparatifs des modèles
 
-Le modèles de génération d'images proposent généralement une version Text-to-Image et une version Image-to-Image, les tableaux ci-dessous concernent donc les deux types de modèles et présentent la qualité minimale et maximale d'image que chaque modèle peut générer avec les prix correspondants.
+Les modèles de génération d'images proposent généralement une version Text-to-Image et une version Image-to-Image, les tableaux ci-dessous concernent donc les deux types de modèles et présentent la qualité minimale et maximale d'image que chaque modèle peut générer avec les prix correspondants.
 
 *Qualité minimale*
 
