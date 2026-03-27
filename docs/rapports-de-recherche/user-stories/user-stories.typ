@@ -124,7 +124,7 @@
 
 #figure(
   rect(image("images/verification-age-2.png"), stroke: 0.1pt),
-  caption: "La personne demande à l'IA de générer l'image d'une personne fictive."
+  caption: "La personne demande au démonstrateur de générer l'image d'une personne fictive."
 )
 
 #pagebreak()
@@ -133,9 +133,77 @@
 
 #figure(
   rect(image("images/verification-age-3.png"), stroke: 0.1pt),
-  caption: "La personne demande à l'IA de modifier sa photo pour la faire ressembler à une personne plus âgée."
+  caption: "La personne demande au démonstrateur de modifier sa photo pour la faire ressembler à une personne plus âgée."
 )
 
-= Enregistrement en ligne par photo
+= Enregistrement en ligne par photo <photo>
 
-*Préambule :* un attaquant a volé une photo d'un document d'identité d'une personne. Il suit le processus d'enregistrement en ligne d'un site vulnérable en renseignant les informations d'identité avec celles contenues sur le document d'identité volé.
+== Avec un exemple de carte d'identité trouvé sur internet
+
+*Préambule :* un attaquant veut se créer un compte sur un site vulnérable. Il récupère un exemple de carte d'identité sur internet #footnote[https://api.i-web.ch/public/guest/getImageString/g403/6bcf2b7eece394289e83e74e6bbafbf5/495/0/4c1884cc9c238], puis suit le processus d'enregistrement en ligne du site vulnérable en renseignant des informations fictives.
+
+*Scénario 1*
+
+#figure(
+  rect(image("images/verification-photo-1.png"), stroke: 0.1pt),
+  caption: "L'attaquant demande au démonstrateur de modifier une photo d'une carte d'identité trouvée sur internet."
+)
+
+#pagebreak()
+
+== Avec une photo d'un document d'identité volé
+
+*Préambule :* un attaquant a volé une photo d'un document d'identité d'une personne et veut se créer un compte sur un site vulnérable. Il suit le processus d'enregistrement en ligne du site vulnérable en renseignant les informations d'identité avec celles contenues sur le document d'identité volé.
+
+*Scénario 1*
+
+#figure(
+  rect(image("images/verification-photo-2.png"), stroke: 0.1pt),
+  caption: "L'attaquant envoie la photo du document d'identité volé."
+)
+
+= Enregistrement en ligne par vidéo
+
+== Sans interlocuteur humain
+
+*Préambule :* l'attaquant vient d'effectuer l'un des scénarios du #underline()[@photo], mais le site vulnérable demande en plus une vérification par vidéo.
+
+*Scénario 1*
+
+#figure(
+  rect(image("images/verification-video-1.png"), stroke: 0.1pt),
+  caption: "L'attaquant demande au démonstrateur de générer une vidéo simulant la caméra en train de filmer un document d'identité."
+)
+
+#pagebreak()
+
+*Scénario 2*
+
+#figure(
+  rect(image("images/verification-video-2.png"), stroke: 0.1pt),
+  caption: "L'attaquant demande au démonstrateur de générer une vidéo de la personne sur le document d'identité simulant la caméra en train de filmer son visage."
+)
+
+== Avec un interlocuteur humain
+
+*Préambule :* l'attaquant vient d'effectuer l'un des scénarios du #underline()[@photo], mais le site vulnérable demande en plus une vérification par vidéo lors d'un entretien avec un employé. L'attaquant diffuse une vidéo sur sa caméra virtuelle de la personne sur le document d'identité prête à effectuer les actions demandées par l'employé.
+
+*Scénario 1*
+
+#figure(
+  rect(image("images/verification-video-3.png"), stroke: 0.1pt),
+  caption: "L'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne sur le document d'identité en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra, latence, etc."
+)
+
+#pagebreak()
+
+= Enregistrement en ligne avec un démonstrateur automatisé
+
+*Préambule :* 
+
+*Scénario 1*
+
+#figure(
+  rect(image("images/verification-video-4.png"), stroke: 0.1pt),
+  caption: "Le démonstrateur lit les instructions du site vulnérable, génère le contenu demandé, puis le diffuse sur la caméra virtuelle."
+)
