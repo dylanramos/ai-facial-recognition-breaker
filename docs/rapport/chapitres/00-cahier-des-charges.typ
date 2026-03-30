@@ -84,6 +84,7 @@ En option :
   - Génération d'images et de vidéos IA.
   - Sites de vérification d'identité.
   - Caméras virtuelles et redirection de flux vidéo.
+  - User Stories.
 
 *Livrables finaux*
 

@@ -192,18 +192,36 @@
 
 #figure(
   rect(image("images/verification-video-3.png"), stroke: 0.1pt),
-  caption: "L'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne sur le document d'identité en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra, latence, etc."
+  caption: "L'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne sur le document d'identité en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra."
 )
 
 #pagebreak()
 
 = Enregistrement en ligne avec un démonstrateur automatisé
 
-*Préambule :* 
+*Préambule :* Le démonstrateur dispose d'un exemple de document d'identité. L'attaquant configure une personne fictive sur le démonstrateur (nom, prénom, date de naissance, etc.), se rend sur un site vulnérable pour se créer un compte puis lance le démonstrateur en mode automatique.
 
 *Scénario 1*
 
 #figure(
-  rect(image("images/verification-video-4.png"), stroke: 0.1pt),
-  caption: "Le démonstrateur lit les instructions du site vulnérable, génère le contenu demandé, puis le diffuse sur la caméra virtuelle."
+  rect(image("images/verification-auto-1.png"), stroke: 0.1pt),
+  caption: "Le démonstrateur renseigne les informations demandées en fonction de la configuration de l'attaquant puis génère le document demandé."
+)
+
+#pagebreak()
+
+*Scénario 2*
+
+#figure(
+  rect(image("images/verification-auto-2.png"), stroke: 0.1pt),
+  caption: "Le démonstrateur renseigne les informations demandées en fonction de la configuration de l'attaquant, génère le document demandé puis la vidéo en fontion des instructions affichées sur la page web."
+)
+
+#pagebreak()
+
+*Scénario 3*
+
+#figure(
+  rect(image("images/verification-auto-3.png"), stroke: 0.1pt),
+  caption: "Le démonstrateur renseigne les informations demandées en fonction de la configuration de l'attaquant et génère le document demandé. Il démarre ensuite l'appel avec l'employé en affichant une vidéo de la personne sur le document d'identité prête à effectuer les actions demandées. Enfin, il traduit les demandes de l'employé en instructions pour la génération de vidéos."
 )
