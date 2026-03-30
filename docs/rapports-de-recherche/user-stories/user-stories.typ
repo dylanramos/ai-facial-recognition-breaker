@@ -166,7 +166,7 @@
 
 == Sans interlocuteur humain
 
-*Préambule :* l'attaquant vient d'effectuer l'un des scénarios du #underline()[@photo], mais le site vulnérable demande en plus une vérification par vidéo.
+*Préambule :* l'attaquant possède un document d'identité volé ou généré (voir #underline()[@photo]). Après avoir renseigné toutes les informations, le site vulnérable demande à l'attaquant de scanner le document.
 
 *Scénario 1*
 
@@ -177,7 +177,9 @@
 
 #pagebreak()
 
-*Scénario 2*
+*Préambule :* l'attaquant vient d'effectuer l'un des scénarios du #underline()[@photo], mais le site vulnérable demande en plus une vérification par vidéo.
+
+*Scénario 1*
 
 #figure(
   rect(image("images/verification-video-2.png"), stroke: 0.1pt),

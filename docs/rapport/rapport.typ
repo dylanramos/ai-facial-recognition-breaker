@@ -286,6 +286,9 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/05-retour-sur-experience.typ"
 #pagebreak(to: "odd")
 
+#include "chapitres/06-conclusion.typ"
+#pagebreak(to: "odd")
+
 #set heading(numbering: none)
 #show heading.where(level: 1): it => {
   v(3cm)
