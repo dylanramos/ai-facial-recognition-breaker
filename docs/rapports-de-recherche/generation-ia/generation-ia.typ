@@ -140,7 +140,7 @@ Les modèles de génération d'images proposent généralement une version Text-
 *Qualité minimale*
 
 #table(
-  columns: (1fr, auto, auto),
+  columns: (1fr, 1fr, 1fr),
   align: horizon + center,
   [*Modèle*], [*Qualité de l'image*], [*Prix*],
 
@@ -154,7 +154,7 @@ Les modèles de génération d'images proposent généralement une version Text-
 *Qualité maximale*
 
 #table(
-  columns: (1fr, auto, auto),
+  columns: (1fr, 1fr, 1fr),
   align: horizon + center,
   [*Modèle*], [*Qualité de l'image*], [*Prix*],
 

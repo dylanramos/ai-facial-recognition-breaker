@@ -71,21 +71,26 @@ Il y a deux catégories de modèles de génération d'images :
 - *Text-to-Image :* qui sont des modèles créatifs qui créent des images à partir de rien et qui sont utiles pour générer des images de personnes fictives.
 - *Image-to-Image :* qui sont des modèles d'édition d'images qui modifient une image fournie et qui sont utiles pour modifier une photo sur un document d'identité.
 
-Généralement, les modèles de génération d'images proposent les deux types de modèles, le tableau ci-dessous concerne donc les deux types et présente les différents modèles avec leur prix moyen par image :
+Généralement, les modèles de génération d'images proposent les deux catégories de modèles, le tableau ci-dessous concerne donc les deux catégories.
 
-#table(
-  columns: (1fr, 1fr),
-  align: horizon + center,
-  [*Modèle*], [*Prix*],
+*Text-to-Image et Image-to-Image*
 
-  [*Nano Banana 2*], [0.065\$],
-  [*GPT Image 1.5*], [0.065\$],
-  [*Seedream 4.5*], [0.0325\$],
-  [*Grok Imagine*], [0.02\$],
-  [*Flux 2*], [0.095\$],
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr),
+    align: horizon + center,
+    [*Modèle*], [*Qualité de l'image*], [*Prix*],
+
+    [*Nano Banana 2*], [4k], [0.09\$],
+    [*GPT Image 1.5*], [4k], [0.11\$],
+    [*Seedream 4.5*], [4k], [0.0325\$],
+    [*Grok Imagine*], [2k], [0.02\$],
+    [*Flux 2*], [2k], [0.12\$],
+  ),
+  caption: "Comparaison des modèles de génération d'images en qualité maximale.",
 )
 
-Il n'y a pas forcément de modèles meilleurs que d'autres, ils ont chacun leurs caractéristiques et limitations. Il faudra donc les tester le moment venu pour déterminer lequel est le plus adapté aux attaques à réaliser.
+Il n'y a pas forcément de modèles meilleurs que d'autres, il faudra donc les tester le moment venu pour déterminer lequel est le plus adapté aux attaques à réaliser.
 
 === Modèles de génération de vidéos
 
@@ -95,51 +100,29 @@ Il y a trois catégories de modèles de génération de vidéos :
 - *Image-to-Video :* qui sont des modèles plus contrôlables visuellement car ils prennent deux images en entrée, une pour débuter la séquence et l'autre pour la terminer. Ainsi, ils permettent par exemple de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 - *Video-to-Video :* qui sont des modèles d'édition de vidéos qui prennent une vidéo et une image de référence en entrée. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
 
-Comme pour les modèles de génération d'images, les modèles de génération de vidéos proposent généralement les types Text-to-Video et Image-to-Video. Les modèles de type Video-to-Video eux, sont plus spécifiques et ont des modèles dédiés.
+Comme pour les modèles de génération d'images, les modèles de génération de vidéos proposent généralement une version Text-to-Video et Image-to-Video. Les modèles de type Video-to-Video eux, sont plus spécifiques et ont des modèles dédiés.
 
-=== Critères de sélection des modèles de génération de vidéos (Text-to-Video et Image-to-Video)
+#pagebreak()
 
-Pour sélectionner les modèles de génération de vidéos à utiliser pour les attaques, les critères suivants ont été pris en compte :
+*Text-to-Video et Image-to-Video*
 
-+ *Temps de vidéo* : la vidéo générée doit être suffisament longue pour que la vérification de l'identité puisse se faire.
-+ *Qualité de la vidéo* : la qualité de la vidéo doit être assez bonne pour tromper les systèmes de reconnaissance faciale.
-+ *Audio* : la possibilité d'ajouter de l'audio est un plus.
+#figure(
+  table(
+    columns: (1fr, auto, auto, auto, auto),
+    align: horizon + center,
+    [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
 
-=== Tableaux comparatifs des modèles de génération de vidéos (Text-to-Video et Image-to-Video)
-
-Les tableaux ci-dessous comparent les prix de chaque modèle dans leur configuration minimale (moins bonne qualité, plus courte durée, etc.) et maximale (meilleure qualité, durée plus longue, etc.).
-
-*Prix minimum*
-
-#table(
-  columns: (1fr, auto, auto, auto, auto),
-  align: horizon + center,
-  [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
-
-  [*Veo 3.1*], [8s], [1080p], [Oui], [0.30\$],
-  [*Sora 2*], [10s], [720p], [Oui], [0.175\$],
-  [*Kling 3.0*], [3s], [720p], [Non], [0.10\$],
-  [*Wan 2.6*], [5s], [720p], [Oui], [0.35\$],
-  [*Grok Imagine*], [6s], [480p], [Oui], [0.05\$],
-  [*Hailuo 2.3*], [6s], [768p], [Non], [0.15\$],
+    [*Veo 3.1*], [8s], [1080p], [Oui], [1.25\$],
+    [*Sora 2*], [15s], [720p], [Oui], [0.20\$],
+    [*Kling 3.0*], [15s], [1080p], [Oui], [3.00\$],
+    [*Wan 2.6*], [15s], [1080p], [Oui], [1.575\$],
+    [*Grok Imagine*], [15s], [720p], [Oui], [0.20\$],
+    [*Hailuo 2.3*], [10s], [768p], [Non], [0.45\$],
+  ),
+  caption: "Comparaison des modèles de génération de vidéos en qualité maximale.",
 )
 
-*Prix maximum*
-
-#table(
-  columns: (1fr, auto, auto, auto, auto),
-  align: horizon + center,
-  [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
-
-  [*Veo 3.1*], [8s], [1080p], [Oui], [1.25\$],
-  [*Sora 2*], [15s], [720p], [Oui], [0.20\$],
-  [*Kling 3.0*], [15s], [1080p], [Oui], [3.00\$],
-  [*Wan 2.6*], [15s], [1080p], [Oui], [1.575\$],
-  [*Grok Imagine*], [15s], [720p], [Oui], [0.20\$],
-  [*Hailuo 2.3*], [10s], [768p], [Non], [0.45\$],
-)
-
-=== Modèles de génération de vidéos de type Video-to-Video
+*Video-to-Video*
 
 À ce jour, le seul modèle de type Video-to-Video disponible sur Kie.ai est *Kling 3.0 motion control*. Les prix sont les suivants :
 
