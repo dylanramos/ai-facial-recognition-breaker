@@ -12,7 +12,7 @@ Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les syst�
 
 #text(weight: "bold", size: 14pt)[Objectifs]
 
-Ce travail de Bachelor cherche à comprendre les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
+Ce travail de Bachelor cherche à comprendre et à démontrer les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
 
 + Connaître les offres de génération de vidéos IA disponibles sur le marché.
 + Connaître les différentes méthodes de vérification d'identité par reconnaissance faciale utilisées par les sites en ligne.

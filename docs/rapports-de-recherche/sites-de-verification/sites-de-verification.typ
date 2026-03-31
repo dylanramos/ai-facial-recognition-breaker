@@ -1,7 +1,7 @@
 // Paramètres globaux
 
 #set page(margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm))
-#set text(font: "New Computer Modern", size: 11pt, lang: "fr")
+#set text(font: "New Computer Modern", size: 10.1pt, lang: "fr")
 
 // Variables
 
@@ -113,16 +113,14 @@
 
 Plusieurs sites demandent aujourd'hui une vérification d'identité, que ce soit pour créer un compte ou pour accéder à certaines fonctionnalités. L'objectif est de trouver des sites qui demandent une vérification d'identité et d'analyser comment ils vérifient l'identité des utilisateurs.
 
-= Recherches
+= Synthèse des recherches <synthese>
 
-Plusieurs catégories de sites ont été testées, les réseaux sociaux, les banques, les casinos en ligne, les plateformes de trading, les sites de rencontre, etc. Certains sites demandent obligatoirement une vérification d'identité, tandis que d'autres ne le font pas ou seulement dans certaines conditions. Les méthodes de vérification varient également, certaines demandent une photo du visage ou d'un document d'identité, d'autres demandent une vidéo de la personne, cela dépend de la sensibilité du service proposé par le site.
-
-== Tableau récapitulatif <tableau>
+Plusieurs catégories de sites ont été testées, les réseaux sociaux, les banques, les casinos en ligne, les plateformes de trading, les sites de rencontre, etc. Ils ne demandent pas tous les mêmes informations, certains se contentent d'une simple photo d'un document d'identité, tandis que d'autres demandent une vérification via une caméra en direct. Un autre facteur à prendre en compte est qu'il faut souvent vérifier une adresse e-mail et/ou un numéro de téléphone, ce qui peut constituer une barrière supplémentaire pour les attaquants.
 
 Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettront par la suite d'établir une échelle de difficulté pour les attaques :
 
 - *Type* : vérification par photo ou vidéo.
-- *Interlocuteur humain* : présence d'un interlocuteur humain pour guider l'utilisateur.
+- *Interlocuteur humain* : présence d'un interlocuteur humain pour guider l'utilisateur lors d'un appel vidéo.
 - *Documents d'identité* : nécessité de fournir des documents d'identité.
 - *Uniquement via smartphone* : obligation d'utiliser un smartphone.
 - *Vérification* : vérification de l'adresse e-mail ou du numéro de téléphone.
@@ -150,20 +148,20 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettro
   [*Vérification*],
 
   table.cell(fill: red)[*TikTok*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Facebook*], [Photo], [?], [Non], [Non], [E-mail],
+  table.cell(fill: green)[*Facebook*], [Vidéo], [Non], [Non], [Non], [E-mail],
   table.cell(fill: red)[*Instagram*], [-], [-], [-], [-], [-],
   table.cell(fill: red)[*Snapchat*], [-], [-], [-], [-], [-],
   table.cell(fill: yellow)[*LinkedIn*], [-], [-], [-], [-], [-],
   table.cell(fill: yellow)[*Discord*], [-], [-], [-], [-], [-],
   table.cell(fill: yellow)[*Youtube*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [?],
+  table.cell(fill: green)[*Migros Bank*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
   table.cell(fill: green)[*Neon Bank*], [Vidéo], [Oui], [Oui], [Oui], [E-mail + n° de téléphone],
-  table.cell(fill: green)[*Swissquote*], [Photo], [Non], [Oui], [Non], [E-mail + n° de téléphone],
+  table.cell(fill: green)[*Swissquote*], [Vidéo], [Non], [Oui], [Non], [E-mail],
   table.cell(fill: red)[*E-ID*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
   table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [E-mail + n° de téléphone],
   table.cell(fill: green)[*UBS*], [Photo], [?], [Oui], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Coinbase*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
+  table.cell(fill: green)[*Coinbase*], [Photo], [Non], [Oui], [Non], [N° de téléphone],
   table.cell(fill: green)[*Swissborg*], [Photo], [?], [Oui], [Oui], [N° de téléphone],
   table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [E-mail],
   table.cell(fill: red)[*X*], [-], [-], [-], [-], [-],
@@ -190,36 +188,266 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettro
 
 #set par(justify: true)
 
-= Sites sans vérification d'identité
+= Sites qui ne seront pas testés lors des attaques
 
-Comme le montre le tableau du #underline()[@tableau], les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour les réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir, car ces sites ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
+Les sites en rouge et en jaune dans le tableau du #underline()[@synthese] ne seront pas testés lors des attaques, car soit ils ne demandent aucune vérification d'identité, soit la vérification d'identité n'est pas systématique et dépend de conditions qui sont trop difficiles à reproduire.
+
+== Sites sans vérification d'identité
+
+Les sites en rouge ne demandent aucune vérification d'identité, c'est notamment le cas pour certains réseaux sociaux. En sachant qu'en Australie une récente loi oblige les plateformes à vérifier l'âge de leurs utilisateurs #footnote[https://www.oaic.gov.au/__data/assets/pdf_file/0025/257515/SMMA-Fact-Sheets-General.pdf], des tests ont été effectués avec un VPN pour voir s'il y avait bien une demande de vérification d'identité. Mais impossible de le savoir, car ces sites ne fonctionnent plus lorsque le VPN est activé, comme le démontrent les images ci-dessous.
 
 #grid(
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("images/tiktok-australie.png"), stroke: 1pt),
+    rect(image("images/tiktok-australie.png"), stroke: 0.1pt),
     caption: "Erreur lors de la création d'un compte TikTok.",
   ),
-  figure(rect(image("images/x.png"), stroke: 1pt), caption: "Erreur lors de la création d'un compte X."),
+  figure(rect(image("images/x.png"), stroke: 0.1pt), caption: "Erreur lors de la création d'un compte X."),
 )
 
-= Sites avec vérification d'identité sous certaines conditions
+== Sites avec vérification d'identité sous certaines conditions
 
-Ci-dessous, les conditions de vérification d'identité pour les sites en jaune dans le tableau de la #underline()[@tableau].
+Les sites en jaune demandent une vérification d'identité sous certaines conditions, la liste ci-dessous présente les conditions pour lesquelles une vérification est demandée pour ces sites :
 
 - LinkedIn : vérification d'identité pour obtenir un badge de vérification, mais il y a une liste d'attente.
 - Discord : vérification d'identité si le compte est suspecté d'être utilisé par un mineur.
 - Youtube : vérification d'identité si le compte est suspecté d'être utilisé par un mineur.
 - Upwork : vérification d'identité pour obtenir un badge de vérification, mais il faut avoir 35 "connects" (en payant).
 
-= Sites avec vérification d'identité
+= Sites à tester lors des attaques
 
-Les sites en vert dans le tableau du #underline()[@tableau] demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer. Certains semblent plus faciles à attaquer que d'autres, par exemple, ceux qui ne demandent qu'une photo et qui ne vérifient ni adresse e-mail ni numéro de téléphone.
+Les sites en vert dans le tableau du #underline()[@synthese] demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer.
 
-== Classement des sites par difficulté d'attaque
+== Facebook
 
-En fonction des critères établis au #underline()[@tableau], il est possible de classer les sites par difficulté d'attaque, par exemple :
+Facebook est un réseau social qui permet aux utilisateurs de rester en contact avec leurs amis.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.facebook.com/reg/?entry_point=login&next=")[création d'un compte]].
+- Où : sur ordinateur.
+
+=== Motivation d'un attaquant
+
+- Se faire passer pour une autre personne afin d'escroquer ses contacts.
+- Accéder à des comptes pour diffuser du spam ou des arnaques.
+- Usurper une identité pour nuire à la réputation de quelqu'un.
+
+=== Processus de vérification d'identité
+
++ Vérifier l'adresse e-mail.
++ Effectuer un selfie vidéo.
+
+#figure(
+  rect(image("images/facebook.png", width: 50%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Facebook.",
+)
+
+Démonstration de la vidéo à effectuer : #underline()[#link("https://drive.proton.me/urls/D81WJDY3PG#XU6kPbSIfchZ")]
+
+== Migros Bank
+
+Migros Bank est une banque en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.migrosbank.ch/onb-onboarding/onboarding/personal-data")[création d'un compte]].
+- Où : sur ordinateur.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Scanner une pièce d'identité avec une caméra.
++ Effectuer un selfie vidéo.
+
+#figure(
+  rect(image("images/migros-bank.png", width: 30%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Migros Bank.",
+)
+
+== Neon Bank
+
+Neon Bank est une banque en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://neon-free.ch/")[création d'un compte]].
+- Où : sur smartphone.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
+// TODO
+
+== Swissquote
+
+Swissquote est une banque en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.swissquote.com/en-ch/become-client/open-account")[création d'un compte]].
+- Où : sur ordinateur.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
++ Vérifier l'adresse e-mail.
++ Effectuer un selfie vidéo.
++ Scanner une pièce d'identité avec une caméra.
+
+#figure(
+  rect(image("images/swissquote.png", width: 50%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Swissquote.",
+)
+
+== Revolut
+
+Revolut est une banque en ligne britannique.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.revolut.com/fr-CH/")[création d'un compte]].
+- Où : sur smartphone.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
+// TODO
+
+== Yuh
+
+Yuh est une banque en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.yuh.com/en/")[création d'un compte]].
+- Où : sur smartphone.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
+// TODO
+
+== UBS
+
+UBS est une banque en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.ubs.com/ch/fr/services/accounts-and-cards/daily-banking/private-account-adults/key4.html#explore")[création d'un compte]].
+- Où : sur smartphone.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
+// TODO
+
+== Coinbase
+
+Coinbase est une plateforme d'échange de cryptomonnaies américaine.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.coinbase.com/")[création d'un compte]].
+- Où : sur ordinateur.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Envoyer une photo d'un document d'identité.
+
+#figure(
+  rect(image("images/coinbase.png", width: 50%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Coinbase.",
+)
+
+== Swissborg
+
+Swissborg est une plateforme d'échange de cryptomonnaies suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://swissborg.com/sign-up")[création d'un compte]].
+- Où : sur smartphone.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
+// TODO
+
+== Zak Cler
+
+Zak Cler est une plateforme de trading suisse.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.cler.ch/fr")[création d'un compte]].
+- Où : sur smartphone.
+
+=== Motivation d'un attaquant
+
+- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+
+=== Processus de vérification d'identité
+
+// TODO
+
+== Portail Etat de Vaud
+
+Le Portail Etat de Vaud est un site qui permet aux citoyens vaudois d'accéder à différents services en ligne.
+
+=== Vérification d'identité
+
+- Quand : lors de la #underline()[#link("https://www.vd.ch/prestation/demander-un-moyen-didentification-electronique-et-lacces-au-portail-securise")[création d'un compte]].
+- Où : sur ordinateur.
+
+=== Motivation d'un attaquant
+
+- Accéder aux données administratives d’un tiers (impôts, documents officiels)
+- Se faire passer pour quelqu’un afin d’effectuer des démarches administratives à sa place
+- Obtenir indûment des prestations ou aides publiques en usurpant une identité
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Prendre rendez-vous pour un appel vidéo.
+
+#figure(
+  rect(image("images/etat-de-vaud.png", width: 70%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité du Portail de l'Etat de Vaud.",
+)
+
+
+= Classement des sites par difficulté d'attaque
+
+En fonction des critères établis au #underline()[@synthese], il est possible de classer les sites par difficulté d'attaque, par exemple :
 
 - Le site le plus facile à attaquer :
   - Vérifie une photo.
@@ -249,37 +477,37 @@ Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus fa
 
 #emph[Avec vérification de l'adresse e-mail :]
 
-5. Facebook
-6. Bybit
+5. Bybit
 
 #emph[Avec vérification du numéro de téléphone :]
 
-7. Bet365
+6. Bet365
 
 #emph[Avec vérification du numéro de téléphone et de l'adresse e-mail :]
 
-8. Swissquote
+7. Swissquote
 
 #emph[Uniquement via smartphone et avec vérification du numéro de téléphone :]
 
-9. UBS
-10. Swissborg
-11. OkCupid
+8. UBS
+9. Swissborg
+10. OkCupid
 
 #emph[Uniquement via smartphone et avec vérification du numéro de téléphone et de l'adresse e-mail :]
 
-12. Lotterie Romande
+11. Lotterie Romande
 
 === Vérification par vidéo
 
 #emph[Sans vérification du numéro de téléphone et de l'adresse e-mail :]
 
-13. Migros Bank
-14. Roblox
-15. Parship
+12. Migros Bank : #underline()[#link("https://www.migrosbank.ch/onb-onboarding/onboarding/personal-data")]
+13. Roblox
+14. Parship
 
 #emph[Avec vérification de l'adresse e-mail :]
 
+15. Facebook : #underline()[#link("https://www.facebook.com/reg/?entry_point=login&next=")]
 16. Portail Etat de Vaud
 17. Swiss Casinos
 18. Binance
@@ -310,18 +538,18 @@ Des captures d'écran de ce qui est demandé pour la vérification d'identité o
 #grid(
   columns: (1fr, 1fr, 1fr),
   inset: 3pt,
-  figure(rect(image("images/loro.jpg"), stroke: 1pt), caption: "Lotterie Romande."),
-  figure(rect(image("images/casino777.png"), stroke: 1pt), caption: "Casino777."),
-  figure(rect(image("images/bet365.png"), stroke: 1pt), caption: "Bet365."),
+  figure(rect(image("images/loro.jpg"), stroke: 0.1pt), caption: "Lotterie Romande."),
+  figure(rect(image("images/casino777.png"), stroke: 0.1pt), caption: "Casino777."),
+  figure(rect(image("images/bet365.png"), stroke: 0.1pt), caption: "Bet365."),
 
-  figure(rect(image("images/binance.png"), stroke: 1pt), caption: "Binance."),
-  figure(rect(image("images/bybit.png"), stroke: 1pt), caption: "Bybit."),
-  figure(rect(image("images/kraken.png"), stroke: 1pt), caption: "Kraken."),
+  figure(rect(image("images/binance.png"), stroke: 0.1pt), caption: "Binance."),
+  figure(rect(image("images/bybit.png"), stroke: 0.1pt), caption: "Bybit."),
+  figure(rect(image("images/kraken.png"), stroke: 0.1pt), caption: "Kraken."),
 
-  figure(rect(image("images/okx.png"), stroke: 1pt), caption: "Okx."),
-  figure(rect(image("images/tea.png"), stroke: 1pt), caption: "Tea Dating Safety for Women."),
-  figure(rect(image("images/roblox.png"), stroke: 1pt), caption: "Roblox."),
+  figure(rect(image("images/okx.png"), stroke: 0.1pt), caption: "Okx."),
+  figure(rect(image("images/tea.png"), stroke: 0.1pt), caption: "Tea Dating Safety for Women."),
+  figure(rect(image("images/roblox.png"), stroke: 0.1pt), caption: "Roblox."),
 
-  figure(rect(image("images/parship.png"), stroke: 1pt), caption: "Parship."),
-  figure(rect(image("images/google.png"), stroke: 1pt), caption: "Google."),
+  figure(rect(image("images/parship.png"), stroke: 0.1pt), caption: "Parship."),
+  figure(rect(image("images/google.png"), stroke: 0.1pt), caption: "Google."),
 )
