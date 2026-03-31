@@ -123,7 +123,7 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettro
 - *Interlocuteur humain* : présence d'un interlocuteur humain pour guider l'utilisateur lors d'un appel vidéo.
 - *Documents d'identité* : nécessité de fournir des documents d'identité.
 - *Uniquement via smartphone* : obligation d'utiliser un smartphone.
-- *Vérification* : vérification de l'adresse e-mail ou du numéro de téléphone.
+- *Vérification* : vérification de l'adresse e-mail et/ou du numéro de téléphone.
 
 *Légende :*
 
@@ -160,30 +160,30 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci permettro
   table.cell(fill: red)[*E-ID*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Revolut*], [Vidéo], [Oui], [Oui], [Oui], [N° de téléphone],
   table.cell(fill: green)[*Yuh*], [Vidéo], [Oui], [Oui], [Oui], [E-mail + n° de téléphone],
-  table.cell(fill: green)[*UBS*], [Photo], [?], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*UBS*], [Photo], [Non], [Oui], [Oui], [N° de téléphone],
   table.cell(fill: green)[*Coinbase*], [Photo], [Non], [Oui], [Non], [N° de téléphone],
-  table.cell(fill: green)[*Swissborg*], [Photo], [?], [Oui], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Zak Cler*], [Photo et vidéo], [Non], [Oui], [Oui], [E-mail],
+  table.cell(fill: green)[*Swissborg*], [Photo], [Non], [Oui], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Zak Cler*], [Vidéo], [Non], [Oui], [Oui], [E-mail],
   table.cell(fill: red)[*X*], [-], [-], [-], [-], [-],
   table.cell(fill: green)[*Portail Etat de Vaud*], [Vidéo], [Oui], [Oui], [Non], [E-mail],
-  table.cell(fill: green)[*Lotterie Romande*], [Photo], [?], [Oui], [Oui], [E-mail + n° de téléphone],
-  table.cell(fill: green)[*Mycasino*], [Photo], [?], [Oui], [Non], [-],
+  table.cell(fill: green)[*Lotterie Romande*], [Vidéo], [Non], [Oui], [Oui], [E-mail + n° de téléphone],
+  table.cell(fill: green)[*Mycasino*], [Photo], [Non], [Oui], [Non], [-],
   table.cell(fill: green)[*Swiss Casinos*], [Vidéo], [Non], [Oui], [Non], [E-mail],
-  table.cell(fill: green)[*Casino777*], [Photo], [?], [Oui], [Non], [-],
+  table.cell(fill: green)[*Casino777*], [Photo], [Non], [Oui], [Non], [-],
   table.cell(fill: red)[*Polymarket*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*Bet365*], [Photo], [?], [Oui], [Non], [N° de téléphone],
-  table.cell(fill: green)[*Binance*], [Vidéo], [?], [Oui], [Non], [E-mail],
-  table.cell(fill: green)[*Bybit*], [Photo], [?], [Oui], [Non], [E-mail],
-  table.cell(fill: green)[*Kraken*], [Vidéo], [?], [Oui], [Oui], [E-mail],
-  table.cell(fill: green)[*Okx*], [Vidéo], [?], [Oui], [Oui], [E-mail + n° de téléphone],
-  table.cell(fill: green)[*Tea Dating Safety for Women*], [Photo], [?], [Non], [Non], [-],
-  table.cell(fill: yellow)[*Upwork*], [Photo ou vidéo], [?], [Oui], [Non], [E-mail],
-  table.cell(fill: green)[*Roblox*], [Vidéo], [?], [Non], [Non], [-],
-  table.cell(fill: green)[*Parship*], [Vidéo], [?], [Non], [Non], [-],
+  table.cell(fill: green)[*Bet365*], [Vidéo], [Non], [Oui], [Non], [N° de téléphone],
+  table.cell(fill: green)[*Binance*], [Vidéo], [Non], [Oui], [Non], [E-mail],
+  table.cell(fill: green)[*Bybit*], [Photo], [Non], [Oui], [Non], [E-mail],
+  table.cell(fill: green)[*Kraken*], [Photo], [Non], [Oui], [Oui], [E-mail],
+  table.cell(fill: green)[*Okx*], [Vidéo], [Non], [Oui], [Oui], [E-mail + n° de téléphone],
+  table.cell(fill: green)[*Tea for Women*], [Photo], [Non], [Non], [Non], [-],
+  table.cell(fill: yellow)[*Upwork*], [Photo], [Non], [Oui], [Non], [E-mail],
+  table.cell(fill: green)[*Roblox*], [Vidéo], [Non], [Non], [Non], [-],
+  table.cell(fill: green)[*Parship*], [Vidéo], [Non], [Non], [Non], [-],
   table.cell(fill: red)[*Tinder*], [-], [-], [-], [-], [-],
   table.cell(fill: red)[*Grindr*], [-], [-], [-], [-], [-],
-  table.cell(fill: green)[*OkCupid*], [Photo], [?], [Non], [Oui], [N° de téléphone],
-  table.cell(fill: green)[*Google*], [Photo], [?], [Non], [Non], [-],
+  table.cell(fill: green)[*OkCupid*], [Photo], [Non], [Non], [Oui], [N° de téléphone],
+  table.cell(fill: green)[*Google*], [Photo], [Non], [Non], [Non], [-],
 )
 
 #set par(justify: true)
@@ -215,7 +215,7 @@ Les sites en jaune demandent une vérification d'identité sous certaines condit
 - Youtube : vérification d'identité si le compte est suspecté d'être utilisé par un mineur.
 - Upwork : vérification d'identité pour obtenir un badge de vérification, mais il faut avoir 35 "connects" (en payant).
 
-= Sites à tester lors des attaques
+= Analyse détaillée des sites qui demandent une vérification d'identité
 
 Les sites en vert dans le tableau du #underline()[@synthese] demandent une vérification d'identité obligatoire, c'est sur ceux-ci que les attaques vont se concentrer.
 
@@ -225,14 +225,9 @@ Facebook est un réseau social qui permet aux utilisateurs de rester en contact 
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.facebook.com/reg/?entry_point=login&next=")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur ordinateur.
-
-=== Motivation d'un attaquant
-
-- Se faire passer pour une autre personne afin d'escroquer ses contacts.
-- Accéder à des comptes pour diffuser du spam ou des arnaques.
-- Usurper une identité pour nuire à la réputation de quelqu'un.
+- Lien : #underline()[#link("https://www.facebook.com/reg/?entry_point=login&next=")]
 
 === Processus de vérification d'identité
 
@@ -252,17 +247,14 @@ Migros Bank est une banque en ligne suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.migrosbank.ch/onb-onboarding/onboarding/personal-data")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur ordinateur.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.migrosbank.ch/onb-onboarding/onboarding/personal-data")]
 
 === Processus de vérification d'identité
 
 + Vérifier le numéro de téléphone.
-+ Scanner une pièce d'identité avec une caméra.
++ Scanner une pièce d'identité avec la caméra.
 + Effectuer un selfie vidéo.
 
 #figure(
@@ -276,16 +268,20 @@ Neon Bank est une banque en ligne suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://neon-free.ch/")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur smartphone.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://neon-free.ch/")]
 
 === Processus de vérification d'identité
 
-// TODO
++ Vérifier le numéro de téléphone.
++ Vérifier l'adresse e-mail.
++ Effectuer un appel vidéo avec un employé.
+
+#figure(
+  rect(image("images/neon-bank.jpg", width: 30%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Neon Bank.",
+)
 
 == Swissquote
 
@@ -293,18 +289,15 @@ Swissquote est une banque en ligne suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.swissquote.com/en-ch/become-client/open-account")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur ordinateur.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.swissquote.com/en-ch/become-client/open-account")]
 
 === Processus de vérification d'identité
 
 + Vérifier l'adresse e-mail.
 + Effectuer un selfie vidéo.
-+ Scanner une pièce d'identité avec une caméra.
++ Scanner une pièce d'identité avec la caméra.
 
 #figure(
   rect(image("images/swissquote.png", width: 50%), stroke: 0.1pt),
@@ -317,16 +310,16 @@ Revolut est une banque en ligne britannique.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.revolut.com/fr-CH/")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur smartphone.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.revolut.com/fr-CH/")]
 
 === Processus de vérification d'identité
 
-// TODO
++ Vérifier le numéro de téléphone.
++ Effectuer un appel vidéo avec un employé.
+
+#emph[Remarque : l'application empêche de faire des captures d'écran.]
 
 == Yuh
 
@@ -334,16 +327,20 @@ Yuh est une banque en ligne suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.yuh.com/en/")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur smartphone.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.yuh.com/en/")]
 
 === Processus de vérification d'identité
 
-// TODO
++ Vérifier le numéro de téléphone.
++ Vérifier l'adresse e-mail.
++ Effectuer un appel vidéo avec un employé.
+
+#figure(
+  rect(image("images/yuh.jpg", width: 30%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Yuh.",
+)
 
 == UBS
 
@@ -351,16 +348,16 @@ UBS est une banque en ligne suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.ubs.com/ch/fr/services/accounts-and-cards/daily-banking/private-account-adults/key4.html#explore")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur smartphone.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.ubs.com/ch/fr/services/accounts-and-cards/daily-banking/private-account-adults/key4.html#explore")]
 
 === Processus de vérification d'identité
 
-// TODO
++ Vérifier le numéro de téléphone.
++ Scanner une pièce d'identité avec la caméra.
+
+#emph[Remarque : l'application empêche de faire des captures d'écran.]
 
 == Coinbase
 
@@ -368,12 +365,9 @@ Coinbase est une plateforme d'échange de cryptomonnaies américaine.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.coinbase.com/")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur ordinateur.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.coinbase.com/")]
 
 === Processus de vérification d'identité
 
@@ -391,16 +385,16 @@ Swissborg est une plateforme d'échange de cryptomonnaies suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://swissborg.com/sign-up")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur smartphone.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://swissborg.com/sign-up")]
 
 === Processus de vérification d'identité
 
-// TODO
++ Vérifier le numéro de téléphone.
++ Scanner une pièce d'identité avec la caméra.
+
+#emph[Remarque : pas de capture d'écran car mon compte est déjà vérifié.]
 
 == Zak Cler
 
@@ -408,42 +402,313 @@ Zak Cler est une plateforme de trading suisse.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.cler.ch/fr")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur smartphone.
-
-=== Motivation d'un attaquant
-
-- Ouvrir un compte afin de blanchir de l'argent ou de commettre d'autres activités illégales.
+- Lien : #underline()[#link("https://www.cler.ch/fr")]
 
 === Processus de vérification d'identité
 
-// TODO
++ Vérifier l'adresse e-mail.
++ Scanner une pièce d'identité avec la caméra.
++ Effectuer un selfie vidéo.
 
-== Portail Etat de Vaud
+#figure(
+  rect(image("images/zak.jpg", width: 30%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Zak Cler.",
+)
 
-Le Portail Etat de Vaud est un site qui permet aux citoyens vaudois d'accéder à différents services en ligne.
+== Portail de l'Etat de Vaud
+
+Le Portail de l'Etat de Vaud est un site qui permet aux citoyens vaudois d'accéder à différents services en ligne.
 
 === Vérification d'identité
 
-- Quand : lors de la #underline()[#link("https://www.vd.ch/prestation/demander-un-moyen-didentification-electronique-et-lacces-au-portail-securise")[création d'un compte]].
+- Quand : lors de la création d'un compte.
 - Où : sur ordinateur.
-
-=== Motivation d'un attaquant
-
-- Accéder aux données administratives d’un tiers (impôts, documents officiels)
-- Se faire passer pour quelqu’un afin d’effectuer des démarches administratives à sa place
-- Obtenir indûment des prestations ou aides publiques en usurpant une identité
+- Lien : #underline()[#link("https://www.vd.ch/prestation/demander-un-moyen-didentification-electronique-et-lacces-au-portail-securise")]
 
 === Processus de vérification d'identité
 
 + Vérifier le numéro de téléphone.
-+ Prendre rendez-vous pour un appel vidéo.
++ Prendre rendez-vous avec un employé pour un appel vidéo.
 
 #figure(
   rect(image("images/etat-de-vaud.png", width: 70%), stroke: 0.1pt),
   caption: "Processus de vérification d'identité du Portail de l'Etat de Vaud.",
 )
 
+== Lotterie Romande
+
+La Lotterie Romande est une entreprise suisse qui organise des jeux de hasard.
+
+=== Vérification d'identité
+
+- Quand : lors de la création d'un compte.
+- Où : sur smartphone.
+- Lien : #underline()[#link("https://jeux.loro.ch/account/registration-start")]
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Vérifier l'adresse e-mail.
++ Scanner une pièce d'identité avec la caméra.
+
+#figure(
+  rect(image("images/loro.jpg", width: 30%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de la Lotterie Romande.",
+)
+
+== Mycasino
+
+Mycasino est un casino en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : pour pouvoir retirer de l'argent.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.mycasino.ch/fr/")]
+
+=== Processus de vérification d'identité
+
++ Envoyer une photo d'un document d'identité.
+
+#figure(
+  rect(image("images/mycasino.png", width: 60%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Mycasino.",
+)
+
+== Swiss Casinos
+
+Swiss Casinos est un casino en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : pour pouvoir retirer de l'argent.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://online.swisscasinos.ch/fr/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier l'adresse e-mail.
++ Scanner une pièce d'identité avec la caméra.
+
+#figure(
+  rect(image("images/swiss-casinos.png", width: 80%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Swiss Casinos.",
+)
+
+== Casino777
+
+Casino777 est un casino en ligne suisse.
+
+=== Vérification d'identité
+
+- Quand : pour pouvoir retirer de l'argent.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.casino777.ch/fr/")]
+
+=== Processus de vérification d'identité
+
++ Envoyer une photo d'un document d'identité.
+
+#figure(
+  rect(image("images/casino777.png", width: 40%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Casino777.",
+)
+
+== Bet365
+
+Bet365 est un site de paris en ligne britannique.
+
+=== Vérification d'identité
+
+- Quand : pour pouvoir parier de l'argent.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.bet365.com/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Scanner une pièce d'identité avec la caméra.
+
+#figure(
+  rect(image("images/bet365.png", width: 40%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Bet365.",
+)
+
+== Binance
+
+Binance est une plateforme d'échange de cryptomonnaies chinoise.
+
+=== Vérification d'identité
+
+- Quand : pour acheter des cryptomonnaies.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.binance.com/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier l'adresse e-mail.
++ Scanner une pièce d'identité avec la caméra.
+
+#figure(
+  rect(image("images/binance.png", width: 50%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Binance.",
+)
+
+== Bybit
+
+Bybit est une plateforme d'échange de cryptomonnaies dubaïote.
+
+=== Vérification d'identité
+
+- Quand : pour acheter des cryptomonnaies.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.bybit.com/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier l'adresse e-mail.
++ Envoyer une photo d'un document d'identité.
+
+#figure(
+  rect(image("images/bybit.png", width: 40%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Bybit.",
+)
+
+== Kraken
+
+Kraken est une plateforme d'échange de cryptomonnaies américaine.
+
+=== Vérification d'identité
+
+- Quand : pour acheter des cryptomonnaies.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.kraken.com/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier l'adresse e-mail.
++ Scanner une pièce d'identité avec la caméra.
+
+#figure(
+  rect(image("images/kraken.png", width: 50%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Kraken.",
+)
+
+== Okx
+
+Okx est une plateforme d'échange de cryptomonnaies américaine.
+
+=== Vérification d'identité
+
+- Quand : pour acheter des cryptomonnaies.
+- Où : sur smartphone.
+- Lien : #underline()[#link("https://www.okx.com/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Vérifier l'adresse e-mail.
++ Scanner une pièce d'identité avec la caméra.
+
+#figure(
+  rect(image("images/okx.png", width: 60%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Okx.",
+)
+
+== Tea for Women
+
+Tea for Women est une plateforme qui aide les femmes à vérifier l'identité des hommes avec lesquels elles sortent et à partager des avis anonymes afin d'éviter des risques tels que l'usurpation d'identité ou l'existence de casiers judiciaires cachés.
+
+=== Vérification d'identité
+
+- Quand : lors de la création d'un compte.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.teaforwomen.com/")]
+
+=== Processus de vérification d'identité
+
++ Effectuer un selfie vidéo.
+
+#figure(
+  rect(image("images/tea.png", width: 50%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Tea for Women.",
+)
+
+== Roblox
+
+Roblox est une plateforme de jeux en ligne qui permet aux utilisateurs de créer et de jouer à des jeux créés par d'autres utilisateurs.
+
+=== Vérification d'identité
+
+- Quand : pour accéder à certaines fonctionnalités.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.roblox.com/my/account#!/info")]
+
+=== Processus de vérification d'identité
+
++ Effectuer un selfie vidéo.
+
+#figure(
+  rect(image("images/roblox.png", width: 30%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Roblox.",
+)
+
+== Parship
+
+Parship est un site de rencontre en ligne allemand.
+
+=== Vérification d'identité
+
+- Quand : lors de la création d'un compte.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://uk.parship.com/")]
+
+=== Processus de vérification d'identité
+
++ Effectuer un selfie vidéo.
+
+#figure(
+  rect(image("images/parship.png", width: 40%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Parship.",
+)
+
+== OkCupid
+
+OkCupid est un site de rencontre en ligne américain.
+
+=== Vérification d'identité
+
+- Quand : lors de la création d'un compte.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://www.okcupid.com/")]
+
+=== Processus de vérification d'identité
+
++ Vérifier le numéro de téléphone.
++ Scanner une pièce d'identité avec la caméra.
+
+#emph[Remarque : pas de capture d'écran car mon compte est banni.]
+
+== Google
+
+Google est une entreprise américaine spécialisée dans les services liés à Internet.
+
+=== Vérification d'identité
+
+- Quand : lors du changement de la date de naissance de mineur à majeur.
+- Où : sur ordinateur.
+- Lien : #underline()[#link("https://accounts.google.com/")]
+
+=== Processus de vérification d'identité
+
++ Effectuer un selfie vidéo.
+
+#figure(
+  rect(image("images/google.png", width: 40%), stroke: 0.1pt),
+  caption: "Processus de vérification d'identité de Google.",
+)
 
 = Classement des sites par difficulté d'attaque
 
@@ -469,7 +734,7 @@ Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus fa
 
 #emph[Sans vérification du numéro de téléphone et de l'adresse e-mail :]
 
-1. Tea Dating Safety for Women
+1. Tea for Women
 2. Google
 3. Mycasino
 4. Casino777
@@ -531,25 +796,3 @@ Ci-dessous, les sites sont classés par difficulté d'attaque, allant du plus fa
 24. Yuh
 25. Okx
 
-== Captures d'écran
-
-Des captures d'écran de ce qui est demandé pour la vérification d'identité ont été prises pour certains sites lorsque cela était possible. Cela permet d'avoir une idée plus précise des scénarios d'attaque.
-
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  inset: 3pt,
-  figure(rect(image("images/loro.jpg"), stroke: 0.1pt), caption: "Lotterie Romande."),
-  figure(rect(image("images/casino777.png"), stroke: 0.1pt), caption: "Casino777."),
-  figure(rect(image("images/bet365.png"), stroke: 0.1pt), caption: "Bet365."),
-
-  figure(rect(image("images/binance.png"), stroke: 0.1pt), caption: "Binance."),
-  figure(rect(image("images/bybit.png"), stroke: 0.1pt), caption: "Bybit."),
-  figure(rect(image("images/kraken.png"), stroke: 0.1pt), caption: "Kraken."),
-
-  figure(rect(image("images/okx.png"), stroke: 0.1pt), caption: "Okx."),
-  figure(rect(image("images/tea.png"), stroke: 0.1pt), caption: "Tea Dating Safety for Women."),
-  figure(rect(image("images/roblox.png"), stroke: 0.1pt), caption: "Roblox."),
-
-  figure(rect(image("images/parship.png"), stroke: 0.1pt), caption: "Parship."),
-  figure(rect(image("images/google.png"), stroke: 0.1pt), caption: "Google."),
-)
