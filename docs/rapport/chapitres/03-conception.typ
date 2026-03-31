@@ -4,7 +4,7 @@
 
 *Analyses détaillées* : #link("../rapports-de-recherche/user-stories/user-stories.pdf")[#underline("user-stories.pdf")]
 
-Plusieurs scénarios d'attaque ont été définis, parmis ceux-ci, le scénario typique est un mélange de vérification par photo (ex : document d'identité) et de vérification par vidéo (ex : selfie vidéo) sans interlocuteur humain.
+Plusieurs scénarios d'attaque ont été définis, parmis ceux-ci, le scénario typique est un mélange de vérification par photo (ex : document d'identité) et de vérification par vidéo (ex : selfie vidéo) sans interlocuteur humain. Un autre scénario également intéressant est celui du démonstrateur automatisé, qui démontre comment fonctionnerait le démonstrateur sans intervention humaine.
 
 === Scénario typique
 
@@ -22,9 +22,14 @@ Une fois le document d'identité envoyé, le site vulnérable demande à scanner
   caption: "L'attaquant demande au démonstrateur de générer une vidéo de la personne sur le document d'identité simulant la caméra en train de filmer son visage.",
 )
 
-=== Scénario avec interlocuteur humain
-
 === Scénario avec démonstrateur automatisé
+
+Le démonstrateur dispose d'un exemple de document d'identité. L'attaquant configure une personne fictive sur le démonstrateur (nom, prénom, date de naissance, etc.), se rend sur un site vulnérable pour se créer un compte puis lance le démonstrateur en mode automatique.
+
+#figure(
+  rect(image("../images/03-conception/verification-auto-2.png"), stroke: 0.1pt),
+  caption: "Le démonstrateur renseigne les informations demandées en fonction de la configuration de l'attaquant, génère le document demandé puis la vidéo en fontion des instructions affichées sur la page web."
+)
 
 == Architecture
 
