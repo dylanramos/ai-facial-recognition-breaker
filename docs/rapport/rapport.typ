@@ -270,19 +270,25 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/01-introduction.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/02-etat-de-lart.typ"
+#include "chapitres/02-sites-de-verification.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/03-conception.typ"
+#include "chapitres/03-generation-ia.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/04-developpement.typ"
+#include "chapitres/04-cameras-virtuelles.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/05-retour-sur-experience.typ"
+#include "chapitres/05-conception.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/06-conclusion.typ"
+#include "chapitres/06-developpement.typ"
+#pagebreak(to: "odd")
+
+#include "chapitres/07-retour-sur-experience.typ"
+#pagebreak(to: "odd")
+
+#include "chapitres/08-conclusion.typ"
 #pagebreak(to: "odd")
 
 #set heading(numbering: none)
