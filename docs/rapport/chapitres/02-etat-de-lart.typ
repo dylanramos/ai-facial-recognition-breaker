@@ -136,6 +136,8 @@ Comme le montre le #link("../rapports-de-recherche/sites-de-verification/sites-d
   caption: "Processus de vérification d'identité de Facebook.",
 )
 
+Exemple de selfie vidéo demandé par Facebook : #underline()[#link("https://drive.proton.me/urls/D81WJDY3PG#XU6kPbSIfchZ")]
+
 *Exemple 2 : pourquoi Neon Bank est très difficile à attaquer ?*
 
 Comme le montre le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 5.3 du rapport de recherche sites-de-verification.pdf")], Neon Bank demande une vérification d'identité lors d'un appel vidéo avec un employé. Cela complique grandement la tâche pour un attaquant car il doit non seulement obtenir un document d'identité, mais aussi faire correspondre le visage sur le document d'identité avec celui de l'appel vidéo, le tout en réussissant à tromper l'employé en temps réel sur un smartphone.

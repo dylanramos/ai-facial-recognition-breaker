@@ -20,6 +20,8 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *Operating System (OS) :* logiciel de base qui gère les ressources matérielles et logicielles d'un ordinateur.
 
+*Polling :* technique de vérification de l'état d'une tâche en envoyant régulièrement des requêtes à un serveur.
+
 *Prompt :* instruction, question ou entrée fournie à un système d'intelligence artificielle afin d'obtenir une réponse ou une action spécifique.
 
 *pyvirtualcam :* librairie Python permettant d'envoyer des flux vidéo à une caméra virtuelle sur Linux, Windows et macOS.

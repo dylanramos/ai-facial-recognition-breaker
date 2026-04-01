@@ -1,3 +1,5 @@
+#import "@preview/codelst:2.0.2": sourcecode
+
 // Paramètres globaux
 
 #set page(margin: (top: 5cm, bottom: 4cm, left: 2.5cm, right: 2.5cm))
@@ -115,9 +117,101 @@ Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'i
 
 Ainsi, la solution la plus simple pour utiliser ces différents modèles est de passer par un service d'API. Un service d'API est une plateforme qui regroupe les APIs des différents services de génération. Il met à disposition une API qui permet d'utiliser plusieurs modèles d'IA de manière centralisée et moins coûteuse que chez les fournisseurs directement.
 
-== Kie.ai
+#figure(
+  rect(image("images/service-api.png", width: 80%), stroke: 0.1pt),
+  caption: "Architecture d'un service d'API.",
+)
 
-Le service d'API choisi est #link("https://kie.ai/")[#underline("Kie.ai")]. Il a été choisi pour sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants notamment pour les comparaisons de prix.
+= Kie.ai
+
+Le service d'API choisi est #link("https://kie.ai/")[#underline("Kie.ai")]. Il a été choisi pour sa large gamme de modèles, sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants notamment pour les comparaisons de prix.
+
+#figure(
+  rect(image("images/kie.png", width: 40%), stroke: 0.1pt),
+  caption: "Catégories de modèles proposées par Kie.ai.",
+)
+
+Les catégories utiles à ce projet sont "Video Generation" et "Image Generation", mais la catégorie "Chat" reste intéressante si un générateur de prompt automatique vient à être nécessaire.
+
+== Exemple d'utilisation de l'API pour générer une vidéo <api-generation>
+
+L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle *kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
+
+#pagebreak()
+
+#sourcecode[```python
+# Source : https://kie.ai/kling-3-0
+def generate_video_kling(prompt: str, image_url: str) -> str:
+    url = "https://api.kie.ai/api/v1/jobs/createTask"
+    payload = {
+        "model": "kling-3.0/video",
+        "input": {
+            "mode": "std",
+            "image_urls": [
+                image_url,
+                image_url
+            ],
+            "sound": False,
+            "duration": "3",
+            "aspect_ratio": "9:16",
+            "multi_shots": False,
+            "prompt": prompt,
+        }
+    }
+
+    response = requests.post(url, headers=HEADERS, json=payload)
+    data = response.json()
+    
+    if data["code"] != 200:
+        print(f"Failed to generate video: {data['msg']}")
+        sys.exit(1)
+    
+    return data["data"]["taskId"]
+
+```]
+
+== Exemple d'utilisation de l'API pour récupérer une vidéo générée
+
+L'exemple de code ci-dessous montre comment récupérer une vidéo générée après avoir lancé la génération (voir #underline()[@api-generation]). Cette fonction utilise le polling pour vérifier l'état de la génération de la vidéo en envoyant des requêtes à intervalles croissants. Si la vidéo est générée avec succès, la fonction retourne l'URL de la vidéo.
+
+#pagebreak()
+
+#sourcecode[```python
+# Source : https://docs.kie.ai/market/common/get-task-detail
+def get_video_url(task_id: str) -> str:
+    url = "https://api.kie.ai/api/v1/jobs/recordInfo"
+    params = { "taskId": task_id }
+    start_time = time.time()
+    max_duration = 15 * 60 # 15 minutes
+
+    while True:
+        elapsed_time = time.time() - start_time
+
+        if elapsed_time > max_duration:
+            print("Video generation timed out after 15 minutes.")
+            sys.exit(1)
+        
+        response = requests.get(url, headers=HEADERS, params=params)
+        data = response.json()
+
+        if data["data"]["state"] == "success":
+            result_json = json.loads(data["data"]["resultJson"])
+            return result_json["resultUrls"][0]
+
+        if data["data"]["state"] == "fail":
+            print(f"Video generation failed: {data['data']['failMsg']}")
+            sys.exit(1)
+        
+        # Recommended polling interval
+        if elapsed_time < 30:
+            wait = 3
+        elif elapsed_time < 120:
+            wait = 10
+        else:
+            wait = 30
+
+        time.sleep(wait)
+```]
 
 = Génération d'images
 
