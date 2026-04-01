@@ -118,9 +118,9 @@ Les modèles de génération d'images doivent être capables de modifier des ima
 - Text-to-Image
 - Image-to-Image
 
-La catégorie utile pour ce projet est "Image-to-Image" car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité par exemple. Une explication détaillée de ces deux catégories est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 3 du rapport de recherche generation-ia.pdf")].
+La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité par exemple. Une explication détaillée de ces deux catégories est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 3 du rapport de recherche generation-ia.pdf")].
 
-=== Modèles testés
+=== Tests effectués
 
 Parmis les modèles testés il y a :
 - Nano Banana 2
@@ -128,8 +128,6 @@ Parmis les modèles testés il y a :
 - Seedream 4.5
 - Grok Imagine
 - Flux 2
-
-=== Tests effectués
 
 Lors des tests des modèles, l'objectif était de modifier un exemple de carte d'identité suisse trouvée sur internet en changeant :
 - La photo d'identité par une autre photo.

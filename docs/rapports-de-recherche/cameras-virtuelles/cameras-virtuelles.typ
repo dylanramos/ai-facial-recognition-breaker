@@ -116,25 +116,30 @@
 
 Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
-== Comparaison des solutions
+Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle.
 
-Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
+= Comparaison des solutions
+
+L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser des solutions existantes. Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
 
 #set par(justify: false)
 
-#table(
-  columns: (auto, auto, auto, auto, auto),
-  align: horizon + center,
-  [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
-  [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
-  [*OBS Studio*],
-  [Linux, Windows, macOS],
-  [Oui],
-  [Abstraction de l'OS],
-  [Nécessite des actions manuelles, haute latence],
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: horizon + center,
+    [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
+    [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
+    [*OBS Studio*],
+    [Linux, Windows, macOS],
+    [Oui],
+    [Abstraction de l'OS],
+    [Nécessite des actions manuelles, haute latence],
 
-  [*UnityCapture*], [Windows], [Oui], [Caméra Windows native], [Windows uniquement],
-  [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
+    [*UnityCapture*], [Windows], [Oui], [Caméra Windows native], [Windows uniquement],
+    [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
+  ),
+  caption: "Comparaison des différentes solutions de caméras virtuelles.",
 )
 
 #set par(justify: true)
@@ -147,17 +152,23 @@ Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 24.0
 
 == Installation
 
-#sourcecode[```sh
-sudo apt install v4l2loopback-dkms v4l2loopback-utils ffmpeg
-```]
+#figure(
+  sourcecode[```sh
+  sudo apt install v4l2loopback-dkms v4l2loopback-utils ffmpeg
+  ```],
+  caption: [Installation de `v4l2loopback` et `FFmpeg` sur Ubuntu.],
+)
 
 == Création d'une caméra virtuelle
 
 La commande ci-dessous crée une caméra virtuelle appelée `VirtualCam` :
 
-#sourcecode[```sh
-sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
-```]
+#figure(
+  sourcecode[```sh
+  sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
+  ```],
+  caption: [Création d'une caméra virtuelle avec `v4l2loopback`.],
+)
 
 - `modprobe v4l2loopback` : charge le module noyau.
 - `devices=1` : crée 1 périphérique virtuel.
@@ -167,17 +178,23 @@ sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusiv
 
 Il est ensuite possible de lister les caméras disponibles :
 
-#sourcecode[```sh
-v4l2-ctl --list-devices
-```]
+#figure(
+  sourcecode[```sh
+  v4l2-ctl --list-devices
+  ```],
+  caption: [Énumération des caméras disponibles avec `v4l2loopback`.],
+)
 
 == Envoi d'un flux vidéo vers la caméra virtuelle
 
 La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle :
 
-#sourcecode[```sh
-ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
-```]
+#figure(
+  sourcecode[```sh
+  ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
+  ```],
+  caption: [Diffusion d'une vidéo sur une caméra virtuelle sous Linux.],
+)
 
 - `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois).
 - `stream_loop -1` : boucle indéfiniment.
@@ -190,56 +207,67 @@ ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
 
 Avant chaque diffusion de vidéo, il faut recharger le module `v4l2loopback` pour éviter les problèmes de conflits. Cela garantit que la caméra virtuelle est correctement réinitialisée et prête à recevoir le flux vidéo :
 
-#sourcecode[```sh
-sudo modprobe -r v4l2loopback
-sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
-```]
+#figure(
+  sourcecode[```sh
+  sudo modprobe -r v4l2loopback
+  sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
+  ```],
+  caption: [Rechargement du module `v4l2loopback`.],
+)
 
 == Script d'automatisation
 
 Le script ci-dessous automatise le processus de rechargement du module et de diffusion de la vidéo sur la caméra virtuelle :
 
-#sourcecode[```sh
-#!/bin/bash
+#pagebreak()
 
-# Check if video file argument is provided
-if [ $# -eq 0 ]; then
-    echo "Error: Please provide a video file path"
-    echo "Usage: $0 <video_file>"
-    exit 1
-fi
+#figure(
+  sourcecode[```sh
+  #!/bin/bash
 
-VIDEO_FILE="$1"
+  # Check if video file argument is provided
+  if [ $# -eq 0 ]; then
+      echo "Error: Please provide a video file path"
+      echo "Usage: $0 <video_file>"
+      exit 1
+  fi
 
-# Check if the video file exists
-if [ ! -f "$VIDEO_FILE" ]; then
-    echo "Error: Video file '$VIDEO_FILE' not found"
-    exit 1
-fi
+  VIDEO_FILE="$1"
 
-echo "Removing v4l2loopback module..."
-sudo modprobe -r v4l2loopback
+  # Check if the video file exists
+  if [ ! -f "$VIDEO_FILE" ]; then
+      echo "Error: Video file '$VIDEO_FILE' not found"
+      exit 1
+  fi
 
-echo "Loading v4l2loopback module with virtual camera..."
-sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
+  echo "Removing v4l2loopback module..."
+  sudo modprobe -r v4l2loopback
 
-# Small delay to ensure the device is ready
-sleep 1
+  echo "Loading v4l2loopback module with virtual camera..."
+  sudo modprobe v4l2loopback devices=1 video_nr=2 card_label="VirtualCam" exclusive_caps=1
 
-echo "Starting video stream to virtual camera..."
-echo "Press Ctrl+C to stop streaming"
-ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
-```]
+  # Small delay to ensure the device is ready
+  sleep 1
+
+  echo "Starting video stream to virtual camera..."
+  echo "Press Ctrl+C to stop streaming"
+  ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
+  ```],
+  caption: [Script d'automatisation pour diffuser une vidéo sur une caméra virtuelle sous Linux.],
+)
 
 Pour l'utiliser, il suffit de lancer la commande suivante :
 
-#sourcecode[```sh
-./runvirtcam.sh video.mp4
-```]
+#figure(
+  sourcecode[```sh
+  ./runvirtcam.sh video.mp4
+  ```],
+  caption: [Lancement du script d'automatisation pour diffuser une vidéo sur la caméra virtuelle.],
+)
 
 = Caméras virtuelles sous Windows
 
-Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un driver customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
+Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
 `OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de rediriger un flux vidéo vers celle-ci.
 
 Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 10 22H2*.
@@ -266,7 +294,7 @@ ffmpeg.exe -list_devices true -f dshow -i dummy
 
 == Automatisation
 
-Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible d'envoyer un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec `OBS Studio`, le flux doit être envoyé via le protocole `UDP`.
+Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible d'envoyer un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec `OBS Studio`, le flux doit être envoyé via le protocole `UDP`, ce qui ajoute de la latence.
 
 === Création de la source vidéo
 
@@ -297,7 +325,12 @@ ffmpeg.exe -re -stream_loop -1 -i video.mp4 -c:v libx264 -preset ultrafast -tune
 
 = pyvirtualcam
 
-La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux, Windows ou macOS. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les systèmes d'exploitation.
+La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux, Windows ou macOS. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
+
+#figure(
+  rect(image("images/pyvirtualcam.png"), stroke: 0.1pt),
+  caption: [Schéma de fonctionnement de la librairie `pyvirtualcam`.],
+)
 
 == Exemple d'utilisation sur Windows
 
@@ -305,69 +338,78 @@ Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtue
 
 === Création de l'environnement virtuel
 
-#sourcecode[```sh
-python -m venv .venv
-.venv\Scripts\activate
-pip install pyvirtualcam opencv-python
-```]
+#figure(
+  sourcecode[```sh
+  python -m venv .venv
+  .venv\Scripts\activate
+  pip install pyvirtualcam opencv-python
+  ```],
+  caption: [Création d'un environnement virtuel Python et installation des dépendances.],
+)
 
 === Exemple de code
 
 #text(style: "italic")[Source : https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py]
 
-#sourcecode[```python
-# This script plays back a video file on the virtual camera.
-# It also shows how to:
-# - select a specific camera device
-# - use BGR as pixel format
+#figure(
+  sourcecode[```python
+  # This script plays back a video file on the virtual camera.
+  # It also shows how to:
+  # - select a specific camera device
+  # - use BGR as pixel format
 
-import argparse
-import pyvirtualcam
-from pyvirtualcam import PixelFormat
-import cv2
+  import argparse
+  import pyvirtualcam
+  from pyvirtualcam import PixelFormat
+  import cv2
 
-parser = argparse.ArgumentParser()
-parser.add_argument("video_path", help="path to input video file")
-parser.add_argument("--fps", action="store_true", help="output fps every second")
-parser.add_argument("--device", help="virtual camera device, e.g. /dev/video0 (optional)")
-args = parser.parse_args()
+  parser = argparse.ArgumentParser()
+  parser.add_argument("video_path", help="path to input video file")
+  parser.add_argument("--fps", action="store_true", help="output fps every second")
+  parser.add_argument("--device", help="virtual camera device, e.g. /dev/video0 (optional)")
+  args = parser.parse_args()
 
-video = cv2.VideoCapture(args.video_path)
-if not video.isOpened():
-    raise ValueError("error opening video")
-length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
-width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
-height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
-fps = video.get(cv2.CAP_PROP_FPS)
+  video = cv2.VideoCapture(args.video_path)
+  if not video.isOpened():
+      raise ValueError("error opening video")
+  length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+  width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+  height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+  fps = video.get(cv2.CAP_PROP_FPS)
 
-with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,
-                         device=args.device, print_fps=args.fps) as cam:
-    print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
-    count = 0
-    while True:
-        # Restart video on last frame.
-        if count == length:
-            count = 0
-            video.set(cv2.CAP_PROP_POS_FRAMES, 0)
+  with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,
+                           device=args.device, print_fps=args.fps) as cam:
+      print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
+      count = 0
+      while True:
+          # Restart video on last frame.
+          if count == length:
+              count = 0
+              video.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
-        # Read video frame.
-        ret, frame = video.read()
-        if not ret:
-            raise RuntimeError('Error fetching frame')
+          # Read video frame.
+          ret, frame = video.read()
+          if not ret:
+              raise RuntimeError('Error fetching frame')
 
-        # Send to virtual cam.
-        cam.send(frame)
+          # Send to virtual cam.
+          cam.send(frame)
 
-        # Wait until it's time for the next frame
-        cam.sleep_until_next_frame()
+          # Wait until it's time for the next frame
+          cam.sleep_until_next_frame()
 
-        count += 1
-```]
+          count += 1
+  ```],
+  caption: [Exemple de code Python utilisant `pyvirtualcam` pour diffuser une vidéo sur une caméra virtuelle.],
+)
 
 === Utilisation
 
-#sourcecode[```sh
-python video.py video.mp4
-```]
+#figure(
+  sourcecode[```sh
+  python video.py video.mp4
+  ```],
+  caption: [Lancement du script Python pour diffuser une vidéo sur la caméra virtuelle.],
+)
 
 La vidéo `video.mp4` est maintenant diffusée en boucle sur la caméra virtuelle de `OBS Studio`.

@@ -8,22 +8,103 @@
 
 = Caméras virtuelles et redirection de flux vidéo
 
-*Analyses détaillées* : #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")]
+== Introduction
 
 Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
-Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle.
+Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle. Les #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitres 3 et 4 du rapport de recherche cameras-virtuelles.pdf")] expliquent en détail comment mettre en place une caméra virtuelle sous Linux et Windows et comment y rediriger un flux vidéo manuellement.
 
-=== pyvirtualcam
+== Comparaison des solutions
 
-Pour éviter de devoir s'adapter à chaque OS et pour simplifier le développement du démonstrateur, la solution choisie est d'utiliser la librairie Python `pyvirtualcam` qui permet d'envoyer des flux vidéo à une caméra virtuelle de manière simple et multiplateforme.
+L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser des solutions existantes. Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
 
-== Conclusion
+#set par(justify: false)
 
-Les attaques se concentreront dans un premier temps sur les sites les plus faciles à attaquer.
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: horizon + center,
+    [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
+    [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
+    [*OBS Studio*],
+    [Linux, Windows, macOS],
+    [Oui],
+    [Abstraction de l'OS],
+    [Nécessite des actions manuelles, haute latence],
 
-Pour les sites qui demandent une vérification par photo, il faudra commencer par tester avec des images non générées pour voir si l'IA peut vraiment apporter quelque chose ou si une simple photo d'une autre personne suffit. Si l'IA peut apporter quelque chose, il faudra tester les différents modèles de type Image-to-Image pour déterminer lequel est le plus adapté pour modifier une image (faire vieillir une personne, changer une photo sur un document d'identité, etc.).
+    [*UnityCapture*], [Windows], [Oui], [Caméra Windows native], [Windows uniquement],
+    [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
+  ),
+  caption: "Comparaison des différentes solutions de caméras virtuelles.",
+)
 
-Pour les sites qui demandent une vérification par vidéo, il faut que le modèle soit capable de générer une vidéo réaliste d'une personne mais aussi d'une caméra filmant un document d'identité. Les modèles les plus utiles seront probablement ceux de type Image-to-Video et Video-to-Video. Il faudra également prendre en compte le fait qu'un interlocuteur humain peut être présent et penser à des méthodes pour le tromper, en jouant sur les temps de réponse par exemple.
+#set par(justify: true)
 
-Enfin, pour rediriger une vidéo générée vers une caméra virtuelle, la librairie Python `pyvirtualcam` semble être une bonne solution car elle est multiplateforme et utilise un langage de progammation populaire.
+Ces solutions permettent toutes de créer une caméra virtuelle, mais pour y rediriger un flux vidéo, elles nécessitent soit l'utilisation d'un logiciel à part, soit des actions manuelles pour créer une source vidéo. Par exemple :
+- Sous Linux, il est possible d'utiliser `FFmpeg` pour rediriger un flux vidéo vers la caméra virtuelle créée avec `v4l2loopback`.
+- Sous Windows et macOS, il est nécessaire de manuellement créer une source vidéo dans `OBS Studio` pour rediriger un flux vidéo vers la caméra virtuelle.
+
+== pyvirtualcam
+
+Pour éviter de devoir s'adapter à chaque OS et pour simplifier le développement du démonstrateur, il est possible d'utiliser une librairie Python appelée `pyvirtualcam`. Cette librairie a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
+
+#figure(
+  rect(image("../images/04-cameras-virtuelles/pyvirtualcam.png"), stroke: 0.1pt),
+  caption: [Schéma de fonctionnement de la librairie `pyvirtualcam`.],
+)
+
+L'exemple de code ci-dessous permet de lancer une vidéo en boucle sur une caméra virtuelle. À noter que, quel que soit l'OS utilisé, `pyvirtualcam` détecte automatiquement la caméra virtuelle, à condition que celle-ci existe (voir #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitre 3.2 (Linux) et 4.1 (Windows/MacOS) du rapport de recherche cameras-virtuelles.pdf")]).
+
+#figure(
+  sourcecode[```python
+  # This script plays back a video file on the virtual camera.
+  # It also shows how to:
+  # - select a specific camera device
+  # - use BGR as pixel format
+
+  import argparse
+  import pyvirtualcam
+  from pyvirtualcam import PixelFormat
+  import cv2
+
+  parser = argparse.ArgumentParser()
+  parser.add_argument("video_path", help="path to input video file")
+  parser.add_argument("--fps", action="store_true", help="output fps every second")
+  parser.add_argument("--device", help="virtual camera device, e.g. /dev/video0 (optional)")
+  args = parser.parse_args()
+
+  video = cv2.VideoCapture(args.video_path)
+  if not video.isOpened():
+      raise ValueError("error opening video")
+  length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+  width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+  height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+  fps = video.get(cv2.CAP_PROP_FPS)
+
+  with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,
+                           device=args.device, print_fps=args.fps) as cam:
+      print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
+      count = 0
+      while True:
+          # Restart video on last frame.
+          if count == length:
+              count = 0
+              video.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
+          # Read video frame.
+          ret, frame = video.read()
+          if not ret:
+              raise RuntimeError('Error fetching frame')
+
+          # Send to virtual cam.
+          cam.send(frame)
+
+          # Wait until it's time for the next frame
+          cam.sleep_until_next_frame()
+
+          count += 1
+  ```],
+  caption: [Exemple de code Python utilisant `pyvirtualcam` pour diffuser une vidéo sur une caméra virtuelle.],
+)
+
+Le #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitre 5.1 du rapport de recherche cameras-virtuelles.pdf")] présente une marche à suivre détaillée pour utiliser ce code.
