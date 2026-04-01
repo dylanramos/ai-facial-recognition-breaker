@@ -235,7 +235,7 @@ Les modèles de type Image-to-Image (édition d'images) partent d'une image four
 
 == Tests effectués sur les modèles de type Image-to-Image
 
-Plusieurs modèles de type Image-to-Image ont été testés pour vérifier leur capacité à modifier une photo d'identité de manière réaliste. L'objectif était modifier un exemple de carte d'identité suisse trouvée sur internet en changeant :
+Plusieurs modèles de type Image-to-Image ont été testés pour vérifier leur capacité à modifier une photo d'identité de manière réaliste. L'objectif était de modifier un exemple de carte d'identité suisse trouvée sur internet en changeant :
 - La photo d'identité par une autre photo.
 - Le nom "de Maienfeld Muster" par "Teste".
 - Le prénom "Lara Sample" par "Alice".
@@ -360,48 +360,6 @@ Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les
 
 Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 
-== Aperçu des vidéos générées
-
-La génération d'une vidéo est malheureusement payante, il n'est donc pas possible pour le moment de tester les modèles pour générer des selfies vidéo par exemple. Néanmoins, un aperçu provenant de Kie.ai est disponible et montre ce que chaque modèle est capable de faire.
-
-=== Veo 3.1
-
-- Prompt : #emph["The camera performs a smooth 180-degree arc shot, starting with the front-facing view of the singer and circling around her to seamlessly end on the POV shot from behind her on stage. The singer sings “when you look me in the eyes, I can see a million stars."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/3RJ1C3ZH84#OFC9m63b8dO2")]
-
-=== Sora 2
-
-- Prompt : #emph["A claymation conductor passionately leads a claymation orchestra, while the entire group joyfully sings in chorus the phrase: “Sora 2 is now available on Kie AI."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/PNY07W2MBG#uw97Ssx5gdc4")]
-
-=== Kling 3.0
-
-- Prompt : #emph["Outdoor terrace of a European villa, by a dining table with a blue and white checkered tablecloth, a young white woman in a blue and white striped short-sleeve shirt and khaki shorts, with a brown belt, sits barefoot, opposite a young white man in a white T-shirt.
-
-The camera zooms in, the woman swirls the juice in a glass, her eyes looking at the distant woods, and says, “These trees will turn yellow in a month, won't they?“
-
-Close-up of the man, he lowers his head and says, “But they'll be green again next summer.“
-
-Then the woman turns her head, smiles at the man opposite, and says, “Are you always this optimistic? Or just about summer?“
-
-Then the man lifts his head, looks at the woman and says, “Only about summers with you.“"]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/296EXVS94R#ilI14aY7rLkr")]
-
-=== Wan 2.6
-
-- Prompt : #emph["Anthopmopric fox singing a Christmas song at the rubbish dump in the rain."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/F8FJMDYT3R#ieBukdTVVjZ4")]
-
-=== Grok Imagine
-
-- Prompt : #emph["He is playing the guitar."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/RRHCDQCGCR#gCtg0GZ9lzP4")]
-
-=== Hailuo 2.3
-
-- Prompt : #emph["Two armored medieval knights clash in an intense duel at sunset, cinematic lighting.  Metal armor reflects warm golden light from the sun and the glowing swords. Sparks explode as the swords collide. Dynamic camera movement, shallow depth of field, dramatic slow motion. The scene takes place in an open desert battlefield, dust in the air, warm orange sun behind them, epic atmosphere.  Highly detailed armor textures, realistic reflections, volumetric lighting, cinematic quality."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/J1S5922PTG#gGDrXOGqjHWB")]
-
 == Tableau comparatif des modèles <comparaison-videos>
 
 Comme pour les modèles de génération d'images, les modèles de génération de vidéos proposent généralement une version Text-to-Video et une version Image-to-Video avec les mêmes paramètres et les mêmes prix. C'est pourquoi les tableaux ci-dessous ne font pas de distinction entre ces deux types. Les modèles de type Video-to-Video sont analysés à part dans le #underline()[@video-to-video] car ils sont plus spécifiques.
@@ -451,6 +409,48 @@ Les tableaux ci-dessous comparent les prix de chaque modèle dans leur configura
   ),
   caption: "Comparaison des modèles de génération de vidéos en configuration maximale.",
 )
+
+== Aperçu des vidéos générées
+
+La génération d'une vidéo est malheureusement payante, il n'est donc pas possible pour le moment de tester les modèles pour générer des selfies vidéo par exemple. Néanmoins, un aperçu provenant de Kie.ai est disponible et montre ce que chaque modèle est capable de faire.
+
+=== Veo 3.1
+
+- Prompt : #emph["The camera performs a smooth 180-degree arc shot, starting with the front-facing view of the singer and circling around her to seamlessly end on the POV shot from behind her on stage. The singer sings “when you look me in the eyes, I can see a million stars."]
+- Résultat : #underline()[#link("https://drive.proton.me/urls/3RJ1C3ZH84#OFC9m63b8dO2")]
+
+=== Sora 2
+
+- Prompt : #emph["A claymation conductor passionately leads a claymation orchestra, while the entire group joyfully sings in chorus the phrase: “Sora 2 is now available on Kie AI."]
+- Résultat : #underline()[#link("https://drive.proton.me/urls/PNY07W2MBG#uw97Ssx5gdc4")]
+
+=== Kling 3.0
+
+- Prompt : #emph["Outdoor terrace of a European villa, by a dining table with a blue and white checkered tablecloth, a young white woman in a blue and white striped short-sleeve shirt and khaki shorts, with a brown belt, sits barefoot, opposite a young white man in a white T-shirt.
+
+The camera zooms in, the woman swirls the juice in a glass, her eyes looking at the distant woods, and says, “These trees will turn yellow in a month, won't they?“
+
+Close-up of the man, he lowers his head and says, “But they'll be green again next summer.“
+
+Then the woman turns her head, smiles at the man opposite, and says, “Are you always this optimistic? Or just about summer?“
+
+Then the man lifts his head, looks at the woman and says, “Only about summers with you.“"]
+- Résultat : #underline()[#link("https://drive.proton.me/urls/296EXVS94R#ilI14aY7rLkr")]
+
+=== Wan 2.6
+
+- Prompt : #emph["Anthopmopric fox singing a Christmas song at the rubbish dump in the rain."]
+- Résultat : #underline()[#link("https://drive.proton.me/urls/F8FJMDYT3R#ieBukdTVVjZ4")]
+
+=== Grok Imagine
+
+- Prompt : #emph["He is playing the guitar."]
+- Résultat : #underline()[#link("https://drive.proton.me/urls/RRHCDQCGCR#gCtg0GZ9lzP4")]
+
+=== Hailuo 2.3
+
+- Prompt : #emph["Two armored medieval knights clash in an intense duel at sunset, cinematic lighting.  Metal armor reflects warm golden light from the sun and the glowing swords. Sparks explode as the swords collide. Dynamic camera movement, shallow depth of field, dramatic slow motion. The scene takes place in an open desert battlefield, dust in the air, warm orange sun behind them, epic atmosphere.  Highly detailed armor textures, realistic reflections, volumetric lighting, cinematic quality."]
+- Résultat : #underline()[#link("https://drive.proton.me/urls/J1S5922PTG#gGDrXOGqjHWB")]
 
 == Video-to-Video <video-to-video>
 
