@@ -556,27 +556,27 @@ Les sites du #underline()[@vert] demandent tous une vérification d'identité, m
 == Sites cibles <sites-cibles>
 
 Le reste des sites sont ceux qui seront testés lors des attaques, car ils impliquent l'utilisation de l'IA, notamment pour générer des vidéos. Ceux-ci sont les suivants :
-- Facebook
-- Migros Bank
-- Neon Bank
-- Swissquote
-- Revolut
-- Yuh
-- UBS
-- Swissborg
-- Zak Cler
-- Portail Etat de Vaud
-- Lotterie Romande
-- Swiss Casinos
-- Bet365
-- Binance
-- Kraken
-- Okx
-- Tea for Women
-- Roblox
-- Parship
-- OkCupid
-- Google
+- Facebook : #underline()[#link("https://www.facebook.com/reg/?entry_point=login&next=")]
+- Migros Bank : #underline()[#link("https://www.migrosbank.ch/onb-onboarding/onboarding/personal-data")]
+- Neon Bank : #underline()[#link("https://neon-free.ch/")]
+- Swissquote : #underline()[#link("https://www.swissquote.com/en-ch/become-client/open-account")]
+- Revolut : #underline()[#link("https://www.revolut.com/fr-CH/")]
+- Yuh : #underline()[#link("https://www.yuh.com/en/")]
+- UBS : #underline()[#link("https://www.ubs.com/ch/fr/services/accounts-and-cards/daily-banking/private-account-adults/key4.html#explore")]
+- Swissborg : #underline()[#link("https://swissborg.com/sign-up")]
+- Zak Cler : #underline()[#link("https://www.cler.ch/fr")]
+- Portail Etat de Vaud : #underline()[#link("https://www.vd.ch/prestation/demander-un-moyen-didentification-electronique-et-lacces-au-portail-securise")]
+- Lotterie Romande : #underline()[#link("https://jeux.loro.ch/account/registration-start")]
+- Swiss Casinos : #underline()[#link("https://online.swisscasinos.ch/fr/")]
+- Bet365 : #underline()[#link("https://www.bet365.com/")]
+- Binance : #underline()[#link("https://www.binance.com/")]
+- Kraken : #underline()[#link("https://www.kraken.com/")]
+- Okx : #underline()[#link("https://www.okx.com/")]
+- Tea for Women : #underline()[#link("https://www.teaforwomen.com/")]
+- Roblox : #underline()[#link("https://www.roblox.com/my/account#!/info")]
+- Parship : #underline()[#link("https://uk.parship.com/")]
+- OkCupid : #underline()[#link("https://www.okcupid.com/")]
+- Google : #underline()[#link("https://accounts.google.com/")]
 
 = Patterns de vérification des sites cibles <patterns>
 
