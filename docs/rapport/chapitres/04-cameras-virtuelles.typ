@@ -40,7 +40,7 @@ L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt
 
 #set par(justify: true)
 
-Ces solutions permettent toutes de créer une caméra virtuelle, mais pour y rediriger un flux vidéo, elles nécessitent soit l'utilisation d'un logiciel à part, soit des actions manuelles pour créer une source vidéo. Par exemple :
+Ces solutions permettent toutes de créer une caméra virtuelle, mais pour y rediriger un flux vidéo, elles nécessitent soit l'utilisation d'un logiciel à part, soit des actions manuelles. Par exemple :
 - Sous Linux, il est possible d'utiliser `FFmpeg` pour rediriger un flux vidéo vers la caméra virtuelle créée avec `v4l2loopback`.
 - Sous Windows et macOS, il est nécessaire de manuellement créer une source vidéo dans `OBS Studio` pour rediriger un flux vidéo vers la caméra virtuelle.
 

@@ -210,7 +210,7 @@ Les modèles de génération de vidéos doivent permettre de générer des vidé
 - Image-to-Video
 - Video-to-Video
 
-Les catégories utiles pour ce projet sont "Image-to-Video" et "Video-to-Video" car elles permettent de partir d'une image ou d'une vidéo existante pour générer une nouvelle vidéo, ce qui est très utile pour générer un selfie vidéo à partir de l'image d'une personne par exemple. Une explication détaillée de ces trois catégories est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 4 du rapport de recherche generation-ia.pdf")].
+Les catégories utiles pour ce projet sont *Image-to-Video* et *Video-to-Video* car elles permettent de partir d'une image ou d'une vidéo existante pour générer une nouvelle vidéo, ce qui est très utile pour générer un selfie vidéo à partir de l'image d'une personne par exemple. Une explication détaillée de ces trois catégories est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 4 du rapport de recherche generation-ia.pdf")].
 
 === Modèles de type Image-to-Video
 
