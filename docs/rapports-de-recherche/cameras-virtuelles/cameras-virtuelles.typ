@@ -288,9 +288,12 @@ La vidéo est maintenant diffusée en boucle sur la caméra virtuelle et est acc
 
 En effet, cela est dû au fait que c'est une caméra logicielle qui utilise le framework DirectShow, elle est donc enregistrée dynamiquement à l'exécution et n'est pas détectée comme un périphérique physique par l'OS #footnote[https://medium.com/deelvin-machine-learning/how-does-obs-virtual-camera-plugin-work-on-windows-e92ab8986c4e#0878]. Il est néanmoins possible de vérifier qu'elle existe vraiment en utilisant `FFmpeg` pour lister les périphériques vidéo disponibles :
 
-#sourcecode[```sh
-ffmpeg.exe -list_devices true -f dshow -i dummy
-```]
+#figure(
+  sourcecode[```sh
+  ffmpeg.exe -list_devices true -f dshow -i dummy
+  ```],
+  caption: [Énumération des périphériques vidéo disponibles avec `FFmpeg` sur Windows.],
+)
 
 == Automatisation
 
@@ -310,9 +313,12 @@ Cette source vidéo est maintenant prête à recevoir un flux vidéo via `UDP` s
 
 La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle de `OBS Studio` :
 
-#sourcecode[```sh
-ffmpeg.exe -re -stream_loop -1 -i video.mp4 -c:v libx264 -preset ultrafast -tune zerolatency -f mpegts "udp://127.0.0.1:1234?pkt_size=1316"
-```]
+#figure(
+  sourcecode[```sh
+  ffmpeg.exe -re -stream_loop -1 -i video.mp4 -c:v libx264 -preset ultrafast -tune zerolatency -f mpegts "udp://127.0.0.1:1234?pkt_size=1316"
+  ```],
+  caption: [Diffusion d'une vidéo sur une caméra virtuelle sous Windows en utilisant `FFmpeg`.],
+)
 
 - `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois).
 - `stream_loop -1` : boucle indéfiniment.
