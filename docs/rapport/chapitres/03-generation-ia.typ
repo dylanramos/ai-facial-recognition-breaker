@@ -118,9 +118,17 @@ Les modèles de génération d'images doivent être capables de modifier des ima
 - Text-to-Image
 - Image-to-Image
 
-La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité par exemple. Une explication détaillée de ces deux catégories est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 3 du rapport de recherche generation-ia.pdf")].
+=== Text-to-Image
 
-=== Tests effectués
+Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les visuels à partir de zéro. Ils sont utiles pour générer des images de personnes fictives mais ne sont pas adaptés pour modifier des images existantes.
+
+=== Image-to-Image
+
+Les modèles de type Image-to-Image (édition d'images) partent d'une image fournie et la modifient en fonction du prompt. Ils sont utiles pour modifier des images existantes contrairement aux modèles de type Text-to-Image.
+
+=== Exemples de tests effectués
+
+La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité comme le démontrent les exemples de test ci-dessous. Pour une vue plus détaillée de tous les tests effectués, voir le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 3.3 du rapport de recherche generation-ia.pdf")].
 
 Parmis les modèles testés il y a :
 - Nano Banana 2
@@ -148,6 +156,8 @@ Lors des tests des modèles, l'objectif était de modifier un exemple de carte d
   ),
 )
 
+*Exemple 1 : Nano Banana 2*
+
 Le modèle qui semble le mieux fonctionner pour modifier une carte d'identité est *Nano Banana 2*. En effet, la modification de la carte d'identité est plutôt bien réussie, les éléments modifiés sont bien intégrés à l'image originale et les motifs de la carte sont conservés, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont disparu.
 
 #grid(
@@ -163,6 +173,8 @@ Le modèle qui semble le mieux fonctionner pour modifier une carte d'identité e
   ),
 )
 
+*Exemple 2 : Seedream 4.5*
+
 À l'inverse, le modèle *Seedream 4.5* est plutôt mauvais. En effet, le texte est illisible et le format de l'image est mauvais. À noter que l'image n'a pas été modifiée car la version gratuite de Seedream 4.5 ne permet pas de déposer plusieurs images en même temps.
 
 #grid(
@@ -177,8 +189,6 @@ Le modèle qui semble le mieux fonctionner pour modifier une carte d'identité e
     caption: "Résultat du modèle Seedream 4.5.",
   ),
 )
-
-Les résultats des autres modèles sont disponibles dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 3.3 du rapport de recherche generation-ia.pdf")].
 
 === Tableau comparatif des modèles
 
@@ -210,11 +220,17 @@ Les modèles de génération de vidéos doivent permettre de générer des vidé
 - Image-to-Video
 - Video-to-Video
 
-Les catégories utiles pour ce projet sont *Image-to-Video* et *Video-to-Video* car elles permettent de partir d'une image ou d'une vidéo existante pour générer une nouvelle vidéo, ce qui est très utile pour générer un selfie vidéo à partir de l'image d'une personne par exemple. Une explication détaillée de ces trois catégories est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 4 du rapport de recherche generation-ia.pdf")].
+=== Text-to-Video
 
-=== Modèles de type Image-to-Video
+Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les visuels et les mouvements à partir de zéro. Cela leur laisse beaucoup de créativité mais rend plus difficile le contrôle du résultat final, ce qui peut être problématique pour la vérification d'identité.
 
-Parmi les modèles de type Image-to-Video il y a :
+=== Image-to-Video
+
+Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
+
+=== Modèles de type Text-to-Video et Image-to-Video
+
+Parmi les modèles de type Text-to-Video et Image-to-Video il y a :
 
 - Veo 3.1
 - Sora 2
@@ -222,6 +238,27 @@ Parmi les modèles de type Image-to-Video il y a :
 - Wan 2.6
 - Grok Imagine
 - Hailuo 2.3
+
+Les exemples ci-dessous montrent de bons selfies vidéo générés avec Grok Imagine en version Text-to-Video et Image-to-Video à partir d'un même prompt. D'autres exemples ainsi que le prompt utilisé sont également disponibles dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 4.4 du rapport de recherche generation-ia.pdf")].
+
+*Exemple 1 : Grok Imagine Text-to-Video*
+
+- Lien : #underline()[#link("https://drive.proton.me/urls/M5HVK06A38#E5YW47Y9Go9k")]
+
+La vidéo est plutôt bonne, la personne tourne bien la tête, les mouvements sont réalistes et il n'y a pas de bruit de fond.
+
+*Exemple 2 : Grok Imagine Image-to-Video*
+
+- Lien : #underline()[#link("https://drive.proton.me/urls/0P5960QZ9C#HbccK9wPdIuS")]
+
+#figure(
+  rect(image("../images/03-generation-ia/boy.png", width: 50%), stroke: 0.1pt),
+  caption: "Image de départ utilisée pour la génération de la vidéo avec le modèle Grok Imagine Image-to-Video.",
+)
+
+Comme pour la version Text-to-Video, la vidéo est plutôt bonne, la personne tourne bien la tête, les mouvements sont réalistes et il n'y a pas de bruit de fond. Par contre, la personne sourit au début de la vidéo alors que cela n'est pas demandé.
+
+*Tableau comparatif des modèles*
 
 Le tableau ci-dessous présente les caractéristiques de ces modèles dans leur configuration maximale (meilleure qualité de vidéo possible, durée maximale, audio).
 
@@ -243,20 +280,13 @@ Le tableau ci-dessous présente les caractéristiques de ces modèles dans leur 
 
 Une description détaillée des critères de sélection des modèles est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("chapitre 4.3 du rapport de recherche generation-ia.pdf")].
 
-La génération d'une vidéo est malheureusement payante, il n'est donc pas possible pour le moment de tester les modèles pour générer des selfies vidéo par exemple. Néanmoins, un aperçu provenant de Kie.ai est disponible et montre ce que chaque modèle est capable de faire :
-
-- Veo 3.1 : #underline()[#link("https://drive.proton.me/urls/3RJ1C3ZH84#OFC9m63b8dO2")]
-- Sora 2 : #underline()[#link("https://drive.proton.me/urls/PNY07W2MBG#uw97Ssx5gdc4")]
-- Kling 3.0 : #underline()[#link("https://drive.proton.me/urls/296EXVS94R#ilI14aY7rLkr")]
-- Wan 2.6 : #underline()[#link("https://drive.proton.me/urls/F8FJMDYT3R#ieBukdTVVjZ4")]
-- Grok Imagine : #underline()[#link("https://drive.proton.me/urls/RRHCDQCGCR#gCtg0GZ9lzP4")]
-- Hailuo 2.3 : #underline()[#link("https://drive.proton.me/urls/J1S5922PTG#gGDrXOGqjHWB")]
-
 === Modèles de type Video-to-Video
 
-Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
+Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne. 
 
-À ce jour, le seul modèle de type Video-to-Video disponible sur Kie.ai est *Kling 3.0 motion control*. Les prix sont les suivants :
+À ce jour, le seul modèle de type Video-to-Video disponible sur Kie.ai est *Kling 3.0 motion control*. Un exemple de ce qui est possible de faire avec ce type de modèle est disponible sur leur site : #underline()[#link("https://kie.ai/kling-3-motion-control")]. 
+
+Ci-dessous, les prix par seconde de vidéo générée en fonction de la qualité de la vidéo :
 
 - Pour une vidéo en 720p : *0.10\$ par seconde*.
 - Pour une vidéo en 1080p : *0.135\$ par seconde*.

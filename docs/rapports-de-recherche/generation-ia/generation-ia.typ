@@ -410,53 +410,50 @@ Les tableaux ci-dessous comparent les prix de chaque modèle dans leur configura
   caption: "Comparaison des modèles de génération de vidéos en configuration maximale.",
 )
 
-== Aperçu des vidéos générées
+== Exemples de génération de selfies vidéo
 
-La génération d'une vidéo est malheureusement payante, il n'est donc pas possible pour le moment de tester les modèles pour générer des selfies vidéo par exemple. Néanmoins, un aperçu provenant de Kie.ai est disponible et montre ce que chaque modèle est capable de faire.
+Quelques tests de génération de selfies vidéo ont été effectués avec des modèles de type Text-to-Video et Image-to-Video proposant un essai gratuit. Le même prompt a été utilisé pour tous les modèles, celui-ci est le suivant :
 
-=== Veo 3.1
+#emph[
+  "A realistic identity verification style video. The person is centered in frame, facing the camera with neutral expression. After a short pause, they slowly turn their head to the left, then to the right, and return to the center. No speech. Consistent indoor lighting, plain background, clear facial visibility, natural blinking, no exaggerated movements."
+]
 
-- Prompt : #emph["The camera performs a smooth 180-degree arc shot, starting with the front-facing view of the singer and circling around her to seamlessly end on the POV shot from behind her on stage. The singer sings “when you look me in the eyes, I can see a million stars."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/3RJ1C3ZH84#OFC9m63b8dO2")]
+=== Veo 3.1 Text-to-Video
 
-=== Sora 2
+- Lien : #underline()[#link("https://drive.proton.me/urls/W57AF6J938#t0pGaAODlPcl")]
 
-- Prompt : #emph["A claymation conductor passionately leads a claymation orchestra, while the entire group joyfully sings in chorus the phrase: “Sora 2 is now available on Kie AI."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/PNY07W2MBG#uw97Ssx5gdc4")]
+La vidéo est plutôt mauvaise. En effet, la personne tourne sur elle-même au lieu de tourner la tête et il y a un bruit de fond qui n'a pas été demandé.
 
-=== Kling 3.0
+=== Kling 3.0 Text-to-Video
 
-- Prompt : #emph["Outdoor terrace of a European villa, by a dining table with a blue and white checkered tablecloth, a young white woman in a blue and white striped short-sleeve shirt and khaki shorts, with a brown belt, sits barefoot, opposite a young white man in a white T-shirt.
+- Lien : #underline()[#link("https://drive.proton.me/urls/QW7N2YP92G#jsyvjLBgmcaQ")]
 
-The camera zooms in, the woman swirls the juice in a glass, her eyes looking at the distant woods, and says, “These trees will turn yellow in a month, won't they?“
+La vidéo est plutôt moyenne, la personne tourne bien la tête et il n'y a pas de bruit de fond. Par contre, la personne tourne la tête à droite une fois de trop et les mouvements sont trop rapides.
 
-Close-up of the man, he lowers his head and says, “But they'll be green again next summer.“
+=== Grok Imagine Text-to-Video
 
-Then the woman turns her head, smiles at the man opposite, and says, “Are you always this optimistic? Or just about summer?“
+- Lien : #underline()[#link("https://drive.proton.me/urls/M5HVK06A38#E5YW47Y9Go9k")]
 
-Then the man lifts his head, looks at the woman and says, “Only about summers with you.“"]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/296EXVS94R#ilI14aY7rLkr")]
+La vidéo est plutôt bonne, la personne tourne bien la tête, les mouvements sont réalistes et il n'y a pas de bruit de fond.
 
-=== Wan 2.6
+=== Grok Imagine Image-to-Video
 
-- Prompt : #emph["Anthopmopric fox singing a Christmas song at the rubbish dump in the rain."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/F8FJMDYT3R#ieBukdTVVjZ4")]
+- Lien : #underline()[#link("https://drive.proton.me/urls/0P5960QZ9C#HbccK9wPdIuS")]
 
-=== Grok Imagine
+#figure(
+  rect(image("images/boy.png", width: 50%), stroke: 0.1pt),
+  caption: "Image de départ utilisée pour la génération de la vidéo avec le modèle Grok Imagine Image-to-Video.",
+)
 
-- Prompt : #emph["He is playing the guitar."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/RRHCDQCGCR#gCtg0GZ9lzP4")]
-
-=== Hailuo 2.3
-
-- Prompt : #emph["Two armored medieval knights clash in an intense duel at sunset, cinematic lighting.  Metal armor reflects warm golden light from the sun and the glowing swords. Sparks explode as the swords collide. Dynamic camera movement, shallow depth of field, dramatic slow motion. The scene takes place in an open desert battlefield, dust in the air, warm orange sun behind them, epic atmosphere.  Highly detailed armor textures, realistic reflections, volumetric lighting, cinematic quality."]
-- Résultat : #underline()[#link("https://drive.proton.me/urls/J1S5922PTG#gGDrXOGqjHWB")]
+Comme pour la version Text-to-Video, la vidéo est plutôt bonne, la personne tourne bien la tête, les mouvements sont réalistes et il n'y a pas de bruit de fond. Par contre, la personne sourit au début de la vidéo alors que cela n'est pas demandé.
 
 == Video-to-Video <video-to-video>
 
-Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
+Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne. 
 
-À ce jour, le seul modèle de type Video-to-Video disponible sur Kie.ai est *Kling 3.0 motion control*. Les prix sont les suivants :
+À ce jour, le seul modèle de type Video-to-Video disponible sur Kie.ai est *Kling 3.0 motion control*. Un exemple de ce qui est possible de faire avec ce type de modèle est disponible sur leur site : #underline()[#link("https://kie.ai/kling-3-motion-control")]. 
+
+Ci-dessous, les prix par seconde de vidéo générée en fonction de la qualité de la vidéo :
 
 - Pour une vidéo en 720p : *0.10\$ par seconde*.
 - Pour une vidéo en 1080p : *0.135\$ par seconde*.
