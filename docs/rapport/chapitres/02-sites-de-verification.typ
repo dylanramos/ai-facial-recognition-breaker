@@ -42,64 +42,43 @@ La liste ci-dessous présente les sites qui seront ciblés pour les attaques, ce
 
 == Patterns de vérification d'identité <patterns>
 
-Ci-dessous, les quatre patterns de vérification d'identité identifiés lors de l'analyse des sites cibles. Pour plus de détails concernant le processus de vérification de ceux-ci, consulter le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 7 du rapport de recherche sites-de-verification.pdf")].
+Ci-dessous, les quatre patterns de vérification d'identité identifiés lors de l'analyse des sites cibles. Pour plus de détails concernant le processus de vérification de chaque site, consulter le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 5 du rapport de recherche sites-de-verification.pdf")].
 
-=== Vérification par selfie vidéo uniquement
+=== Vérification par selfie vidéo uniquement <selfie-video>
+
+Facebook, Tea for Women, Roblox, Parship et Google demandent une vérification d'identité par selfie vidéo sans avoir à fournir de documents d'identité. Ces sites semblent être les plus faciles à attaquer car il n'est pas nécessaire de fournir de documents d'identité, ce qui pourrait être un obstacle pour les attaquants. De plus, la vérification peut se faire sur un ordinateur, ce qui facilite la mise en place d'une caméra virtuelle.
 
 #figure(
   rect(image("../images/02-sites-de-verification/verif-1.png"), stroke: 0.1pt),
   caption: "Processus de vérification d'identité par selfie vidéo.",
 )
 
-Sites concernés :
-- Facebook
-- Tea for Women
-- Roblox
-- Parship
-- Google
+=== Vérification par scan de document d'identité et selfie vidéo sur ordinateur <scan-ordinateur>
 
-=== Vérification par scan de document d'identité et selfie vidéo sur ordinateur
+Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken demandent une vérification d'identité par scan de document d'identité et selfie vidéo (pour certains) sur ordinateur. Ces sites sont un peu plus difficiles à attaquer que ceux du #underline()[@selfie-video] car il est nécessaire de fournir des documents d'identité, ce qui implique de devoir voler des documents d'identité ou d'en générer de faux. De plus, le selfie vidéo, lorsqu'il est requis, doit correspondre à la photo sur le document d'identité.
 
 #figure(
   rect(image("../images/02-sites-de-verification/verif-2.png"), stroke: 0.1pt),
   caption: "Processus de vérification d'identité par scan de document d'identité et selfie vidéo sur ordinateur.",
 )
 
-Sites concernés :
-- Migros Bank
-- Swissquote
-- Lotterie Romande
-- Swiss Casinos
-- Bet365
-- Binance
-- Kraken
+=== Vérification par scan de document d'identité et selfie vidéo sur smartphone 
 
-=== Vérification par scan de document d'identité et selfie vidéo sur smartphone
+UBS, Swissborg, Okx et OkCupid demandent aussi une vérification d'identité par scan de document d'identité et selfie vidéo, mais celle-ci doit se faire sur smartphone. Cela rend l'attaque plus difficile que pour les sites du #underline()[@scan-ordinateur] car il est nécessaire de gérer une caméra virtuelle sur un smartphone.
 
 #figure(
   rect(image("../images/02-sites-de-verification/verif-3.png"), stroke: 0.1pt),
   caption: "Processus de vérification d'identité par scan de document d'identité et selfie vidéo sur smartphone.",
 )
 
-Sites concernés :
-- UBS
-- Swissborg
-- Okx
-- OkCupid
-
 === Vérification par scan de document d'identité et appel vidéo
+
+Neon Bank, Revolut, Yuh, Zak Cler et le Portail de l'Etat de Vaud demandent une vérification d'identité par scan de document d'identité suivie d'un appel vidéo avec un employé. Ces sites semblent être les plus difficiles à attaquer car il faut non seulement fournir des documents d'identité, mais aussi réussir à tromper un employé lors d'un appel vidéo sur un smartphone.
 
 #figure(
   rect(image("../images/02-sites-de-verification/verif-4.png"), stroke: 0.1pt),
   caption: "Processus de vérification d'identité par scan de document d'identité et appel vidéo.",
 )
-
-Sites concernés :
-- Neon Bank
-- Revolut
-- Yuh
-- Zak Cler
-- Portail de l'Etat de Vaud
 
 == Classement des sites par difficulté d'attaque
 

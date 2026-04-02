@@ -159,7 +159,7 @@ Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 24.0
   caption: [Installation de `v4l2loopback` et `FFmpeg` sur Ubuntu.],
 )
 
-== Création d'une caméra virtuelle
+== Création d'une caméra virtuelle <v4l2loopback-install>
 
 La commande ci-dessous crée une caméra virtuelle appelée `VirtualCam` :
 
@@ -333,9 +333,11 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 
 La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux, Windows ou macOS. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
 
+Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #underline()[@v4l2loopback-install] pour Linux et #underline()[@obs-install] pour Windows et macOS ).
+
 #figure(
   rect(image("images/pyvirtualcam.png"), stroke: 0.1pt),
-  caption: [Schéma de fonctionnement de la librairie `pyvirtualcam`.],
+  caption: [Comparaison avec `pyvirtualcam` et sans `pyvirtualcam` pour rediriger un flux vidéo vers une caméra virtuelle.],
 )
 
 == Exemple d'utilisation sur Windows

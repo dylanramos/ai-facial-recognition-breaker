@@ -28,7 +28,7 @@ Le service d'API choisi est #link("https://kie.ai/")[#underline("Kie.ai")]. Il a
   caption: "Catégories de modèles proposées par Kie.ai.",
 )
 
-Les catégories utiles à ce projet sont "Video Generation" et "Image Generation", mais la catégorie "Chat" reste intéressante si un générateur de prompt automatique vient à être nécessaire.
+Les catégories utiles à ce projet sont *Video Generation* et *Image Generation*, mais la catégorie *Chat* reste intéressante si un générateur de prompt automatique vient à être nécessaire.
 
 === Exemple d'utilisation de l'API pour générer une vidéo <generate-video>
 

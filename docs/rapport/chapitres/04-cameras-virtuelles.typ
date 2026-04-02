@@ -16,7 +16,7 @@ Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il
 
 == Comparaison des solutions
 
-L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser des solutions existantes. Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
+L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser une solution existante qui la crée automatiquement. Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
 
 #set par(justify: false)
 
@@ -46,14 +46,16 @@ Ces solutions permettent toutes de créer une caméra virtuelle, mais pour y red
 
 == pyvirtualcam
 
-Pour éviter de devoir s'adapter à chaque OS et pour simplifier le développement du démonstrateur, il est possible d'utiliser une librairie Python appelée `pyvirtualcam`. Cette librairie a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
+Pour éviter de devoir s'adapter à chaque OS et pour simplifier le développement du démonstrateur, il est possible d'utiliser une librairie Python appelée `pyvirtualcam`. Cette librairie a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS. 
+
+Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitre 3.2 (Linux) et 4.1 (Windows/MacOS) du rapport de recherche cameras-virtuelles.pdf")]).
 
 #figure(
   rect(image("../images/04-cameras-virtuelles/pyvirtualcam.png"), stroke: 0.1pt),
-  caption: [Schéma de fonctionnement de la librairie `pyvirtualcam`.],
+  caption: [Comparaison avec `pyvirtualcam` et sans `pyvirtualcam` pour rediriger un flux vidéo vers une caméra virtuelle.],
 )
 
-L'exemple de code ci-dessous permet de lancer une vidéo en boucle sur une caméra virtuelle. À noter que, quel que soit l'OS utilisé, `pyvirtualcam` détecte automatiquement la caméra virtuelle, à condition que celle-ci existe (voir #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitre 3.2 (Linux) et 4.1 (Windows/MacOS) du rapport de recherche cameras-virtuelles.pdf")]).
+L'exemple de code ci-dessous permet de lancer une vidéo en boucle sur une caméra virtuelle. À noter que, quel que soit l'OS utilisé, `pyvirtualcam` détecte automatiquement la caméra virtuelle, à condition que celle-ci existe.
 
 #figure(
   sourcecode[```python
