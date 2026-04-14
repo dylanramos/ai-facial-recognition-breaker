@@ -1,5 +1,5 @@
 swisscom-video-identification:
-  type: Web
+  type: Article
   title: Video identification
   author: Peter Amrhyn
   date: 2021-11-01
@@ -13,7 +13,7 @@ sumsub:
   url: https://www.youtube.com/watch?v=U_j5AaVi07A
 
 securing-pl:
-  type: Web
+  type: Article
   title: Attacking the face recognition authentication - how easy is it to fool it?
   author: Sebastian Drygiel
   date: 2023-11-04
