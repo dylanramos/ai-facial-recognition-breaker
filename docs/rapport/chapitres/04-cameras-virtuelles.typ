@@ -12,7 +12,7 @@
 
 Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
-Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle. Les #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitres 3 et 4 du rapport de recherche cameras-virtuelles.pdf")] expliquent en détail comment mettre en place une caméra virtuelle sous Linux et Windows et comment y rediriger un flux vidéo manuellement.
+Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle. Les #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("Chapitres 3 et 4 du rapport de recherche cameras-virtuelles.pdf")] expliquent en détail comment mettre en place une caméra virtuelle sous Linux et Windows et comment y rediriger un flux vidéo manuellement.
 
 == Comparaison des solutions
 
@@ -48,7 +48,7 @@ Ces solutions permettent toutes de créer une caméra virtuelle, mais pour y red
 
 Pour éviter de devoir s'adapter à chaque OS et pour simplifier le développement du démonstrateur, il est possible d'utiliser une librairie Python appelée `pyvirtualcam`. Cette librairie a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS. 
 
-Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitre 3.2 (Linux) et 4.1 (Windows/MacOS) du rapport de recherche cameras-virtuelles.pdf")]).
+Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("Chapitre 3.2 (Linux) et 4.1 (Windows/MacOS) du rapport de recherche cameras-virtuelles.pdf")]).
 
 #figure(
   rect(image("../images/04-cameras-virtuelles/pyvirtualcam.png"), stroke: 0.1pt),
@@ -109,4 +109,4 @@ L'exemple de code ci-dessous permet de lancer une vidéo en boucle sur une camé
   caption: [Exemple de code Python utilisant `pyvirtualcam` pour diffuser une vidéo sur une caméra virtuelle.],
 )
 
-Le #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("chapitre 5.1 du rapport de recherche cameras-virtuelles.pdf")] présente une marche à suivre détaillée pour utiliser ce code.
+Le #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("Chapitre 5.1 du rapport de recherche cameras-virtuelles.pdf")] présente une marche à suivre détaillée pour utiliser ce code.

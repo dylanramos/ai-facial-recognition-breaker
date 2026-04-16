@@ -12,7 +12,7 @@ Les sites demandant une vérification d'identité sont plus ou moins sensibles, 
 
 == Sites cibles
 
-La liste ci-dessous présente les sites qui seront ciblés pour les attaques, ceux-ci ont été sélectionnés car ils impliquent l'utilisation de l'IA, notamment pour générer des vidéos. Les critères de sélection ainsi que les sites exclus sont détaillés dans le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 2 du rapport de recherche sites-de-verification.pdf")].
+La liste ci-dessous présente les sites qui seront ciblés pour les attaques, ceux-ci ont été sélectionnés car ils impliquent l'utilisation de l'IA, notamment pour générer des vidéos. Les critères de sélection ainsi que les sites exclus sont détaillés dans le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 2 du rapport de recherche sites-de-verification.pdf")].
 
 #set par(justify: false)
 
@@ -42,7 +42,7 @@ La liste ci-dessous présente les sites qui seront ciblés pour les attaques, ce
 
 == Patterns de vérification d'identité <patterns>
 
-Ci-dessous, les quatre patterns de vérification d'identité identifiés lors de l'analyse des sites cibles. Pour plus de détails concernant le processus de vérification de chaque site, consulter le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 5 du rapport de recherche sites-de-verification.pdf")].
+Ci-dessous, les quatre patterns de vérification d'identité identifiés lors de l'analyse des sites cibles. Pour plus de détails concernant le processus de vérification de chaque site, consulter le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 5 du rapport de recherche sites-de-verification.pdf")].
 
 === Vérification par selfie vidéo uniquement <selfie-video>
 
@@ -112,7 +112,7 @@ En se basant sur les patterns de vérification d'identité identifiés au #under
 
 === Exemple 1 : pourquoi Facebook est facile à attaquer ?
 
-Comme le montre le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 5.1 du rapport de recherche sites-de-verification.pdf")], Facebook ne demande qu'une vérification d'identité par selfie vidéo, cela signifie que c'est un algorithme qui va déterminer si la personne est humaine et non un employé de Facebook. D'autre part, aucun document d'identité n'est demandé, l'attaquant n'a donc pas besoin de voler ou de générer un document d'identité et n'a pas besoin non plus de faire correspondre le visage sur le document d'identité avec celui de la vidéo. Enfin, la vérification peut se faire sur un ordinateur, ce qui facilite la mise en place d'une caméra virtuelle.
+Comme le montre le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 5.1 du rapport de recherche sites-de-verification.pdf")], Facebook ne demande qu'une vérification d'identité par selfie vidéo, cela signifie que c'est un algorithme qui va déterminer si la personne est humaine et non un employé de Facebook. D'autre part, aucun document d'identité n'est demandé, l'attaquant n'a donc pas besoin de voler ou de générer un document d'identité et n'a pas besoin non plus de faire correspondre le visage sur le document d'identité avec celui de la vidéo. Enfin, la vérification peut se faire sur un ordinateur, ce qui facilite la mise en place d'une caméra virtuelle.
 
 #figure(
   rect(image("../images/02-sites-de-verification/facebook.png", width: 50%), stroke: 0.1pt),
@@ -123,7 +123,7 @@ Exemple de selfie vidéo demandé par Facebook : #underline()[#link("https://dri
 
 === Exemple 2 : pourquoi Neon Bank est très difficile à attaquer ?
 
-Comme le montre le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("chapitre 5.3 du rapport de recherche sites-de-verification.pdf")], Neon Bank demande une vérification d'identité lors d'un appel vidéo avec un employé. Cela complique grandement la tâche pour un attaquant car il doit non seulement obtenir un document d'identité, mais aussi faire correspondre le visage sur le document d'identité avec celui de l'appel vidéo, le tout en réussissant à tromper l'employé en temps réel sur un smartphone.
+Comme le montre le #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 5.3 du rapport de recherche sites-de-verification.pdf")], Neon Bank demande une vérification d'identité lors d'un appel vidéo avec un employé. Cela complique grandement la tâche pour un attaquant car il doit non seulement obtenir un document d'identité, mais aussi faire correspondre le visage sur le document d'identité avec celui de l'appel vidéo, le tout en réussissant à tromper l'employé en temps réel sur un smartphone.
 
 #figure(
   rect(image("../images/02-sites-de-verification/neon-bank.jpg", width: 30%), stroke: 0.1pt),
