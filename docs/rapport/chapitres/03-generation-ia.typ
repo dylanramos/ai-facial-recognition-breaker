@@ -128,7 +128,7 @@ Les modèles de type Image-to-Image (édition d'images) partent d'une image four
 
 === Exemples de tests effectués
 
-La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité comme le démontrent les exemples de test ci-dessous. Pour une vue plus détaillée de tous les tests effectués, voir le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("Chapitre 3.3 du rapport de recherche generation-ia.pdf")].
+La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité comme le démontrent les exemples de test ci-dessous. Pour une vue plus détaillée de tous les tests effectués, voir le chapitre 3.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
 Parmis les modèles testés il y a :
 - Nano Banana 2
@@ -239,7 +239,7 @@ Parmi les modèles de type Text-to-Video et Image-to-Video il y a :
 - Grok Imagine
 - Hailuo 2.3
 
-Les exemples ci-dessous montrent de bons selfies vidéo générés avec Grok Imagine en version Text-to-Video et Image-to-Video à partir d'un même prompt. D'autres exemples ainsi que le prompt utilisé sont également disponibles dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("Chapitre 4.4 du rapport de recherche generation-ia.pdf")].
+Les exemples ci-dessous montrent de bons selfies vidéo générés avec Grok Imagine en version Text-to-Video et Image-to-Video à partir d'un même prompt. D'autres exemples ainsi que le prompt utilisé sont également disponibles dans le chapitre 4.4 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
 *Exemple 1 : Grok Imagine Text-to-Video*
 
@@ -278,7 +278,7 @@ Le tableau ci-dessous présente les caractéristiques de ces modèles dans leur 
   caption: "Comparaison des modèles de génération de vidéos en configuration maximale.",
 )
 
-Une description détaillée des critères de sélection des modèles est disponible dans le #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("Chapitre 4.3 du rapport de recherche generation-ia.pdf")].
+Une description détaillée des critères de sélection des modèles est disponible dans le chapitre 4.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
 === Modèles de type Video-to-Video
 

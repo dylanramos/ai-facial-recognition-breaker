@@ -604,7 +604,7 @@ Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kra
 
 == Vérification par scan de document d'identité et selfie vidéo sur smartphone <scan-smartphone>
 
-UBS, Swissborg, Okx et OkCupid demandent aussi une vérification d'identité par scan de document d'identité et selfie vidéo, mais celle-ci doit se faire sur smartphone. Cela rend l'attaque plus difficile que pour les sites du #underline()[@scan-ordinateur] car il est nécessaire de gérer une caméra virtuelle sur un smartphone.
+UBS, Swissborg, Okx, Zak Cler et OkCupid demandent aussi une vérification d'identité par scan de document d'identité et selfie vidéo, mais celle-ci doit se faire sur smartphone. Cela rend l'attaque plus difficile que pour les sites du #underline()[@scan-ordinateur] car il est nécessaire de gérer une caméra virtuelle sur un smartphone.
 
 #figure(
   rect(image("images/verif-3.png"), stroke: 0.1pt),
@@ -613,7 +613,7 @@ UBS, Swissborg, Okx et OkCupid demandent aussi une vérification d'identité par
 
 == Vérification par scan de document d'identité et appel vidéo <appel-video>
 
-Neon Bank, Revolut, Yuh, Zak Cler et le Portail de l'Etat de Vaud demandent une vérification d'identité par scan de document d'identité suivie d'un appel vidéo avec un employé. Ces sites semblent être les plus difficiles à attaquer car il faut non seulement fournir des documents d'identité, mais aussi réussir à tromper un employé lors d'un appel vidéo sur un smartphone.
+Neon Bank, Revolut, Yuh et le Portail de l'Etat de Vaud demandent une vérification d'identité par scan de document d'identité suivie d'un appel vidéo avec un employé. Ces sites semblent être les plus difficiles à attaquer car il faut non seulement fournir des documents d'identité, mais aussi réussir à tromper un employé lors d'un appel vidéo sur un smartphone.
 
 #figure(
   rect(image("images/verif-4.png"), stroke: 0.1pt),
@@ -642,10 +642,10 @@ En se basant sur les patterns de vérification d'identité identifiés au #under
 - UBS
 - Swissborg
 - Okx
+- Zak Cler
 - OkCupid
 *Très difficile :*
 - Neon Bank
 - Revolut
 - Yuh
-- Zak Cler
 - Portail de l'Etat de Vaud

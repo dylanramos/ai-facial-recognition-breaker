@@ -163,12 +163,30 @@ Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Roman
 
 = Vérification par scan de document d'identité et selfie vidéo sur smartphone
 
-Les sites concernés par ce pattern sont UBS, Swissborg, Okx et OkCupid. L'interêt pour l'attaquant est le même que pour le pattern précédent (sauf pour OkCupid où l'interêt serait plutôt de nuire à la réputation de quelqu'un), mais cette fois il y a la contrainte de devoir utiliser un smartphone au lieu d'un ordinateur.
+Les sites concernés par ce pattern sont UBS, Swissborg, Okx, Zak Cler et OkCupid. L'interêt pour l'attaquant est le même que pour le pattern précédent (sauf pour OkCupid où l'interêt serait plutôt de nuire à la réputation de quelqu'un), mais cette fois il y a la contrainte de devoir utiliser un smartphone au lieu d'un ordinateur.
 
 Les scénarios sont donc les mêmes que dans le chapitre précédent, mais au lieu de passer par le navigateur pour la création du compte, l'attaquant passe par l'application mobile du site vulnérable via un émulateur Android, qui détectera la caméra virtuelle de l'ordinateur.
 
 = Vérification par scan de document d'identité et appel vidéo
 
-Les sites concernés par ce pattern sont Neon Bank, Revolut, Yuh, Zak Cler et le Portail de l'Etat de Vaud. L'interêt pour l'attaquant est le même que pour les deux patterns précédents, mais cette fois il y a la contrainte de devoir effectuer un appel vidéo avec un agent humain au lieu d'une vérification automatisée.
+Les sites concernés par ce pattern sont Neon Bank, Revolut, Yuh et le Portail de l'Etat de Vaud. L'interêt pour l'attaquant est le même que pour les deux patterns précédents, mais cette fois il y a la contrainte de devoir effectuer un appel vidéo avec un agent humain au lieu d'une vérification automatisée.
 
 De plus, comme pour le pattern précédent, la création du compte se fait via l'application mobile du site vulnérable.
+
+== Scénario 1 : création d'un faux compte en sachant ce qui va être demandé lors de l'appel vidéo
+
+*Préambule :* l'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. L'attaquant sait ce qui va lui être demandé lors de l'appel vidéo (tenir le document d'identité devant la caméra, faire des mouvements de tête, etc.), il pré-enregistre donc une vidéo de lui en train d'effectuer ces actions.
+
+#figure(
+  rect(image("images/appel-1.png"), stroke: 0.1pt),
+  caption: "Scénario 1 : l'attaquant sait ce qui est demandé lors de l'appel vidéo, il pré-enregistre une vidéo de lui en train d'effectuer les actions demandées et demande au démonstrateur de la modifier avec une autre personne et un autre document."
+)
+
+== Scénario 2 : création d'un faux compte sans savoir ce qui va être demandé lors de l'appel vidéo
+
+*Préambule :* l'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. Ne sachant pas ce qui va lui être demandé lors de l'appel vidéo, il doit miser sur de l'ingénierie sociale pour réussir à tromper l'agent humain.
+
+#figure(
+  rect(image("images/appel-2.png"), stroke: 0.1pt),
+  caption: "Scénario 2 : l'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra."
+)
