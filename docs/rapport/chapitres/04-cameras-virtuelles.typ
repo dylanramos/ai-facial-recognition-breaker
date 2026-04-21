@@ -12,7 +12,7 @@
 
 Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
-Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle. Les chapitres 3 et 4 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] expliquent en détail comment mettre en place une caméra virtuelle sous Linux et Windows et comment y rediriger un flux vidéo manuellement.
+Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle @virtual-camera. Les chapitres 3 et 4 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] expliquent en détail comment mettre en place une caméra virtuelle sous Linux et Windows et comment y rediriger un flux vidéo manuellement.
 
 == Comparaison des solutions
 
@@ -59,6 +59,8 @@ L'exemple de code ci-dessous permet de lancer une vidéo en boucle sur une camé
 
 #figure(
   sourcecode[```python
+  # Source : https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py
+
   # This script plays back a video file on the virtual camera.
   # It also shows how to:
   # - select a specific camera device

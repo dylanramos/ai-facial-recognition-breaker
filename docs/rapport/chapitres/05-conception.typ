@@ -10,7 +10,7 @@ Les chapitres suivants détaillent les scénarios typiques pour chaque pattern. 
 
 Seuls les scénarios impliquant l'utilisation de l'IA ont été pris en compte. En effet, l'objectif de ce travail est de démontrer les risques liés à l'utilisation de l'IA dans les processus de vérification d'identité en ligne. Ainsi, les sites qui ne demandent que d'envoyer une photo d'un document d'identité par exemple ne sont pas pris en compte, car le document peut être facilement falsifié avec des outils de retouche d'image classiques.
 
-=== Pattern 1 : vérification par selfie vidéo uniquement
+=== Pattern 1 : vérification par selfie vidéo uniquement <user-story-pattern-1>
 
 Les sites concernés par ce pattern sont Facebook, Tea for Women, Roblox, Parship et Google. L'interêt pour un attaquant de cibler ces sites serait de nuire à la réputation de quelqu'un en créant un faux compte sur Facebook, Tea for Women ou Parship. Dans le cas de Roblox et de Google, ce serait plutôt une personne mineure possédant déjà un compte qui chercherait à modifier sa date de naissance pour accéder à des contenus ou services inappropriés.
 
@@ -75,6 +75,16 @@ Ce scénario est de loin le plus complexe, il s'agit non seulement de générer 
 Pour ce scénario, le modèle de type *Video-to-Video* semble être le plus adéquat, car il permet de partir d'une vidéo pré-enregistrée de l'attaquant et ainsi de réproduire les actions demandées de la manière la plus réaliste possible.
 
 == Fonctionnalités du démonstrateur
+
+Les User Stories identifiées au chapitre précédent permettent de définir les fonctionnalités nécessaires au démonstrateur pour réaliser les attaques. Le démonstrateur doit être capable de :
+- Modifier des images à partir d'une image de référence (Image-to-Image) pour falsifier des documents d'identité.
+- Générer des vidéos à partir d'un prompt uniquement (Text-to-Video) pour générer des selfies vidéos sans image de référence et vérifier si la vérification est réussie pour le scénario du #underline[@user-story-pattern-1].
+- Générer des vidéos à partir d'une image de référence (Image-to-Video) pour générer des vidéos de documents d'identité et des selfies vidéos cohérents avec les documents falsifiés.
+- Générer des vidéos à partir d'une vidéo pré-enregistrée (Video-to-Video) pour réagir en temps réel aux instructions de l'agent humain ou pour générer des selfies vidéos plus contrôlés.
+- Diffuser des vidéos sur une caméra virtuelle de l'OS.
+
+Concernant la partie optionnelle (automatisation du démonstrateur), celle-ci concerne les mêmes scénarios que ceux présentés, mais au lieu que l'utilisateur écrive lui-même un prompt détaillé, le démonstrateur s'occupe de générer le prompt à partir d'une instruction simple de l'utilisateur. Optionnellement, le démonstrateur doit donc être capable de :
+- Générer un prompt détaillé pour chaque modèle à partir d'une instruction simple de l'utilisateur.
 
 == Architecture
 

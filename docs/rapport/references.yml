@@ -18,3 +18,10 @@ securing-pl:
   author: Sebastian Drygiel
   date: 2023-11-04
   url: https://www.securing.pl/en/attacking-the-face-recognition-authentication-how-easy-is-to-fool-it/
+
+virtual-camera:
+  type: Article
+  title: How to build a virtual camera under Linux and Windows
+  author: Sébastien Bonnet
+  date: 2022-06-28
+  url: https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796
