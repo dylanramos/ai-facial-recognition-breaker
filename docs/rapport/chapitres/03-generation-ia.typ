@@ -126,7 +126,7 @@ Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les
 
 Les modèles de type Image-to-Image (édition d'images) partent d'une image fournie et la modifient en fonction du prompt. Ils sont utiles pour modifier des images existantes contrairement aux modèles de type Text-to-Image.
 
-=== Exemples de tests effectués
+=== Exemples de tests effectués <exemples-tests-effectues>
 
 La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité comme le démontrent les exemples de test ci-dessous. Pour une vue plus détaillée de tous les tests effectués, voir le chapitre 3.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
 

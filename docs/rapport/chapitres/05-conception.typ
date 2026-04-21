@@ -32,6 +32,48 @@ Pour ce scénario, les trois types de génération de vidéos sont intéressants
 
 === Pattern 2 : vérification par scan de document d'identité et selfie vidéo sur ordinateur
 
+Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken. L'interêt pour un attaquant de cibler ces sites serait de créer un faux compte pour commettre des fraudes financières. Contrairement au pattern précédent, celui-ci est plus difficile à contourner, car il nécessite à la fois un faux document d'identité (ou un document volé) et un selfie vidéo correspondant. 
+
+*Scénario typique*
+
+L'attaquant a récupéré un exemple de document d'identité sur Internet #footnote[https://media.lematin.ch/4/image/2025/11/12/d10f8b1e-512b-4e61-9ccb-6a391f05621f.jpg?auto=format%2Ccompress%2Cenhance&fit=max&w=1200&h=1200&rect=0%2C0%2C1024%2C640&fp-x=0.2265625&fp-y=0.44375&s=5c24eb000b8b1c27d35d5c4e9d79d9bd] et veut créer un faux compte sur un site vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
+
+#figure(
+  rect(image("../images/05-conception/ordinateur-2.png"), stroke: 0.1pt),
+  caption: "Scénario typique du pattern 2 : l'attaquant a récupéré un exemple de document d'identité sur Internet et demande au démonstrateur de le modifier avec des informations fictives. Ensuite, il demande de simuler le scan du document et de générer un selfie vidéo correspondant à la personne sur le document."
+)
+
+Ce scénario est intéressant car il combine à la fois la génération d'images et la génération de vidéos. 
+
+Pour la modification du document d'identité, les modèles de type *Text-to-Image* ne sont pas adaptés, il faut utiliser les modèles de type *Image-to-Image* comme le démontre le #underline[@exemples-tests-effectues]. 
+
+Pour la génération de la vidéo du document d'identité et du selfie vidéo, les modèles de type *Text-to-Video* ne sont également pas adaptés. En effet, pour ce cas d'utilisation, il est important que les vidéos soient cohérentes avec l'image du document d'identité. Il faut donc utiliser des modèles de type *Image-to-Video* ou *Video-to-Video*.
+
+=== Pattern 3 : vérification par scan de document d'identité et selfie vidéo sur smartphone
+
+Les sites concernés par ce pattern sont UBS, Swissborg, Okx, Zak Cler et OkCupid. L'interêt pour l'attaquant est le même que pour le pattern précédent (sauf pour OkCupid où l'interêt serait plutôt de nuire à la réputation de quelqu'un), mais cette fois il y a la contrainte de devoir utiliser un smartphone au lieu d'un ordinateur.
+
+Les scénarios sont donc les mêmes que dans le chapitre précédent, mais au lieu de passer par le navigateur pour la création du compte, l'attaquant passe par l'application mobile du site vulnérable via un émulateur Android, qui détectera la caméra virtuelle de l'ordinateur.
+
+=== Pattern 4 : vérification par scan de document d'identité et appel vidéo
+
+Les sites concernés par ce pattern sont Neon Bank, Revolut, Yuh et le Portail de l'Etat de Vaud. L'interêt pour l'attaquant est le même que pour les deux patterns précédents, mais cette fois il y a la contrainte de devoir effectuer un appel vidéo avec un agent humain au lieu d'une vérification automatisée.
+
+De plus, comme pour le pattern précédent, la création du compte se fait via l'application mobile du site vulnérable.
+
+*Scénario typique*
+
+L'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. Ne sachant pas ce qui va lui être demandé lors de l'appel vidéo, il doit miser sur de l'ingénierie sociale pour réussir à tromper l'agent humain.
+
+#figure(
+  rect(image("../images/05-conception/appel-2.png"), stroke: 0.1pt),
+  caption: "Scénario typique du pattern 4 : l'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra."
+)
+
+Ce scénario est de loin le plus complexe, il s'agit non seulement de générer une vidéo cohérente avec le document d'identité falsifié, mais aussi de réagir en temps réel aux instructions de l'agent humain. Il faudra donc jouer sur de l'ingénierie sociale pour simuler des problèmes de caméra le temps de la génération de la vidéo ou dans le meilleur des cas, réussir à négocier avec l'agent humain pour qu'il accepte une vidéo envoyée plutôt qu'un appel vidéo.
+
+Pour ce scénario, le modèle de type *Video-to-Video* semble être le plus adéquat, car il permet de partir d'une vidéo pré-enregistrée de l'attaquant et ainsi de réproduire les actions demandées de la manière la plus réaliste possible.
+
 == Fonctionnalités du démonstrateur
 
 == Architecture
