@@ -17,7 +17,7 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-# Source : https://docs.kie.ai/file-upload-api/quickstart#base64-upload
+# Source: https://docs.kie.ai/file-upload-api/quickstart#base64-upload
 def upload_image(path: Path) -> str:
     with open(path, "rb") as f:
         file_data = base64.b64encode(f.read()).decode('utf-8')
@@ -40,7 +40,7 @@ def upload_image(path: Path) -> str:
     
     return data["data"]["downloadUrl"]
 
-# Source : https://kie.ai/kling-3-0
+# Source: https://kie.ai/kling-3-0
 def generate_video_kling(prompt: str, image_url: str) -> str:
     url = "https://api.kie.ai/api/v1/jobs/createTask"
     payload = {
@@ -68,7 +68,7 @@ def generate_video_kling(prompt: str, image_url: str) -> str:
     
     return data["data"]["taskId"]
 
-# Source : https://docs.kie.ai/market/common/get-task-detail
+# Source: https://docs.kie.ai/market/common/get-task-detail
 def get_video_url(task_id: str) -> str:
     url = "https://api.kie.ai/api/v1/jobs/recordInfo"
     params = { "taskId": task_id }
