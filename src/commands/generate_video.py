@@ -7,7 +7,7 @@ from api import generate_video_kling, get_video_url, upload_image
 app = typer.Typer()
 
 @app.callback(invoke_without_command=True)
-def generate(
+def generate_video(
     prompt: str = typer.Option(..., "--prompt", "-p", help="The text prompt to generate the video from"),
     image: Path = typer.Option(None, "--image", "-i", help="The path to the image for start and end frames"),
 ):
