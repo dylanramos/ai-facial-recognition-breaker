@@ -1,6 +1,6 @@
 # Custom ignores
 
-outputs/*
+outputs/
 
 # Source : https://github.com/github/gitignore/blob/main/Python.gitignore
 
