@@ -1,7 +1,6 @@
 import base64
 import json
 import os
-import sys
 import time
 from pathlib import Path
 
@@ -35,13 +34,12 @@ def upload_image(path: Path) -> str:
     data = response.json()
     
     if data["code"] != 200:
-        print(f"Failed to upload image: {data['msg']}")
-        sys.exit(1)
+        raise ValueError(f"Failed to upload image: {data['msg']}")
     
     return data["data"]["downloadUrl"]
 
 # Source: https://kie.ai/kling-3-0
-def generate_video_kling(prompt: str, image_url: str) -> str:
+def generate_video_kling_3_0(prompt: str, image_url: str) -> str:
     url = "https://api.kie.ai/api/v1/jobs/createTask"
     payload = {
         "model": "kling-3.0/video",
@@ -63,8 +61,7 @@ def generate_video_kling(prompt: str, image_url: str) -> str:
     data = response.json()
     
     if data["code"] != 200:
-        print(f"Failed to generate video: {data['msg']}")
-        sys.exit(1)
+        raise ValueError(f"Failed to generate video: {data['msg']}")
     
     return data["data"]["taskId"]
 
@@ -79,9 +76,8 @@ def get_video_url(task_id: str) -> str:
         elapsed_time = time.time() - start_time
 
         if elapsed_time > max_duration:
-            print("Video generation timed out after 15 minutes.")
-            sys.exit(1)
-        
+            raise ValueError("Video generation timed out after 15 minutes.")
+
         response = requests.get(url, headers=HEADERS, params=params)
         data = response.json()
 
@@ -90,8 +86,7 @@ def get_video_url(task_id: str) -> str:
             return result_json["resultUrls"][0]
 
         if data["data"]["state"] == "fail":
-            print(f"Video generation failed: {data['data']['failMsg']}")
-            sys.exit(1)
+            raise ValueError(f"Video generation failed: {data['data']['failMsg']}")
         
         # Recommended polling interval
         if elapsed_time < 30:

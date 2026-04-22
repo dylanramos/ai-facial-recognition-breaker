@@ -1,6 +1,6 @@
+import platform
 import subprocess
 from pathlib import Path
-import platform
 
 import cv2
 import pyvirtualcam
@@ -9,19 +9,22 @@ from pyvirtualcam import PixelFormat
 
 app = typer.Typer()
 
-# Source: https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py
 @app.callback(invoke_without_command=True)
 def broadcast(
     video: Path = typer.Option(..., "--video", "-v", help="The path to the video file"),
     fps: Path = typer.Option(None, "--fps", "-f", help="The frames per second for the video"),
     device: Path = typer.Option(None, "--device", "-d", help="The path to the device for video input"),
 ):
+    """
+    Broadcast a video file to a virtual camera.
+    """
     if platform.system() == "Linux":
         # Reload the v4l2loopback module
         subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
         # Create the virtual camera
         subprocess.run(["sudo", "modprobe", "v4l2loopback", "devices=1", "video_nr=2", "card_label=\"Virtual Cam\"", "exclusive_caps=1"])
 
+    # Source: https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py
     video = cv2.VideoCapture(video)
     if not video.isOpened():
         raise ValueError("Failed to open video file")
