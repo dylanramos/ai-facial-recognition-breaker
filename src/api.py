@@ -16,8 +16,19 @@ HEADERS = {
     "Content-Type": "application/json"
 }
 
-# Source: https://docs.kie.ai/file-upload-api/quickstart#base64-upload
+def get_remaining_credits() -> float:
+    """Get the current credit balance available in the Kie account."""
+    url = "https://api.kie.ai/api/v1/chat/credit"
+    response = requests.get(url, headers=HEADERS)
+    data = response.json()
+    
+    if data["code"] != 200:
+        raise ValueError(f"Failed to get remaining credits: {data['msg']}")
+
+    return data["data"]
+
 def upload_image(path: Path) -> str:
+    """Upload an image to the Kie platform and return the image URL."""
     with open(path, "rb") as f:
         file_data = base64.b64encode(f.read()).decode('utf-8')
         base64_data = f'data:image/{path.suffix[1:]};base64,{file_data}'
@@ -38,20 +49,22 @@ def upload_image(path: Path) -> str:
     
     return data["data"]["downloadUrl"]
 
-# Source: https://kie.ai/kling-3-0
-def generate_video_kling_3_0(prompt: str, image_url: str) -> str:
+def generate_video_kling_3_0(prompt: str, duration: int, aspect_ratio: str, start_image_url: str, end_image_url: str) -> str:
+    """
+    Generate a video using the Kling 3.0 model and return the task ID.
+    """
     url = "https://api.kie.ai/api/v1/jobs/createTask"
     payload = {
         "model": "kling-3.0/video",
         "input": {
             "mode": "std",
             "image_urls": [
-                image_url,
-                image_url
+                start_image_url,
+                end_image_url
             ],
             "sound": False,
-            "duration": "3",
-            "aspect_ratio": "9:16",
+            "duration": str(duration),
+            "aspect_ratio": aspect_ratio,
             "multi_shots": False,
             "prompt": prompt,
         }
@@ -65,8 +78,8 @@ def generate_video_kling_3_0(prompt: str, image_url: str) -> str:
     
     return data["data"]["taskId"]
 
-# Source: https://docs.kie.ai/market/common/get-task-detail
 def get_video_url(task_id: str) -> str:
+    """Poll the Kie platform for the video generation result and return the video URL."""
     url = "https://api.kie.ai/api/v1/jobs/recordInfo"
     params = { "taskId": task_id }
     start_time = time.time()
