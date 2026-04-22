@@ -1,6 +1,6 @@
 import subprocess
-import time
 from pathlib import Path
+import platform
 
 import cv2
 import pyvirtualcam
@@ -16,10 +16,11 @@ def broadcast(
     fps: Path = typer.Option(None, "--fps", "-f", help="The frames per second for the video"),
     device: Path = typer.Option(None, "--device", "-d", help="The path to the device for video input"),
 ):
-    # Reload the v4l2loopback module
-    subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
-    # Create the virtual camera
-    subprocess.run(["sudo", "modprobe", "v4l2loopback", "devices=1", "video_nr=2", "card_label=\"Virtual Cam\"", "exclusive_caps=1"])
+    if platform.system() == "Linux":
+        # Reload the v4l2loopback module
+        subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
+        # Create the virtual camera
+        subprocess.run(["sudo", "modprobe", "v4l2loopback", "devices=1", "video_nr=2", "card_label=\"Virtual Cam\"", "exclusive_caps=1"])
 
     video = cv2.VideoCapture(video)
     if not video.isOpened():
