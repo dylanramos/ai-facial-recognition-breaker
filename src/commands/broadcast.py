@@ -1,19 +1,18 @@
 import platform
 import subprocess
 from pathlib import Path
+from typing import Annotated
 
 import cv2
 import pyvirtualcam
 import typer
 from pyvirtualcam import PixelFormat
 
-app = typer.Typer()
+app = typer.Typer(no_args_is_help=True)
 
-@app.callback(invoke_without_command=True)
+@app.callback(invoke_without_command=True, rich_help_panel="Camera Commands")
 def broadcast(
-    video: Path = typer.Option(..., "--video", "-v", help="The path to the video file"),
-    fps: Path = typer.Option(None, "--fps", "-f", help="The frames per second for the video"),
-    device: Path = typer.Option(None, "--device", "-d", help="The path to the device for video input"),
+    video: Annotated[Path, typer.Argument(help="Path to the video file.")]
 ):
     """
     Broadcast a video file to a virtual camera.
@@ -32,6 +31,7 @@ def broadcast(
     width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = video.get(cv2.CAP_PROP_FPS)
+    device = None # Use default device
 
     with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,device=device, print_fps=fps) as cam:
         print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')

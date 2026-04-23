@@ -4,8 +4,8 @@ from api import get_remaining_credits
 
 app = typer.Typer()
 
-@app.callback(invoke_without_command=True)
+@app.callback(invoke_without_command=True, rich_help_panel="Kie Account Commands")
 def remaining_credits():
     """Get the current credit balance available in the Kie account."""
     credits = get_remaining_credits()
-    typer.echo(f"Remaining credits: {credits}")
+    print(f"Remaining credits: {credits}")

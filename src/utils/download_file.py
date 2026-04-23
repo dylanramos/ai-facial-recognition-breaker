@@ -1,7 +1,10 @@
 import os
+
 import requests
 
+
 def download_file(url):
+    """Download a file from a URL and save it to the local filesystem, returning the local file path."""
     filename = url.split("/")[-1]
     output_dir = "downloads"
     os.makedirs(output_dir, exist_ok=True)
