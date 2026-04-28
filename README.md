@@ -7,14 +7,17 @@ This repository contains my bachelor's thesis project. This work aims to underst
 - `docs/rapport/`: Main report and chapter sources.
 - `docs/rapports-de-recherche/`: Topic-specific research reports.
 - `docs/diagrammes/`: Draw.io architecture and workflow diagrams.
-- `src/main.py`: CLI entry point (Typer app).
-- `src/commands/`: Command implementations.
-- `src/api.py`: API calls to the AI generation service (Kie AI)
+- `src/aifrb/main.py`: CLI entry point (Typer app).
+- `src/aifrb/api.py`: API calls to the AI generation service (Kie AI).
+- `src/aifrb/commands/`: Commands implementation.
+- `src/aifrb/utils/`: Utility functions (e.g. file downloading).
+- `templates/`: Images and videos used for generating fake content (e.g. ID card template).
 
 ## Installation
 
 ### Prerequisites
-- Python 3.12+
+- [Python 3.12+](https://www.python.org/downloads/)
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [Kie AI](https://kie.ai/) account and API key
 
 ### Linux
@@ -26,10 +29,8 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 2. Create virtual environment and install dependencies:
    ```bash
-   cd src
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
+   uv sync
+   source .venv/bin/activate
    ```
 
 3. Set up environment variable for Kie AI API key:
@@ -41,7 +42,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 4. Run the application:
    ```bash
-   python3 main.py --help
+   aifrb
    ```
 
 ### Windows
@@ -50,10 +51,8 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 2. Create virtual environment and install dependencies:
    ```bash
-   cd src
-   python -m venv venv
+   uv sync
    .\venv\Scripts\activate
-   pip install -r requirements.txt
    ```
 
 3. Set up environment variable for Kie AI API key:
@@ -65,7 +64,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 4. Run the application:
    ```bash
-   python main.py --help
+   aifrb
    ```
 
 ## Important notice

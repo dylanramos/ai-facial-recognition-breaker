@@ -1,6 +1,6 @@
 import typer
 
-from api import get_remaining_credits
+from aifrb.api import get_remaining_credits
 
 app = typer.Typer()
 

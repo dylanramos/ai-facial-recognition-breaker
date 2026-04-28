@@ -3,8 +3,8 @@ from typing import Annotated
 
 import typer
 
-from api import generate_image_nano_banana_2, get_content_url, upload_image
-from utils.download_file import download_file
+from aifrb.api import generate_image_nano_banana_2, get_content_url, upload_image
+from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
 

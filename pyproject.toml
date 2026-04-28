@@ -1,0 +1,23 @@
+[project]
+name = "aifrb"
+version = "0.1.0"
+description = "A CLI tool that generates AI media content and streams its frames to a virtual camera in attempt to bypass face-recognition on online services."
+readme = "README.md"
+authors = [
+    { name = "Dylan Ramos", email = "github.5mwg9@simplelogin.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "opencv-python>=4.13.0.92",
+    "python-dotenv>=1.2.2",
+    "pyvirtualcam>=0.15.0",
+    "requests>=2.33.1",
+    "typer>=0.25.0",
+]
+
+[project.scripts]
+aifrb = "aifrb.main:app"
+
+[build-system]
+requires = ["uv_build>=0.11.8,<0.12.0"]
+build-backend = "uv_build"
