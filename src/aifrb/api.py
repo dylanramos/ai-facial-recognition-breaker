@@ -82,7 +82,7 @@ def get_content_url(task_id: str) -> str:
 
         time.sleep(wait)
 
-def generate_video_kling_3_0(prompt: str, duration: int, aspect_ratio: str, start_image_url: str, end_image_url: str) -> str:
+def generate_video_kling_3_0(prompt: str, duration: int, aspect_ratio: str, image_urls: list[str]) -> str:
     """
     Generate a video using the Kling 3.0 model and return the task ID.
     """
@@ -91,10 +91,7 @@ def generate_video_kling_3_0(prompt: str, duration: int, aspect_ratio: str, star
         "model": "kling-3.0/video",
         "input": {
             "mode": "std",
-            "image_urls": [
-                start_image_url,
-                end_image_url
-            ],
+            "image_urls": image_urls,
             "sound": False,
             "duration": str(duration),
             "aspect_ratio": aspect_ratio,
@@ -111,7 +108,31 @@ def generate_video_kling_3_0(prompt: str, duration: int, aspect_ratio: str, star
     
     return data["data"]["taskId"]
 
-def generate_image_nano_banana_2(prompt: str, image_urls: list[str]) -> str:
+def generate_video_grok_imagine(prompt: str, duration: int, aspect_ratio: str, image_urls: list[str]) -> str:
+    """
+    Generate a video using the Grok Imagine model and return the task ID.
+    """
+    url = "https://api.kie.ai/api/v1/jobs/createTask"
+    payload = {
+        "model": "grok-imagine/image-to-video",
+        "input": {
+            "mode": "normal",
+            "image_urls": image_urls,
+            "duration": str(duration),
+            "aspect_ratio": aspect_ratio,
+            "prompt": prompt,
+        }
+    }
+
+    response = requests.post(url, headers=HEADERS, json=payload)
+    data = response.json()
+    
+    if data["code"] != 200:
+        raise ValueError(f"Failed to generate video: {data['msg']}")
+    
+    return data["data"]["taskId"]
+
+def generate_image_nano_banana_2(prompt: str, aspect_ratio: str, image_urls: list[str]) -> str:
     """
     Generate or edit an image using the Nano Banana 2 model and return the task ID.
     """
@@ -121,7 +142,7 @@ def generate_image_nano_banana_2(prompt: str, image_urls: list[str]) -> str:
         "input": {          
             "prompt": prompt,
             "image_input": image_urls,
-            "aspect_ratio": "auto",
+            "aspect_ratio": aspect_ratio,
             "resolution": "1K",
             "output_format": "png",
         }
