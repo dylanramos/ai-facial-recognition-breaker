@@ -40,7 +40,7 @@ def broadcast(
         fps = video.get(cv2.CAP_PROP_FPS)
 
         with pyvirtualcam.Camera(width, height, fps, fmt=PixelFormat.BGR,device=device, print_fps=fps) as cam:
-            print(f'Virtual cam started: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
+            print(f'Broadcasting the video to: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)')
             count = 0
             while True:
                 # Restart video on last frame
@@ -62,7 +62,7 @@ def broadcast(
                 count += 1
     elif black_frame:
         with pyvirtualcam.Camera(width=1280, height=720, fps=20) as cam:
-            print(f'Using virtual camera: {cam.device}')
+            print(f'Broadcasting a black frame to: {cam.device}')
             frame = np.zeros((cam.height, cam.width, 3), np.uint8)  # RGB
             while True:
                 cam.send(frame)
