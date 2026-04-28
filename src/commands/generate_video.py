@@ -3,12 +3,12 @@ from typing import Annotated
 
 import typer
 
-from api import generate_video_kling_3_0, get_video_url, upload_image
+from api import generate_video_kling_3_0, get_content_url, upload_image
 from utils.download_file import download_file
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer()
 
-@app.callback(invoke_without_command=True, rich_help_panel="AI Commands")
+@app.command(rich_help_panel="AI Commands", no_args_is_help=True)
 def generate_video(
     prompt: Annotated[str, typer.Argument(help="Text prompt to generate the video from.")],
     model: Annotated[str, typer.Option("--model", "-m", help="Video generation model to use.")] = "kling-3.0",
@@ -50,7 +50,7 @@ def generate_video(
         case _:
             raise ValueError(f"Unsupported model: {model}")
     
-    video_url = get_video_url(task_id)
+    video_url = get_content_url(task_id)
     
     print(f"Downloading video...")
     video_path = download_file(video_url)

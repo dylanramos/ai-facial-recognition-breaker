@@ -8,9 +8,9 @@ import pyvirtualcam
 import typer
 from pyvirtualcam import PixelFormat
 
-app = typer.Typer(no_args_is_help=True)
+app = typer.Typer()
 
-@app.callback(invoke_without_command=True, rich_help_panel="Camera Commands")
+@app.command(rich_help_panel="Camera Commands", no_args_is_help=True)
 def broadcast(
     video: Annotated[Path, typer.Argument(help="Path to the video file.")]
 ):
