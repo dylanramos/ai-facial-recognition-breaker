@@ -13,6 +13,8 @@ This repository contains my bachelor's thesis project. This work aims to underst
 - `src/aifrb/utils/`: Utility functions (e.g. file downloading).
 - `templates/`: Images and videos used for generating fake content (e.g. ID card template).
 
+> Note: `aifrb` stands for "AI Facial Recognition Breaker", the name of the project.
+
 ## Installation
 
 ### Prerequisites
