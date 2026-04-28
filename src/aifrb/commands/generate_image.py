@@ -12,6 +12,7 @@ app = typer.Typer()
 def generate_image(
     prompt: Annotated[str, typer.Argument(help="Text prompt to generate the image from.")],
     model: Annotated[str, typer.Option("--model", "-m", help="Image generation model to use.")] = "nano-banana-2",
+    aspect_ratio: Annotated[str, typer.Option("--aspect-ratio", "-a", help="Aspect ratio for the generated image (e.g. 1:1, 16:9, 4:3).")] = "auto",
     image_1: Annotated[Path, typer.Option("--image-1", "-1", help="Path to the first image for image editing.")] = None,
     image_2: Annotated[Path, typer.Option("--image-2", "-2", help="Path to the second image for image editing.")] = None,
 ):
@@ -43,7 +44,7 @@ def generate_image(
 
     match model:
         case "nano-banana-2":
-            task_id = generate_image_nano_banana_2(prompt, images_urls)
+            task_id = generate_image_nano_banana_2(prompt, aspect_ratio, images_urls)
             print("Image generation started successfully!")
             print("Waiting for image generation to complete...")
         case _:
