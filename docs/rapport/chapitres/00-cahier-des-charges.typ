@@ -101,7 +101,7 @@ En option :
 
 #text(weight: "bold", size: 14pt)[Planning]
 
-Ce travail de Bachelor débute le *16 février 2026* et se termine le *26 juin 2026*, ce qui fait un total de 18 semaines pour 450 heures de travail.
+Ce travail de Bachelor débute le *16 février 2026* et se termine le *23 juin 2026*, ce qui fait un total de 18 semaines pour 450 heures de travail.
 
 *Semaine 1 (16.02 - 22.02)*
 
@@ -251,8 +251,8 @@ Phase 6 :
 - Publication du projet en open source.
 - Mise en place des directives de contribution et de la documentation pour les futurs contributeurs.
 
-*Semaine 18 (22.06 - 26.06)*
+*Semaine 18 (22.06 - 23.06)*
 
 - Finalisation des livrables.
-- #underline("Rendu final le 26.06 à 15h00.")
+- #underline("Rendu final le 23.06 à 15h00.")
 
