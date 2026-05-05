@@ -45,6 +45,7 @@ def broadcast(
             while True:
                 # Restart video on last frame
                 if count == length:
+                    print("Restarting video...")
                     count = 0
                     video.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
