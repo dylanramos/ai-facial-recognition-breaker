@@ -1,4 +1,4 @@
-# AI facial recognition breaker
+# AI facial recognition breaker (aifrb)
 
 This repository contains my bachelor's thesis project. This work aims to understand and demonstrate the risks associated with the use of facial recognition in online services in light of the growing threat posed by AI-generated videos.
 
@@ -12,8 +12,6 @@ This repository contains my bachelor's thesis project. This work aims to underst
 - `src/aifrb/commands/`: Commands implementation.
 - `src/aifrb/utils/`: Utility functions (e.g. file downloading).
 - `templates/`: Images and videos used for generating fake content (e.g. ID card template).
-
-> Note: `aifrb` stands for "AI Facial Recognition Breaker", the name of the project.
 
 ## Installation
 
