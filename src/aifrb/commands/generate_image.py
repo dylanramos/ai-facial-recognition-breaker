@@ -13,43 +13,23 @@ def generate_image(
     prompt: Annotated[str, typer.Argument(help="Text prompt to generate the image from.")],
     model: Annotated[str, typer.Option("--model", "-m", help="Image generation model to use.")] = "nano-banana-2",
     aspect_ratio: Annotated[str, typer.Option("--aspect-ratio", "-a", help="Aspect ratio for the generated image (e.g. 1:1, 16:9, 4:3).")] = "auto",
-    image_1: Annotated[Path, typer.Option("--image-1", "-1", help="Path to the first image for image editing.")] = None,
-    image_2: Annotated[Path, typer.Option("--image-2", "-2", help="Path to the second image for image editing.")] = None,
 ):
     """
-    Generate or edit an image and download it to the local filesystem.
+    Generate an image and download it to the local filesystem.
     
     Available models:
     - nano-banana-2
     """
-    images_urls = []
-
-    if image_1 is not None:
-        if not image_1.is_file():
-            raise ValueError(f"Image file not found: {image_1}")
-        
-        image_1_url = upload_image(image_1)
-        images_urls.append(image_1_url)
-        print("First image uploaded successfully!")
-
-    if image_2 is not None:
-        if not image_2.is_file():
-            raise ValueError(f"Image file not found: {image_2}")
-        
-        image_2_url = upload_image(image_2)
-        images_urls.append(image_2_url)
-        print("Second image uploaded successfully!")
-
     task_id = ""
 
     match model:
         case "nano-banana-2":
-            task_id = generate_image_nano_banana_2(prompt, aspect_ratio, images_urls)
-            print("Image generation started successfully!")
-            print("Waiting for image generation to complete...")
+            task_id = generate_image_nano_banana_2(prompt, aspect_ratio)
         case _:
             raise ValueError(f"Unsupported model: {model}")
     
+    print("Image generation started successfully!")
+    print("Waiting for image generation to complete...")
     image_url = get_content_url(task_id)
     
     print(f"Downloading image...")
