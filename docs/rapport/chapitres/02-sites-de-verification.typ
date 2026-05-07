@@ -10,7 +10,7 @@
 
 Les sites demandant une vérification d'identité sont plus ou moins sensibles, parmi ceux-ci, on peut trouver des réseaux sociaux, des sites de rencontres, des casinos en ligne ou encore des banques. Ils ne demandent pas tous les mêmes informations, certains se contentent d'une simple photo d'un document d'identité, tandis que d'autres demandent une vérification via une caméra. Un autre facteur à prendre en compte est que parfois, la vérification se fait lors d'un appel vidéo avec un employé, ce qui complique la tâche pour les attaquants.
 
-== Sites cibles
+== Sites cibles <sites-cibles>
 
 La liste ci-dessous présente les sites qui seront ciblés pour les attaques, ceux-ci ont été sélectionnés car ils impliquent l'utilisation de l'IA, notamment pour générer des vidéos. Les critères de sélection ainsi que les sites exclus sont détaillés dans le chapitre 2 du rapport de recherche #link("../rapports-de-recherche/sites-de-verification/sites-de-verification.pdf")[#underline("sites-de-verification.pdf")].
 
