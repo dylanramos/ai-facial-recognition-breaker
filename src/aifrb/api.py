@@ -222,6 +222,34 @@ def edit_video_wan_2_7(prompt: str, video_url: str, image_url: str, quality: str
     
     return data["data"]["taskId"]
 
+def edit_video_happyhorse(prompt: str, video_url: str, image_url: str, quality: str) -> str:
+    """
+    Edit a video using the Happy Horse model and return the task ID.
+    """
+    url = "https://api.kie.ai/api/v1/jobs/createTask"
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": "happyhorse/video-edit",
+        "input": {
+            "prompt": prompt,
+            "video_url": video_url,
+            "reference_image": image_url,
+            "resolution": quality,
+            "audio_setting" : "origin"
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    data = response.json()
+    
+    if data["code"] != 200:
+        raise ValueError(f"Failed to edit video: {data['msg']}")
+    
+    return data["data"]["taskId"]
+
 def generate_image_nano_banana_2(prompt: str, aspect_ratio: str) -> str:
     """
     Generate an image using the Nano Banana 2 model and return the task ID.

@@ -3,7 +3,7 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api import (edit_video_kling_3_0, edit_video_wan_2_7, get_content_url, upload_image, upload_video)
+from aifrb.api import (edit_video_kling_3_0, edit_video_wan_2_7, edit_video_happyhorse, get_content_url, upload_image, upload_video)
 from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
@@ -22,6 +22,7 @@ def edit_video(
     Available models:
     - kling-3.0
     - wan 2.7
+    - happyhorse
     """
     if not video.is_file():
         raise ValueError(f"Video file not found: {video}")
@@ -41,6 +42,8 @@ def edit_video(
             task_id = edit_video_kling_3_0(prompt, video_url, image_url, quality)
         case "wan 2.7":
             task_id = edit_video_wan_2_7(prompt, video_url, image_url, quality)
+        case "happyhorse":
+            task_id = edit_video_happyhorse(prompt, video_url, image_url, quality)
         case _:
             raise ValueError(f"Unsupported model: {model}")
     
