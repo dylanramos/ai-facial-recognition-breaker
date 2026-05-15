@@ -3,7 +3,7 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api import generate_image_nano_banana_2, get_content_url, upload_image
+from aifrb.api import get_content_url, generate_image_nano_banana_2, generate_image_grok_imagine
 from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
@@ -11,20 +11,23 @@ app = typer.Typer()
 @app.command(rich_help_panel="AI Commands", no_args_is_help=True)
 def generate_image(
     prompt: Annotated[str, typer.Argument(help="Text prompt to generate the image from.")],
-    model: Annotated[str, typer.Option("--model", "-m", help="Image generation model to use.")] = "nano-banana-2",
-    aspect_ratio: Annotated[str, typer.Option("--aspect-ratio", "-a", help="Aspect ratio for the generated image (e.g. 1:1, 16:9, 4:3).")] = "auto",
+    model: Annotated[str, typer.Option("--model", "-m", help="Image generation model to use.")] = "grok-imagine",
+    aspect_ratio: Annotated[str, typer.Option("--aspect-ratio", "-a", help="Aspect ratio for the generated image (e.g. 1:1, 16:9, 3:2).")] = "1:1",
 ):
     """
     Generate an image and download it to the local filesystem.
     
     Available models:
     - nano-banana-2
+    - grok-imagine
     """
     task_id = ""
 
     match model:
         case "nano-banana-2":
             task_id = generate_image_nano_banana_2(prompt, aspect_ratio)
+        case "grok-imagine":
+            task_id = generate_image_grok_imagine(prompt, aspect_ratio)
         case _:
             raise ValueError(f"Unsupported model: {model}")
     

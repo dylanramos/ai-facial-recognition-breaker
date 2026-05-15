@@ -275,6 +275,31 @@ def generate_image_nano_banana_2(prompt: str, aspect_ratio: str) -> str:
     
     return data["data"]["taskId"]
 
+def generate_image_grok_imagine(prompt: str, aspect_ratio: str) -> str:
+    """
+    Generate an image using the Grok Imagine model and return the task ID.
+    """
+    url = "https://api.kie.ai/api/v1/jobs/createTask"
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": "grok-imagine/text-to-image",
+        "input": {          
+            "prompt": prompt,
+            "aspect_ratio": aspect_ratio,
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    data = response.json()
+
+    if data["code"] != 200:
+        raise ValueError(f"Failed to generate image: {data['msg']}")
+    
+    return data["data"]["taskId"]
+
 def edit_image_gpt_image_2(prompt: str, image_urls: list[str]) -> str:
     """
     Edit an image using the GPT Image 2 model and return the task ID.
