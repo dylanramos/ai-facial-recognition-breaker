@@ -3,8 +3,7 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api import (generate_video_grok_imagine, generate_video_kling_3_0,
-                       get_content_url, upload_image)
+from aifrb.api import get_content_url, upload_image, generate_video_grok_imagine, generate_video_kling_3_0
 from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
@@ -12,7 +11,7 @@ app = typer.Typer()
 @app.command(rich_help_panel="AI Commands", no_args_is_help=True)
 def generate_video(
     prompt: Annotated[str, typer.Argument(help="Text prompt to generate the video from.")],
-    model: Annotated[str, typer.Option("--model", "-m", help="Video generation model to use.")] = "kling-3.0",
+    model: Annotated[str, typer.Option("--model", "-m", help="Video generation model to use.")] = "grok-imagine",
     duration: Annotated[int, typer.Option("--duration", "-d", help="Duration of the video in seconds.")] = 3,
     aspect_ratio: Annotated[str, typer.Option("--aspect-ratio", "-a", help="Aspect ratio of the video.")] = "16:9",
     start_image: Annotated[Path, typer.Option("--start-image", "-s", help="Path to the image for the start frame.")] = None,
