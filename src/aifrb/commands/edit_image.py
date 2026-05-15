@@ -3,7 +3,7 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api import edit_image_gpt_image_2, get_content_url, upload_image
+from aifrb.api import get_content_url, upload_image, edit_image_gpt_image_2, edit_image_nano_banana_2
 from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
@@ -11,7 +11,7 @@ app = typer.Typer()
 @app.command(rich_help_panel="AI Commands", no_args_is_help=True)
 def edit_image(
     prompt: Annotated[str, typer.Argument(help="Text prompt to generate the image from.")],
-    model: Annotated[str, typer.Option("--model", "-m", help="Image generation model to use.")] = "gpt-image-2",
+    model: Annotated[str, typer.Option("--model", "-m", help="Image generation model to use.")] = "nano-banana-2",
     image_1: Annotated[Path, typer.Option("--image-1", "-1", help="Path to the first image.")] = None,
     image_2: Annotated[Path, typer.Option("--image-2", "-2", help="Path to the second image.")] = None,
 ):
@@ -20,6 +20,7 @@ def edit_image(
     
     Available models:
     - gpt-image-2
+    - nano-banana-2
     """
     images_urls = []
 
@@ -44,6 +45,8 @@ def edit_image(
     match model:
         case "gpt-image-2":
             task_id = edit_image_gpt_image_2(prompt, images_urls)
+        case "nano-banana-2":
+            task_id = edit_image_nano_banana_2(prompt, images_urls)
         case _:
             raise ValueError(f"Unsupported model: {model}")
     

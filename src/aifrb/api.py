@@ -324,3 +324,28 @@ def edit_image_gpt_image_2(prompt: str, image_urls: list[str]) -> str:
         raise ValueError(f"Failed to edit image: {data['msg']}")
     
     return data["data"]["taskId"]
+
+def edit_image_nano_banana_2(prompt: str, image_urls: list[str]) -> str:
+    """
+    Edit an image using the Nano Banana 2 model and return the task ID.
+    """
+    url = "https://api.kie.ai/api/v1/jobs/createTask"
+    headers = {
+        "Authorization": f"Bearer {API_KEY}",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": "nano-banana-2",
+        "input": {          
+            "prompt": prompt,
+            "image_input": image_urls,
+        }
+    }
+
+    response = requests.post(url, headers=headers, json=payload)
+    data = response.json()
+    
+    if data["code"] != 200:
+        raise ValueError(f"Failed to edit image: {data['msg']}")
+    
+    return data["data"]["taskId"]
