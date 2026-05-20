@@ -117,7 +117,7 @@ La plupart des entreprises développant des systèmes de vérification d'identit
 
 == Facebook
 
-Lors de la création d'un compte, Facebook demande de prendre un selfie vidéo en tournant la tête dans différentes directions. Les directions étant aléatoires, j'ai dû me filmer sur le moment puis demander à l'IA de remplacer mon visage par celui d'une personne générée.
+Lors de la création d'un compte, Facebook demande de prendre un selfie vidéo en tournant la tête dans différentes directions. Les directions étant aléatoires, j'ai dû me filmer sur le moment puis demander à l'IA de remplacer mon visage par celui d'une personne fictive.
 
 Un point important à prendre en compte est que Facebook bloque automatiquement les comptes créés avec un alias comme adresse e-mail. J'ai donc dû créer une adresse Gmail pour chacune de mes tentatives.
 
@@ -126,4 +126,66 @@ Un point important à prendre en compte est que Facebook bloque automatiquement 
   caption: "E-mail de suspension du compte lors de l'utilisation d'un alias.",
 )
 
-Une fois le compte créé,
+Une fois le compte créé, la vérification d'identité est demandée. Pour pouvoir essayer de la contourner, je dois d'abord savoir quels sont les mouvements demandés, pour cela je diffuse un écran noir sur la caméra virtuelle car une caméra doit être détectée pour que la vérification commence. La vidéo #underline[#link("videos/selfie-video/facebook-1.webm")[facebook-1.webm]] démontre le type de mouvements demandés par Facebook.
+
+Une fois les mouvements connus, je me suis filmé en train de les faire, puis j'ai demandé à l'IA de remplacer mon visage par celui d'une personne fictive, le tout en gardant la page de vérification ouverte.
+
+Génération de la personne :
+
+- Modèle : `nano-banana-2`
+- Prompt : `A headshot portrait of a young woman in her early 20s, calm and neutral facial expression, looking directly forward at the viewer, sharp focus on the face, passport-style portrait photography.`
+- Format d'image : `auto`
+- Résolution : `1K`
+
+#figure(
+  rect(image("images/selfie-video/personne-fictive.png", width: 30%), stroke: 0.1pt),
+  caption: "Personne fictive générée.",
+)
+
+Génération de la vidéo :
+
+- Modèle : `happyhorse/video-edit`
+- Prompt : `Replace the man on the video by the woman on the image.`
+- Resolution : `720p`
+
+Résultat : #underline[#link("videos/selfie-video/facebook-2.mp4")[facebook-2.mp4]].
+
+Enfin, j'ai diffusé la vidéo sur la caméra virtuelle et je suis retourné sur la page de vérification, le résultat est le suivant : #underline[#link("videos/selfie-video/facebook-3.webm")[facebook-3.webm]]. Et après quelques heures d'attente, j'ai reçu un e-mail de Facebook m'informant que ma vérification d'identité avait échoué.
+
+#figure(
+  rect(image("images/selfie-video/echec-verification.png", width: 30%), stroke: 0.1pt),
+  caption: "Échec de la vérification d'identité.",
+)
+
+Après plusieurs tentatives similaires, j'ai toujours reçu le même résultat. Je suis maintenant dans l'incapacité d'en faire d'autres car je ne peux plus créer d'adresses Gmail, mon numéro de téléphone ayant été utilisé trop de fois.
+
+== Parship
+
+Comme pour Facebook, Parship demande de prendre un selfie vidéo lors de la création d'un compte. Cependant, aucun mouvement n'est demandé, il faut simplement centrer son visage dans un oval puis se rapprocher de la caméra. Je n'ai donc pas eu besoin de me filmer préalablement, j'ai directement demandé à l'IA de générer une vidéo d'une personne fictive en train de se filmer :
+
+- Modèle : `kling-3.0/video`
+- Prompt : `The woman in the image looks into the camera for a while, her body is not moving. Then the camera slowly zooms to her face and the woman continues to look at the camera. Then the camera zoom more and the woman is still looking at the camera. Then the camera slowly goes back.`
+- Durée : `15s`
+- Format d'image : `16:9`
+
+Résultat : #underline[#link("videos/selfie-video/parship-1.mp4")[parship-1.mp4]].
+
+J'ai ensuite diffusé la vidéo sur la caméra virtuelle et je suis retourné sur la page de vérification, le résultat est le suivant : #underline[#link("videos/selfie-video/parship-2.mp4")[parship-2.mp4]]. La vérification a échoué, mais contrairement à Facebook, Parship nous dit pourquoi la vérification a échoué, comme nous pouvons le voir à la fin de la vidéo.
+
+#figure(
+  rect(image("images/selfie-video/echec-verification-2.png", width: 70%), stroke: 0.1pt),
+  caption: "Échec de la vérification d'identité en utilisant une caméra virtuelle.",
+)
+
+Nous pouvons en déduire que le système de vérification de Parship analyse également le type de caméra qui est utilisé. J'ai donc essayé de refaire la vérification, mais cette fois-ci avec une caméra réelle pour voir si le résultat était différent. Pour cela, j'ai affiché l'image de la personne fictive sur mon écran et j'ai filmé cette image avec une webcam.
+
+Résultat : #underline[#link("videos/selfie-video/parship-3.mp4")[parship-3.mp4]].
+
+Le résultat est bien différent, cela confirme donc que le système de vérification de Parship analyse le type de caméra utilisé, et que la diffusion d'une vidéo sur une caméra virtuelle est détectée et bloquée.
+
+#figure(
+  rect(image("images/selfie-video/echec-verification-3.png", width: 70%), stroke: 0.1pt),
+  caption: "Échec de la vérification d'identité avec une caméra réelle.",
+)
+
+Suite à cette découverte, j'ai cherché un moyen de faire croire au système de vérification que la caméra virtuelle était une caméra réelle. Pour cela, j'ai essayé de modifier le code source du module `v4l2loopback` utilisé pour créer la caméra virtuelle pour qu'il n'affiche pas les caractéristiques d'une caméra virtuelle mais celles d'une caméra réelle.
