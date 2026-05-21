@@ -181,7 +181,7 @@ Nous pouvons en déduire que le système de vérification de Parship analyse ég
 
 Résultat : #underline[#link("videos/selfie-video/parship-3.mp4")[parship-3.mp4]].
 
-Le résultat est bien différent, cela confirme donc que le système de vérification de Parship analyse le type de caméra utilisé, et que la diffusion d'une vidéo sur une caméra virtuelle est détectée et bloquée.
+Le résultat est bien différent, cela confirme donc que le système de vérification de Parship analyse le type de caméra utilisé et que la diffusion d'une vidéo sur une caméra virtuelle est détectée et bloquée.
 
 #figure(
   rect(image("images/selfie-video/echec-verification-3.png", width: 70%), stroke: 0.1pt),
@@ -189,3 +189,33 @@ Le résultat est bien différent, cela confirme donc que le système de vérific
 )
 
 Suite à cette découverte, j'ai cherché un moyen de faire croire au système de vérification que la caméra virtuelle était une caméra réelle. Pour cela, j'ai essayé de modifier le code source du module `v4l2loopback` utilisé pour créer la caméra virtuelle pour qu'il n'affiche pas les caractéristiques d'une caméra virtuelle mais celles d'une caméra réelle.
+
+*Étape 1 :* cloner le dépôt GitHub du projet `v4l2loopback`.
+
+#sourcecode[```sh
+git clone git@github.com:v4l2loopback/v4l2loopback.git
+cd v4l2loopback
+```]
+
+*Étape 2 :* ouvrir le fichier `v4l2loopback.c` et modifier les chaînes de caractères affichées par des `snprintf`.
+
+#figure(
+  rect(image("images/selfie-video/v4l2loopback.png"), stroke: 0.1pt),
+  caption: "Modification du module v4l2loopback.",
+)
+
+*Étape 3 :* recompiler et réinstaller le module.
+
+#sourcecode[```sh
+make
+sudo make install
+sudo depmod -a
+```]
+
+*Étape 4 :* créer une nouvelle caméra virtuelle.
+
+#sourcecode[```sh
+sudo modprobe v4l2loopback devices=1 video_nr=0 card_label="AUKEY PC-W1: AUKEY PC-W1" exclusive_caps=1
+```]
+
+Cependant, malgré toutes ces modifications, j'obtiens le même résultat, Parship détecte toujours que la caméra utilisée est une caméra virtuelle.
