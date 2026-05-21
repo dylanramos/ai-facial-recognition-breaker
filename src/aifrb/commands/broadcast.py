@@ -1,39 +1,48 @@
-import platform
 import subprocess
 from pathlib import Path
 from typing import Annotated
 
-import cv2
-import numpy as np
-import pyvirtualcam
 import typer
-from pyvirtualcam import PixelFormat
+import ffmpeg
 
 app = typer.Typer()
 
 
 @app.command(rich_help_panel="Camera Commands", no_args_is_help=True)
 def broadcast(
-    camera_name: Annotated[
-        str,
-        typer.Option(
-            "--camera-name", "-c", help="Name of the virtual camera to create."
-        ),
-    ] = "Virtual Cam",
     video: Annotated[
         Path, typer.Option("--video", "-v", help="Path to the video file.")
     ] = None,
-    black_frame: Annotated[
+    image: Annotated[
+        Path, typer.Option("--image", "-i", help="Path to the image file.")
+    ] = None,
+    portrait: Annotated[
         bool,
         typer.Option(
-            "--black-frame", "-b", help="Broadcast a black frame instead of a video."
+            "--portrait",
+            "-p",
+            help="Specify the output mode (portrait or landscape).",
         ),
     ] = False,
+    pixel_format: Annotated[
+        str,
+        typer.Option(
+            "--pixel-format", "-f", help="Pixel format to use. (e.g., yuv420p, yuv422p)"
+        ),
+    ] = "yuv420p",
+    crop_x: Annotated[
+        int, typer.Option("--crop-x", "-x", help="X coordinate for cropping the video.")
+    ] = 0,
+    crop_y: Annotated[
+        int, typer.Option("--crop-y", "-y", help="Y coordinate for cropping the video.")
+    ] = 0,
 ):
     """
-    Broadcast a black frame or a video file to a virtual camera.
+    Broadcast an image or a video file to a virtual camera.
     """
-    if platform.system() == "Linux":
+    device = "/dev/video1"
+
+    if not Path(device).exists():
         # Reload the v4l2loopback module
         subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
         # Create the virtual camera
@@ -44,55 +53,37 @@ def broadcast(
                 "v4l2loopback",
                 "devices=1",
                 "video_nr=1",
-                f'card_label="{camera_name}"',
+                f'card_label="AIFRB Virtual Camera"',
                 "exclusive_caps=1",
             ]
         )
         # Grant current user access to the device without requiring video group membership
-        subprocess.run(["sudo", "chmod", "666", "/dev/video1"])
-
-    device = None  # Use default device
+        subprocess.run(["sudo", "chmod", "666", device])
 
     if video is not None:
-        # Source: https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py
-        video = cv2.VideoCapture(video)
-        if not video.isOpened():
-            raise ValueError("Failed to open video file")
-        length = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
-        width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
-        height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        fps = video.get(cv2.CAP_PROP_FPS)
+        if portrait:
+            ffmpeg.input(str(video), re=None, stream_loop=-1).filter(
+                "crop", "min(iw,ih*9/16)", "ih", crop_x, crop_y
+            ).filter("scale", 640, 480).filter("fps", 30).output(
+                device, format="v4l2", pix_fmt=pixel_format
+            ).run()
+        else:
+            ffmpeg.input(str(video), re=None, stream_loop=-1).filter(
+                "crop", "iw", "min(ih,iw*9/16)", crop_x, crop_y
+            ).filter("scale", 640, 480).filter("fps", 30).output(
+                device, format="v4l2", pix_fmt=pixel_format
+            ).run()
 
-        with pyvirtualcam.Camera(
-            width, height, fps, fmt=PixelFormat.BGR, device=device, print_fps=fps
-        ) as cam:
-            print(
-                f"Broadcasting the video to: {cam.device} ({cam.width}x{cam.height} @ {cam.fps}fps)"
-            )
-            count = 0
-            while True:
-                # Restart video on last frame
-                if count == length:
-                    print("Restarting video...")
-                    count = 0
-                    video.set(cv2.CAP_PROP_POS_FRAMES, 0)
-
-                # Read video frame
-                ret, frame = video.read()
-                if not ret:
-                    raise RuntimeError("Error fetching frame")
-
-                # Send to virtual cam
-                cam.send(frame)
-
-                # Wait until it's time for the next frame
-                cam.sleep_until_next_frame()
-
-                count += 1
-    elif black_frame:
-        with pyvirtualcam.Camera(width=1280, height=720, fps=20) as cam:
-            print(f"Broadcasting a black frame to: {cam.device}")
-            frame = np.zeros((cam.height, cam.width, 3), np.uint8)  # RGB
-            while True:
-                cam.send(frame)
-                cam.sleep_until_next_frame()
+    elif image is not None:
+        if portrait:
+            ffmpeg.input(str(image), re=None, loop=1).filter(
+                "crop", "min(iw,ih*9/16)", "ih", crop_x, crop_y
+            ).filter("scale", 640, 480).filter("fps", 30).output(
+                device, format="v4l2", pix_fmt=pixel_format
+            ).run()
+        else:
+            ffmpeg.input(str(image), re=None, loop=1).filter(
+                "crop", "iw", "min(ih,iw*9/16)", crop_x, crop_y
+            ).filter("scale", 640, 480).filter("fps", 30).output(
+                device, format="v4l2", pix_fmt=pixel_format
+            ).run()
