@@ -25,7 +25,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 ## Installation
 
-1. Install v4l2loopback module and ffmpeg:
+1. Install v4l2loopback module and FFmpeg:
    ```bash
    sudo apt install v4l2loopback-dkms v4l2loopback-utils ffmpeg
    ```
