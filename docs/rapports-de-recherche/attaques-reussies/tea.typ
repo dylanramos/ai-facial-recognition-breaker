@@ -114,21 +114,21 @@
 En allant sur le site #underline(link("https://www.teaforwomen.com")) et en cliquant sur "Sign up" puis "Create your Tea account" nous arrivons sur la page ci-dessous.
 
 #figure(
-  rect(image("images/tea-1.png"), stroke: 0.1pt),
+  rect(image("images/tea/tea-1.png"), stroke: 0.1pt),
   caption: "Page d'inscription.",
 )
 
 Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'email ou de numéro de téléphone n'est demandée. Une fois le formulaire rempli et soumis, nous arrivons sur la page de vérification d'identité et nous constatons que l'option recommandée est la plus simple à attaquer.
 
 #figure(
-  rect(image("images/tea-2.png"), stroke: 0.1pt),
+  rect(image("images/tea/tea-2.png"), stroke: 0.1pt),
   caption: "Page de choix de la vérification d'identité.",
 )
 
 Une fois la vérification démarrée, nous pouvons voir que le site nous demande de montrer notre visage de face, puis de tourner la tête dans des directions aléatoires.
 
 #figure(
-  rect(image("images/tea-3.png"), stroke: 0.1pt),
+  rect(image("images/tea/tea-3.png"), stroke: 0.1pt),
   caption: "Page de vérification d'identité.",
 )
 
@@ -143,20 +143,20 @@ Pour cela, j'ai commencé par générer l'image d'une femme :
 - Résolution : `1k`
 
 #figure(
-  rect(image("images/tea-4.png", width: 36%), stroke: 0.1pt),
+  rect(image("images/tea/tea-4.png", width: 36%), stroke: 0.1pt),
   caption: "Femme fictive générée.",
 )
 
 Ensuite, je me suis filmé en train de tourner la tête dans toutes les directions possibles, puis j'ai demandé à l'IA d'éditer la vidéo pour remplacer mon visage par celui de la femme générée précédemment :
 - Modèle : `happyhorse/video-edit`
-- Prompt : `Replace the man on the video by the women on the image.`
+- Prompt : `Replace the man on the video by the woman on the image.`
 - Résolution : `720p`
 
-Le résultat est le suivant : #underline[#link("videos/tea-edit.mp4")[tea-edit.mp4]].
+Le résultat est le suivant : #underline[#link("videos/tea/tea-edit.mp4")[tea-edit.mp4]].
 
 Enfin, j'ai diffusé la vidéo générée en boucle sur une caméra virtuelle, puis j'ai lancé la vérification. *L'attaque est un succès*.
 
-Résultat : #underline[#link("videos/tea-result.webm")[tea-result.webm]].
+Résultat : #underline[#link("videos/tea/tea-result.webm")[tea-result.webm]].
 
 = Remarques
 

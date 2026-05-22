@@ -218,4 +218,17 @@ sudo depmod -a
 sudo modprobe v4l2loopback devices=1 video_nr=0 card_label="AUKEY PC-W1: AUKEY PC-W1" exclusive_caps=1
 ```]
 
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("images/selfie-video/old-module.png"), stroke: 0.1pt),
+    caption: "Caméra créée avec le module original.",
+  ),
+  figure(
+    rect(image("images/selfie-video/new-module.png"), stroke: 0.1pt),
+    caption: "Caméra créée avec le module modifié.",
+  ),
+)
+
 Cependant, malgré toutes ces modifications, j'obtiens le même résultat, Parship détecte toujours que la caméra utilisée est une caméra virtuelle.
