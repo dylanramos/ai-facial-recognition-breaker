@@ -12,19 +12,22 @@ This repository contains my bachelor's thesis project. This work aims to underst
 - `src/aifrb/commands/`: Commands implementation.
 - `src/aifrb/utils/`: Utility functions (e.g. file downloading).
 - `templates/`: Images and videos used for generating fake content (e.g. ID card template).
+- `downloads/`: Destination for AI generated content (created automatically).
 
-## Installation
+## Prerequisites
 
-### Prerequisites
-- [Python 3.12+](https://www.python.org/downloads/)
+- Linux-based operating system
+- Python 3.12+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [Kie AI](https://kie.ai/) account and API key
 
-### Linux
+> Note: This project also works on a virtual machine.
 
-1. Install v4l2loopback module:
+## Installation
+
+1. Install v4l2loopback module and ffmpeg:
    ```bash
-   sudo apt install v4l2loopback-dkms v4l2loopback-utils
+   sudo apt install v4l2loopback-dkms v4l2loopback-utils ffmpeg
    ```
 
 2. Create virtual environment and install dependencies:
@@ -37,28 +40,6 @@ This repository contains my bachelor's thesis project. This work aims to underst
    ```bash
    cp .env.example .env
    nano .env
-   # Replace xxx with your API key
-   ```
-
-4. Run the application:
-   ```bash
-   aifrb
-   ```
-
-### Windows
-
-1. Install [OBS Studio](https://obsproject.com/download).
-
-2. Create virtual environment and install dependencies:
-   ```bash
-   uv sync
-   .\venv\Scripts\activate
-   ```
-
-3. Set up environment variable for Kie AI API key:
-   ```bash
-   copy .env.example .env
-   notepad .env
    # Replace xxx with your API key
    ```
 
