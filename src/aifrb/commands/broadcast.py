@@ -21,7 +21,7 @@ def broadcast(
         typer.Option(
             "--portrait",
             "-p",
-            help="Specify the output mode (portrait or landscape).",
+            help="Specify the output orientation to portrait.",
         ),
     ] = False,
     pixel_format: Annotated[
