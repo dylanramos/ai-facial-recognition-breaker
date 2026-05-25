@@ -118,7 +118,7 @@ En allant sur le site #underline(link("https://www.roblox.com")) nous arrivons s
   caption: "Page d'inscription.",
 )
 
-Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'email ou de numéro de téléphone n'est demandée. Une fois le formulaire rempli et soumis, nous pouvons aller dans "Paramètres" puis "Infos sur le compte" pour accéder à la page permettant de confirmer son âge.
+Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'email ou de numéro de téléphone n'est demandée. Une fois le formulaire rempli et soumis, nous pouvons aller dans "Paramètres", puis "Infos sur le compte" pour accéder à la page permettant de confirmer son âge.
 
 #figure(
   rect(image("images/roblox/roblox-2.png", width: 70%), stroke: 0.1pt),
@@ -129,12 +129,37 @@ En cliquant sur "Continuer avec la caméra" puis "Continuer", le site nous deman
 
 #figure(
   rect(image("images/roblox/roblox-3.png", width: 30%), stroke: 0.1pt),
-  caption: "QR code pour commencer la vérification d'identité.",
+  caption: "Code QR pour commencer la vérification d'identité.",
 )
 
 = Contournement
 
+Étant donné qu'un téléphone est nécessaire, nous allons utiliser un émulateur Android, Genymotion dans cet exemple. Mais au lieu de scanner le code QR, nous copions le lien juste en dessous et accédons à ce lien depuis le navigateur de l'émulateur.
+
+#figure(
+  rect(image("images/roblox/roblox-4.png", width: 37%), stroke: 0.1pt),
+  caption: "Page de vérification d'identité sur l'émulateur Android.",
+)
+
+Les actions demandées pour cette vérification d'âge sont simples : montrer son visage de face, tourner la tête à gauche, puis à droite. Ainsi, pour tromper cette vérification, il suffit de diffuser une image statique sur la caméra virtuelle à chaque mouvement demandé. Mais avant cela, il faut configurer la caméra de l'émulateur pour qu'elle utilise la caméra virtuelle de la machine hôte en allant dans "Media injection" (icône de caméra sur la barre d'outils à droite), puis en sélectionnant "AIFRB Virtual Camera" comme source.
+
+#figure(
+  rect(image("images/roblox/roblox-5.png"), stroke: 0.1pt),
+  caption: "Configuration de la caméra de l'émulateur.",
+)
+
+D'autre part, il faut veiller à diffuser une image en mode portrait et à sélectionner l'option "Resize" pour que le visage soit centré et bien formé dans la caméra.
+
+#figure(
+  rect(image("images/roblox/roblox-6.png", width: 37%), stroke: 0.1pt),
+  caption: "Diffusion d'une image statique centrée et bien formée sur l'émulateur.",
+)
+
+Enfin, en utilisant le CLI avec les templates fournis dans le projet, *la vérification d'âge est contournée avec succès*.
+
+Résultat : #underline[#link("videos/roblox/roblox-result.mp4")[roblox-result.mp4]].
 
 = Remarques
 
-
+- Les visages qui ne regardent pas la caméra ne fonctionnent pas.
+- Une vidéo qui tourne en boucle plutôt que des images statiques ne laisse pas le temps à la vérification de se faire correctement.
