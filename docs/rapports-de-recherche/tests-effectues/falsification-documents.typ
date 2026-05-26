@@ -166,7 +166,7 @@ Verso :
   ),
 )
 
-Enfin, j'ai diffusé une image à la fois sur la caméra virtuelle, le résultat est le suivant : #underline[#link("videos/roblox-1.mp4")[roblox-1.mp4]].
+Enfin, j'ai diffusé une image à la fois sur la caméra virtuelle, le résultat est le suivant : #underline[#link("videos/falsification-documents/roblox-1.mp4")[roblox-1.mp4]].
 
 Malheureusement, la vérification ne passe pas, je suis donc parti sur une autre piste : poser la carte sur une table afin d'ajouter de la profondeur à la vidéo. Pour cela, j'ai commencé par prendre en photo une carte réelle posée sur une table.
 
