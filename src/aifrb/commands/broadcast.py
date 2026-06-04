@@ -7,42 +7,50 @@ import ffmpeg
 
 app = typer.Typer()
 
+# Real camera parameters
+OUT_WIDTH = 640
+OUT_HEIGHT = 480
+FPS = 30
+
+# Valid extensions
+VALID_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+VALID_VIDEO_EXTENSIONS = {".mp4", ".avi", ".webm"}
+
 
 @app.command(rich_help_panel="Camera Commands", no_args_is_help=True)
 def broadcast(
-    video: Annotated[
-        Path, typer.Option("--video", "-v", help="Path to the video file.")
-    ] = None,
-    image: Annotated[
-        Path, typer.Option("--image", "-i", help="Path to the image file.")
-    ] = None,
-    portrait: Annotated[
-        bool,
+    input: Annotated[
+        Path, typer.Argument(help="Path to the input video or image file.")
+    ],
+    create_camera: Annotated[
+        str,
         typer.Option(
-            "--portrait",
-            "-p",
-            help="Specify the output orientation to portrait.",
+            "--create-camera",
+            "-c",
+            help="Create or replace the virtual camera with the specified name.",
         ),
-    ] = False,
+    ] = "AIFRB Virtual Camera",
     pixel_format: Annotated[
         str,
         typer.Option(
             "--pixel-format", "-f", help="Pixel format to use. (e.g., yuv420p, yuv422p)"
         ),
     ] = "yuv420p",
-    crop_x: Annotated[
-        int, typer.Option("--crop-x", "-x", help="X coordinate for cropping the video.")
-    ] = 0,
-    crop_y: Annotated[
-        int, typer.Option("--crop-y", "-y", help="Y coordinate for cropping the video.")
-    ] = 0,
+    no_crop: Annotated[
+        bool,
+        typer.Option(
+            "--no-crop",
+            "-n",
+            help="Keep the original aspect ratio.",
+        ),
+    ] = False,
 ):
     """
     Broadcast an image or a video file to a virtual camera.
     """
     device = "/dev/video1"
 
-    if not Path(device).exists():
+    if create_camera:
         # Reload the v4l2loopback module
         subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
         # Create the virtual camera
@@ -53,37 +61,46 @@ def broadcast(
                 "v4l2loopback",
                 "devices=1",
                 "video_nr=1",
-                f'card_label="AIFRB Virtual Camera"',
+                f'card_label="{create_camera}"',
                 "exclusive_caps=1",
             ]
         )
         # Grant current user access to the device without requiring video group membership
         subprocess.run(["sudo", "chmod", "666", device])
+    elif not Path(device).exists():
+        raise ValueError(
+            f"No camera has been created. Please use the --create-camera (-c) option to create a virtual camera."
+        )
 
-    if video is not None:
-        if portrait:
-            ffmpeg.input(str(video), re=None, stream_loop=-1).filter(
-                "crop", "min(iw,ih*9/16)", "ih", crop_x, crop_y
-            ).filter("scale", 640, 480).filter("fps", 30).output(
+    extension = input.suffix.lower()
+
+    if extension in VALID_IMAGE_EXTENSIONS:
+        if no_crop:
+            ffmpeg.input(str(input), re=None, loop=1).filter(
+                "scale", OUT_WIDTH, OUT_HEIGHT
+            ).filter("fps", FPS).output(
                 device, format="v4l2", pix_fmt=pixel_format
             ).run()
         else:
-            ffmpeg.input(str(video), re=None, stream_loop=-1).filter(
-                "crop", "iw", "min(ih,iw*9/16)", crop_x, crop_y
-            ).filter("scale", 640, 480).filter("fps", 30).output(
+            ffmpeg.input(str(input), re=None, loop=1).filter(
+                "crop", "min(iw,ih*4/3)", "min(ih,iw*3/4)"
+            ).filter("scale", OUT_WIDTH, OUT_HEIGHT).filter("fps", FPS).output(
                 device, format="v4l2", pix_fmt=pixel_format
             ).run()
-
-    elif image is not None:
-        if portrait:
-            ffmpeg.input(str(image), re=None, loop=1).filter(
-                "crop", "min(iw,ih*9/16)", "ih", crop_x, crop_y
-            ).filter("scale", 640, 480).filter("fps", 30).output(
+    elif extension in VALID_VIDEO_EXTENSIONS:
+        if no_crop:
+            ffmpeg.input(str(input), re=None, stream_loop=-1).filter(
+                "scale", OUT_WIDTH, OUT_HEIGHT
+            ).filter("fps", FPS).output(
                 device, format="v4l2", pix_fmt=pixel_format
             ).run()
         else:
-            ffmpeg.input(str(image), re=None, loop=1).filter(
-                "crop", "iw", "min(ih,iw*9/16)", crop_x, crop_y
-            ).filter("scale", 640, 480).filter("fps", 30).output(
+            ffmpeg.input(str(input), re=None, stream_loop=-1).filter(
+                "crop", "min(iw,ih*4/3)", "min(ih,iw*3/4)"
+            ).filter("scale", OUT_WIDTH, OUT_HEIGHT).filter("fps", FPS).output(
                 device, format="v4l2", pix_fmt=pixel_format
             ).run()
+    else:
+        raise ValueError(
+            f"Unsupported file type: {extension}. Supported image formats: {', '.join(VALID_IMAGE_EXTENSIONS)}. Supported video formats: {', '.join(VALID_VIDEO_EXTENSIONS)}."
+        )
