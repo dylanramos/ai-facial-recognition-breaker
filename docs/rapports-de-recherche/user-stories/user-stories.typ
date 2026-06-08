@@ -86,6 +86,14 @@
 )
 #set par(justify: true)
 
+#outline(title: "Table des matières")
+
+#pagebreak()
+
+#outline(title: "Table des figures", target: figure)
+
+#pagebreak()
+
 // Configuration des titres
 
 #set heading(numbering: "1.1")
@@ -111,7 +119,7 @@
 
 = Introduction
 
-Ce document présente les différents scénarios d'attaque liés à la vérification d'identité en ligne, il permettra par la suite d'établir les fonctionnalités du démonstrateur. Les scénarios d'attaque se basent sur les quatre patterns de vérification d'identité identifiés au #link("../sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 7 du rapport de recherche sites-de-verification.pdf")]. 
+Ce document présente les différents scénarios d'attaque liés à la vérification d'identité en ligne, il permettra par la suite d'établir les fonctionnalités du démonstrateur. Les scénarios d'attaque se basent sur les quatre patterns de vérification d'identité identifiés au #link("../sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 7 du rapport de recherche sites-de-verification.pdf")].
 
 À noter que seuls les scénarios impliquant l'utilisation de l'IA sont pris en compte. En effet, l'objectif de ce travail est de démontrer les risques liés à l'utilisation de l'IA dans les processus de vérification d'identité en ligne. Ainsi, les sites qui ne demandent que d'envoyer une photo d'un document d'identité par exemple ne sont pas pris en compte, car le document peut être facilement falsifié avec des outils de retouche d'image classiques.
 
@@ -127,7 +135,7 @@ Le lien ci-après montre un exemple de selfie vidéo demandé par Facebook : #un
 
 #figure(
   rect(image("images/selfie-video-1.png"), stroke: 0.1pt),
-  caption: "Scénario 1 : l'attaquant demande au démonstrateur de générer un selfie vidéo d'une personne à partir de son image."
+  caption: "Scénario 1 : l'attaquant demande au démonstrateur de générer un selfie vidéo d'une personne à partir de son image.",
 )
 
 == Scénario 2 : modification de la date de naissance
@@ -136,12 +144,12 @@ Le lien ci-après montre un exemple de selfie vidéo demandé par Facebook : #un
 
 #figure(
   rect(image("images/selfie-video-2.png"), stroke: 0.1pt),
-  caption: "Scénario 2 : l'attaquant demande au démonstrateur de générer un selfie vidéo de lui en plus âgé à partir de son image."
+  caption: "Scénario 2 : l'attaquant demande au démonstrateur de générer un selfie vidéo de lui en plus âgé à partir de son image.",
 )
 
 = Vérification par scan de document d'identité et selfie vidéo sur ordinateur
 
-Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken. L'interêt pour un attaquant de cibler ces sites serait de créer un faux compte pour commettre des fraudes financières. Contrairement au pattern précédent, celui-ci est plus difficile à contourner, car il nécessite à la fois un faux document d'identité (ou un document volé) et un selfie vidéo correspondant. 
+Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken. L'interêt pour un attaquant de cibler ces sites serait de créer un faux compte pour commettre des fraudes financières. Contrairement au pattern précédent, celui-ci est plus difficile à contourner, car il nécessite à la fois un faux document d'identité (ou un document volé) et un selfie vidéo correspondant.
 
 == Scénario 1 : création d'un faux compte avec un document d'identité volé
 
@@ -149,7 +157,7 @@ Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Roman
 
 #figure(
   rect(image("images/ordinateur-1.png"), stroke: 0.1pt),
-  caption: "Scénario 1 : l'attaquant a volé une photo d'un document d'identité et demande au démonstrateur de simuler le scan du document et de générer un selfie vidéo correspondant à la personne sur le document."
+  caption: "Scénario 1 : l'attaquant a volé une photo d'un document d'identité et demande au démonstrateur de simuler le scan du document et de générer un selfie vidéo correspondant à la personne sur le document.",
 )
 
 == Scénario 2 : création d'un faux compte avec un document d'identité falsifié
@@ -158,7 +166,7 @@ Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Roman
 
 #figure(
   rect(image("images/ordinateur-2.png"), stroke: 0.1pt),
-  caption: "Scénario 2 : l'attaquant a récupéré un exemple de document d'identité sur Internet et demande au démonstrateur de le modifier avec des informations fictives. Ensuite, il demande de simuler le scan du document et de générer un selfie vidéo correspondant à la personne sur le document."
+  caption: "Scénario 2 : l'attaquant a récupéré un exemple de document d'identité sur Internet et demande au démonstrateur de le modifier avec des informations fictives. Ensuite, il demande de simuler le scan du document et de générer un selfie vidéo correspondant à la personne sur le document.",
 )
 
 = Vérification par scan de document d'identité et selfie vidéo sur smartphone
@@ -179,7 +187,7 @@ De plus, comme pour le pattern précédent, la création du compte se fait via l
 
 #figure(
   rect(image("images/appel-1.png"), stroke: 0.1pt),
-  caption: "Scénario 1 : l'attaquant sait ce qui est demandé lors de l'appel vidéo, il pré-enregistre une vidéo de lui en train d'effectuer les actions demandées et demande au démonstrateur de la modifier avec une autre personne et un autre document."
+  caption: "Scénario 1 : l'attaquant sait ce qui est demandé lors de l'appel vidéo, il pré-enregistre une vidéo de lui en train d'effectuer les actions demandées et demande au démonstrateur de la modifier avec une autre personne et un autre document.",
 )
 
 == Scénario 2 : création d'un faux compte sans savoir ce qui va être demandé lors de l'appel vidéo
@@ -188,5 +196,5 @@ De plus, comme pour le pattern précédent, la création du compte se fait via l
 
 #figure(
   rect(image("images/appel-2.png"), stroke: 0.1pt),
-  caption: "Scénario 2 : l'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra."
+  caption: "Scénario 2 : l'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra.",
 )

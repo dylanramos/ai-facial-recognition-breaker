@@ -88,6 +88,14 @@
 )
 #set par(justify: true)
 
+#outline(title: "Table des matières")
+
+#pagebreak()
+
+#outline(title: "Table des figures", target: figure)
+
+#pagebreak()
+
 // Configuration des titres
 
 #set heading(numbering: "1.1")
