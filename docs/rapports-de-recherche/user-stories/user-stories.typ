@@ -119,19 +119,26 @@
 
 = Introduction
 
-Ce document présente les différents scénarios d'attaque liés à la vérification d'identité en ligne, il permettra par la suite d'établir les fonctionnalités du démonstrateur. Les scénarios d'attaque se basent sur les quatre patterns de vérification d'identité identifiés au #link("../sites-de-verification/sites-de-verification.pdf")[#underline("Chapitre 7 du rapport de recherche sites-de-verification.pdf")].
+Ce rapport de recherche est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Il présente les scénarios d'attaque dont nous voulons vérifier la faisabilité dans un démonstrateur. Les scénarios d'attaque ainsi que tous les sites cités se basent sur les quatre patterns de vérification d'identité identifiés au chapitre 7 du rapport de recherche #link("../sites-de-verification/sites-de-verification.pdf")[#underline("sites-de-verification.pdf")].
 
-À noter que seuls les scénarios impliquant l'utilisation de l'IA sont pris en compte. En effet, l'objectif de ce travail est de démontrer les risques liés à l'utilisation de l'IA dans les processus de vérification d'identité en ligne. Ainsi, les sites qui ne demandent que d'envoyer une photo d'un document d'identité par exemple ne sont pas pris en compte, car le document peut être facilement falsifié avec des outils de retouche d'image classiques.
+À noter que seuls les scénarios impliquant l'utilisation de l'IA sont pris en compte. En effet, l'objectif de ce travail est de démontrer les risques face aux progrès et à la démocratisation de l'IA dans les processus de vérification d'identité en ligne. Ainsi, les sites qui ne demandent que d'envoyer une photo d'un document d'identité par exemple ne sont pas pris en compte, car le document peut être facilement falsifié avec des outils de retouche d'image classiques.
 
 = Vérification par selfie vidéo uniquement
 
 Les sites concernés par ce pattern sont Facebook, Tea for Women, Roblox, Parship et Google. L'interêt pour un attaquant de cibler ces sites serait de nuire à la réputation de quelqu'un en créant un faux compte sur Facebook, Tea for Women ou Parship. Dans le cas de Roblox et de Google, ce serait plutôt une personne mineure possédant déjà un compte qui chercherait à modifier sa date de naissance pour accéder à des contenus ou services inappropriés.
 
-Le lien ci-après montre un exemple de selfie vidéo demandé par Facebook : #underline()[#link("https://drive.proton.me/urls/D81WJDY3PG#XU6kPbSIfchZ")].
+La #underline[@facebook-example] ci-dessous montre un exemple de selfie vidéo demandé par Facebook. Nous pouvons voir que cinq mouvements de tête sont demandés avec à chaque fois trois possibilités (gauche, droite ou haut). À noter que les mouvements sont différents à chaque rafraîchissement de page.
+
+#figure(
+  rect(image("images/facebook-example.png", width: 70%), stroke: 0.1pt),
+  caption: "Exemple de selfie vidéo demandé par Facebook.",
+) <facebook-example>
+
+
 
 == Scénario 1 : création d'un faux compte
 
-*Préambule :* l'attaquant veut créer un faux compte sur un site vulnérable pour nuire à la réputation de quelqu'un. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
+*Contexte :* l'attaquant veut créer un faux compte sur un site vulnérable pour nuire à la réputation de quelqu'un dont il possède une photo. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
 
 #figure(
   rect(image("images/selfie-video-1.png"), stroke: 0.1pt),
@@ -140,7 +147,7 @@ Le lien ci-après montre un exemple de selfie vidéo demandé par Facebook : #un
 
 == Scénario 2 : modification de la date de naissance
 
-*Préambule :* l'attaquant est une personne mineure qui possède déjà un compte sur un site vulnérable et qui cherche à modifier sa date de naissance pour accéder à des contenus ou services inappropriés. Il se connecte à son compte, change sa date de naissance et arrive à l'étape de vérification d'identité.
+*Contexte :* l'attaquant est une personne mineure qui possède déjà un compte sur un site vulnérable et qui cherche à modifier sa date de naissance pour accéder à des contenus ou services inappropriés. Il se connecte à son compte, change sa date de naissance et arrive à l'étape de vérification d'âge.
 
 #figure(
   rect(image("images/selfie-video-2.png"), stroke: 0.1pt),
@@ -149,11 +156,11 @@ Le lien ci-après montre un exemple de selfie vidéo demandé par Facebook : #un
 
 = Vérification par scan de document d'identité et selfie vidéo sur ordinateur
 
-Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken. L'interêt pour un attaquant de cibler ces sites serait de créer un faux compte pour commettre des fraudes financières. Contrairement au pattern précédent, celui-ci est plus difficile à contourner, car il nécessite à la fois un faux document d'identité (ou un document volé) et un selfie vidéo correspondant.
+Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken. L'interêt pour un attaquant de cibler ces sites serait de créer un faux compte pour commettre des fraudes financières. Par rapport au pattern précédent, il faut non seulement produire un selfie mais en plus, celui-ci doit correspondre à la photo d'un document d'identité à fournir.
 
 == Scénario 1 : création d'un faux compte avec un document d'identité volé
 
-*Préambule :* l'attaquant a volé une photo d'un document d'identité et veut créer un faux compte sur un site vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
+*Contexte :* l'attaquant a volé une photo d'un document d'identité et veut créer un faux compte sur un site vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
 
 #figure(
   rect(image("images/ordinateur-1.png"), stroke: 0.1pt),
@@ -162,7 +169,7 @@ Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Roman
 
 == Scénario 2 : création d'un faux compte avec un document d'identité falsifié
 
-*Préambule :* l'attaquant a récupéré un exemple de document d'identité sur Internet #footnote[https://media.lematin.ch/4/image/2025/11/12/d10f8b1e-512b-4e61-9ccb-6a391f05621f.jpg?auto=format%2Ccompress%2Cenhance&fit=max&w=1200&h=1200&rect=0%2C0%2C1024%2C640&fp-x=0.2265625&fp-y=0.44375&s=5c24eb000b8b1c27d35d5c4e9d79d9bd] et veut créer un faux compte sur un site vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
+*Contexte :* l'attaquant a récupéré un exemple de document d'identité sur Internet #footnote[https://media.lematin.ch/4/image/2025/11/12/d10f8b1e-512b-4e61-9ccb-6a391f05621f.jpg?auto=format%2Ccompress%2Cenhance&fit=max&w=1200&h=1200&rect=0%2C0%2C1024%2C640&fp-x=0.2265625&fp-y=0.44375&s=5c24eb000b8b1c27d35d5c4e9d79d9bd] et veut créer un faux compte sur un site vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité.
 
 #figure(
   rect(image("images/ordinateur-2.png"), stroke: 0.1pt),
@@ -171,9 +178,9 @@ Les sites concernés par ce pattern sont Migros Bank, Swissquote, Lotterie Roman
 
 = Vérification par scan de document d'identité et selfie vidéo sur smartphone
 
-Les sites concernés par ce pattern sont UBS, Swissborg, Okx, Zak Cler et OkCupid. L'interêt pour l'attaquant est le même que pour le pattern précédent (sauf pour OkCupid où l'interêt serait plutôt de nuire à la réputation de quelqu'un), mais cette fois il y a la contrainte de devoir utiliser un smartphone au lieu d'un ordinateur.
+Les sites concernés par ce pattern sont UBS, Swissborg, Okx, Zak Cler et OkCupid. L'interêt pour l'attaquant est le même que pour le pattern précédent (sauf pour OkCupid qui est un site de rencontres), mais cette fois il y a la contrainte de devoir utiliser un smartphone au lieu d'un ordinateur.
 
-Les scénarios sont donc les mêmes que dans le chapitre précédent, mais au lieu de passer par le navigateur pour la création du compte, l'attaquant passe par l'application mobile du site vulnérable via un émulateur Android, qui détectera la caméra virtuelle de l'ordinateur.
+Les scénarios sont donc les mêmes que dans le chapitre précédent, mais au lieu de passer par le navigateur pour la création du compte, l'attaquant passe par l'application mobile du site vulnérable, possiblement via un émulateur Android.
 
 = Vérification par scan de document d'identité et appel vidéo
 
@@ -183,7 +190,7 @@ De plus, comme pour le pattern précédent, la création du compte se fait via l
 
 == Scénario 1 : création d'un faux compte en sachant ce qui va être demandé lors de l'appel vidéo
 
-*Préambule :* l'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. L'attaquant sait ce qui va lui être demandé lors de l'appel vidéo (tenir le document d'identité devant la caméra, faire des mouvements de tête, etc.), il pré-enregistre donc une vidéo de lui en train d'effectuer ces actions.
+*Contexte :* l'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. L'attaquant sait ce qui va lui être demandé lors de l'appel vidéo (tenir le document d'identité devant la caméra, faire des mouvements de tête, etc.), il pré-enregistre donc une vidéo de lui en train d'effectuer ces actions.
 
 #figure(
   rect(image("images/appel-1.png"), stroke: 0.1pt),
@@ -192,7 +199,7 @@ De plus, comme pour le pattern précédent, la création du compte se fait via l
 
 == Scénario 2 : création d'un faux compte sans savoir ce qui va être demandé lors de l'appel vidéo
 
-*Préambule :* l'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. Ne sachant pas ce qui va lui être demandé lors de l'appel vidéo, il doit miser sur de l'ingénierie sociale pour réussir à tromper l'agent humain.
+*Contexte :* l'attaquant possède un document d'identité falsifié et veut créer un faux compte sur une application vulnérable pour commettre des fraudes financières. Il suit le processus d'enregistrement en ligne en renseignant les informations nécessaires et arrive à l'étape de vérification d'identité. Ne sachant pas ce qui va lui être demandé lors de l'appel vidéo, il doit miser sur de l'ingénierie sociale pour réussir à tromper l'agent humain.
 
 #figure(
   rect(image("images/appel-2.png"), stroke: 0.1pt),
