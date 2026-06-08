@@ -9,7 +9,7 @@
 
 #let author = "Dylan Oliveira Ramos"
 #let professor = "Prof. Jean-Marc Bost"
-#let title = "Caméras virtuelles et redirection de flux vidéo"
+#let title = "Caméras virtuelles et diffusion de flux vidéo"
 #let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
 #let academic_year = "2025-2026"
 
@@ -88,6 +88,14 @@
 )
 #set par(justify: true)
 
+#outline(title: "Table des matières")
+
+#pagebreak()
+
+#outline(title: "Table des figures", target: figure)
+
+#pagebreak()
+
 // Configuration des titres
 
 #set heading(numbering: "1.1")
@@ -111,12 +119,13 @@
   fill: (x, y) => if x == 0 or y == 0 { silver },
 )
 
-
 = Introduction
 
-Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
+Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de diffuser la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
 Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle.
+
+Ce document présente les différentes solutions existantes pour créer des caméras virtuelles sur les différents OS, ainsi que les étapes nécessaires pour diffuser un flux vidéo vers celles-ci.
 
 = Comparaison des solutions
 
@@ -130,11 +139,7 @@ L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt
     align: horizon + center,
     [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
     [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
-    [*OBS Studio*],
-    [Linux, Windows, macOS],
-    [Oui],
-    [Abstraction de l'OS],
-    [Nécessite des actions manuelles, haute latence],
+    [*OBS Studio*], [Linux, Windows, macOS], [Oui], [Abstraction de l'OS], [Nécessite des actions manuelles],
 
     [*UnityCapture*], [Windows], [Oui], [Caméra Windows native], [Windows uniquement],
     [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
@@ -146,9 +151,9 @@ L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt
 
 = Caméras virtuelles sous Linux
 
-Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de rediriger un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
+Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
 
-Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 24.04*.
+Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 26.04*.
 
 == Installation
 
@@ -185,7 +190,7 @@ Il est ensuite possible de lister les caméras disponibles :
   caption: [Énumération des caméras disponibles avec `v4l2loopback`.],
 )
 
-== Envoi d'un flux vidéo vers la caméra virtuelle
+== Diffusion d'un flux vidéo vers la caméra virtuelle <v4l2loopback-stream>
 
 La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle :
 
@@ -268,7 +273,7 @@ Pour l'utiliser, il suffit de lancer la commande suivante :
 = Caméras virtuelles sous Windows
 
 Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
-`OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de rediriger un flux vidéo vers celle-ci.
+`OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci.
 
 Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 10 22H2*.
 
@@ -276,7 +281,7 @@ Les instructions qui vont suivre ont été effectuées sur une machine virtuelle
 
 Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.com/")). Une fois le logiciel installé, la caméra virtuelle est automatiquement créée et est disponible sous le nom de `OBS Virtual Camera`.
 
-== Envoi d'un flux vidéo vers la caméra virtuelle
+== Diffusion d'un flux vidéo vers la caméra virtuelle
 
 + Lancer `OBS Studio`.
 + Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner `Media Source`.
@@ -297,7 +302,7 @@ En effet, cela est dû au fait que c'est une caméra logicielle qui utilise le f
 
 == Automatisation
 
-Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible d'envoyer un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec `OBS Studio`, le flux doit être envoyé via le protocole `UDP`, ce qui ajoute de la latence.
+Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible de diffuser un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec `OBS Studio`, le flux doit être envoyé via le protocole `UDP`, ce qui ajoute de la latence.
 
 === Création de la source vidéo
 
@@ -309,7 +314,7 @@ Comme vu dans le point précédent, la création de la source vidéo nécessite 
 
 Cette source vidéo est maintenant prête à recevoir un flux vidéo via `UDP` sur le port `1234`.
 
-=== Envoi d'un flux vidéo vers la caméra virtuelle
+=== Diffusion d'un flux vidéo vers la caméra virtuelle
 
 La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle de `OBS Studio` :
 
@@ -329,22 +334,51 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 - `f mpegts` : spécifie le format de sortie (MPEG-TS est un format de conteneur compatible avec le streaming en direct).
 - `udp://127.0.0.1:1234?pkt_size=1316` : spécifie l'adresse et le port de destination du flux UDP, ainsi que la taille des paquets (1316 est une taille courante pour le streaming en direct).
 
-= pyvirtualcam
+= Utilisation d'une caméra virtuelle sur un émulateur Android (Linux)
+
+Certains sites demandent de vérifier l'identité de l'utilisateur sur un téléphone plutôt que sur un ordinateur, il faut donc que la caméra virtuelle de la machine hôte soit détectée par les émulateurs Android. L'exemple ci-dessous utilise `Genymotion` comme émulateur Android (sous Linux) car il est plus rapide et plus léger que l'émulateur de Android Studio.
+
+== Installation de Genymotion
+
++ Télécharger `Genymotion` : #underline(link("https://www.genymotion.com/product-desktop/download/")).
++ Installer `Genymotion`.
+  #sourcecode[```sh
+  chmod +x genymotion-3.10.0-linux_x64.run
+  ./genymotion-3.10.0-linux_x64.run
+  ```]
++ Lancer `Genymotion` et créer un compte.
++ Dans l'onglet `Devices`, cliquer sur `Create` puis sur `Install` en laissant les paramètres par défaut.
+
+#figure(
+  rect(image("images/genymotion.png"), stroke: 0.1pt),
+  caption: [Interface de `Genymotion` après la création d'un appareil virtuel.],
+)
+
+== Utilisation de la caméra virtuelle de la machine hôte
+
++ Diffuser une vidéo sur la caméra virtuelle de la machine hôte (voir #underline()[@v4l2loopback-stream])
++ Lancer l'appareil virtuel créé précédemment (bouton `Play`).
++ Une fois l'appareil démarré, cliquer sur `Media injection` (icône de la caméra dans la barre d'outils à droite).
++ Sélectionner la caméra virtuelle dans la section `Video` de `Inputs mapping`.
+
+#figure(
+  rect(image("images/genymotion-cam.png"), stroke: 0.1pt),
+  caption: [Utilisation de la caméra virtuelle de la machine hôte dans `Genymotion`.],
+)
+
+= Librairies Python pour la diffusion de flux vidéo vers une caméra virtuelle
+
+Pour développer le démonstrateur (CLI), il est nécessaire de pouvoir diffuser un flux vidéo vers une caméra virtuelle de manière programmatique. Il existe plusieurs librairies Python permettant de faire cela, avec chacune leurs avantages et leurs inconvénients.
+
+== pyvirtualcam
 
 La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux, Windows ou macOS. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
 
 Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #underline()[@v4l2loopback-install] pour Linux et #underline()[@obs-install] pour Windows et macOS ).
 
-#figure(
-  rect(image("images/pyvirtualcam.png"), stroke: 0.1pt),
-  caption: [Comparaison avec `pyvirtualcam` et sans `pyvirtualcam` pour rediriger un flux vidéo vers une caméra virtuelle.],
-)
+L'exemple ci-dessous montre comment utiliser `pyvirtualcam` sur Windows. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir le #underline()[@obs-install] pour l'installation).
 
-== Exemple d'utilisation sur Windows
-
-Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtuelle disponible. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir le #underline()[@obs-install] pour l'installation).
-
-=== Création de l'environnement virtuel
+Création de l'environnement virtuel :
 
 #figure(
   sourcecode[```sh
@@ -355,7 +389,7 @@ Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtue
   caption: [Création d'un environnement virtuel Python et installation des dépendances.],
 )
 
-=== Exemple de code
+Exemple de code :
 
 #text(style: "italic")[Source : https://github.com/letmaik/pyvirtualcam/blob/main/examples/video.py]
 
@@ -411,7 +445,7 @@ Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtue
   caption: [Exemple de code Python utilisant `pyvirtualcam` pour diffuser une vidéo sur une caméra virtuelle.],
 )
 
-=== Utilisation
+Utilisation :
 
 #figure(
   sourcecode[```sh
@@ -421,3 +455,62 @@ Pour que `pyvirtualcam` fonctionne sur Windows, il faut avoir une caméra virtue
 )
 
 La vidéo `video.mp4` est maintenant diffusée en boucle sur la caméra virtuelle de `OBS Studio`.
+
+== ffmpeg-python
+
+La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scanant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu précédemment, l'utilisation de `FFmpeg` avec `OBS Studio` sur Windows implique de devoir diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+
+L'exemple ci-dessous montre comment utiliser `ffmpeg-python` sur Linux. Pour que cet exemple fonctionne, il faut avoir une caméra virtuelle disponible (voir le #underline()[@v4l2loopback-install] pour l'installation) ainsi que `FFmpeg` installé.
+
+Création de l'environnement virtuel :
+
+#figure(
+  sourcecode[```sh
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install ffmpeg-python
+  ```],
+  caption: [Création d'un environnement virtuel Python et installation de `ffmpeg-python`.],
+)
+
+Exemple de code :
+
+#figure(
+  sourcecode[```python
+  import ffmpeg
+  import sys
+
+
+  def main(arg1):
+      ffmpeg.input(arg1, re=None, stream_loop=-1).filter("scale", 640, 480).filter("fps", 30).output("/dev/video2", format="v4l2", pix_fmt="yuv420p").run()
+
+
+  if __name__ == "__main__":
+      if len(sys.argv) != 2:
+          print("Usage: python main.py <video_file>")
+          sys.exit(1)
+      main(sys.argv[1])
+
+  ```],
+  caption: [Exemple de code Python utilisant `ffmpeg-python` pour diffuser une vidéo sur une caméra virtuelle.],
+)
+
+Utilisation :
+
+#figure(
+  sourcecode[```sh
+  python main.py video.mp4
+  ```],
+  caption: [Lancement du script Python pour diffuser une vidéo sur la caméra virtuelle.],
+)
+
+La vidéo passée en argument est maintenant diffusée en boucle sur la caméra virtuelle `/dev/video2`.
+
+== Comparaison des librairies
+
+Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec `OBS Studio` car elle nécessite de diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+
+#figure(
+  rect(image("images/libs-compare.png"), stroke: 0.1pt),
+  caption: [Comparaison de `pyvirtualcam` et `ffmpeg-python` pour diffuser un flux vidéo vers une caméra virtuelle.],
+)
