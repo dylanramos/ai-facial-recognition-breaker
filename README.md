@@ -16,7 +16,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 ## Prerequisites
 
-- Linux-based operating system
+- Ubuntu 26.04+
 - Python 3.12+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
 - [Kie AI](https://kie.ai/) account and API key
