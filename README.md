@@ -8,7 +8,8 @@ This repository contains my bachelor's thesis project. This work aims to underst
 - `docs/rapports-de-recherche/`: Topic-specific research reports.
 - `docs/diagrammes/`: Draw.io architecture and workflow diagrams.
 - `src/aifrb/main.py`: CLI entry point (Typer app).
-- `src/aifrb/api.py`: API calls to the AI generation service (Kie AI).
+- `src/aifrb/api/`: API providers directory (currently only KIE AI).
+- `src/aifrb/api/kieai/`: KIE AI API implementation.
 - `src/aifrb/commands/`: Commands implementation.
 - `src/aifrb/utils/`: Utility functions (e.g. file downloading).
 - `templates/`: Images and videos used for generating fake content (e.g. ID card template).
@@ -19,7 +20,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
 - Ubuntu 26.04+
 - Python 3.12+
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- [Kie AI](https://kie.ai/) account and API key
+- [KIE AI](https://kie.ai/) account and API key
 
 > Note: This project also works on a virtual machine.
 
@@ -36,7 +37,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
    source .venv/bin/activate
    ```
 
-3. Set up environment variable for Kie AI API key:
+3. Set up environment variable for KIE AI API key:
    ```bash
    cp .env.example .env
    nano .env
