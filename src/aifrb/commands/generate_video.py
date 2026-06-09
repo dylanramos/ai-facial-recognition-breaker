@@ -3,13 +3,8 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api import (
-    generate_video_seedance_2_0,
-    get_content_url,
-    upload_image,
-    generate_video_grok_imagine,
-    generate_video_kling_3_0,
-)
+from aifrb.api.kieai.generate_video import grok_imagine, kling_3_0, seedance_2_0
+from aifrb.api.kieai.utils import get_content_url, upload_image
 from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
@@ -70,15 +65,15 @@ def generate_video(
 
     match model:
         case "kling-3.0":
-            task_id = generate_video_kling_3_0(
+            task_id = kling_3_0(
                 prompt, duration, aspect_ratio, images_urls
             )
         case "grok-imagine":
-            task_id = generate_video_grok_imagine(
+            task_id = grok_imagine(
                 prompt, duration, aspect_ratio, images_urls
             )
         case "seedance-2.0":
-            task_id = generate_video_seedance_2_0(
+            task_id = seedance_2_0(
                 prompt, duration, aspect_ratio, images_urls
             )
         case _:

@@ -3,13 +3,8 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api import (
-    edit_image_grok_imagine,
-    get_content_url,
-    upload_image,
-    edit_image_gpt_image_2,
-    edit_image_nano_banana_2,
-)
+from aifrb.api.kieai.edit_image import gpt_image_2, grok_imagine, nano_banana_2
+from aifrb.api.kieai.utils import get_content_url, upload_image
 from aifrb.utils.download_file import download_file
 
 app = typer.Typer()
@@ -60,11 +55,11 @@ def edit_image(
 
     match model:
         case "gpt-image-2":
-            task_id = edit_image_gpt_image_2(prompt, images_urls)
+            task_id = gpt_image_2(prompt, images_urls)
         case "nano-banana-2":
-            task_id = edit_image_nano_banana_2(prompt, images_urls)
+            task_id = nano_banana_2(prompt, images_urls)
         case "grok-imagine":
-            task_id = edit_image_grok_imagine(prompt, images_urls)
+            task_id = grok_imagine(prompt, images_urls)
         case _:
             raise ValueError(f"Unsupported model: {model}")
 

@@ -13,7 +13,7 @@ def download_file(url):
     # Reads the response in chunks, preventing memory issues with large files.
     with requests.get(url, stream=True) as response:
         response.raise_for_status()  # Raises an error for bad status codes
-        with open(local_filename, 'wb') as file:
+        with open(local_filename, "wb") as file:
             for chunk in response.iter_content(chunk_size=8192):
                 file.write(chunk)
 

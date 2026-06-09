@@ -1,8 +1,9 @@
 import typer
 
-from aifrb.api import get_remaining_credits
+from aifrb.api.kieai.utils import get_remaining_credits
 
 app = typer.Typer()
+
 
 @app.command(rich_help_panel="Kie Account Commands")
 def remaining_credits():
