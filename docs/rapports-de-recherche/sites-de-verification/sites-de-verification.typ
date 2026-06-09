@@ -599,8 +599,6 @@ Facebook, Tea for Women, Roblox, Parship et Google demandent une vérification d
   caption: "Processus de vérification d'identité par selfie vidéo.",
 )
 
-Exemple de selfie vidéo demandé par Facebook : #underline()[#link("https://drive.proton.me/urls/D81WJDY3PG#XU6kPbSIfchZ")]
-
 == Vérification par scan de document d'identité et selfie vidéo sur ordinateur <scan-ordinateur>
 
 Migros Bank, Swissquote, Lotterie Romande, Swiss Casinos, Bet365, Binance et Kraken demandent une vérification d'identité par scan de document d'identité et selfie vidéo (pour certains) sur ordinateur. Ces sites sont un peu plus difficiles à attaquer que ceux du #underline()[@selfie-video] car il est nécessaire de fournir des documents d'identité, ce qui implique de devoir voler des documents d'identité ou d'en générer de faux. De plus, le selfie vidéo, lorsqu'il est requis, doit correspondre à la photo sur le document d'identité.
