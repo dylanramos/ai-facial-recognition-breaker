@@ -481,24 +481,54 @@ Le tableau ci-dessous résume les résultats obtenus au chapitre précédent en 
 
 Les trois modèles de type Video-to-Video disponibles sur KIE AI ont été testés pour vérifier leur capacité à remplacer une personne dans une vidéo par une autre personne de manière réaliste. L'objectif était de remplacer ma personne dans une vidéo par une autre personne à partir d'une vidéo de référence de ma personne face caméra qui tourne la tête à droite, en haut, à droite puis à gauche. L'image de référence utilisée est la même que pour le #underline[@generation-selfie], à savoir la #underline[@image-ref]. Pour des questions de vie privée, la vidéo de référence de ma personne n'est pas publiée sur GitHub et n'est donc pas disponible dans ce rapport.
 
-Le prompt utilisé pour les trois modèles est le suivant :
+Le prompt utilisé pour HappyHorse 1.0 et Wan 2.7 (Kling Motion Control 3.0 est un peu particulier, voir #underline[@kling-motion-control]) est le suivant :
 
 `Replace the person on the video by the person on the image.`
 
 === HappyHorse 1.0
 
-Vidéo : #underline[#link("videos/happyhorse-edit.mp4")]
+Vidéo : #underline[#link("videos/happyhorse-1-0-edit.mp4")]
 
 Le résultat est plutôt moyen, nous pouvons voir à la seconde 1 qu'il y a un léger clignement d'œil alors que je ne cligne des yeux à aucun moment dans la vidéo. De plus, les cheveux de la personne sont trop brillants et le linge en arrière-plan à complètement changé de texture. Néanmoins, les mouvements de la personne sont corrects et le cadrage de la vidéo est respecté.
 
-=== Kling Motion Control 3.0
-
 === Wan 2.7
 
-Vidéo : #underline[#link("videos/wan-edit.mp4")]
+Vidéo : #underline[#link("videos/wan-2-7-edit.mp4")]
 
 Le résultat est plutôt moyen, la caméra est tremblante et la machoîre change de forme au début de la vidéo. Néanmoins, les mouvements de la personne sont corrects et les cheveux sont réalistes.
 
-= Conclusion
+=== Kling Motion Control 3.0 <kling-motion-control>
 
-Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
+La manière de remplacer une personne dans une vidéo avec le modèle Kling Motion Control 3.0 est différente des deux autres modèles. En effet, le prompt est facultatif, d'autre part, ce n'est pas l'image qui s'insère dans la vidéo mais l'inverse, la vidéo de référence se réplique sur l'image fournie. Ainsi, avant de générer la vidéo, il faut que la nouvelle personne soit déjà dans le même environnement que la personne dans la vidéo, comme le montre l'image ci-dessous.
+
+#figure(
+  rect(image("images/kling-ref.jpeg", width: 80%), stroke: 0.1pt),
+  caption: "Nouvelle personne dans le même environnement que la vidéo de référence.",
+)
+
+Vidéo : #underline[#link("videos/kling-3-0-edit.mp4")]
+
+Le résultat est plutôt bon, l'arrière-plan est préservé, les mouvements sont corrects et l'aspect général de la personne est réaliste. Par contre, contrairement aux vidéos précédentes, le bras qui tient la caméra n'est plus présent, c'est normal car la personne sur l'image de référence n'avait pas exactement la même posture que ma personne dans la vidéo de référence. De plus, la position des yeux à la toute dernière seconde de la vidéo est un peu étrange, mais cela reste un détail.
+
+=== Synthèse des résultats
+
+Le modèle qui semble le mieux fonctionner pour remplacer une personne dans une vidéo par une autre personne est *Kling Motion Control 3.0*. En effet, il arrive à bien préserver l'arrière-plan de la vidéo et surtout à générer une personne réaliste. Les deux autres modèles, bien que fonctionnels, font quelques erreurs qui risquent d'être détectées par les systèmes de vérification.
+
+== Tableau comparatif des modèles de type Video-to-Video
+
+Le tableau ci-dessous résume les résultats obtenus au chapitre précédent pour une vidéo d'environ 8 secondes en indiquant la résolution ainsi que le prix de la vidéo générée (paramètres par défaut).
+
+#set par(justify: false)
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr),
+    align: horizon + center,
+    [*Modèle*], [*Résultat lors des tests*], [*Résolution*], [*Prix*],
+
+    [*Kling Motion Control 3.0*], [Bon], [720p], [0.80\$ + 0.04\$ (pour l'image)],
+    [*HappyHorse 1.0*], [Moyen], [720p], [2.38\$],
+    [*Wan 2.7*], [Moyen], [720p], [0.64\$],
+  ),
+  caption: "Comparaison des modèles de type Video-to-Video.",
+)
