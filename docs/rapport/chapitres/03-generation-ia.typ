@@ -10,29 +10,29 @@
 
 == Introduction
 
-Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant une vérification d'identité, il doit utiliser des modèles de génération d'images et de vidéos IA.
+Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant un selfie vidéo, il doit utiliser des modèles de génération d'images et de vidéos IA. Les modèles sont en constante évolution, il est donc impossible de choisir un modèle de manière définitive car celui-ci risque de très vite être dépassé par de nouveaux modèles ou des modèles d'autres fournisseurs.
 
-Ainsi, la solution la plus simple pour utiliser ces différents modèles est de passer par un service d'API. Un service d'API est une plateforme qui regroupe les APIs des différents services de génération. Il met à disposition une API qui permet d'utiliser plusieurs modèles d'IA de manière centralisée et moins coûteuse que chez les fournisseurs directement.
+Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez les fournisseurs directement.
 
 #figure(
-  rect(image("../images/03-generation-ia/service-api.png", width: 80%), stroke: 0.1pt),
-  caption: "Architecture d'un service d'API.",
+  rect(image("../../images/03-generation-ia/kieai.png", width: 71%), stroke: 0.1pt),
+  caption: "Architecture d'une application utilisant KIE AI.",
 )
 
-== Kie.ai
+== KIE AI
 
-Le service d'API choisi est #link("https://kie.ai/")[#underline("Kie.ai")]. Il a été choisi pour sa large gamme de modèles, sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants notamment pour les comparaisons de prix.
+KIE AI a été choisi pour sa large gamme de modèles, sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 (0.40\$) crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants.
 
 #figure(
-  rect(image("../images/03-generation-ia/kie.png", width: 33%), stroke: 0.1pt),
-  caption: "Catégories de modèles proposées par Kie.ai.",
+  rect(image("../../images/03-generation-ia/kieai-features.png", width: 33%), stroke: 0.1pt),
+  caption: "Catégories de modèles proposées par KIE AI.",
 )
 
 Les catégories utiles à ce projet sont *Video Generation* et *Image Generation*, mais la catégorie *Chat* reste intéressante si un générateur de prompt automatique vient à être nécessaire.
 
 === Exemple d'utilisation de l'API pour générer une vidéo <generate-video>
 
-L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle *kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
+L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle *Kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
 
 #figure(
   sourcecode[```python
@@ -65,7 +65,7 @@ L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle
       return data["data"]["taskId"]
 
   ```],
-  caption: "Exemple de code pour générer une vidéo avec le modèle kling 3.0 sur Kie.ai.",
+  caption: "Exemple de code pour générer une vidéo avec le modèle kling 3.0 sur KIE AI.",
 )
 
 === Exemple d'utilisation de l'API pour récupérer une vidéo générée
@@ -109,7 +109,7 @@ L'exemple de code ci-dessous montre comment récupérer une vidéo générée ap
 
           time.sleep(wait)
   ```],
-  caption: "Exemple de code pour récupérer l'URL d'une vidéo générée sur Kie.ai.",
+  caption: "Exemple de code pour récupérer l'URL d'une vidéo générée sur KIE AI.",
 )
 
 == Génération d'images
@@ -126,73 +126,57 @@ Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les
 
 Les modèles de type Image-to-Image (édition d'images) partent d'une image fournie et la modifient en fonction du prompt. Ils sont utiles pour modifier des images existantes contrairement aux modèles de type Text-to-Image.
 
-=== Exemples de tests effectués <exemples-tests-effectues>
+=== Modification d'une carte d'identité
 
-La catégorie utile pour ce projet est *Image-to-Image* car elle permet de modifier des parties d'une image existante, ce qui est très utile pour modifier une photo d'identité comme le démontrent les exemples de test ci-dessous. Pour une vue plus détaillée de tous les tests effectués, voir le chapitre 3.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
-
-Parmis les modèles testés il y a :
-- Nano Banana 2
-- GPT Image 1.5
-- Seedream 4.5
-- Grok Imagine
-- Flux 2
-
-Lors des tests des modèles, l'objectif était de modifier un exemple de carte d'identité suisse trouvée sur internet en changeant :
-- La photo d'identité par une autre photo.
+Plusieurs modèles de type Image-to-Image ont été testés pour vérifier leur capacité à modifier une photo d'identité de manière réaliste. L'objectif était de modifier un exemple de carte d'identité suisse trouvée sur internet @swiss-id-template pour en faire la carte d'identité d'une personne fictive en changeant :
+- La photo d'identité par une autre photo générée.
 - Le nom "de Maienfeld Muster" par "Teste".
 - Le prénom "Lara Sample" par "Alice".
-- La signature par une autre signature.
+- La date de naissance "01 08 1991" par "07 02 2000"
+- La signature "Signature" par "A. Teste".
 
 #grid(
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/03-generation-ia/id-front.jpg"), stroke: 0.1pt),
-    caption: "Exemple de carte d'identité suisse utilisée pour les tests.",
+    rect(image("../../images/03-generation-ia/id-front.jpg"), stroke: 0.1pt),
+    caption: "Exemple de carte d'identité suisse trouvée sur internet.",
   ),
-  figure(
-    rect(image("../images/03-generation-ia/face.jpg", width: 47%), stroke: 0.1pt),
-    caption: "Nouvelle photo d'identité utilisée pour les tests.",
-  ),
+  [#figure(
+    rect(image("../../images/03-generation-ia/face.png", width: 63%), stroke: 0.1pt),
+    caption: "Nouvelle photo d'identité générée.",
+  )<face>],
 )
 
-*Exemple 1 : Nano Banana 2*
+Les modèles testés sont les suivants :
+- Nano Banana 2
+- GPT Image 2
+- Grok Imagine
+- Wan 2.7
+- Seedream 4.5
 
-Le modèle qui semble le mieux fonctionner pour modifier une carte d'identité est *Nano Banana 2*. En effet, la modification de la carte d'identité est plutôt bien réussie, les éléments modifiés sont bien intégrés à l'image originale et les motifs de la carte sont conservés, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont disparu.
+Le modèle qui s'est avéré être le plus réaliste pour modifier une carte d'identité est *Nano Banana 2*.
 
 #grid(
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/03-generation-ia/id-front.jpg"), stroke: 0.1pt),
+    rect(image("../../images/03-generation-ia/id-front.jpg"), stroke: 0.1pt),
     caption: "Carte d'identité originale.",
   ),
   figure(
-    rect(image("../images/03-generation-ia/nano-banana.png"), stroke: 0.1pt),
+    rect(image("../../images/03-generation-ia/nano-banana-2.jpeg"), stroke: 0.1pt),
     caption: "Résultat du modèle Nano Banana 2.",
   ),
 )
 
-*Exemple 2 : Seedream 4.5*
+En effet, ce modèle a effectué tous les changements demandés tout en conservant les motifs de la carte, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
 
-À l'inverse, le modèle *Seedream 4.5* est plutôt mauvais. En effet, le texte est illisible et le format de l'image est mauvais. À noter que l'image n'a pas été modifiée car la version gratuite de Seedream 4.5 ne permet pas de déposer plusieurs images en même temps.
+Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 3.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
-#grid(
-  columns: (1fr, 1fr),
-  inset: 3pt,
-  figure(
-    rect(image("../images/03-generation-ia/id-front.jpg"), stroke: 0.1pt),
-    caption: "Carte d'identité originale.",
-  ),
-  figure(
-    rect(image("../images/03-generation-ia/seedream.jpg"), stroke: 0.1pt),
-    caption: "Résultat du modèle Seedream 4.5.",
-  ),
-)
+=== Comparaison des modèles de type Image-to-Image
 
-=== Tableau comparatif des modèles
-
-Le tableau ci-dessous présente les caractéristiques des différents modèles dans leur configuration maximale (meilleure qualité d'image possible).
+Le tableau ci-dessous résume les résultats obtenus lors des tests en indiquant pour chaque modèle, la résolution ainsi que le prix de l'image générée.
 
 #set par(justify: false)
 
@@ -200,15 +184,15 @@ Le tableau ci-dessous présente les caractéristiques des différents modèles d
   table(
     columns: (1fr, 1fr, 1fr, 1fr),
     align: horizon + center,
-    [*Modèle*], [*Résultat lors des tests*], [*Qualité de l'image*], [*Prix*],
+    [*Modèle*], [*Résultat lors des tests*], [*Résolution*], [*Prix*],
 
-    [*Nano Banana 2*], [Bon], [4k], [0.09\$],
-    [*GPT Image 1.5*], [-], [4k], [0.11\$],
-    [*Seedream 4.5*], [Mauvais], [4k], [0.0325\$],
-    [*Grok Imagine*], [-], [2k], [0.02\$],
-    [*Flux 2*], [Moyen], [2k], [0.12\$],
+    [*Nano Banana 2*], [Bon], [1k], [0.04\$],
+    [*GPT Image 2*], [Mauvais], [1k], [0.03\$],
+    [*Grok Imagine*], [Moyen], [1k], [0.02\$],
+    [*Wan 2.7*], [Mauvais], [1k], [0.024\$],
+    [*Seedream 4.5*], [Mauvais], [2k], [0.0325\$],
   ),
-  caption: "Comparaison des modèles de type Image-to-Image en qualité maximale.",
+  caption: "Comparaison des modèles de type Image-to-Image.",
 )
 
 #set par(justify: true)
@@ -228,65 +212,90 @@ Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les
 
 Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 
-=== Modèles de type Text-to-Video et Image-to-Video
+=== Video-to-Video
 
-Parmi les modèles de type Text-to-Video et Image-to-Video il y a :
+Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
 
-- Veo 3.1
-- Sora 2
-- Kling 3.0
-- Wan 2.6
-- Grok Imagine
-- Hailuo 2.3
+=== Génération de selfies vidéo à partir d'une image <generation-selfie>
 
-Les exemples ci-dessous montrent de bons selfies vidéo générés avec Grok Imagine en version Text-to-Video et Image-to-Video à partir d'un même prompt. D'autres exemples ainsi que le prompt utilisé sont également disponibles dans le chapitre 4.4 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
-
-*Exemple 1 : Grok Imagine Text-to-Video*
-
-- Lien : #underline()[#link("https://drive.proton.me/urls/M5HVK06A38#E5YW47Y9Go9k")]
-
-La vidéo est plutôt bonne, la personne tourne bien la tête, les mouvements sont réalistes et il n'y a pas de bruit de fond.
-
-*Exemple 2 : Grok Imagine Image-to-Video*
-
-- Lien : #underline()[#link("https://drive.proton.me/urls/0P5960QZ9C#HbccK9wPdIuS")]
+Plusieurs modèles de type Image-to-Video ont été testés pour vérifier leur capacité à effectuer un selfie vidéo de manière réaliste. L'objectif était de générer une vidéo à partir d'une image de référence, d'une personne face caméra qui tourne la tête à gauche, en haut, à droite puis revient au centre.
 
 #figure(
-  rect(image("../images/03-generation-ia/boy.png", width: 50%), stroke: 0.1pt),
-  caption: "Image de départ utilisée pour la génération de la vidéo avec le modèle Grok Imagine Image-to-Video.",
-)
+  rect(image("../../images/03-generation-ia/face.png", width: 35%), stroke: 0.1pt),
+  caption: "Image de référence utilisée pour la génération de selfies vidéo.",
+)<image-ref>
 
-Comme pour la version Text-to-Video, la vidéo est plutôt bonne, la personne tourne bien la tête, les mouvements sont réalistes et il n'y a pas de bruit de fond. Par contre, la personne sourit au début de la vidéo alors que cela n'est pas demandé.
+Les modèles testés sont les suivants :
+- Grok Imagine Video 1.5
+- HappyHorse 1.0
+- Kling 3.0
+- Veo 3.1
+- Wan 2.7
 
-*Tableau comparatif des modèles*
+Le modèle qui s'est avéré être le plus réaliste pour générer des selfies vidéo à partir d'une image est *Grok Imagine Video 1.5*.
 
-Le tableau ci-dessous présente les caractéristiques de ces modèles dans leur configuration maximale (meilleure qualité de vidéo possible, durée maximale, audio).
+- Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[grok-imagine-video-1-5.mp4]]
+
+En effet, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
+
+Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.4 du rapport de recherche #link("../rapports-de-recherche/generation-ia.pdf")[#underline("generation-ia.pdf")].
+
+=== Comparaison des modèles de type Image-to-Video
+
+Le tableau ci-dessous résume les résultats obtenus lors des tests en indiquant pour chaque modèle, la résolution, la durée ainsi que le prix de la vidéo générée.
+
+#set par(justify: false)
 
 #figure(
   table(
-    columns: (1fr, auto, auto, auto, auto),
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
     align: horizon + center,
-    [*Modèle*], [*Temps de vidéo*], [*Qualité de la vidéo*], [*Audio*], [*Prix*],
+    [*Modèle*], [*Résultat lors des tests*], [*Résolution*], [*Durée*], [*Prix*],
 
-    [*Veo 3.1*], [8s], [1080p], [Oui], [1.25\$],
-    [*Sora 2*], [15s], [720p], [Oui], [0.20\$],
-    [*Kling 3.0*], [15s], [1080p], [Oui], [3.00\$],
-    [*Wan 2.6*], [15s], [1080p], [Oui], [1.575\$],
-    [*Grok Imagine*], [15s], [720p], [Oui], [0.20\$],
-    [*Hailuo 2.3*], [10s], [768p], [Non], [0.45\$],
+    [*Grok Imagine Video 1.5*], [Bon], [480p], [5s], [0.3725\$],
+    [*HappyHorse 1.0*], [Moyen], [720p], [5s], [0.70\$],
+    [*Kling 3.0*], [Mauvais], [720p], [5s], [0.35\$],
+    [*Veo 3.1*], [Mauvais], [720p], [4s], [0.30\$],
+    [*Wan 2.7*], [Mauvais], [720p], [5s], [0.40\$],
   ),
-  caption: "Comparaison des modèles de génération de vidéos en configuration maximale.",
+  caption: "Comparaison des modèles de type Image-to-Video.",
 )
 
-Une description détaillée des critères de sélection des modèles est disponible dans le chapitre 4.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia/generation-ia.pdf")[#underline("generation-ia.pdf")].
+#set par(justify: true)
 
-=== Modèles de type Video-to-Video
+=== Génération de selfies vidéo à partir d'une vidéo
 
-Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne. 
+Les trois modèles de type Video-to-Video disponibles sur KIE AI ont été testés pour vérifier leur capacité à remplacer une personne dans une vidéo par une autre personne de manière réaliste. Ces modèles sont :
 
-À ce jour, le seul modèle de type Video-to-Video disponible sur Kie.ai est *Kling 3.0 motion control*. Un exemple de ce qui est possible de faire avec ce type de modèle est disponible sur leur site : #underline()[#link("https://kie.ai/kling-3-motion-control")]. 
+- HappyHorse 1.0
+- Wan 2.7
+- Kling Motion Control 3.0
 
-Ci-dessous, les prix par seconde de vidéo générée en fonction de la qualité de la vidéo :
+L'objectif était de remplacer ma personne dans une vidéo par une autre personne à partir d'une vidéo de référence de ma personne face caméra qui tourne la tête à droite, en haut, à droite puis à gauche. L'image de référence utilisée est la même que pour le #underline[@generation-selfie], à savoir la #underline[@image-ref]. Pour des questions de vie privée, la vidéo de référence de ma personne n'est pas publiée sur GitHub et n'est donc pas disponible dans ce rapport.
 
-- Pour une vidéo en 720p : *0.10\$ par seconde*.
-- Pour une vidéo en 1080p : *0.135\$ par seconde*.
+Le modèle qui s'est avéré être le plus réaliste pour générer des selfies vidéo à partir d'une vidéo est *Kling Motion Control 3.0*.
+
+Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0-edit.mp4")[kling-3-0-edit.mp4]]
+
+En effet, l'arrière-plan est préservé, les mouvements sont corrects et l'aspect général de la personne est réaliste. Par contre, la position des yeux à la toute dernière seconde de la vidéo est un peu étrange, mais cela reste un détail.
+
+=== Comparaison des modèles de type Video-to-Video
+
+Le tableau ci-dessous résume les résultats obtenus lors des tests pour une vidéo d'environ 8 secondes en indiquant pour chaque modèle, la résolution ainsi que le prix de la vidéo générée.
+
+#set par(justify: false)
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr),
+    align: horizon + center,
+    [*Modèle*], [*Résultat lors des tests*], [*Résolution*], [*Prix*],
+
+    [*Kling Motion Control 3.0*], [Bon], [720p], [0.84\$],
+    [*HappyHorse 1.0*], [Moyen], [720p], [2.38\$],
+    [*Wan 2.7*], [Moyen], [720p], [0.64\$],
+  ),
+  caption: "Comparaison des modèles de type Video-to-Video.",
+)
+
+Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.6 du rapport de recherche #link("../rapports-de-recherche/generation-ia.pdf")[#underline("generation-ia.pdf")].

@@ -16,7 +16,7 @@
 #grid(
   columns: (1fr, 2fr),
   align: (left, right),
-  image("images/logo-heig-vd.png", width: 3cm),
+  image("../images/logo-heig-vd.png", width: 3cm),
   [
     Département des Technologies de l'information et de la communication (TIC) \
     Filière Informatique et systèmes de communication \
@@ -302,6 +302,8 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
     }
   ],
 )
+
+#set par(justify: false)
 
 #include "chapitres/00-bibliographie.typ"
 #pagebreak(to: "odd")
