@@ -3,7 +3,12 @@ from typing import Annotated
 
 import typer
 
-from aifrb.api.kieai.generate_video import grok_imagine, kling_3_0, seedance_2_0
+from aifrb.api.kieai.generate_video import (
+    grok_imagine_video_1_5,
+    happyhorse_1_0,
+    kling_3_0,
+    wan_2_7,
+)
 from aifrb.api.kieai.utils import get_content_url, upload_image
 from aifrb.utils.download_file import download_file
 
@@ -17,13 +22,26 @@ def generate_video(
     ],
     model: Annotated[
         str, typer.Option("--model", "-m", help="Video generation model to use.")
-    ] = "grok-imagine",
+    ] = "Grok Imagine Video 1.5",
     duration: Annotated[
         int, typer.Option("--duration", "-d", help="Duration of the video in seconds.")
     ] = 3,
     aspect_ratio: Annotated[
-        str, typer.Option("--aspect-ratio", "-a", help="Aspect ratio of the video.")
+        str,
+        typer.Option(
+            "--aspect-ratio",
+            "-a",
+            help="Aspect ratio of the video (e.g. 1:1, 16:9, 9:16).",
+        ),
     ] = "16:9",
+    resolution: Annotated[
+        str,
+        typer.Option(
+            "--resolution",
+            "-r",
+            help="Resolution of the video (e.g. 480p, 720p, 1080p, 4K).",
+        ),
+    ] = "720p",
     start_image: Annotated[
         Path,
         typer.Option(
@@ -39,42 +57,43 @@ def generate_video(
     Generate a video and download it to the local filesystem.
 
     Available models:
-    - kling-3.0
-    - grok-imagine
-    - seedance-2.0
+    - Grok Imagine Video 1.5
+    - HappyHorse 1.0
+    - Kling 3.0
+    - Wan 2.7
     """
-    images_urls = []
+    start_image_url = None
+    end_image_url = None
 
     if start_image is not None:
-        if not start_image.is_file():
-            raise ValueError(f"Start image file not found: {start_image}")
-
         start_image_url = upload_image(start_image)
-        images_urls.append(start_image_url)
         print("Start image uploaded successfully!")
 
     if end_image is not None:
-        if not end_image.is_file():
-            raise ValueError(f"End image file not found: {end_image}")
-
         end_image_url = upload_image(end_image)
-        images_urls.append(end_image_url)
         print("End image uploaded successfully!")
 
     task_id = ""
 
     match model:
-        case "kling-3.0":
+        case "Grok Imagine Video 1.5":
+            task_id = grok_imagine_video_1_5(
+                prompt, duration, aspect_ratio, resolution, start_image_url
+            )
+        case "HappyHorse 1.0":
+            task_id = happyhorse_1_0(prompt, duration, resolution, start_image_url)
+        case "Kling 3.0":
             task_id = kling_3_0(
-                prompt, duration, aspect_ratio, images_urls
+                prompt,
+                duration,
+                aspect_ratio,
+                resolution,
+                start_image_url,
+                end_image_url,
             )
-        case "grok-imagine":
-            task_id = grok_imagine(
-                prompt, duration, aspect_ratio, images_urls
-            )
-        case "seedance-2.0":
-            task_id = seedance_2_0(
-                prompt, duration, aspect_ratio, images_urls
+        case "Wan 2.7":
+            task_id = wan_2_7(
+                prompt, duration, resolution, start_image_url, end_image_url
             )
         case _:
             raise ValueError(f"Unsupported model: {model}")
