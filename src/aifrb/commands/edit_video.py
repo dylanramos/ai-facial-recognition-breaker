@@ -17,15 +17,15 @@ def edit_video(
     ],
     video: Annotated[Path, typer.Argument(help="Path to the video to edit.")],
     image: Annotated[
-        Path, typer.Argument(help="Path to the reference image for editing.")
+        Path, typer.Argument(help="Path to the reference image to use for editing.")
     ],
     model: Annotated[
         str, typer.Option("--model", "-m", help="Video generation model to use.")
-    ] = "kling-3.0",
-    quality: Annotated[
+    ] = "Kling 3.0",
+    resolution: Annotated[
         str,
         typer.Option(
-            "--quality", "-q", help="Quality of the edited video (720p or 1080p)."
+            "--resolution", "-r", help="Resolution of the edited video (720p or 1080p)."
         ),
     ] = "720p",
 ):
@@ -33,16 +33,10 @@ def edit_video(
     Edit a video using a reference image and download it to the local filesystem.
 
     Available models:
-    - kling 3.0
-    - wan 2.7
-    - happyhorse 1.0
+    - Kling 3.0
+    - Wan 2.7
+    - HappyHorse 1.0
     """
-    if not video.is_file():
-        raise ValueError(f"Video file not found: {video}")
-
-    if not image.is_file():
-        raise ValueError(f"Image file not found: {image}")
-
     video_url = upload_video(video)
     image_url = upload_image(image)
 
@@ -51,12 +45,12 @@ def edit_video(
     task_id = ""
 
     match model:
-        case "kling 3.0":
-            task_id = kling_3_0(prompt, video_url, image_url, quality)
-        case "wan 2.7":
-            task_id = wan_2_7(prompt, video_url, image_url, quality)
-        case "happyhorse 1.0":
-            task_id = happyhorse_1_0(prompt, video_url, image_url, quality)
+        case "Kling 3.0":
+            task_id = kling_3_0(prompt, video_url, image_url, resolution)
+        case "Wan 2.7":
+            task_id = wan_2_7(prompt, video_url, image_url, resolution)
+        case "HappyHorse 1.0":
+            task_id = happyhorse_1_0(prompt, video_url, image_url, resolution)
         case _:
             raise ValueError(f"Unsupported model: {model}")
 

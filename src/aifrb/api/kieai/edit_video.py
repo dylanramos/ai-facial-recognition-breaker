@@ -8,9 +8,7 @@ load_dotenv()
 API_KEY = os.getenv("KIE_API_KEY")
 
 
-def kling_3_0(
-    prompt: str, video_url: str, image_url: str, quality: str
-) -> str:
+def kling_3_0(prompt: str, video_url: str, image_url: str, resolution: str) -> str:
     """
     Edit a video using the Kling 3.0 Motion Control model and return the task ID.
     """
@@ -22,7 +20,7 @@ def kling_3_0(
             "prompt": prompt,
             "input_urls": [image_url],
             "video_urls": [video_url],
-            "mode": quality,
+            "mode": resolution,
         },
     }
 
@@ -35,9 +33,7 @@ def kling_3_0(
     return data["data"]["taskId"]
 
 
-def wan_2_7(
-    prompt: str, video_url: str, image_url: str, quality: str
-) -> str:
+def wan_2_7(prompt: str, video_url: str, image_url: str, resolution: str) -> str:
     """
     Edit a video using the Wan 2.7 model and return the task ID.
     """
@@ -49,7 +45,8 @@ def wan_2_7(
             "prompt": prompt,
             "reference_image": image_url,
             "video_url": video_url,
-            "resolution": quality,
+            "resolution": resolution,
+            "audio_setting": "origin",
         },
     }
 
@@ -62,9 +59,7 @@ def wan_2_7(
     return data["data"]["taskId"]
 
 
-def happyhorse_1_0(
-    prompt: str, video_url: str, image_url: str, quality: str
-) -> str:
+def happyhorse_1_0(prompt: str, video_url: str, image_url: str, resolution: str) -> str:
     """
     Edit a video using the HappyHorse 1.0 model and return the task ID.
     """
@@ -75,8 +70,8 @@ def happyhorse_1_0(
         "input": {
             "prompt": prompt,
             "video_url": video_url,
-            "reference_image": image_url,
-            "resolution": quality,
+            "reference_image": [image_url],
+            "resolution": resolution,
             "audio_setting": "origin",
         },
     }
