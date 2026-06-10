@@ -4,7 +4,7 @@
 
 == Introduction
 
-Ce chapitre présente les différents tests effectués pour tenter de contourner la vérification d'identité sur plusieurs des sites cités dans le #underline[@sites-cibles]. Les prochaines sections détaillent les étapes effectuées, les modèles d'IA ainsi que les prompts utilisés pour chaque site dans l'ordre chronologique de leur compromission.
+Ce chapitre présente les différents tests effectués pour tenter de contourner la vérification d'identité sur plusieurs des sites cités dans le . Les prochaines sections détaillent les étapes effectuées, les modèles d'IA ainsi que les prompts utilisés pour chaque site dans l'ordre chronologique de leur compromission.
 
 == Facebook
 

@@ -592,7 +592,7 @@ Parmis les sites identifiés au #underline()[@sites-cibles], plusieurs d'entre u
 
 == Vérification par selfie vidéo uniquement <selfie-video>
 
-Facebook, Tea for Women, Roblox, Parship et Google demandent une vérification d'identité par selfie vidéo sans avoir à fournir de documents d'identité. Ces sites semblent être les plus faciles à attaquer car il n'est pas nécessaire de fournir de documents d'identité, ce qui pourrait être un obstacle pour les attaquants. De plus, la vérification peut se faire sur un ordinateur, ce qui facilite la mise en place d'une caméra virtuelle.
+Facebook, Tea for Women, Roblox, Parship et Google demandent une vérification d'identité par selfie vidéo sans avoir à fournir de documents d'identité. Ces sites semblent être les plus faciles à attaquer car il n'est pas nécessaire de fournir de documents d'identité. De plus, la vérification peut se faire sur un ordinateur, ce qui facilite la mise en place d'une caméra virtuelle.
 
 #figure(
   rect(image("images/verif-1.png"), stroke: 0.1pt),
@@ -628,7 +628,7 @@ Neon Bank, Revolut, Yuh et le Portail de l'Etat de Vaud demandent une vérificat
 
 = Classement des sites par difficulté d'attaque
 
-En se basant sur les patterns de vérification d'identité identifiés au #underline()[@patterns], les sites cibles peuvent être classés par difficulté d'attaque comme suit :
+En se basant sur les patterns de vérification d'identité identifiés au chapitre précédent, les sites candidats peuvent être classés par difficulté d'attaque de la manière suivante :
 
 *Facile :*
 - Facebook
