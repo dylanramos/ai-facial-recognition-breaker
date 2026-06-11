@@ -123,7 +123,7 @@
 
 Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant un selfie vidéo, il doit utiliser des modèles de génération d'images et de vidéos IA. Les modèles sont en constante évolution, il est donc impossible de choisir un modèle de manière définitive car celui-ci risque de très vite être dépassé par de nouveaux modèles ou des modèles d'autres fournisseurs.
 
-Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez les fournisseurs directement.
+Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez chaque fournisseur directement.
 
 #figure(
   rect(image("../images/03-generation-ia/kieai.png", width: 80%), stroke: 0.1pt),
@@ -143,7 +143,7 @@ Les catégories utiles à ce projet sont "Video Generation" et "Image Generation
 
 == Exemple d'utilisation de l'API pour générer une vidéo <api-generation>
 
-L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle *Kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
+L'exemple de code Python ci-dessous montre comment générer une vidéo avec le modèle *Kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
 
 #pagebreak()
 
@@ -178,12 +178,12 @@ L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle
       return data["data"]["taskId"]
 
   ```],
-  caption: "Exemple de code pour générer une vidéo avec le modèle kling 3.0 sur KIE AI.",
+  caption: "Exemple de code Python pour générer une vidéo avec le modèle kling 3.0 sur KIE AI.",
 )
 
 == Exemple d'utilisation de l'API pour récupérer une vidéo générée
 
-L'exemple de code ci-dessous montre comment récupérer une vidéo générée après avoir lancé la génération (voir #underline()[@api-generation]). Cette fonction utilise le polling pour vérifier l'état de la génération de la vidéo en envoyant des requêtes à intervalles croissants. Si la vidéo est générée avec succès, la fonction retourne l'URL de la vidéo.
+L'exemple de code Python ci-dessous montre comment récupérer une vidéo générée après avoir lancé la génération (voir #underline()[@api-generation]). Cette fonction utilise le polling pour vérifier l'état de la génération de la vidéo en envoyant des requêtes à intervalles croissants. Si la vidéo est générée avec succès, la fonction retourne l'URL de la vidéo.
 
 #pagebreak()
 
@@ -224,7 +224,7 @@ L'exemple de code ci-dessous montre comment récupérer une vidéo générée ap
 
           time.sleep(wait)
   ```],
-  caption: "Exemple de code pour récupérer l'URL d'une vidéo générée sur KIE AI.",
+  caption: "Exemple de code Python pour récupérer l'URL d'une vidéo générée sur KIE AI.",
 )
 
 = Génération d'images
@@ -273,7 +273,7 @@ La photo d'identité de la #underline[@face] a été générée à l'aide d'un m
 
 `Modify the ID card by replacing the name 'de Maienfeld Muste' by 'Teste', the name 'Lara Sample' by 'Alice', the date of birth '01 08 1991' by '07 02 2000' and the signature 'Signature' by 'A. Teste'. Replace the pictures on the ID card by the woman on the second image. The pictures should keep their black and white color and the triangles at the end of the names should not be removed.`
 
-=== Nano Banana 2
+=== Nano Banana 2 (Google)
 
 #grid(
   columns: (1fr, 1fr),
@@ -290,7 +290,7 @@ La photo d'identité de la #underline[@face] a été générée à l'aide d'un m
 
 La modification de la carte d'identité est plutôt bien réussie, tous les changements demandés ont été effectués et les motifs de la carte sont conservés, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
 
-=== GPT Image 2
+=== GPT Image 2 (OpenAI)
 
 #grid(
   columns: (1fr, 1fr),
@@ -307,7 +307,7 @@ La modification de la carte d'identité est plutôt bien réussie, tous les chan
 
 La modification de la carte d'identité n'est pas dutout réussie, le design de la carte a complètement été modifié et le modèle a explicitement indiqué sur la carte que celle-ci n'est pas valide.
 
-=== Grok Imagine
+=== Grok Imagine (xAI)
 
 #grid(
   columns: (1fr, 1fr),
@@ -324,7 +324,7 @@ La modification de la carte d'identité n'est pas dutout réussie, le design de 
 
 La modification de la carte d'identité est plutôt moyenne, les images n'ont pas été modifiées et les deux prénoms ont été mélangés. Par contre, les motifs de la carte sont conservés et la date de naissance ainsi que la signature ont correctement été modifiées.
 
-=== Wan 2.7
+=== Wan 2.7 (Alibaba)
 
 #grid(
   columns: (1fr, 1fr),
@@ -341,7 +341,7 @@ La modification de la carte d'identité est plutôt moyenne, les images n'ont pa
 
 La modification de la carte d'identité est plutôt mauvaise, les images ont été modifiées mais les motifs n'ont pas été conservés. De plus, le format de la carte a été modifié et les noms ainsi que la date de naissance sont malformés.
 
-=== Seedream 4.5
+=== Seedream 4.5 (ByteDance)
 
 #grid(
   columns: (1fr, 1fr),
@@ -398,7 +398,7 @@ Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les
 
 == Image-to-Video
 
-Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
+Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt en les reliant. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 
 == Video-to-Video
 
@@ -417,37 +417,37 @@ Plusieurs modèles de type Image-to-Video ont été testés pour vérifier leur 
 
 `This woman is facing the camera. She turns her head left, then up, then right and then faces the camera again.`
 
-=== Grok Imagine Video 1.5
+=== Grok Imagine Video 1.5 (xAI)
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[grok-imagine-video-1-5.mp4]]
 
 Le résultat est bon, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
 
-=== HappyHorse 1.0
+=== HappyHorse 1.0 (Alibaba)
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/happyhorse-1-0.mp4")[happyhorse-1-0.mp4]]
 
 Le résultat est plutôt moyen, la personne effectue les actions demandées mais en une seule fois (rotation de la tête de gauche à droite), de plus, les cheveux de la personne sont beaucoup trop brillants, ce qui rend la vidéo peu réaliste. Néanmoins, l'image de référence est préservée.
 
-=== Kling 3.0
+=== Kling 3.0 (Kuaishou)
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0.mp4")[kling-3-0.mp4]]
 
 Le résultat est plutôt mauvais, la personne effectue les mouvements haut et droite en même temps et les cheuveux sont trop brillants comme pour le modèle HappyHorse 1.0, ce qui rend la vidéo peu réaliste. De plus, l'ordre des mouvements n'est pas respecté.
 
-=== Veo 3.1
+=== Veo 3.1 (Google)
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/veo-3-1.mp4")[veo-3-1.mp4]]
 
 Le résultat est mauvais, la personne n'est pas entièrement visible et elle n'effectue pas tous les mouvements demandés.
 
-=== Wan 2.7
+=== Wan 2.7 (Alibaba)
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7.mp4")[wan-2-7.mp4]]
 
 Le résultat est plutôt mauvais, la personne effectue une rotation plutôt que de tourner dans les directions demandées, de plus, elle n'effectue pas le mouvement vers la droite.
 
-=== Sora 2
+=== Sora 2 (OpenAI)
 
 Au début de ce travail, le modèle populaire Sora 2 de OpenAI était disponible sur KIE AI, cependant, il a récemment été retiré de la plateforme pour des raisons inconnues. Ce modèle n'a donc pas pu être testé.
 
@@ -491,19 +491,19 @@ Le prompt utilisé pour HappyHorse 1.0 et Wan 2.7 (Kling Motion Control 3.0 est 
 
 `Replace the person on the video by the person on the image.`
 
-=== HappyHorse 1.0
+=== HappyHorse 1.0 (Alibaba)
 
 Vidéo : #underline[#link("../videos/03-generation-ia/happyhorse-1-0-edit.mp4")[happyhorse-1-0-edit.mp4]]
 
 Le résultat est plutôt moyen, nous pouvons voir à la seconde 1 qu'il y a un léger clignement d'œil alors que je ne cligne des yeux à aucun moment dans la vidéo. De plus, les cheveux de la personne sont trop brillants et le linge en arrière-plan à complètement changé de texture. Néanmoins, les mouvements de la personne sont corrects et le cadrage de la vidéo est respecté.
 
-=== Wan 2.7
+=== Wan 2.7 (Alibaba)
 
 Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7-edit.mp4")[wan-2-7-edit.mp4]]
 
 Le résultat est plutôt moyen, la caméra est tremblante et la machoîre change de forme au début de la vidéo. Néanmoins, les mouvements de la personne sont corrects et les cheveux sont réalistes.
 
-=== Kling Motion Control 3.0 <kling-motion-control>
+=== Kling Motion Control 3.0 (Kuaishou) <kling-motion-control>
 
 La manière de remplacer une personne dans une vidéo avec le modèle Kling Motion Control 3.0 est différente des deux autres modèles. En effet, le prompt est facultatif, d'autre part, ce n'est pas l'image qui s'insère dans la vidéo mais l'inverse, la vidéo de référence se réplique sur l'image fournie. Ainsi, avant de générer la vidéo, il faut que la nouvelle personne soit déjà dans le même environnement que la personne dans la vidéo, comme le montre l'image ci-dessous.
 

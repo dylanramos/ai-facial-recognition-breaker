@@ -12,7 +12,7 @@
 
 Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant un selfie vidéo, il doit utiliser des modèles de génération d'images et de vidéos IA. Les modèles sont en constante évolution, il est donc impossible de choisir un modèle de manière définitive car celui-ci risque de très vite être dépassé par de nouveaux modèles ou des modèles d'autres fournisseurs.
 
-Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez les fournisseurs directement.
+Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez chaque fournisseur directement.
 
 #figure(
   rect(image("../../images/03-generation-ia/kieai.png", width: 71%), stroke: 0.1pt),
@@ -32,7 +32,7 @@ Les catégories utiles à ce projet sont *Video Generation* et *Image Generation
 
 === Exemple d'utilisation de l'API pour générer une vidéo <generate-video>
 
-L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle *Kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
+L'exemple de code Python ci-dessous montre comment générer une vidéo avec le modèle *Kling 3.0*. La vidéo part d'une image de début et termine par une image de fin fournies en paramètre. À noter que la vidéo est générée de manière asynchrone, cela signifie que la requête retourne un `taskId` qui devra par la suite être utilisé pour vérifier l'état de la génération de la vidéo et récupérer le résultat une fois la vidéo générée.
 
 #figure(
   sourcecode[```python
@@ -65,12 +65,12 @@ L'exemple de code ci-dessous montre comment générer une vidéo avec le modèle
       return data["data"]["taskId"]
 
   ```],
-  caption: "Exemple de code pour générer une vidéo avec le modèle kling 3.0 sur KIE AI.",
+  caption: "Exemple de code Python pour générer une vidéo avec le modèle kling 3.0 sur KIE AI.",
 )
 
 === Exemple d'utilisation de l'API pour récupérer une vidéo générée
 
-L'exemple de code ci-dessous montre comment récupérer une vidéo générée après avoir lancé la génération (voir #underline()[@generate-video]). Cette fonction utilise le polling pour vérifier l'état de la génération de la vidéo en envoyant des requêtes à intervalles croissants. Si la vidéo est générée avec succès, la fonction retourne l'URL de la vidéo.
+L'exemple de code Python ci-dessous montre comment récupérer une vidéo générée après avoir lancé la génération (voir #underline()[@generate-video]). Cette fonction utilise le polling pour vérifier l'état de la génération de la vidéo en envoyant des requêtes à intervalles croissants. Si la vidéo est générée avec succès, la fonction retourne l'URL de la vidéo.
 
 #figure(
   sourcecode[```python
@@ -109,7 +109,7 @@ L'exemple de code ci-dessous montre comment récupérer une vidéo générée ap
 
           time.sleep(wait)
   ```],
-  caption: "Exemple de code pour récupérer l'URL d'une vidéo générée sur KIE AI.",
+  caption: "Exemple de code Python pour récupérer l'URL d'une vidéo générée sur KIE AI.",
 )
 
 == Génération d'images
@@ -149,11 +149,11 @@ Plusieurs modèles de type Image-to-Image ont été testés pour vérifier leur 
 )
 
 Les modèles testés sont les suivants :
-- Nano Banana 2
-- GPT Image 2
-- Grok Imagine
-- Wan 2.7
-- Seedream 4.5
+- Nano Banana 2 (Google)
+- GPT Image 2 (OpenAI)
+- Grok Imagine (xAI)
+- Wan 2.7 (Alibaba)
+- Seedream 4.5 (ByteDance)
 
 Le modèle qui s'est avéré être le plus réaliste pour modifier une carte d'identité est *Nano Banana 2*.
 
@@ -210,7 +210,7 @@ Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les
 
 === Image-to-Video
 
-Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
+Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt en les reliant. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 
 === Video-to-Video
 
@@ -226,11 +226,11 @@ Plusieurs modèles de type Image-to-Video ont été testés pour vérifier leur 
 )<image-ref>
 
 Les modèles testés sont les suivants :
-- Grok Imagine Video 1.5
-- HappyHorse 1.0
-- Kling 3.0
-- Veo 3.1
-- Wan 2.7
+- Grok Imagine Video 1.5 (xAI)
+- HappyHorse 1.0 (Alibaba)
+- Kling 3.0 (Kuaishou)
+- Veo 3.1 (Google)
+- Wan 2.7 (Alibaba)
 
 Le modèle qui s'est avéré être le plus réaliste pour générer des selfies vidéo à partir d'une image est *Grok Imagine Video 1.5*.
 
@@ -267,9 +267,9 @@ Le tableau ci-dessous résume les résultats obtenus lors des tests en indiquant
 
 Les trois modèles de type Video-to-Video disponibles sur KIE AI ont été testés pour vérifier leur capacité à remplacer une personne dans une vidéo par une autre personne de manière réaliste. Ces modèles sont :
 
-- HappyHorse 1.0
-- Wan 2.7
-- Kling Motion Control 3.0
+- HappyHorse 1.0 (Alibaba)
+- Wan 2.7 (Alibaba)
+- Kling Motion Control 3.0 (Kuaishou)
 
 L'objectif était de remplacer ma personne dans une vidéo par une autre personne à partir d'une vidéo de référence de ma personne face caméra qui tourne la tête à droite, en haut, à droite puis à gauche. L'image de référence utilisée est la même que pour le #underline[@generation-selfie], à savoir la #underline[@image-ref]. Pour des questions de vie privée, la vidéo de référence de ma personne n'est pas publiée sur GitHub et n'est donc pas disponible dans ce rapport.
 
