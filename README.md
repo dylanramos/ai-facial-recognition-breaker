@@ -4,16 +4,24 @@ This repository contains my bachelor's thesis project. This work aims to underst
 
 ## Repository structure
 
-- `docs/rapport/`: Main report and chapter sources.
-- `docs/rapports-de-recherche/`: Topic-specific research reports.
-- `docs/diagrammes/`: Draw.io architecture and workflow diagrams.
-- `src/aifrb/main.py`: CLI entry point (Typer app).
-- `src/aifrb/api/`: API providers directory (currently only KIE AI).
-- `src/aifrb/api/kieai/`: KIE AI API implementation.
-- `src/aifrb/commands/`: Commands implementation.
-- `src/aifrb/utils/`: Utility functions (e.g. file downloading).
-- `templates/`: Images and videos used for generating fake content (e.g. ID card template).
-- `downloads/`: Destination for AI generated content (created automatically).
+```
+aifrb/
+├── docs/
+│   ├── rapport/                  # Main report and chapter sources
+│   ├── rapports-de-recherche/    # Topic-specific research reports
+│   ├── diagrammes/               # Draw.io architecture and workflow diagrams
+│   ├── images/                   # Images used in the reports
+│   └── videos/                   # Videos used in the reports
+├── src/
+│   └── aifrb/
+│       ├── main.py               # CLI entry point (Typer app)
+│       ├── api/                  # API providers directory (currently only KIE AI)
+│       │   └── kieai/            # KIE AI API implementation
+│       ├── commands/             # Commands implementation
+│       └── utils/                # Utility functions (e.g. file downloading)
+├── templates/                    # Images and videos used for generating fake content (e.g. ID card template)
+└── downloads/                    # Destination for AI generated content (created automatically)
+```
 
 ## Prerequisites
 
