@@ -152,7 +152,7 @@ Une marche à suivre pour installer `ffmpeg-python` et utiliser cet exemple de c
 
 === Comparaison des librairies
 
-Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec `OBS Studio` car elle nécessite de diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec `OBS Studio` car elle nécessite de diffuser le flux vidéo via `UDP`, ce qui engendre une latence importante.
 
 #figure(
   rect(image("../../images/04-cameras-virtuelles/libs-compare.png"), stroke: 0.1pt),
