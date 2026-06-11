@@ -6,17 +6,34 @@
   fill: (x, y) => if x == 0 or y == 0 { silver },
 )
 
-= Caméras virtuelles et redirection de flux vidéo
+= Caméras virtuelles et diffusion de flux vidéo
 
 == Introduction
 
-Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de rediriger la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
+Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de diffuser la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
 
-Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle @virtual-camera. Les chapitres 3 et 4 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] expliquent en détail comment mettre en place une caméra virtuelle sous Linux et Windows et comment y rediriger un flux vidéo manuellement.
+Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle @virtual-camera.
 
-== Comparaison des solutions
+== Solutions
 
-L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser une solution existante qui la crée automatiquement. Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
+L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser une solution existante qui la crée automatiquement.
+
+=== Linux
+
+Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
+
+Le chapitre 2 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] explique en détail comment installer `v4l2loopback` et comment utiliser `FFmpeg` pour diffuser un flux vidéo vers la caméra virtuelle créée.
+
+=== Windows
+
+Sous Windows, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé, soit utiliser un logiciel proposant cette fonctionnalité.
+`OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci.
+
+Le chapitre 3 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] explique en détail comment installer `OBS Studio` et comment configurer une scène pour diffuser un flux vidéo vers la caméra virtuelle créée.
+
+=== Comparaison des solutions
+
+Comme l'explique le chapitre 4 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")], 
 
 #set par(justify: false)
 

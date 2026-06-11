@@ -125,29 +125,7 @@ Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un 
 
 Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle.
 
-Ce document présente les différentes solutions existantes pour créer des caméras virtuelles sur les différents OS, ainsi que les étapes nécessaires pour diffuser un flux vidéo vers celles-ci.
-
-= Comparaison des solutions
-
-L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt d'utiliser des solutions existantes. Le tableau ci-dessous compare les différentes solutions permettant de créer des caméras virtuelles :
-
-#set par(justify: false)
-
-#figure(
-  table(
-    columns: (auto, auto, auto, auto, auto),
-    align: horizon + center,
-    [*Solution*], [*OS*], [*Open source*], [*Avantages*], [*Inconvénients*],
-    [*v4l2loopback*], [Linux], [Oui], [Natif au noyau Linux, faible latence], [Linux uniquement],
-    [*OBS Studio*], [Linux, Windows, macOS], [Oui], [Abstraction de l'OS], [Nécessite des actions manuelles],
-
-    [*UnityCapture*], [Windows], [Oui], [Caméra Windows native], [Windows uniquement],
-    [*CoreMedia IO*], [macOS], [Non], [Caméra macOS native], [macOS uniquement],
-  ),
-  caption: "Comparaison des différentes solutions de caméras virtuelles.",
-)
-
-#set par(justify: true)
+Ce document présente les différentes solutions existantes pour créer des caméras virtuelles sur Linux et Windows, ainsi que les étapes nécessaires pour diffuser un flux vidéo vers celles-ci.
 
 = Caméras virtuelles sous Linux
 
@@ -208,9 +186,7 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 - `pix_fmt yuv420p` : spécifie le format de la vidéo (utilisé par les vraies caméras).
 - `/dev/video2` : spécifie le périphérique de sortie.
 
-=== Rechargement du module
-
-Avant chaque diffusion de vidéo, il faut recharger le module `v4l2loopback` pour éviter les problèmes de conflits. Cela garantit que la caméra virtuelle est correctement réinitialisée et prête à recevoir le flux vidéo :
+À noter qu'avant chaque diffusion de vidéo, il faut recharger le module `v4l2loopback` pour éviter les problèmes de conflits. Cela garantit que la caméra virtuelle est correctement réinitialisée et prête à recevoir le flux vidéo :
 
 #figure(
   sourcecode[```sh
@@ -334,6 +310,36 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 - `f mpegts` : spécifie le format de sortie (MPEG-TS est un format de conteneur compatible avec le streaming en direct).
 - `udp://127.0.0.1:1234?pkt_size=1316` : spécifie l'adresse et le port de destination du flux UDP, ainsi que la taille des paquets (1316 est une taille courante pour le streaming en direct).
 
+= Comparaison des solutions
+
+Comme vu dans les chapitres précédents, l'utilisation d'une caméra virtuelle sous Linux est relativement simple grâce à `v4l2loopback` et `FFmpeg`, tandis que sous Windows, il est nécessaire d'utiliser un logiciel tiers comme `OBS Studio` pour créer une caméra virtuelle, ce qui ajoute des étapes manuelles ou de la latence si l'on souhaite automatiser le processus avec `FFmpeg`.
+
+#set par(justify: false)
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto),
+    align: horizon + center,
+    [*Solution*], [*OS*], [*Avantages*], [*Inconvénients*],
+    [*v4l2loopback + FFmpeg*],
+    [Linux],
+    [Facilement automatisable, faible latence, pas de dépendance à un logiciel tiers],
+    [Linux uniquement],
+
+    [*OBS Studio + FFmpeg*],
+    [Linux, Windows],
+    [Abstraction de l'OS, multi-plateforme],
+    [Nécessite des actions manuelles, haute latence, dépendance à un logiciel tiers],
+
+    [*OBS Studio*], [Linux, Windows], [Abstraction de l'OS, multi-plateforme], [Pas d'automatisation possible],
+  ),
+  caption: "Comparaison des solutions de caméras virtuelles et de diffusion de flux vidéo sous Linux et Windows.",
+)
+
+#set par(justify: true)
+
+Ainsi, la solution v4l2loopback + FFmpeg sous Linux semble être la plus adaptée pour le développement du démonstrateur (CLI), car elle permet d'automatiser entièrement le processus de création de la caméra virtuelle et de diffusion du flux vidéo, le tout avec une latence faible et sans dépendance à un logiciel tiers.
+
 = Utilisation d'une caméra virtuelle sur un émulateur Android (Linux)
 
 Certains sites demandent de vérifier l'identité de l'utilisateur sur un téléphone plutôt que sur un ordinateur, il faut donc que la caméra virtuelle de la machine hôte soit détectée par les émulateurs Android. L'exemple ci-dessous utilise `Genymotion` comme émulateur Android (sous Linux) car il est plus rapide et plus léger que l'émulateur de Android Studio.
@@ -368,13 +374,13 @@ Certains sites demandent de vérifier l'identité de l'utilisateur sur un télé
 
 = Librairies Python pour la diffusion de flux vidéo vers une caméra virtuelle
 
-Pour développer le démonstrateur (CLI), il est nécessaire de pouvoir diffuser un flux vidéo vers une caméra virtuelle de manière programmatique. Il existe plusieurs librairies Python permettant de faire cela, avec chacune leurs avantages et leurs inconvénients.
+Pour développer le démonstrateur, il est nécessaire de pouvoir diffuser un flux vidéo vers une caméra virtuelle de manière programmatique. Il existe plusieurs librairies Python permettant de faire cela, avec chacune leurs avantages et leurs inconvénients.
 
 == pyvirtualcam
 
-La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux, Windows ou macOS. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
+La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux ou Windows. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
 
-Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #underline()[@v4l2loopback-install] pour Linux et #underline()[@obs-install] pour Windows et macOS ).
+Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #underline()[@v4l2loopback-install] pour Linux et #underline()[@obs-install] pour Windows).
 
 L'exemple ci-dessous montre comment utiliser `pyvirtualcam` sur Windows. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir le #underline()[@obs-install] pour l'installation).
 
