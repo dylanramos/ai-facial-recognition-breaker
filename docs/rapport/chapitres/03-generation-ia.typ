@@ -126,7 +126,7 @@ Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les
 
 Les modèles de type Image-to-Image (édition d'images) partent d'une image fournie et la modifient en fonction du prompt. Ils sont utiles pour modifier des images existantes contrairement aux modèles de type Text-to-Image.
 
-=== Modification d'une carte d'identité
+=== Modification d'une carte d'identité <03-modification-id>
 
 Plusieurs modèles de type Image-to-Image ont été testés pour vérifier leur capacité à modifier une photo d'identité de manière réaliste. L'objectif était de modifier un exemple de carte d'identité suisse trouvée sur internet @swiss-id-template pour en faire la carte d'identité d'une personne fictive en changeant :
 - La photo d'identité par une autre photo générée.
