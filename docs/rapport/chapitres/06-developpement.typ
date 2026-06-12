@@ -1,3 +1,5 @@
+#import "@preview/codelst:2.0.2": sourcecode
+
 = Développement
 
 == Choix technologiques
@@ -14,11 +16,11 @@ Le #underline[@04-windows] a montré que l'utilisation de `FFmpeg` combinée à 
 
 == Dépendances
 
-Le projet utilise #underline[#link("https://docs.astral.sh/uv/")[uv]] pour la gestion des dépendances et de l'environnement virtuel. `uv` est un outil moderne extrêmement rapide écrit en Rust qui permet de gérer les dépendances Python d'un projet de manière simple et efficace. Il offre des fonctionnalités avancées telles que la résolution automatique des dépendances, la création d'environnements virtuels isolés, et une interface en ligne de commande intuitive.
+Le projet utilise #underline[#link("https://docs.astral.sh/uv/")[uv]] pour la gestion des dépendances et de l'environnement virtuel. `uv` est un outil moderne extrêmement rapide écrit en Rust qui permet de gérer les dépendances Python d'un projet de manière simple et efficace. Il offre des fonctionnalités avancées telles que la résolution automatique des dépendances, la création d'environnements virtuels isolés et une interface en ligne de commande intuitive.
 
 === typer
 
-La librairie `Typer` permet de construire des interfaces en ligne de commande de manière simple et intuitive. Elle a l'avantage de simplifier l'analyse des arguments et la validation des types en réduisant considérablement le code "boilerplate" nécessaire par rapport à des librairies comme `argparse`.
+La librairie `typer` permet de construire des interfaces en ligne de commande de manière simple et intuitive. Elle a l'avantage de simplifier l'analyse des arguments et la validation des types en réduisant considérablement le code "boilerplate" nécessaire par rapport à des librairies comme `argparse`.
 
 === ffmpeg-python
 
@@ -34,7 +36,60 @@ La librairie `python-dotenv` permet de charger des variables d'environnement à 
 
 == Structure du projet
 
-#text(fill: red)[Structure du repo git, qu'est-ce qui est où (code, docs, etc.)]
+Le projet est organisé de la manière suivante :
+
+- `docs/rapport/`: rapport principal et sources des chapitres.
+- `docs/rapports-de-recherche/`: rapports de recherche par thème.
+- `docs/diagrammes/`: diagrammes Draw.io (architecture & workflows).
+- `docs/images/`: images utilisées dans le rapport.
+- `docs/videos/`: vidéos utilisées dans le rapport.
+- `src/aifrb/main.py`: point d'entrée du CLI (application Typer).
+- `src/aifrb/api/`: fournisseurs d'API (actuellement uniquement KIE AI).
+- `src/aifrb/api/kieai/`: implémentation de l'API de KIE AI.
+- `src/aifrb/commands/`: implémentation des commandes.
+- `src/aifrb/utils/`: fonctions utilitaires (ex : téléchargement de fichiers).
+- `templates/`: images et vidéos utilisées pour générer du contenu fictif (ex : modèle de carte d'identité).
+- `downloads/`: destination du contenu généré par l'IA (créé automatiquement).
+
+Note : `aifrb` est le nom du CLI, il s'agit d'un acronyme pour "AI Facial Recognition Breaker".
+
+#figure(
+  rect(image("../../images/06-developpement/structure.png", width: 40%), stroke: 0.1pt),
+  caption: "Structure du projet.",
+)
+
+== Installation du démonstrateur
+
+*Prérequis :*
+- Une machine Ubuntu 26.04 ou supérieure (les autres distributions n'ont pas été testées).
+- Python 3.12 ou supérieur.
+- Un compte KIE AI avec une clé d'API valide.
+
+*Installation :*
+
+Les commandes suivantes doivent être exécutées à la racine du projet.
+
++ Installer `uv` :
+  #sourcecode[```sh
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+  ```]
++ Installer le module `v4l2loopback` et `FFmpeg` :
+  #sourcecode[```sh
+      sudo apt install v4l2loopback-dkms v4l2loopback-utils ffmpeg
+  ```]
++ Créer un environnement virtuel et installer les dépendances :
+  #sourcecode[```sh
+      uv sync
+      source .venv/bin/activate
+  ```]
++ Ajouter la variable d'environnement pour la communication avec l'API de KIE AI :
+  #sourcecode[```sh
+      echo "KIEAI_API_KEY=votre_clé_api" > .env
+  ```]
++ Lancer le programme :
+  #sourcecode[```sh
+      aifrb
+  ```]
 
 == Fonctionnalités du démonstrateur
 
