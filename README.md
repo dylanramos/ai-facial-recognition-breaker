@@ -47,9 +47,7 @@ aifrb/
 
 3. Set up environment variable for KIE AI API key:
    ```bash
-   cp .env.example .env
-   nano .env
-   # Replace xxx with your API key
+   echo "KIEAI_API_KEY=your_api_key" > .env
    ```
 
 4. Run the application:

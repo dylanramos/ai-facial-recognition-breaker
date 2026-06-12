@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("KIE_API_KEY")
+API_KEY = os.getenv("KIEAI_API_KEY")
 
 
 def get_remaining_credits() -> float:

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("KIE_API_KEY")
+API_KEY = os.getenv("KIEAI_API_KEY")
 
 
 def nano_banana_2(prompt: str, aspect_ratio: str, resolution: str) -> str:

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("KIE_API_KEY")
+API_KEY = os.getenv("KIEAI_API_KEY")
 
 
 def kling_3_0(prompt: str, video_url: str, image_url: str, resolution: str) -> str:
