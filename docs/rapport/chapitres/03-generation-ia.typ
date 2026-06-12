@@ -234,7 +234,7 @@ Les modèles testés sont les suivants :
 
 Le modèle qui s'est avéré être le plus réaliste pour générer des selfies vidéo à partir d'une image est *Grok Imagine Video 1.5*.
 
-- Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[grok-imagine-video-1-5.mp4]]
+- Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[videos/03-generation-ia/grok-imagine-video-1-5.mp4]]
 
 En effet, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
 
@@ -275,7 +275,7 @@ L'objectif était de remplacer ma personne dans une vidéo par une autre personn
 
 Le modèle qui s'est avéré être le plus réaliste pour générer des selfies vidéo à partir d'une vidéo est *Kling Motion Control 3.0*.
 
-Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0-edit.mp4")[kling-3-0-edit.mp4]]
+Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0-edit.mp4")[videos/03-generation-ia/kling-3-0-edit.mp4]]
 
 En effet, l'arrière-plan est préservé, les mouvements sont corrects et l'aspect général de la personne est réaliste. Par contre, la position des yeux à la toute dernière seconde de la vidéo est un peu étrange, mais cela reste un détail.
 

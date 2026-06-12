@@ -419,31 +419,31 @@ Plusieurs modèles de type Image-to-Video ont été testés pour vérifier leur 
 
 === Grok Imagine Video 1.5 (xAI)
 
-- Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[grok-imagine-video-1-5.mp4]]
+- Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[videos/03-generation-ia/grok-imagine-video-1-5.mp4]]
 
 Le résultat est bon, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
 
 === HappyHorse 1.0 (Alibaba)
 
-- Vidéo : #underline[#link("../videos/03-generation-ia/happyhorse-1-0.mp4")[happyhorse-1-0.mp4]]
+- Vidéo : #underline[#link("../videos/03-generation-ia/happyhorse-1-0.mp4")[videos/03-generation-ia/happyhorse-1-0.mp4]]
 
 Le résultat est plutôt moyen, la personne effectue les actions demandées mais en une seule fois (rotation de la tête de gauche à droite), de plus, les cheveux de la personne sont beaucoup trop brillants, ce qui rend la vidéo peu réaliste. Néanmoins, l'image de référence est préservée.
 
 === Kling 3.0 (Kuaishou)
 
-- Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0.mp4")[kling-3-0.mp4]]
+- Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0.mp4")[videos/03-generation-ia/kling-3-0.mp4]]
 
 Le résultat est plutôt mauvais, la personne effectue les mouvements haut et droite en même temps et les cheuveux sont trop brillants comme pour le modèle HappyHorse 1.0, ce qui rend la vidéo peu réaliste. De plus, l'ordre des mouvements n'est pas respecté.
 
 === Veo 3.1 (Google)
 
-- Vidéo : #underline[#link("../videos/03-generation-ia/veo-3-1.mp4")[veo-3-1.mp4]]
+- Vidéo : #underline[#link("../videos/03-generation-ia/veo-3-1.mp4")[videos/03-generation-ia/veo-3-1.mp4]]
 
 Le résultat est mauvais, la personne n'est pas entièrement visible et elle n'effectue pas tous les mouvements demandés.
 
 === Wan 2.7 (Alibaba)
 
-- Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7.mp4")[wan-2-7.mp4]]
+- Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7.mp4")[videos/03-generation-ia/wan-2-7.mp4]]
 
 Le résultat est plutôt mauvais, la personne effectue une rotation plutôt que de tourner dans les directions demandées, de plus, elle n'effectue pas le mouvement vers la droite.
 
@@ -493,13 +493,13 @@ Le prompt utilisé pour HappyHorse 1.0 et Wan 2.7 (Kling Motion Control 3.0 est 
 
 === HappyHorse 1.0 (Alibaba)
 
-Vidéo : #underline[#link("../videos/03-generation-ia/happyhorse-1-0-edit.mp4")[happyhorse-1-0-edit.mp4]]
+Vidéo : #underline[#link("../videos/03-generation-ia/happyhorse-1-0-edit.mp4")[videos/03-generation-ia/happyhorse-1-0-edit.mp4]]
 
 Le résultat est plutôt moyen, nous pouvons voir à la seconde 1 qu'il y a un léger clignement d'œil alors que je ne cligne des yeux à aucun moment dans la vidéo. De plus, les cheveux de la personne sont trop brillants et le linge en arrière-plan à complètement changé de texture. Néanmoins, les mouvements de la personne sont corrects et le cadrage de la vidéo est respecté.
 
 === Wan 2.7 (Alibaba)
 
-Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7-edit.mp4")[wan-2-7-edit.mp4]]
+Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7-edit.mp4")[videos/03-generation-ia/wan-2-7-edit.mp4]]
 
 Le résultat est plutôt moyen, la caméra est tremblante et la machoîre change de forme au début de la vidéo. Néanmoins, les mouvements de la personne sont corrects et les cheveux sont réalistes.
 
@@ -512,7 +512,7 @@ La manière de remplacer une personne dans une vidéo avec le modèle Kling Moti
   caption: "Nouvelle personne dans le même environnement que la vidéo de référence.",
 )
 
-Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0-edit.mp4")[kling-3-0-edit.mp4]]
+Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0-edit.mp4")[videos/03-generation-ia/kling-3-0-edit.mp4]]
 
 Le résultat est plutôt bon, l'arrière-plan est préservé, les mouvements sont corrects et l'aspect général de la personne est réaliste. Par contre, contrairement aux vidéos précédentes, le bras qui tient la caméra n'est plus présent, c'est normal car la personne sur l'image de référence n'avait pas exactement la même posture que ma personne dans la vidéo de référence. De plus, la position des yeux à la toute dernière seconde de la vidéo est un peu étrange, mais cela reste un détail.
 

@@ -153,10 +153,10 @@ La commande `broadcast` permet de diffuser une image ou un flux vidéo vers une 
 - `--pixel-format (-f)`: format des pixels du flux vidéo. Le format par défaut est `yuv420p` car c'est le même utilisé par les vraies caméras, néanmoins tous les formats proposés par `FFmpeg` sont disponibles #footnote("https://www.ffmpeg.org/doxygen/1.0/pixfmt_8h.html").
 - `--no-crop (-n)`: option permettant de ne pas recadrer l'image ou le flux vidéo à la résolution de la caméra virtuelle. Par défaut, l'image ou le flux vidéo est recadré à la résolution de la caméra virtuelle pour éviter une sortie déformée sur le système de vérification d'identité.
 
-Exemple sans `--no-crop` (par défaut) :
+Exemple sans `--no-crop` avec une image en 16:9 :
 
 #sourcecode[```sh
-    aifrb broadcast templates/man.jpg /dev/video0
+    aifrb broadcast templates/face.jpg /dev/video0
 ```]
 
 #figure(
@@ -164,7 +164,7 @@ Exemple sans `--no-crop` (par défaut) :
   caption: [Résultat de la commande `aifrb broadcast` sans le paramètre `--no-crop`.],
 )
 
-Exemple avec `--no-crop` :
+Exemple avec `--no-crop` sur une image en 16:9 :
 
 #sourcecode[```sh
     aifrb broadcast templates/face.jpg /dev/video0 --no-crop
@@ -175,14 +175,25 @@ Exemple avec `--no-crop` :
   caption: [Résultat de la commande `aifrb broadcast` avec le paramètre `--no-crop`.],
 )
 
+La plupart du temps, l'option `--no-crop` n'est pas nécessaire. Là où elle est utile, c'est lorsque une image ou une vidéo en 9:16 est diffusée sur un émulateur Android comme Genymotion.
+
+#sourcecode[```sh
+    aifrb broadcast templates/man.jpg /dev/video0 --no-crop
+```]
+
+#figure(
+  rect(image("../images/06-developpement/genymotion.png", width: 40%), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb broadcast` sur Genymotion avec le paramètre `--no-crop`.],
+)
+
 = AI Commands
 
 == generate-image
 
 La commande `generate-image` permet de générer une image à partir d'un prompt en utilisant l'API de KIE AI. Une fois générée, l'image est automatiquement téléchargée dans le dossier `downloads/` à la racine du projet. Les options disponibles sont les suivantes :
-- `--model (-m)`: modèle de génération d'image à utiliser. Par défaut, le modèle utilisé est Nano Banana 2 car c'est le plus réaliste.
-- `--aspect-ratio (-a)`: format de l'image générée.
-- `--resolution (-r)`: résolution de l'image générée.
+- `--model (-m)` : modèle de génération d'image à utiliser. Par défaut, le modèle utilisé est Nano Banana 2 car c'est le plus réaliste.
+- `--aspect-ratio (-a)` : format de l'image générée (1:1 par défaut).
+- `--resolution (-r)` : résolution de l'image générée (1K par défaut).
 
 Exemple :
 
@@ -205,12 +216,146 @@ Le tableau ci-dessous présente les paramètres disponibles pour chaque modèle 
     align: horizon + center,
     [*Modèle*], [*Formats*], [*Résolutions*],
     [Nano Banana 2], [auto, 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9], [1K, 2K, 4K],
-    [GPT Image 2.0],
-    [auto, 1:1, 1:2, 2:1, 1:3, 3:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 9:21, 21:9],
-    [1K, 2K, 4K],
+    [GPT Image 2], [auto, 1:1, 1:2, 2:1, 1:3, 3:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 9:21, 21:9], [1K, 2K, 4K],
 
     [Grok Imagine], [1:1, 2:3, 3:2, 9:16, 16:9], [-],
     [Wan 2.7], [-], [1K, 2K],
   ),
   caption: [Paramètres disponibles pour chaque modèle de génération d'image.],
+)
+
+== edit-image
+
+La commande `edit-image` permet d'éditer une image en utilisant l'API de KIE AI. Une fois éditée, l'image est automatiquement téléchargée dans le dossier `downloads/` à la racine du projet. Les options disponibles sont les suivantes :
+- `--model (-m)` : modèle de génération d'image à utiliser. Par défaut, le modèle utilisé est Nano Banana 2 car c'est le plus réaliste.
+- `--aspect-ratio (-a)` : format de l'image éditée (1:1 par défaut).
+- `--resolution (-r)` : résolution de l'image éditée (1K par défaut).
+- `--reference-image (-i)` : image de référence pour l'édition. Cette option permet de fournir une image supplémentaire pour remplacer un visage par exemple.
+
+Exemple :
+
+#sourcecode[```sh
+aifrb edit-image "Modify the ID card by replacing the name 'de Maienfeld Muste' by 'Teste', the name 'Lara Sample' by 'Alice', the date of birth '01 08 1991' by '07 02 2000' and the signature 'Signature' by 'A. Teste'. Replace the pictures on the ID card by the woman on the second image. The pictures should keep their black and white color and the triangles at the end of the names should not be removed." templates/id-front.jpg -i templates/woman.png -a "auto"
+```]
+
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../images/03-generation-ia/id-front.jpg"), stroke: 0.1pt),
+    caption: [Image à éditer (`templates/id-front.jpg`).],
+  ),
+  figure(
+    rect(image("../images/03-generation-ia/face.png", width: 62%), stroke: 0.1pt),
+    caption: [Image de référence pour l'édition (`templates/woman.png`).],
+  ),
+)
+
+#figure(
+  rect(image("../images/03-generation-ia/nano-banana-2.jpeg", width: 50%), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb edit-image`.],
+)
+
+Comme pour la commande `generate-image`, les paramètres disponibles pour chaque modèle d'édition d'image sont présentés dans le tableau ci-dessous :
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr),
+    align: horizon + center,
+    [*Modèle*], [*Formats*], [*Résolutions*],
+    [Nano Banana 2], [auto, 1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9], [1K, 2K, 4K],
+    [GPT Image 2], [auto, 1:1, 1:2, 2:1, 1:3, 3:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 9:21, 21:9], [1K, 2K, 4K],
+
+    [Grok Imagine], [1:1, 2:3, 3:2, 9:16, 16:9], [-],
+    [Wan 2.7], [-], [1K, 2K],
+    [Seedream 4.5], [1:1, 2:3, 3:2, 3:4, 4:3, 9:16, 16:9, 21:9], [2K, 4K],
+  ),
+  caption: [Paramètres disponibles pour chaque modèle d'édition d'image.],
+)
+
+== generate-video
+
+La commande `generate-video` permet de générer une vidéo à partir d'un prompt en utilisant l'API de KIE AI. Une fois générée, la vidéo est automatiquement téléchargée dans le dossier `downloads/` à la racine du projet. Les options disponibles sont les suivantes :
+- `--model (-m)` : modèle de génération de vidéo à utiliser. Par défaut, le modèle utilisé est Grok Imagine Video 1.5 car c'est le plus réaliste.
+- `--duration (-d)` : durée de la vidéo générée (3 secondes par défaut).
+- `--aspect-ratio (-a)` : format de la vidéo générée (16:9 par défaut).
+- `--resolution (-r)` : résolution de la vidéo générée (720p par défaut).
+- `--start-image (-s)` : image de départ pour la génération de la vidéo. Cette option permet de fournir la première "frame" de la vidéo.
+- `--end-image (-e)` : image de fin pour la génération de la vidéo. Cette option permet de fournir la dernière "frame" de la vidéo.
+
+Exemple :
+
+#sourcecode[```sh
+    aifrb generate-video "This woman is facing the camera. She turns her head left, then up, then right and then faces the camera again." -d 5 -a "auto" -s templates/woman.png
+```]
+
+Résultat : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[videos/03-generation-ia/grok-imagine-video-1-5.mp4]]
+
+Comme pour les modèles de génération d'images, les modèles de génération de vidéos ne proposent pas tous les mêmes options. Le tableau ci-dessous présente les paramètres disponibles pour chaque modèle de génération de vidéo :
+
+#set par(justify: false)
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr, 1fr, 1fr),
+    align: horizon + center,
+    [*Modèle*], [*Durée*], [*Formats*], [*Résolutions*], [*Images max.*],
+    [Grok Imagine Video 1.5], [1-15s], [auto, 1:1, 2:3, 3:2, 3:4, 4:3, 9:16, 16:9], [480p, 720p], [1],
+    [HappyHorse 1.0], [3-15s], [1:1, 3:4, 4:3, 9:16, 16:9 \ (sans image uniquement)], [720p, 1080p], [1],
+    [Kling 3.0], [3-15s], [-], [720p, 1080p, 4K], [2],
+    [Wan 2.7], [2-15s], [1:1, 3:4, 4:3, 9:16, 16:9], [720p, 1080p], [2],
+  ),
+  caption: [Paramètres disponibles pour chaque modèle de génération de vidéo.],
+)
+
+#set par(justify: true)
+
+== edit-video
+
+La commande `edit-video` permet d'éditer une vidéo en utilisant l'API de KIE AI. Une fois éditée, la vidéo est automatiquement téléchargée dans le dossier `downloads/` à la racine du projet. Les options disponibles sont les suivantes :
+- `--model (-m)` : modèle de génération de vidéo à utiliser. Par défaut, le modèle utilisé est Kling 3.0 car c'est le plus réaliste.
+- `--resolution (-r)` : résolution de la vidéo éditée (720p par défaut).
+
+Exemple :
+
+#sourcecode[```sh
+    aifrb edit-video "Replace the person on the video by the person on the image." docs/videos/03-generation-ia/grok-imagine-video-1-5.mp4 templates/man.jpg -m "HappyHorse 1.0"
+```]
+
+Vidéo à éditer : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[videos/03-generation-ia/grok-imagine-video-1-5.mp4]]
+
+#figure(
+  rect(image("../images/06-developpement/man.jpg", width: 30%), stroke: 0.1pt),
+  caption: [Image de référence pour l'édition (`templates/man.jpg`).],
+)
+
+Résultat : #underline[#link("../videos/06-developpement/happyhorse-1-0.mp4")[videos/06-developpement/happyhorse-1-0.mp4]]
+
+Comme pour `generate-video`, les paramètres disponibles pour chaque modèle d'édition de vidéo sont présentés dans le tableau ci-dessous :
+
+#set par(justify: false)
+
+#figure(
+  table(
+    columns: (1fr, 1fr, 1fr),
+    align: horizon + center,
+    [*Modèle*], [*Durée*], [*Résolutions*],
+    [Kling 3.0], [-], [720p, 1080p],
+    [HappyHorse 1.0], [-], [720p, 1080p],
+    [Wan 2.7], [0-10s], [720p, 1080p],
+  ),
+  caption: [Paramètres disponibles pour chaque modèle d'édition de vidéo.],
+)
+
+#set par(justify: true)
+
+= KIE AI Account Commands
+
+== remaining-credits
+
+La commande `remaining-credits` permet d'afficher le nombre de crédits restants sur le compte KIE AI. Les crédits sont consommés à chaque utilisation des commandes de la catégorie "AI Commands". Le nombre de crédits consommés dépend du modèle utilisé et des paramètres choisis. Par exemple, la génération d'une image en 4K consomme plus de crédits que la génération d'une image en 1K. Pour donner un ordre d'idée, 1000 crédits équivalent à 5\$.
+
+#figure(
+  rect(image("../images/06-developpement/remaining-credits.png"), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb remaining-credits`.],
 )
