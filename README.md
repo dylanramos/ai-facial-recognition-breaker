@@ -8,7 +8,7 @@ This repository contains my bachelor's thesis project. This work aims to underst
 aifrb/
 ├── docs/
 │   ├── rapport/                  # Main report and chapter sources
-│   ├── rapports-detailles/    # Topic-specific research reports
+│   ├── rapports-detailles/       # Topic-specific detailed reports
 │   ├── diagrammes/               # Draw.io architecture and workflow diagrams
 │   ├── images/                   # Images used in the reports
 │   └── videos/                   # Videos used in the reports
