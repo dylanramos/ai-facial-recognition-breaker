@@ -1,6 +1,7 @@
 import base64
 import json
 import os
+import sys
 import time
 from pathlib import Path
 
@@ -21,7 +22,8 @@ def get_remaining_credits() -> float:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to get remaining credits: {data['msg']}")
+        print(f"Error: Failed to get remaining credits: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]
 
@@ -45,7 +47,8 @@ def upload_image(path: Path) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to upload image: {data['msg']}")
+        print(f"Error: Failed to upload image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["downloadUrl"]
 
@@ -62,7 +65,8 @@ def upload_video(path: Path) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to upload video: {data['msg']}")
+        print(f"Error: Failed to upload video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["downloadUrl"]
 
@@ -79,7 +83,8 @@ def get_content_url(task_id: str) -> str:
         elapsed_time = time.time() - start_time
 
         if elapsed_time > max_duration:
-            raise ValueError("Content generation timed out after 15 minutes.")
+            print("Error: Content generation timed out after 15 minutes.")
+            sys.exit(1)
 
         response = requests.get(url, headers=headers, params=params)
         data = response.json()
@@ -89,7 +94,8 @@ def get_content_url(task_id: str) -> str:
             return result_json["resultUrls"][0]
 
         if data["data"]["state"] == "fail":
-            raise ValueError(f"Content generation failed: {data['data']['failMsg']}")
+            print(f"Error: Content generation failed: {data['data']['failMsg']}")
+            sys.exit(1)
 
         # Recommended polling interval
         if elapsed_time < 30:

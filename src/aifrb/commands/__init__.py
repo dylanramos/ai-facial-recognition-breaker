@@ -1,5 +1,6 @@
 import typer
 
+from .create_camera import app as create_camera
 from .broadcast import app as broadcast
 from .generate_image import app as generate_image
 from .edit_image import app as edit_image

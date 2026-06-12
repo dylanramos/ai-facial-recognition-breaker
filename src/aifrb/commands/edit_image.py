@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 from typing import Annotated
 
@@ -85,7 +86,8 @@ def edit_image(
         case "Seedream 4.5":
             task_id = seedream_4_5(prompt, aspect_ratio, resolution, images_url)
         case _:
-            raise ValueError(f"Unsupported model: {model}")
+            print(f"Error: Unsupported model: {model}")
+            sys.exit(1)
 
     print("Image editing started successfully!")
     print("Waiting for image editing to complete...")

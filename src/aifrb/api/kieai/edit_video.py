@@ -1,4 +1,5 @@
 import os
+import sys
 
 import requests
 from dotenv import load_dotenv
@@ -28,7 +29,8 @@ def kling_3_0(prompt: str, video_url: str, image_url: str, resolution: str) -> s
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit video: {data['msg']}")
+        print(f"Error: Failed to edit video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -54,7 +56,8 @@ def wan_2_7(prompt: str, video_url: str, image_url: str, resolution: str) -> str
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit video: {data['msg']}")
+        print(f"Error: Failed to edit video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -80,6 +83,7 @@ def happyhorse_1_0(prompt: str, video_url: str, image_url: str, resolution: str)
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit video: {data['msg']}")
+        print(f"Error: Failed to edit video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]

@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 from typing import Annotated
 
@@ -52,7 +53,8 @@ def edit_video(
         case "HappyHorse 1.0":
             task_id = happyhorse_1_0(prompt, video_url, image_url, resolution)
         case _:
-            raise ValueError(f"Unsupported model: {model}")
+            print(f"Error: Unsupported model: {model}")
+            sys.exit(1)
 
     print("Video editing started successfully!")
     print("Waiting for video editing to complete...")

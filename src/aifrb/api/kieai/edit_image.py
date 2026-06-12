@@ -1,4 +1,5 @@
 import os
+import sys
 
 import requests
 from dotenv import load_dotenv
@@ -30,7 +31,8 @@ def nano_banana_2(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit image: {data['msg']}")
+        print(f"Error: Failed to edit image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -57,7 +59,8 @@ def gpt_image_2(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit image: {data['msg']}")
+        print(f"Error: Failed to edit image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -80,7 +83,8 @@ def grok_imagine(prompt: str, image_urls: list[str]) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit image: {data['msg']}")
+        print(f"Error: Failed to edit image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -107,7 +111,8 @@ def wan_2_7(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit image: {data['msg']}")
+        print(f"Error: Failed to edit image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -140,6 +145,7 @@ def seedream_4_5(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to edit image: {data['msg']}")
+        print(f"Error: Failed to edit image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]

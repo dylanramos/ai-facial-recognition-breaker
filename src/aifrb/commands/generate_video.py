@@ -1,3 +1,4 @@
+import sys
 from pathlib import Path
 from typing import Annotated
 
@@ -96,7 +97,8 @@ def generate_video(
                 prompt, duration, resolution, start_image_url, end_image_url
             )
         case _:
-            raise ValueError(f"Unsupported model: {model}")
+            print(f"Error: Unsupported model: {model}")
+            sys.exit(1)
 
     print("Video generation started successfully!")
     print("Waiting for video generation to complete...")

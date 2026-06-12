@@ -1,5 +1,6 @@
 import typer
 
+from .commands.create_camera import app as create_camera_app
 from .commands.broadcast import app as broadcast_app
 from .commands.generate_image import app as generate_image_app
 from .commands.edit_image import app as edit_image_app
@@ -15,6 +16,7 @@ def callback():
     AI Facial Recognition Breaker CLI.
     """
 
+app.add_typer(create_camera_app)
 app.add_typer(broadcast_app)
 app.add_typer(generate_image_app)
 app.add_typer(edit_image_app)

@@ -1,4 +1,5 @@
 import os
+import sys
 
 import requests
 from dotenv import load_dotenv
@@ -27,7 +28,8 @@ def nano_banana_2(prompt: str, aspect_ratio: str, resolution: str) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate image: {data['msg']}")
+        print(f"Error: Failed to generate image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -51,7 +53,8 @@ def gpt_image_2(prompt: str, aspect_ratio: str, resolution: str) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate image: {data['msg']}")
+        print(f"Error: Failed to generate image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -71,7 +74,8 @@ def grok_imagine(prompt: str, aspect_ratio: str) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate image: {data['msg']}")
+        print(f"Error: Failed to generate image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -95,6 +99,7 @@ def wan_2_7(prompt: str, aspect_ratio: str, resolution: str) -> str:
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate image: {data['msg']}")
+        print(f"Error: Failed to generate image: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]

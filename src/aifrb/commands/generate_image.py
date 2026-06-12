@@ -1,3 +1,4 @@
+import sys
 from typing import Annotated
 
 import typer
@@ -60,7 +61,8 @@ def generate_image(
         case "Wan 2.7":
             task_id = wan_2_7(prompt, aspect_ratio, resolution)
         case _:
-            raise ValueError(f"Unsupported model: {model}")
+            print(f"Error: Unsupported model: {model}")
+            sys.exit(1)
 
     print("Image generation started successfully!")
     print("Waiting for image generation to complete...")

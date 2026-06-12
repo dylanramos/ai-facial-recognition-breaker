@@ -1,9 +1,9 @@
-import subprocess
+import sys
 from pathlib import Path
 from typing import Annotated
 
-import typer
 import ffmpeg
+import typer
 
 app = typer.Typer()
 
@@ -22,14 +22,12 @@ def broadcast(
     input: Annotated[
         Path, typer.Argument(help="Path to the input video or image file.")
     ],
-    create_camera: Annotated[
-        str,
-        typer.Option(
-            "--create-camera",
-            "-c",
-            help="Create or replace the virtual camera with the specified name.",
+    device: Annotated[
+        Path,
+        typer.Argument(
+            help="Path to the virtual camera device (e.g. /dev/video0).",
         ),
-    ] = "AIFRB Virtual Camera",
+    ],
     pixel_format: Annotated[
         str,
         typer.Option(
@@ -48,29 +46,11 @@ def broadcast(
     """
     Broadcast an image or a video file to a virtual camera.
     """
-    device = "/dev/video1"
-
-    if create_camera:
-        # Reload the v4l2loopback module
-        subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
-        # Create the virtual camera
-        subprocess.run(
-            [
-                "sudo",
-                "modprobe",
-                "v4l2loopback",
-                "devices=1",
-                "video_nr=1",
-                f'card_label="{create_camera}"',
-                "exclusive_caps=1",
-            ]
+    if not device.exists():
+        print(
+            f"Error: Virtual camera device {device} does not exist. Please create a virtual camera using the create-camera command."
         )
-        # Grant current user access to the device without requiring video group membership
-        subprocess.run(["sudo", "chmod", "666", device])
-    elif not Path(device).exists():
-        raise ValueError(
-            f"No camera has been created. Please use the --create-camera (-c) option to create a virtual camera."
-        )
+        sys.exit(1)
 
     extension = input.suffix.lower()
 
@@ -79,13 +59,14 @@ def broadcast(
     elif extension in VALID_VIDEO_EXTENSIONS:
         ffmpeg_input = ffmpeg.input(str(input), re=None, stream_loop=-1)
     else:
-        raise ValueError(
-            f"Unsupported file type: {extension}. Supported image formats: {', '.join(VALID_IMAGE_EXTENSIONS)}. Supported video formats: {', '.join(VALID_VIDEO_EXTENSIONS)}."
+        print(
+            f"Error: Unsupported file type: {extension}. Supported image formats: {', '.join(VALID_IMAGE_EXTENSIONS)}. Supported video formats: {', '.join(VALID_VIDEO_EXTENSIONS)}."
         )
+        sys.exit(1)
 
     if not no_crop:
         ffmpeg_input = ffmpeg_input.filter("crop", "min(iw,ih*4/3)", "min(ih,iw*3/4)")
 
     ffmpeg_input.filter("scale", OUT_WIDTH, OUT_HEIGHT).filter("fps", FPS).filter(
         "noise", c0s=8, c0f="t+u", c1s=2, c1f="t", c2s=2, c2f="t"
-    ).output(device, format="v4l2", pix_fmt=pixel_format).run()
+    ).output(f"{device}", format="v4l2", pix_fmt=pixel_format).run()

@@ -1,4 +1,5 @@
 import os
+import sys
 
 import requests
 from dotenv import load_dotenv
@@ -35,7 +36,8 @@ def grok_imagine_video_1_5(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate video: {data['msg']}")
+        print(f"Error: Failed to generate video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -65,7 +67,8 @@ def happyhorse_1_0(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate video: {data['msg']}")
+        print(f"Error: Failed to generate video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -109,7 +112,8 @@ def kling_3_0(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate video: {data['msg']}")
+        print(f"Error: Failed to generate video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
 
@@ -141,6 +145,7 @@ def wan_2_7(
     data = response.json()
 
     if data["code"] != 200:
-        raise ValueError(f"Failed to generate video: {data['msg']}")
+        print(f"Error: Failed to generate video: {data['msg']}")
+        sys.exit(1)
 
     return data["data"]["taskId"]
