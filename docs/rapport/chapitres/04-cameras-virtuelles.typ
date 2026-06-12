@@ -22,13 +22,13 @@ L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt
 
 Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
 
-Le chapitre 2 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] explique en détail comment installer `v4l2loopback` et comment utiliser `FFmpeg` pour diffuser un flux vidéo vers la caméra virtuelle créée.
+Le chapitre 2 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] explique en détail comment installer `v4l2loopback` et comment utiliser `FFmpeg` pour diffuser un flux vidéo vers la caméra virtuelle créée.
 
 === Windows <04-windows>
 
 Sous Windows, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé, soit utiliser un logiciel proposant cette fonctionnalité. `OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci. Le problème avec ce type de logiciels, c'est qu'ils nécessitent des actions manuelles, notamment pour créer la caméra virtuelle et pour y diffuser un flux vidéo.
 
-Comme l'explique le chapitre 3.3 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")], l'utilisation de `FFmpeg` combinée à `OBS Studio` pour automatiser la diffusion d'un flux vidéo est possible, cependant, cela nécessite de devoir envoyer le flux via le protocole `UDP` à `OBS Studio`, ce qui engendre une latence importante.
+Comme l'explique le chapitre 3.3 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")], l'utilisation de `FFmpeg` combinée à `OBS Studio` pour automatiser la diffusion d'un flux vidéo est possible, cependant, cela nécessite de devoir envoyer le flux via le protocole `UDP` à `OBS Studio`, ce qui engendre une latence importante.
 
 === Comparaison des solutions
 
@@ -120,7 +120,7 @@ L'exemple de code Python ci-dessous montre comment diffuser un flux vidéo en bo
   caption: [Exemple de code Python utilisant `pyvirtualcam` pour diffuser une vidéo sur une caméra virtuelle.],
 )
 
-Une marche à suivre pour installer `pyvirtualcam` et utiliser cet exemple de code est disponible dans le chapitre 6.1 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")].
+Une marche à suivre pour installer `pyvirtualcam` et utiliser cet exemple de code est disponible dans le chapitre 6.1 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")].
 
 === ffmpeg-python
 
@@ -148,7 +148,7 @@ L'exemple de code Python ci-dessous montre comment diffuser un flux vidéo en bo
   caption: [Exemple de code Python utilisant `ffmpeg-python` pour diffuser une vidéo sur une caméra virtuelle.],
 )
 
-Une marche à suivre pour installer `ffmpeg-python` et utiliser cet exemple de code est disponible dans le chapitre 6.2 du rapport de recherche #link("../rapports-de-recherche/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")].
+Une marche à suivre pour installer `ffmpeg-python` et utiliser cet exemple de code est disponible dans le chapitre 6.2 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")].
 
 === Comparaison des librairies
 

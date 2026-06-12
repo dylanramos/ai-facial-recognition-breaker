@@ -39,7 +39,7 @@ La librairie `python-dotenv` permet de charger des variables d'environnement à 
 Le projet est organisé de la manière suivante :
 
 - `docs/rapport/`: rapport principal et sources des chapitres.
-- `docs/rapports-de-recherche/`: rapports de recherche par thème.
+- `docs/rapports-detailles/`: rapports détaillés par thème.
 - `docs/diagrammes/`: diagrammes Draw.io (architecture & workflows).
 - `docs/images/`: images utilisées dans le rapport.
 - `docs/videos/`: vidéos utilisées dans le rapport.
@@ -91,9 +91,27 @@ Les commandes suivantes doivent être exécutées à la racine du projet.
       aifrb
   ```]
 
+#figure(
+  rect(image("../../images/06-developpement/aifrb-cmd.png"), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb` après l'installation du démonstrateur.],
+)
+
 == Fonctionnalités du démonstrateur
 
-#text(fill: red)[Listing des commandes et qu'est-ce qu'elles font]
+Le démonstrateur dispose de trois catégories de fonctionnalités :
+- *Camera Commands* : commandes liées à la gestion des caméras virtuelles.
+- *AI Commands* : commandes liées à la génération de contenu IA.
+- *KIE Account Commands* : commandes liées à la gestion du compte KIE AI.
+
+Pour savoir ce que fait une commande et comment l'utiliser, il suffit de taper `aifrb` suivi du nom de la commande. Par exemple :
+#sourcecode[```sh
+    aifrb generate-image
+```]
+
+#figure(
+  rect(image("../../images/06-developpement/cmd-help.png"), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb generate-image`.],
+)
 
 == Guides
 

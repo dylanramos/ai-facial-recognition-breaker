@@ -80,7 +80,7 @@ En option :
 
 - Cahier des charges.
 - Rapport intermédiaire.
-- Rapports de recherche :
+- rapports détaillés :
   - Génération d'images et de vidéos IA.
   - Sites de vérification d'identité.
   - Caméras virtuelles et redirection de flux vidéo.
@@ -125,9 +125,9 @@ Phase 1 :
 
 Phase 1 :
 - Étude de l'utilisation d'une caméra virtuelle sur Windows.
-- Rédaction du rapport de recherche sur les offres de génération de vidéos IA.
-- Rédaction du rapport de recherche sur les sites de vérification d'identité.
-- Rédaction du rapport de recherche sur les caméras virtuelles et la redirection de flux vidéo.
+- Rédaction du rapport détaillé sur les offres de génération de vidéos IA.
+- Rédaction du rapport détaillé sur les sites de vérification d'identité.
+- Rédaction du rapport détaillé sur les caméras virtuelles et la redirection de flux vidéo.
 
 *Semaine 4 (09.03 - 15.03)*
 
@@ -140,8 +140,8 @@ _Semaine réservée au CRUNCH._
 - Rédaction du rapport.
 
 Phase 1 :
-- Rédaction du rapport de recherche sur les sites de vérification d'identité.
-- Rédaction du rapport de recherche sur les caméras virtuelles et la redirection de flux vidéo.
+- Rédaction du rapport détaillé sur les sites de vérification d'identité.
+- Rédaction du rapport détaillé sur les caméras virtuelles et la redirection de flux vidéo.
 
 Phase 2 :
 - Rédaction des User Stories.
@@ -152,7 +152,7 @@ Phase 2 :
 - Rédaction du rapport.
 
 Phase 1 :
-- Rédaction du rapport de recherche sur les sites de vérification d'identité.
+- Rédaction du rapport détaillé sur les sites de vérification d'identité.
 
 Phase 2 :
 - Rédaction des cas de test.

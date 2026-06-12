@@ -1,6 +1,6 @@
 = Glossaire
 
-Ce glossaire présente les termes techniques utilisés dans ce travail de Bachelor. Les différents rapports de recherche se référent également à ce glossaire, il est donc conseillé de le consulter pour comprendre pleinement le contenu de ces rapports. 
+Ce glossaire présente les termes techniques utilisés dans ce travail de Bachelor. Les différents rapports détaillés se référent également à ce glossaire, il est donc conseillé de le consulter pour comprendre pleinement le contenu de ces rapports.
 
 #v(0.5cm)
 

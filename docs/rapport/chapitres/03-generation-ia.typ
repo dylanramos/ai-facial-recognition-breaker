@@ -172,7 +172,7 @@ Le modèle qui s'est avéré être le plus réaliste pour modifier une carte d'i
 
 En effet, ce modèle a effectué tous les changements demandés tout en conservant les motifs de la carte, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
 
-Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 3.3 du rapport de recherche #link("../rapports-de-recherche/generation-ia.pdf")[#underline("generation-ia.pdf")].
+Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 3.3 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
 === Comparaison des modèles de type Image-to-Image
 
@@ -238,7 +238,7 @@ Le modèle qui s'est avéré être le plus réaliste pour générer des selfies 
 
 En effet, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
 
-Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.4 du rapport de recherche #link("../rapports-de-recherche/generation-ia.pdf")[#underline("generation-ia.pdf")].
+Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.4 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
 === Comparaison des modèles de type Image-to-Video
 
@@ -298,4 +298,4 @@ Le tableau ci-dessous résume les résultats obtenus lors des tests pour une vid
   caption: "Comparaison des modèles de type Video-to-Video.",
 )
 
-Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.6 du rapport de recherche #link("../rapports-de-recherche/generation-ia.pdf")[#underline("generation-ia.pdf")].
+Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.6 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].

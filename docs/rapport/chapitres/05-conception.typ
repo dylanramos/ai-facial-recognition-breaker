@@ -4,7 +4,7 @@
 
 Suite aux patterns de vérification d'identité identifiés au #underline()[@patterns], des scénarios d'attaque ont été définis pour chaque pattern. Ces scénarios décrivent comment un attaquant pourrait contourner les mécanismes de vérification d'identité et permettent de définir les fonctionnalités nécessaires au démonstrateur pour simuler ces attaques.
 
-Les sous-chapitres suivants détaillent les scénarios typiques pour chaque pattern. Ces scénarios ont été sélectionnés car ils concernent la majorité des sites (par pattern) et démontrent de manière complète les fonctionnalités requises du démonstrateur. Néanmoins, d'autres scénarios sont présentés dans le rapport de recherche #link("../rapports-de-recherche/user-stories.pdf")[#underline("user-stories.pdf")].
+Les sous-chapitres suivants détaillent les scénarios typiques pour chaque pattern. Ces scénarios ont été sélectionnés car ils concernent la majorité des sites (par pattern) et démontrent de manière complète les fonctionnalités requises du démonstrateur. Néanmoins, d'autres scénarios sont présentés dans le rapport détaillé #link("../rapports-detailles/user-stories.pdf")[#underline("user-stories.pdf")].
 
 === Pattern 1 : vérification par selfie vidéo uniquement <user-story-pattern-1>
 
