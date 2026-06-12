@@ -113,6 +113,8 @@ Pour savoir ce que fait une commande et comment l'utiliser, il suffit de taper `
   caption: [Résultat de la commande `aifrb generate-image`.],
 )
 
+Des informations détaillées sur l'utilisation de chaque commande sont disponibles dans le rapport détaillé #link("../rapports-detailles/utilisation-cli.pdf")[#underline("utilisation-cli.pdf")].
+
 == Guides
 
 === Installation du démonstrateur

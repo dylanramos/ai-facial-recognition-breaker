@@ -27,7 +27,7 @@
 )
 
 #v(4cm)
-#align(center, text(weight: "bold", size: 14pt)[rapport détaillé])
+#align(center, text(weight: "bold", size: 14pt)[Rapport détaillé])
 #align(center, text(weight: "bold", size: 26pt)[#title])
 #v(4cm)
 
