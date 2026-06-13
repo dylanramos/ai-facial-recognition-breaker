@@ -299,11 +299,11 @@ Comme pour les modèles de génération d'images, les modèles de génération d
   table(
     columns: (1fr, 1fr, 1fr, 1fr, 1fr),
     align: horizon + center,
-    [*Modèle*], [*Durée*], [*Formats*], [*Résolutions*], [*Images max.*],
+    [*Modèle*], [*Durée*], [*Formats*], [*Résolutions*], [*Images*],
     [Grok Imagine Video 1.5], [1-15s], [auto, 1:1, 2:3, 3:2, 3:4, 4:3, 9:16, 16:9], [480p, 720p], [1],
-    [HappyHorse 1.0], [3-15s], [1:1, 3:4, 4:3, 9:16, 16:9 \ (sans image uniquement)], [720p, 1080p], [1],
-    [Kling 3.0], [3-15s], [-], [720p, 1080p, 4K], [2],
-    [Wan 2.7], [2-15s], [1:1, 3:4, 4:3, 9:16, 16:9], [720p, 1080p], [2],
+    [HappyHorse 1.0], [3-15s], [-], [720p, 1080p], [1],
+    [Kling 3.0], [3-15s], [-], [720p, 1080p, 4K], [0-2],
+    [Wan 2.7], [2-15s], [1:1, 3:4, 4:3, 9:16, 16:9], [720p, 1080p], [0-2],
   ),
   caption: [Paramètres disponibles pour chaque modèle de génération de vidéo.],
 )
