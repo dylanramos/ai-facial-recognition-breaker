@@ -178,7 +178,7 @@ Exemple avec `--no-crop` sur une image en 16:9 :
 La plupart du temps, l'option `--no-crop` n'est pas nécessaire. Là où elle est utile, c'est lorsque une image ou une vidéo en 9:16 est diffusée sur un émulateur Android comme Genymotion.
 
 #sourcecode[```sh
-    aifrb broadcast templates/man.jpg /dev/video0 --no-crop
+    aifrb broadcast templates/man-portrait.jpg /dev/video0 --no-crop
 ```]
 
 #figure(
