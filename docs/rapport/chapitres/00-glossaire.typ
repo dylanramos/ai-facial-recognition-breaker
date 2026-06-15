@@ -4,30 +4,30 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 #v(0.5cm)
 
-*Application Programming Interface (API) :* ensemble de règles et de protocoles permettant à différentes applications de communiquer entre elles.
+*API (Application Programming Interface) :* ensemble de règles et de protocoles permettant à différentes applications de communiquer entre elles.
 
 *Caméra virtuelle :* logiciel simulant une caméra physique permettant d'envoyer des flux vidéo personnalisés.
 
-*Command Line Interface (CLI) :* interface utilisateur permettant d'interagir avec un programme en tapant des commandes textuelles.
+*CLI (Command Line Interface) :* interface utilisateur permettant d'interagir avec un programme en tapant des commandes textuelles.
 
 *Deepfake :* contenu multimédia synthétique créé ou modifié à l'aide de l'intelligence artificielle représentant une personne en train de faire quelque chose qu'elle n'a jamais fait.
 
 *FFmpeg :* outil en ligne de commande permettant de manipuler des fichiers multimédia.
 
-*Intelligence artificielle (IA) :* capacité des machines ou des systèmes informatiques à accomplir des tâches qui requièrent généralement l'intelligence humaine.
+*IA (Intelligence Artificielle) :* capacité des machines ou des systèmes informatiques à accomplir des tâches qui requièrent généralement l'intelligence humaine.
 
 *OBS Studio :* logiciel gratuit et open source, multiplateforme, permettant de réaliser des captures d'écran et des diffusions en direct.
 
-*Operating System (OS) :* logiciel de base qui gère les ressources matérielles et logicielles d'un ordinateur.
+*OS (Operating System) :* logiciel de base qui gère les ressources matérielles et logicielles d'un ordinateur.
 
 *Polling :* technique de vérification de l'état d'une tâche en envoyant régulièrement des requêtes à un serveur.
 
 *Prompt :* instruction, question ou entrée fournie à un système d'intelligence artificielle afin d'obtenir une réponse ou une action spécifique.
 
-*pyvirtualcam :* librairie Python permettant d'envoyer des flux vidéo à une caméra virtuelle sur Linux, Windows et macOS.
-
 *User Story :* description concise et informelle d'une fonctionnalité logicielle, rédigée du point de vue de l'utilisateur final et mettant l'accent sur la valeur qu'elle apporte.
 
-*Selfie :* photo ou une courte vidéo de soi-même, généralement prise à l'aide d'un smartphone ou d'une webcam.
+*Release notes :* document détaillant les modifications, améliorations et corrections apportées à une nouvelle version d'un logiciel ou d'une application.
 
-*v4l2loopback :* module du noyau Linux permettant de créer des périphériques vidéo virtuels.
+*SDK (Software Development Kit) :* ensemble d'outils et de bibliothèques permettant aux développeurs de créer des applications pour une plateforme spécifique.
+
+*Selfie :* photo ou une courte vidéo de soi-même, généralement prise à l'aide d'un smartphone ou d'une webcam.

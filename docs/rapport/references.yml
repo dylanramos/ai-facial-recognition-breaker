@@ -31,3 +31,24 @@ swiss-id-template:
   title: Swiss ID template
   url: https://media.lematin.ch/4/image/2025/11/12/d10f8b1e-512b-4e61-9ccb-6a391f05621f.jpg?auto=format%2Ccompress%2Cenhance&fit=max&w=1200&h=1200&rect=0%2C0%2C1024%2C640&fp-x=0.2265625&fp-y=0.44375&s=5c24eb000b8b1c27d35d5c4e9d79d9bd
 
+presentation-attack:
+  type: Article
+  title: "Presentation Attacks: A Practitioner's Guide to Liveness Detection and PAD"
+  author: Shufti
+  date: 2026-05-07
+  url: https://shuftipro.com/blog/presentation-attacks/
+
+regula:
+  type: Web
+  title: Regula
+  url: https://regulaforensics.com/
+
+tea:
+  type: Web
+  title: Tea for Women
+  url: https://www.teaforwomen.com/
+
+roblox:
+  type: Web
+  title: Roblox
+  url: https://about.roblox.com/what-is-roblox

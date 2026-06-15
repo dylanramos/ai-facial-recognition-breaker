@@ -268,7 +268,7 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/06-developpement.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/07-retour-sur-experience.typ"
+#include "chapitres/07-attaques-reussies.typ"
 #pagebreak(to: "odd")
 
 #include "chapitres/08-conclusion.typ"
