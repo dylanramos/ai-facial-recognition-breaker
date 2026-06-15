@@ -34,12 +34,12 @@ def broadcast(
             "--pixel-format", "-f", help="Pixel format to use. (e.g., yuv420p, yuv422p)"
         ),
     ] = "yuv420p",
-    no_crop: Annotated[
+    portrait: Annotated[
         bool,
         typer.Option(
-            "--no-crop",
-            "-n",
-            help="Keep the original aspect ratio.",
+            "--portrait",
+            "-p",
+            help="Use portrait orientation.",
         ),
     ] = False,
 ):
@@ -64,7 +64,9 @@ def broadcast(
         )
         sys.exit(1)
 
-    if not no_crop:
+    if portrait:
+        ffmpeg_input = ffmpeg_input.filter("crop", "floor(ih*9/16/2)*2", "ih")
+    else:
         ffmpeg_input = ffmpeg_input.filter("crop", "min(iw,ih*4/3)", "min(ih,iw*3/4)")
 
     ffmpeg_input.filter("scale", OUT_WIDTH, OUT_HEIGHT).filter("fps", FPS).filter(

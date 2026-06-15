@@ -151,39 +151,30 @@ Nous pouvons ensuite vérifier que la caméra a bien été créée en utilisant 
 
 La commande `broadcast` permet de diffuser une image ou un flux vidéo vers une caméra virtuelle. Les options disponibles sont les suivantes :
 - `--pixel-format (-f)`: format des pixels du flux vidéo. Le format par défaut est `yuv420p` car c'est le même utilisé par les vraies caméras, néanmoins tous les formats proposés par `FFmpeg` sont disponibles #footnote("https://www.ffmpeg.org/doxygen/1.0/pixfmt_8h.html").
-- `--no-crop (-n)`: option permettant de ne pas recadrer l'image ou le flux vidéo à la résolution de la caméra virtuelle. Par défaut, l'image ou le flux vidéo est recadré à la résolution de la caméra virtuelle pour éviter une sortie déformée sur le système de vérification d'identité.
+- `--portrait (-p)`: option permettant de rogner l'image ou le flux vidéo en orientation portrait (paysage par défaut).
 
-Exemple sans `--no-crop` avec une image en 16:9 :
+Lorsque la caméra virtuelle est utilisée sur un navigateur web, l'option `--portrait` n'est pas recommandée car les caméras d'ordinateur sont généralement en orientation paysage. En revanche, lorsque la caméra virtuelle est utilisée sur un smartphone, l'option `--portrait` peut être utile pour que le contenu diffusé prenne tout l'écran du smartphone.
+
+Exemple sans l'option `--portrait` avec une image en orientation paysage sur Genymotion (émulateur Android) :
 
 #sourcecode[```sh
     aifrb broadcast templates/face.jpg /dev/video0
 ```]
 
 #figure(
-  rect(image("../images/06-developpement/broadcast.png", width: 70%), stroke: 0.1pt),
-  caption: [Résultat de la commande `aifrb broadcast` sans le paramètre `--no-crop`.],
+  rect(image("../images/06-developpement/no-portrait.png", width: 40%), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb broadcast` sur Genymotion sans l'option `--portrait`.],
 )
 
-Exemple avec `--no-crop` sur une image en 16:9 :
+Exemple avec l'option `--portrait` avec une image en orientation paysage sur Genymotion (émulateur Android) :
 
 #sourcecode[```sh
-    aifrb broadcast templates/face.jpg /dev/video0 --no-crop
+    aifrb broadcast templates/face.jpg /dev/video0 --portrait
 ```]
 
 #figure(
-  rect(image("../images/06-developpement/broadcast-no-crop.png", width: 70%), stroke: 0.1pt),
-  caption: [Résultat de la commande `aifrb broadcast` avec le paramètre `--no-crop`.],
-)
-
-La plupart du temps, l'option `--no-crop` n'est pas nécessaire. Là où elle est utile, c'est lorsque une image ou une vidéo en 9:16 est diffusée sur un émulateur Android comme Genymotion.
-
-#sourcecode[```sh
-    aifrb broadcast templates/man-portrait.jpg /dev/video0 --no-crop
-```]
-
-#figure(
-  rect(image("../images/06-developpement/genymotion.png", width: 40%), stroke: 0.1pt),
-  caption: [Résultat de la commande `aifrb broadcast` sur Genymotion avec le paramètre `--no-crop`.],
+  rect(image("../images/06-developpement/portrait.png", width: 40%), stroke: 0.1pt),
+  caption: [Résultat de la commande `aifrb broadcast` sur Genymotion avec l'option `--portrait`.],
 )
 
 = AI Commands
