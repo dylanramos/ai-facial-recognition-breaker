@@ -109,3 +109,99 @@ La vidéo ci-dessus nous montre que le résultat est bien différent, l'attaque 
 Roblox est une plateforme de jeu en ligne et un système de création qui permet aux utilisateurs de programmer, jouer et partager des expériences en 3D générées par la communauté @roblox. La plateforme est très populaire auprès des enfants et des adolescents et applique des contrôles parentaux stricts pour les joueurs de moins de 13 ans.
 
 === Attaque
+
+En allant sur le site #underline(link("https://www.roblox.com")) nous arrivons sur la page ci-dessous.
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-1.png"), stroke: 0.1pt),
+  caption: "Page d'inscription du site Roblox.",
+)
+
+Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'email ou de numéro de téléphone n'est demandée. Un enfant peut donc facilement créer un compte avec un faux âge sans l'intervention d'un adulte.
+
+Une fois le formulaire rempli et soumis, nous pouvons aller dans "Paramètres", puis "Infos sur le compte" pour accéder à la page permettant de confirmer son âge.
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-2.png", width: 70%), stroke: 0.1pt),
+  caption: "Page permettant de confirmer son âge sur le site Roblox.",
+)
+
+En cliquant sur "Continuer avec la caméra" puis "Continuer", le site nous demande de scanner un code QR pour commencer la vérification d'âge sur notre téléphone.
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-3.png", width: 30%), stroke: 0.1pt),
+  caption: "Code QR pour commencer la vérification d'âge sur le site Roblox.",
+)
+
+Étant donné qu'un téléphone est nécessaire, nous allons utiliser un émulateur Android, Genymotion dans cet exemple. Mais au lieu de scanner le code QR, nous copions le lien juste en dessous et accédons à ce lien depuis le navigateur de l'émulateur. Une marche à suivre détaillée pour installer et configurer Genymotion est disponible dans le chapitre 5 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")].
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-4.png", width: 37%), stroke: 0.1pt),
+  caption: "Page de vérification d'âge sur l'émulateur Android.",
+)<roblox-4>
+
+Les actions demandées pour cette vérification d'âge sont simples : montrer son visage de face, tourner la tête à gauche, puis à droite. Ainsi, pour tromper cette vérification, il suffit de diffuser une image statique sur la caméra virtuelle à chaque mouvement demandé.
+
+Pour cela, nous pouvons nous prendre en photo de face, puis de profil gauche, puis de profil droit et demander à l'IA de remplacer notre visage par celui d'une personne générée.
+
+#sourcecode[```sh
+    aifrb generate-image "A headshot portrait of a young man in his early 20s, calm and neutral facial expression, looking directly forward at the viewer, sharp focus on the face, passport-style portrait photography." -a "auto"
+```]
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-5.jpeg", width: 40%), stroke: 0.1pt),
+  caption: "Image générée pour remplacer le visage de l'attaquant sur le site Roblox.",
+)
+
+#sourcecode[```sh
+    aifrb edit-image "Replace the man on the first image by the man on the second image." downloads/face.jpg -a "auto" -i downloads/new-face.jpg
+```]
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-6.jpg", width: 70%), stroke: 0.1pt),
+  caption: "Image de face modifiée avec l'IA pour remplacer le visage de l'attaquant sur le site Roblox.",
+)
+
+#sourcecode[```sh
+    aifrb edit-image "Replace the man on the first image by the man on the second image." downloads/left.jpg -a "auto" -i downloads/new-face.jpg
+```]
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-7.jpg", width: 70%), stroke: 0.1pt),
+  caption: "Image de profil gauche modifiée avec l'IA pour remplacer le visage de l'attaquant sur le site Roblox.",
+)
+
+#sourcecode[```sh
+    aifrb edit-image "Replace the man on the first image by the man on the second image." downloads/right.jpg -a "auto" -i downloads/new-face.jpg
+```]
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-8.jpg", width: 70%), stroke: 0.1pt),
+  caption: "Image de profil droit modifiée avec l'IA pour remplacer le visage de l'attaquant sur le site Roblox.",
+)
+
+Nous pouvons ensuite créer la caméra virtuelle et y diffuser la première image de la personne de face.
+
+#sourcecode[```sh
+    aifrb create-camera "Roblox Attack" 0
+```]
+
+#sourcecode[```sh
+    aifrb broadcast downloads/face.jpg /dev/video0 --portrait
+```]
+
+Puis configurer la caméra de l'émulateur pour qu'elle utilise la caméra virtuelle de la machine hôte en allant dans « Media injection » (icône de caméra sur la barre d'outils à droite), puis en la sélectionnant comme source. D'autre part, il est important de sélectionner l'option "Resize" pour que le visage soit centré et bien formé dans la caméra de l'émulateur comme le montrent les images ci-dessous.
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-9.png"), stroke: 0.1pt),
+  caption: "Configuration de la caméra de l'émulateur Android pour utiliser la caméra virtuelle de la machine hôte.",
+)
+
+#figure(
+  rect(image("../../images/07-attaques-reussies/roblox-10.png", width: 40%), stroke: 0.1pt),
+  caption: "Diffusion de l'image de face centrée et bien formée sur l'émulateur Android.",
+)
+
+Enfin, nous pouvons poursuivre la vérification d'âge de la #underline[@roblox-4] en cliquant sur "Continuer" puis en diffusant les images de profil gauche et droit au moment où les mouvements correspondants sont demandés.
+
+// TODO : Dire pourquoi pas vidéo : parce que difficile à timer et plus cher
