@@ -263,7 +263,7 @@ Le tableau ci-dessous résume les résultats obtenus lors des tests en indiquant
 
 #set par(justify: true)
 
-=== Génération de selfies vidéo à partir d'une vidéo
+=== Génération de selfies vidéo à partir d'une vidéo <03-generation-selfie>
 
 Les trois modèles de type Video-to-Video disponibles sur KIE AI ont été testés pour vérifier leur capacité à remplacer une personne dans une vidéo par une autre personne de manière réaliste. Ces modèles sont :
 
