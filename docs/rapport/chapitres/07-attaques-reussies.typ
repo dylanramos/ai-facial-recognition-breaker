@@ -2,6 +2,10 @@
 
 = Attaques réussies
 
+== Introduction
+
+Ce chapitre présente les deux attaques réussies sur des systèmes de vérification d'identité par selfie vidéo. Pour chacune de ces attaques, une description détaillée de l'attaque est fournie, ainsi qu'une discussion sur la nécessité de l'utilisation de l'IA et sur la sécurité du fournisseur de la solution de vérification d'identité utilisée par le site ciblé. Les vidéos des attaques sont également disponibles pour illustrer les différentes étapes de chaque attaque.
+
 == Tea for Women
 
 === Qu'est-ce que c'est ?
@@ -72,7 +76,7 @@ Le chapitre précédent a montré qu'il est possible de contourner la vérificat
 
 Une Presentation Attack consiste à tenter de tromper un système de vérification d'identité en présentant à la caméra un élément autre qu'une personne réelle et vivante @presentation-attack. Parmis les éléments couramment utilisés pour ce type d'attaque, on trouve des photos de personnes imprimées, des masques en silicone portés par les attaquants ou encore des vidéos préenregistrées placées directement devant la caméra.
 
-Pour répondre à cette question, nous pouvons donc commencer par l'attaque la plus simple, à savoir présenter une photo imprimée d'une personne à la caméra.
+Pour répondre à cette question, nous pouvons donc commencer par l'attaque la plus simple, à savoir présenter une photo imprimée d'une personne sur une caméra réelle.
 
 #figure(
   rect(image("../../images/07-attaques-reussies/printed.jpg", width: 60%), stroke: 0.1pt),
@@ -208,4 +212,20 @@ Résultat : #link("../videos/07-attaques-reussies/roblox-result.mp4")[#underline
 
 La vérification d'âge par selfie vidéo est *contournée avec succès*.
 
-// TODO : Dire pourquoi pas vidéo : parce que difficile à timer et plus cher
+=== L'utilisation de l'IA est-elle vraiment nécessaire ?
+
+Comme l'a démontré le chapitre précédent, il a suffit de trois images pour contourner la vérification d'âge sur le site Roblox. Donc l'utilisation de l'IA n'est pas nécessaire dans ce cas précis car les images de n'importe quelle personne font l'affaire tant que les mouvements sont corrects, que ce soit généré par IA ou non.
+
+Comme pour le site Tea for Women, nous pouvons également essayer d'effectuer une Presentation Attack pour vérifier si l'utilisation d'une caméra virtuelle apporte réellement quelque chose à l'attaque. Pour ce faire, nous présentons simplement les photos à une caméra réelle, une fois imprimées sur papier, puis une seconde fois affichées sur un téléphone.
+
+Résultat avec une photo imprimée : #link("../videos/07-attaques-reussies/roblox-printed.mp4")[#underline[videos/07-attaques-reussies/roblox-printed.mp4]]
+
+Résultat avec une photo affichée sur un téléphone : #link("../videos/07-attaques-reussies/roblox-phone.mp4")[#underline[videos/07-attaques-reussies/roblox-phone.mp4]]
+
+Comme le montrent les deux vidéos ci-dessus, ce type d'attaque ne fonctionne pas. En effet, le système de vérification semble détecter que les images manquent de profondeur et qu'il ne s'agit pas d'une personne réelle. Ainsi, l'utilisation d'une caméra virtuelle est nécessaire pour contourner la vérification d'âge sur le site Roblox.
+
+=== Le fournisseur de la solution de vérification d'identité est-il vraiment sûr ?
+
+Lors de la vérification d'identité, nous pouvons voir que la solution de vérification d'identité utilisée par le site Roblox est #link("https://withpersona.com/")[#underline[Persona]]. Persona est une société américaine spécialisée dans la vérification d'identité qui propose une plateforme d'infrastructure d'identité unifiée qui aide les entreprises à vérifier l'identité des particuliers et des organisations à se conformer aux normes KYC @persona. Pour utiliser leurs solutions, une API est mise à disposition des développeurs afin de les intégrer dans leurs applications.
+
+Contrairement à Regula, Persona ne fournit pas de SDK pour des applications web, ce qui signifie que les mises à jour de leurs solutions sont directement appliquées sur leur plateforme et que les clients n'ont pas à faire quoi que ce soit pour en bénéficier. Ainsi, nous pouvons en déduire que *la vérification d'âge à l'aide de la solution de Persona est vulnérable* et que le problème ne vient pas de Roblox.

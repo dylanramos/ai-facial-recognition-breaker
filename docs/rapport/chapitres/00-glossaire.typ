@@ -16,6 +16,8 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *IA (Intelligence Artificielle) :* capacité des machines ou des systèmes informatiques à accomplir des tâches qui requièrent généralement l'intelligence humaine.
 
+*KYC (Know Your Customer) :* processus de vérification de l'identité des clients, souvent utilisé dans les secteurs financiers et en ligne pour prévenir la fraude.
+
 *OBS Studio :* logiciel gratuit et open source, multiplateforme, permettant de réaliser des captures d'écran et des diffusions en direct.
 
 *OS (Operating System) :* logiciel de base qui gère les ressources matérielles et logicielles d'un ordinateur.
