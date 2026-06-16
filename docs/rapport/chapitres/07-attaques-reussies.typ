@@ -159,7 +159,7 @@ Pour cela, nous pouvons nous prendre en photo de face, puis de profil gauche, pu
 
 #figure(
   rect(image("../../images/07-attaques-reussies/roblox-6.jpg", width: 70%), stroke: 0.1pt),
-  caption: "Image de face modifiée avec l'IA pour remplacer le visage de l'attaquant sur le site Roblox.",
+  caption: "Image de face modifiée avec l'IA.",
 )
 
 #sourcecode[```sh
@@ -168,7 +168,7 @@ Pour cela, nous pouvons nous prendre en photo de face, puis de profil gauche, pu
 
 #figure(
   rect(image("../../images/07-attaques-reussies/roblox-7.jpg", width: 70%), stroke: 0.1pt),
-  caption: "Image de profil gauche modifiée avec l'IA pour remplacer le visage de l'attaquant sur le site Roblox.",
+  caption: "Image avec la tête tournée à gauche modifiée avec l'IA.",
 )
 
 #sourcecode[```sh
@@ -177,7 +177,7 @@ Pour cela, nous pouvons nous prendre en photo de face, puis de profil gauche, pu
 
 #figure(
   rect(image("../../images/07-attaques-reussies/roblox-8.jpg", width: 70%), stroke: 0.1pt),
-  caption: "Image de profil droit modifiée avec l'IA pour remplacer le visage de l'attaquant sur le site Roblox.",
+  caption: "Image avec la tête tournée à droite modifiée avec l'IA.",
 )
 
 Nous pouvons ensuite créer la caméra virtuelle et y diffuser la première image de la personne de face.
@@ -203,5 +203,9 @@ Puis configurer la caméra de l'émulateur pour qu'elle utilise la caméra virtu
 )
 
 Enfin, nous pouvons poursuivre la vérification d'âge de la #underline[@roblox-4] en cliquant sur "Continuer" puis en diffusant les images de profil gauche et droit au moment où les mouvements correspondants sont demandés.
+
+Résultat : #link("../videos/07-attaques-reussies/roblox-result.mp4")[#underline[videos/07-attaques-reussies/roblox-result.mp4]]
+
+La vérification d'âge par selfie vidéo est *contournée avec succès*.
 
 // TODO : Dire pourquoi pas vidéo : parce que difficile à timer et plus cher
