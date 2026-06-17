@@ -109,6 +109,20 @@ En effet, il semble que le système de vérification de Parship analyse égaleme
 
 == Google
 
+Lorsqu'un utilisateur mineur souhaite modifier son âge sur son compte Google, celui-ci doit effectuer un selfie vidéo.
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/google-1.png", width: 50%), stroke: 0.1pt),
+  caption: "Demande de selfie vidéo pour modifier l'âge sur un compte Google.",
+)
+
+Comme le montre la #underline[@08-google] ci-dessous la vérification doit se faire via un smartphone, il faut donc passer par un émulateur Android de la même manière que pour Roblox au #underline[@07-roblox].
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/google-2.png", width: 50%), stroke: 0.1pt),
+  caption: "Demande d'effectuer la vérification via un smartphone pour modifier l'âge sur un compte Google.",
+)<08-google>
+
 == Tests effectués pour les selfies vidéo
 
 == Tests effectués pour la falsification de documents d'identité
