@@ -121,62 +121,37 @@
 
 = Introduction
 
-Certains sites candidats n'ont pas pu être contournés, soit parce qu'ils utilisent une technologie de vérification d'identité plus avancée que les autres, soit parce que la vérification d'identité est intégrée à un processus plus complexe qui rend le contournement plus difficile. Ce document commence par présenter une marche à suivre pour tenter de contourner la vérification des sites Facebook et Parship et termine avec des tests effectués sur ces sites et des hypothèses sur les raisons pour lesquelles le contournement de la vérification d'identité n'a pas été possible.
+Certains sites candidats n'ont pas pu être contournés, soit parce qu'ils utilisent une technologie de vérification d'identité plus avancée que les autres, soit parce que la vérification d'identité est intégrée à un processus plus complexe qui rend le contournement plus difficile. Ce document présente les différents tests effectués dans l'ordre chronologique pour tenter de comprendre et de contourner les systèmes de vérification par selfie vidéo et par scan de documents d'identité.
 
-= Facebook
+= Tests effectués pour les selfies vidéo
 
-Lors de la création d'un compte, Facebook demande systématiquement de prendre un selfie vidéo en tournant la tête dans cinq directions, avec à chaque fois trois possibilités (gauche, droite ou haut), ce qui fait un total de 243 combinaisons possibles.
+== Changement des métadonnées de la vidéo
 
-#figure(
-  rect(image("../images/05-conception/facebook-example.png", width: 70%), stroke: 0.1pt),
-  caption: "Exemple de selfie vidéo demandé par Facebook.",
-) <facebook-example>
+Il es possible que le système de vérification analyse les métadonnées de la vidéo pour vérifier ci celles-ci proviennent bien d'une caméra réelle. La première chose que j'ai essayé de faire est de comparer les caractéristiques de ma caméra réelle avec celles d'une caméra virtuelle en allant sur le site #underline[#link("https://webcamtests.com/")].
 
-Les directions étant aléatoires, il est impossible de savoir à l'avance quelles directions seront demandées, ce qui nous oblige à lancer la vérification une première fois pour connaître les directions demandées. Une fois les directions connues, la solution la plus simple est de se filmer en train de faire les mouvements, puis de remplacer sa personne par une personne générée à l'aide de l'IA. En effet, générer une vidéo de ce type uniquement à partir d'un prompt est très difficile car il y a tout un timing à respecter pour que les mouvements soient synchronisés avec les instructions.
-
-Comme vu dans le chapitre 4.6 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")], le meilleur modèle pour éditer une vidéo est Kling Motion Control 3.0, c'est donc avec celui-ci que nous allons générer la vidéo. Pour cela, il faut tout d'abord se prendre en photo, puis remplacer son visage par une personne générée.
-
-#sourcecode[```sh
-aifrb generate-image "A headshot portrait of a young man in his early 20s, calm and neutral facial expression, looking directly forward at the viewer, sharp focus on the face, passport-style portrait photography." -m "GPT Image 2"
-```]
-
-#figure(
-  rect(image("../images/08-tests-effectues/facebook-1.png", width: 40%), stroke: 0.1pt),
-  caption: "Nouvelle personne générée par l'IA.",
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../images/08-attaques-non-reussies/real-camera.png"), stroke: 0.1pt),
+    caption: "Caractéristiques de la caméra réelle.",
+  ),
+  [#figure(
+    rect(image("../images/08-attaques-non-reussies/fake-camera.png"), stroke: 0.1pt),
+    caption: "Caractéristiques de la caméra virtuelle.",
+  )<fake-camera>],
 )
 
-#sourcecode[```sh
-aifrb edit-image "Replace the man on the first image by the man on the second image." downloads/myface.jpg -m "GPT Image 2" -a "auto" -i downloads/new-face.png
-```]
+Nous pouvons voir que mis à part le nom de la caméra, rien n'indique que la #underline[@fake-camera] est une caméra virtuelle, en effet, les caméras ont les mêmes megapixels (0.31 MP), résolutions (640x480) et formats d'image (1.33). D'autre part, toutes les informations en dessous de "Aspect Ratio" sont différentes, mais cela est normal car elles dépendent du contenu de la vidéo et non de la caméra elle-même. Un point intéressant à noter est que la caméra virtuelle a une fréquence d'images de 31 fps alors que la caméra réelle en a une de 30 fps, ce qui pourrait suggérer une source logicielle dont la synchronisation n'est pas liée à une horloge matérielle. Mais cela n'est pas suffisant pour conclure que la caméra virtuelle est détectée comme telle car une instabilité de mesure pourrait faire passer une valeur réelle de 30 à une valeur affichée de 31.
 
-#figure(
-  rect(image("../images/08-tests-effectues/facebook-2.png", width: 60%), stroke: 0.1pt),
-  caption: "Résultat de l'édition de l'image de référence.",
-)
+Étant donné que les caractéristiques des deux caméras sont plutôt similaires, je me suis penché sur l'analyse des métadonnées des vidéos qu'elles produisent.
 
-Il faut ensuite se filmer en train de faire les mouvements, puis remplacer son visage par la personne générée.
+== Utilisation d'un modèle en 3D
 
-#sourcecode[```sh
-aifrb edit-video "No distortion, the character's movements are consistent with the video." downloads/video.mp4 downloads/new-face.png
-```]
+== Ajout de bruit dans la vidéo
 
-Résultat : #link("../videos/08-tests-effectues/facebook-edit.mp4")[#underline("videos/08-tests-effectues/facebook-edit.mp4")]
+== Utilisation d'un échangeur de visage en temps réel
 
-Pour des questions de vie privée, l'image et la vidéo de référence de ma personne n'est pas publiée sur GitHub et n'est donc pas disponible dans ce rapport.
-Une fois la vidéo générée, il suffit de créer une caméra virtuelle et d'y diffuser la vidéo.
+== Modification du module `v4l2loopback`
 
-#sourcecode[```sh
-aifrb create-camera "Facebook Attack" 0
-```]
-
-#sourcecode[```sh
-aifrb broadcast downloads/new-video.mp4 /dev/video0
-```]
-
-Résultat : #link("../videos/08-tests-effectues/facebook-result.mp4")[#underline("videos/08-tests-effectues/facebook-result.mp4")]
-
-Enfin, après quelques heures d'attente ...
-
-= Parship
-
-= Tests
+= Tests effectués pour la falsification de documents d'identité

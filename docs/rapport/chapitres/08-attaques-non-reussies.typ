@@ -56,7 +56,7 @@ aifrb create-camera "Facebook Attack" 0
 aifrb broadcast downloads/new-video.mp4 /dev/video0
 ```]
 
-Résultat : #link("../videos/08-tests-effectues/facebook-result.mp4")[#underline("videos/08-tests-effectues/facebook-result.mp4")]
+Résultat : #link("../videos/08-attaques-non-reussies/facebook-result.mp4")[#underline("videos/08-attaques-non-reussies/facebook-result.mp4")]
 
 Enfin, après environ une heure d'attente, un e-mail a été envoyé par Facebook informant que la vérification d'identité a échoué et que le compte a été désactivé. Cette méthode ne permet donc pas de contourner la vérification d'identité.
 
@@ -67,7 +67,7 @@ Enfin, après environ une heure d'attente, un e-mail a été envoyé par Faceboo
 
 == Parship
 
-Comme pour Facebook, Parship demande de prendre un selfie vidéo lors de la création d'un compte. Cependant, aucun mouvement n'est demandé, il faut simplement centrer son visage dans un oval puis se rapprocher de la caméra. Ainsi, il n'y a pas besoin de filmer préalablement, nous pouvons directement demander à l'IA de générer une vidéo d'une personne en train de se filmer. Pour cela, il faut commencer par générer l'image d'une personne.
+Comme pour Facebook, Parship demande de prendre un selfie vidéo lors de la création d'un compte. Cependant, aucun mouvement n'est demandé, il faut simplement centrer son visage dans un oval puis se rapprocher de la caméra. Ainsi, il n'y a pas besoin de se filmer préalablement, nous pouvons directement demander à l'IA de générer une vidéo d'une personne en train de se filmer. Pour cela, il faut commencer par générer l'image d'une personne.
 
 #sourcecode[```sh
 aifrb generate-image "A headshot portrait of a young woman in her early 20s, calm and neutral facial expression, looking directly forward at the viewer, sharp focus on the face, passport-style portrait photography." -a "auto"
@@ -83,6 +83,29 @@ Une fois l'image générée, nous pouvons générer la vidéo de la personne en 
 #sourcecode[```sh
 aifrb generate-video "The woman in the image looks into the camera for a while, her body is not moving. Then the camera slowly zooms to her face and the woman continues to look at the camera. Then the camera zoom more and the woman is still looking at the camera. Then the camera slowly goes back." -m "Kling 3.0" -d 15 -s downloads/face.jpeg
 ```]
+
+Résultat : #link("../videos/08-attaques-non-reussies/parship-edit.mp4")[#underline("videos/08-attaques-non-reussies/parship-edit.mp4")]
+
+Il suffit maintenant de créer une caméra virtuelle et d'y diffuser la vidéo.
+
+#sourcecode[```sh
+aifrb create-camera "Parship Attack" 0
+```]
+
+#sourcecode[```sh
+aifrb broadcast downloads/video.mp4 /dev/video0
+```]
+
+Résultat : #link("../videos/08-attaques-non-reussies/parship-result.mp4")[#underline("videos/08-attaques-non-reussies/parship-result.mp4")]
+
+La vidéo ci-dessus nous montre que la vérification d'identité a échoué, mais contrairement à Facebook, Parship nous dit pourquoi la vérification a échoué.
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/parship-2.png", width: 75%), stroke: 0.1pt),
+  caption: "Échec de la vérification d'identité sur le site Parship en utilisant une caméra virtuelle.",
+)
+
+En effet, il semble que le système de vérification de Parship analyse également le type de caméra qui est utilisé.
 
 == Google
 
