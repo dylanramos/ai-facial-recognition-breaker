@@ -10,6 +10,8 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *CLI (Command Line Interface) :* interface utilisateur permettant d'interagir avec un programme en tapant des commandes textuelles.
 
+*Codec :* algorithme de compression et de décompression de données multimédia.
+
 *Deepfake :* contenu multimédia synthétique créé ou modifié à l'aide de l'intelligence artificielle représentant une personne en train de faire quelque chose qu'elle n'a jamais fait.
 
 *FFmpeg :* outil en ligne de commande permettant de manipuler des fichiers multimédia.
