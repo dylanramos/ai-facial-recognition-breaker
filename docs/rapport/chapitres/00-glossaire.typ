@@ -6,6 +6,10 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *API (Application Programming Interface) :* ensemble de règles et de protocoles permettant à différentes applications de communiquer entre elles.
 
+*Attaque par présentation :* technique visant à tromper un système de vérification d'identité en présentant à une caméra physique un élément autre qu'une personne réelle.
+
+*Attaque par injection :* technique visant à tromper un système de vérification d'identité en insérant un flux vidéo synthétique ou préenregistré directement dans le processus de capture d'un logiciel.
+
 *Caméra virtuelle :* logiciel simulant une caméra physique permettant d'envoyer des flux vidéo personnalisés.
 
 *CLI (Command Line Interface) :* interface utilisateur permettant d'interagir avec un programme en tapant des commandes textuelles.

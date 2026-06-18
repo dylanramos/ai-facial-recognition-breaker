@@ -141,3 +141,17 @@ python-dotenv-ref:
   title: python-dotenv
   author: theskumar
   url: https://github.com/theskumar/python-dotenv
+
+didit:
+  type: Article
+  title: "Injection Attack Detection: Stopping Deepfakes in Biometric Verification"
+  author: Didit
+  date: 2026-06-13
+  url: https://didit.me/blog/injection-attack-detection-biometric/
+
+biometricupdate:
+  type: Article
+  title: "Injection attack detection critical to digital security yet often misunderstood"
+  author: Joel R. McConvey
+  date: 2026-05-27
+  url: https://www.biometricupdate.com/202605/injection-attack-detection-critical-to-digital-security-yet-often-misunderstood

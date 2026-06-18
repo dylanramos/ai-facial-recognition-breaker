@@ -139,7 +139,7 @@ Comme l'ont montré le #underline[@08-facebook] et le #underline[@08-parship], l
 
 === Comparaison des caméras
 
-Une caméra virtuelle et une caméra réelle ont été comparées à l'aide du site #underline[#link("https://webcamtests.com/")]. Cependant, aucune différence notable n'a été identifiée entre les caractéristiques (mégapixels, résolution, etc.) d'une caméra virtuelle et d'une caméra réelle.
+Une caméra virtuelle et une caméra physique ont été comparées à l'aide du site #underline[#link("https://webcamtests.com/")]. Cependant, aucune différence notable n'a été identifiée entre les caractéristiques (mégapixels, résolution, etc.) d'une caméra virtuelle et d'une caméra physique.
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.1 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
@@ -151,7 +151,7 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.2 
 
 === Ajout de bruit dans les vidéos
 
-Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de bruit dus aux capteurs, contrairement à une vidéo ou une image capturée par une caméra réelle. Ainsi, un filtre FFmpeg a été appliqué aux selfies vidéo générés pour ajouter du bruit afin de rendre les vidéos plus réalistes @ffmpeg-noise. Cependant, cela n'a pas changé le résultat de la vérification.
+Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de bruit dus aux capteurs, contrairement à une vidéo ou une image capturée par une caméra physique. Ainsi, un filtre FFmpeg a été appliqué aux selfies vidéo générés pour ajouter du bruit afin de rendre les vidéos plus réalistes @ffmpeg-noise. Cependant, cela n'a pas changé le résultat de la vérification.
 
 #grid(
   columns: (1fr, 1fr),

@@ -70,13 +70,13 @@ Résultat : #link("../videos/07-attaques-reussies/tea-result.mp4")[#underline[vi
 
 La vérification d'identité par selfie vidéo est *contournée avec succès*.
 
-=== L'utilisation de l'IA est-elle vraiment nécessaire ?
+=== L'utilisation de l'IA est-elle vraiment nécessaire ? <07-ia-necessaire>
 
-Le chapitre précédent a montré qu'il est possible de contourner la vérification d'identité sur le site Tea for Women avec une vidéo générée par l'IA, mais l'utilisation de l'IA est-elle vraiment nécessaire pour réussir cette attaque ? Pour le savoir, nous pouvons essayer d'effectuer une "Presentation Attack".
+Le chapitre précédent a montré qu'il est possible de contourner la vérification d'identité sur le site Tea for Women avec une vidéo générée par l'IA, mais l'utilisation de l'IA est-elle vraiment nécessaire pour réussir cette attaque ? Pour le savoir, nous pouvons essayer d'effectuer une attaque par présentation.
 
-Une Presentation Attack consiste à tenter de tromper un système de vérification d'identité en présentant à la caméra un élément autre qu'une personne réelle et vivante @presentation-attack. Parmi les éléments couramment utilisés pour ce type d'attaque, on trouve des photos de personnes imprimées, des masques en silicone portés par les attaquants ou encore des vidéos préenregistrées placées directement devant la caméra.
+Une attaque par présentation consiste à tenter de tromper un système de vérification d'identité en présentant à la caméra un élément autre qu'une personne réelle et vivante @presentation-attack. Parmi les éléments couramment utilisés pour ce type d'attaque, on trouve des photos de personnes imprimées, des masques en silicone portés par les attaquants ou encore des vidéos préenregistrées placées directement devant la caméra.
 
-Pour répondre à cette question, nous pouvons donc commencer par l'attaque la plus simple, à savoir présenter une photo imprimée d'une personne sur une caméra réelle.
+Pour répondre à cette question, nous pouvons donc commencer par l'attaque la plus simple, à savoir présenter une photo imprimée d'une personne sur une caméra physique.
 
 #figure(
   rect(image("../../images/07-attaques-reussies/printed.jpg", width: 60%), stroke: 0.1pt),
@@ -216,7 +216,7 @@ La vérification d'âge par selfie vidéo est *contournée avec succès*.
 
 Comme l'a démontré le chapitre précédent, il a suffit de trois images pour contourner la vérification d'âge sur le site Roblox. Donc l'utilisation de l'IA n'est pas nécessaire dans ce cas précis car les images de n'importe quelle personne font l'affaire tant que les mouvements sont corrects, que ce soit généré par IA ou non.
 
-Comme pour le site Tea for Women, nous pouvons également essayer d'effectuer une Presentation Attack pour vérifier si l'utilisation d'une caméra virtuelle apporte réellement quelque chose à l'attaque. Pour ce faire, nous présentons simplement les photos à une caméra réelle, une fois imprimées sur papier, puis une seconde fois affichées sur un téléphone.
+Comme pour le site Tea for Women, nous pouvons également essayer d'effectuer une attaque par présentation pour vérifier si l'utilisation d'une caméra virtuelle apporte réellement quelque chose à l'attaque. Pour ce faire, nous présentons simplement les photos à une caméra physique, une fois imprimées sur papier, puis une seconde fois affichées sur un téléphone.
 
 Résultat avec une photo imprimée : #link("../videos/07-attaques-reussies/roblox-printed.mp4")[#underline[videos/07-attaques-reussies/roblox-printed.mp4]]
 
