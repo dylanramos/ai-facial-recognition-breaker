@@ -121,11 +121,9 @@
 
 = Introduction
 
-Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de diffuser la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Une fois la vidéo générée par IA, encore faut-il pouvoir la présenter à un site de vérification d'identité comme si elle provenait d'une vraie caméra. Le maillon technique entre la vidéo générée et le système de vérification est la caméra virtuelle, un périphérique logiciel qui simule une caméra physique aux yeux du système d'exploitation et des applications.
 
-Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle.
-
-Ce document présente les différentes solutions existantes pour créer des caméras virtuelles sur Linux et Windows, ainsi que les étapes nécessaires pour diffuser un flux vidéo vers celles-ci.
+Chaque système d'exploitation gère les caméras virtuelles différemment. Sous Linux, un module noyau dédié suffit #footnote[https://github.com/v4l2loopback/v4l2loopback], tandis que sous Windows, il faut recourir à un logiciel tiers ou développer un pilote personnalisé #footnote[https://medium.com/deelvin-machine-learning/how-does-obs-virtual-camera-plugin-work-on-windows-e92ab8986c4e#0878]. Ce rapport présente les solutions existantes pour créer des caméras virtuelles sur Linux et Windows, les étapes pour y diffuser un flux vidéo, leur utilisation dans un émulateur Android pour les sites imposant une vérification sur smartphone ainsi que les librairies Python disponibles pour automatiser l'ensemble du processus dans le cadre du démonstrateur.
 
 = Caméras virtuelles sous Linux
 
@@ -520,3 +518,11 @@ Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même
   rect(image("../images/04-cameras-virtuelles/libs-compare.png"), stroke: 0.1pt),
   caption: [Comparaison de `pyvirtualcam` et `ffmpeg-python` pour diffuser un flux vidéo vers une caméra virtuelle.],
 )
+
+= Conclusion
+
+Ce rapport a permis d'identifier et de valider les solutions techniques nécessaires pour diffuser un flux vidéo généré par IA vers une caméra virtuelle, condition indispensable pour mener les attaques contre les systèmes de vérification d'identité en ligne.
+
+Pour la plateforme Linux, la combinaison `v4l2loopback` et `FFmpeg` s'est imposée comme la solution la plus adaptée au démonstrateur. En effet, elle est entièrement automatisable, a une faible latence et ne dépend pas d'un logiciel tiers. Sous Windows, OBS Studio constitue l'alternative principale, au prix d'étapes manuelles ou d'une latence accrue lors de l'automatisation via UDP. Pour les sites exigeant une vérification sur smartphone, l'émulateur `Genymotion` sous Linux permet d'injecter le flux de la caméra virtuelle de la machine hôte directement dans l'appareil Android virtuel, couvrant ainsi ce cas d'usage sans nécessiter de vrai téléphone.
+
+Côté librairies Python, `ffmpeg-python` a été retenue pour le développement du démonstrateur en raison de sa flexibilité, notamment pour la possibilité de diffuser des images statiques et d'éditer les vidéos à la volée. L'ensemble de ces briques techniques forme le socle d'injection vidéo sur lequel s'appuieront les attaques décrites dans les rapports suivants.
