@@ -127,7 +127,7 @@ Chaque système d'exploitation gère les caméras virtuelles différemment. Sous
 
 = Caméras virtuelles sous Linux
 
-Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
+Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras physiques par les applications.
 
 Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 26.04*.
 
@@ -155,7 +155,7 @@ La commande ci-dessous crée une caméra virtuelle appelée `VirtualCam` :
 - `devices=1` : crée 1 périphérique virtuel.
 - `video_nr=2` : spécifie le numéro du périphérique (erreur s'il existe déjà).
 - `card_label="VirtualCam"` : spécifie le nom du périphérique.
-- `exclusive_caps=1` : rend la caméra compatible avec les applications (simule une caméra réelle).
+- `exclusive_caps=1` : rend la caméra compatible avec les applications (simule une caméra physique).
 
 Il est ensuite possible de lister les caméras disponibles :
 

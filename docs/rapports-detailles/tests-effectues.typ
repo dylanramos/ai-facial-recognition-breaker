@@ -127,14 +127,14 @@ Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui 
 
 == Comparaison des caméras
 
-Il est possible que le système de vérification analyse les caractéristiques des caméras pour vérifier si celles-ci sont bien réelles. La première chose que j'ai essayé de faire est de comparer les caractéristiques de ma caméra réelle avec celles d'une caméra virtuelle en allant sur le site #underline[#link("https://webcamtests.com/")].
+Il est possible que le système de vérification analyse les caractéristiques des caméras pour vérifier si celles-ci sont bien réelles. La première chose que j'ai essayé de faire est de comparer les caractéristiques de ma caméra physique avec celles d'une caméra virtuelle en allant sur le site #underline[#link("https://webcamtests.com/")].
 
 #grid(
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
     rect(image("../images/08-attaques-non-reussies/real-camera.png"), stroke: 0.1pt),
-    caption: "Caractéristiques de la caméra réelle.",
+    caption: "Caractéristiques de la caméra physique.",
   ),
   [#figure(
     rect(image("../images/08-attaques-non-reussies/fake-camera.png"), stroke: 0.1pt),
@@ -142,7 +142,7 @@ Il est possible que le système de vérification analyse les caractéristiques d
   )<fake-camera>],
 )
 
-Nous pouvons voir que mis à part le nom de la caméra, rien n'indique que la #underline[@fake-camera] est une caméra virtuelle, en effet, les caméras ont les mêmes megapixels (0.31 MP), résolutions (640x480) et formats d'image (1.33). D'autre part, toutes les informations en dessous de "Aspect Ratio" sont différentes, mais cela est normal car elles dépendent du contenu de la vidéo et non de la caméra elle-même. Un point intéressant à noter est que la caméra virtuelle a une fréquence d'images de 31 fps alors que la caméra réelle en a une de 30 fps, ce qui pourrait suggérer une source logicielle dont la synchronisation n'est pas liée à une horloge matérielle. Mais cela n'est pas suffisant pour conclure que la caméra virtuelle est détectée comme telle car une instabilité de mesure pourrait faire passer une valeur réelle de 30 à une valeur affichée de 31.
+Nous pouvons voir que mis à part le nom de la caméra, rien n'indique que la #underline[@fake-camera] est une caméra virtuelle, en effet, les caméras ont les mêmes megapixels (0.31 MP), résolutions (640x480) et formats d'image (1.33). D'autre part, toutes les informations en dessous de "Aspect Ratio" sont différentes, mais cela est normal car elles dépendent du contenu de la vidéo et non de la caméra elle-même. Un point intéressant à noter est que la caméra virtuelle a une fréquence d'images de 31 fps alors que la caméra physique en a une de 30 fps, ce qui pourrait suggérer une source logicielle dont la synchronisation n'est pas liée à une horloge matérielle. Mais cela n'est pas suffisant pour conclure que la caméra virtuelle est détectée comme telle car une instabilité de mesure pourrait faire passer une valeur réelle de 30 à une valeur affichée de 31.
 
 == Analyse des métadonnées des vidéos
 
@@ -361,7 +361,7 @@ Nous pouvons donc conclure que même si une vidéo contient des métadonnées in
 
 == Ajout de bruit dans les vidéos
 
-Une vidéo générée par IA est souvent très "parfaite", c'est-à-dire qu'elle ne contient pas de bruit ou d'imperfections dus aux capteurs d'une caméra réelle. Il est donc possible que les systèmes de vérification repèrent les vidéos générées par IA en analysant le manque d'imperfections dans une vidéo. Pour tester cette hypothèse, j'ai ajouté du bruit #footnote[https://ffmpeg.org/ffmpeg-filters.html#noise] dans les vidéos à l'aide d'un filtre FFmpeg lors des diffusions sur la caméra virtuelle.
+Une vidéo générée par IA est souvent très "parfaite", c'est-à-dire qu'elle ne contient pas de bruit ou d'imperfections dus aux capteurs d'une caméra physique. Il est donc possible que les systèmes de vérification repèrent les vidéos générées par IA en analysant le manque d'imperfections dans une vidéo. Pour tester cette hypothèse, j'ai ajouté du bruit #footnote[https://ffmpeg.org/ffmpeg-filters.html#noise] dans les vidéos à l'aide d'un filtre FFmpeg lors des diffusions sur la caméra virtuelle.
 
 #sourcecode[```py
 ffmpeg_input.filter("noise", c0s=8, c0f="t+u", c1s=2, c1f="t", c2s=2, c2f="t")
@@ -372,7 +372,7 @@ ffmpeg_input.filter("noise", c0s=8, c0f="t+u", c1s=2, c1f="t", c2s=2, c2f="t")
   - `t` = temporel (le motif de bruit change à chaque frame au lieu d'être figé).
   - `u` = distribution uniforme (gaussienne par défaut).
 
-Ce filtre imite l'aspect typique du bruit d'une caméra réelle, plus fort sur la luminance, présent mais plus faible sur la chrominance et vacillant d'une frame à l'autre.
+Ce filtre imite l'aspect typique du bruit d'une caméra physique, plus fort sur la luminance, présent mais plus faible sur la chrominance et vacillant d'une frame à l'autre.
 
 #grid(
   columns: (1fr, 1fr),
@@ -434,7 +434,7 @@ Lorsque nous tentons de contourner la vérification d'identité du site Parship,
   caption: "Échec de la vérification d'identité en utilisant une caméra virtuelle.",
 )
 
-Contrairement à Facebook, Parship nous dit pourquoi la vérification a échoué, nous pouvons donc en déduire que le système analyse également le type de caméra qui est utilisé. J'ai donc essayé de refaire la vérification, mais cette fois-ci avec une caméra réelle pour voir si le résultat était différent. Pour cela, j'ai affiché l'image de la personne fictive sur mon écran et j'ai filmé cette image avec ma caméra.
+Contrairement à Facebook, Parship nous dit pourquoi la vérification a échoué, nous pouvons donc en déduire que le système analyse également le type de caméra qui est utilisé. J'ai donc essayé de refaire la vérification, mais cette fois-ci avec une caméra physique pour voir si le résultat était différent. Pour cela, j'ai affiché l'image de la personne fictive sur mon écran et j'ai filmé cette image avec ma caméra.
 
 Résultat : #link("../videos/08-attaques-non-reussies/parship-real-camera.mp4")[#underline("videos/08-attaques-non-reussies/parship-real-camera.mp4")]
 
@@ -442,10 +442,10 @@ Le résultat est bien différent, cela confirme donc que le système de vérific
 
 #figure(
   rect(image("../images/08-attaques-non-reussies/parship-3.png", width: 80%), stroke: 0.1pt),
-  caption: "Échec de la vérification d'identité avec une caméra réelle.",
+  caption: "Échec de la vérification d'identité avec une caméra physique.",
 )
 
-Suite à cette découverte, j'ai cherché un moyen de faire croire au système de vérification que la caméra virtuelle était une caméra réelle. Pour cela, j'ai essayé de modifier le code source du module `v4l2loopback` utilisé pour créer la caméra virtuelle pour qu'il n'affiche pas les caractéristiques d'une caméra virtuelle mais celles d'une caméra réelle.
+Suite à cette découverte, j'ai cherché un moyen de faire croire au système de vérification que la caméra virtuelle était une caméra physique. Pour cela, j'ai essayé de modifier le code source du module `v4l2loopback` utilisé pour créer la caméra virtuelle pour qu'il n'affiche pas les caractéristiques d'une caméra virtuelle mais celles d'une caméra physique.
 
 *Étape 1 :* cloner le dépôt GitHub du projet `v4l2loopback`.
 
