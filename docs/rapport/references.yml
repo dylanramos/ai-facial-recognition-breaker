@@ -57,3 +57,34 @@ persona:
   type: Web
   title: Persona
   url: https://withpersona.com/
+
+covington:
+  type: Article
+  title: "China Releases New Labeling Requirements for AI-Generated Content"
+  author: Yan Luo
+  date: 2025-03-18
+  url: https://www.insideprivacy.com/international/china/china-releases-new-labeling-requirements-for-ai-generated-content/
+
+ffmpeg-noise:
+  type: Article
+  title: "11.179 noise"
+  author: FFmpeg
+  url: https://ffmpeg.org/ffmpeg-filters.html#noise
+
+procpa:
+  type: Article
+  title: "How to take a Facebook selfie video: 5 working ways"
+  author: PRO CPA
+  url: https://procpa.media/articles/kak-proiti-video-selfi-facebook/#%D0%A1%D0%BF%D0%BE%D1%81%D0%BE%D0%B1_%D1%82%D1%80%D0%B5%D1%82%D0%B8%D0%B9_%E2%80%93_%D1%87%D0%B5%D1%80%D0%B5%D0%B7_3D_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C
+
+deep-live-cam:
+  type: Article
+  title: Deep-Live-Cam
+  author: hacksider
+  url: https://github.com/hacksider/deep-live-cam
+
+hugging-face:
+  type: Article
+  title: Deep-Live-Cam
+  author: hacksider
+  url: https://huggingface.co/hacksider/deep-live-cam/tree/main

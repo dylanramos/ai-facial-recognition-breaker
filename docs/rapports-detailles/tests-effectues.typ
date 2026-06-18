@@ -127,7 +127,7 @@ Certains sites candidats n'ont pas pu être contournés, soit parce qu'ils utili
 
 == Comparaison des caméras
 
-Il es possible que le système de vérification analyse les caractéristiques des caméras pour vérifier si celles-ci sont bien réelles. La première chose que j'ai essayé de faire est de comparer les caractéristiques de ma caméra réelle avec celles d'une caméra virtuelle en allant sur le site #underline[#link("https://webcamtests.com/")].
+Il est possible que le système de vérification analyse les caractéristiques des caméras pour vérifier si celles-ci sont bien réelles. La première chose que j'ai essayé de faire est de comparer les caractéristiques de ma caméra réelle avec celles d'une caméra virtuelle en allant sur le site #underline[#link("https://webcamtests.com/")].
 
 #grid(
   columns: (1fr, 1fr),
@@ -417,7 +417,7 @@ J'ai donc dû faire appel à un ami qui possède une machine avec une carte grap
 Lorsque nous tentons de contourner la vérification d'identité du site Parship, nous voyons le message d'erreur ci-dessous.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/parship-2.png", width: 60%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-non-reussies/parship-2.png", width: 80%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité en utilisant une caméra virtuelle.",
 )
 
@@ -428,7 +428,7 @@ Résultat : #link("../videos/08-attaques-non-reussies/parship-real-camera.mp4")[
 Le résultat est bien différent, cela confirme donc que le système de vérification de Parship analyse le type de caméra utilisé et que la diffusion d’une vidéo sur une caméra virtuelle est détectée et bloquée.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/parship-3.png", width: 70%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-non-reussies/parship-3.png", width: 80%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité avec une caméra réelle.",
 )
 

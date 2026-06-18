@@ -1,12 +1,18 @@
 #import "@preview/codelst:2.0.2": sourcecode
 
+// Configuration des tableaux
+
+#set table(
+  fill: (x, y) => if x == 0 or y == 0 { silver },
+)
+
 = Attaques non réussies
 
 == Introduction
 
-Ce chapitre présente les attaques effectuées sur les sites dont la vérification d'identité n'a pas pu être contournée et émet des hypothèses sur les raisons pour lesquelles le contournement de celle-ci n'a pas été possible.
+Ce chapitre présente les attaques effectuées sur les sites dont la vérification d'identité n'a pas pu être contournée. Il commence par expliquer la marche à suivre pour tenter de contourner la vérification d'identité sur les sites Facebook, Parship et Google, puis présente les différents tests effectués en suivant à chaque fois la même marche à suivre.
 
-== Facebook
+== Facebook <08-facebook>
 
 Lors de la création d'un compte, Facebook demande systématiquement de prendre un selfie vidéo en tournant la tête dans cinq directions, avec à chaque fois trois possibilités (gauche, droite ou haut), ce qui fait un total de 243 combinaisons possibles.
 
@@ -65,7 +71,7 @@ Enfin, après environ une heure d'attente, un e-mail a été envoyé par Faceboo
   caption: "Échec de la vérification d'identité sur le site Facebook.",
 )
 
-== Parship
+== Parship <08-parship>
 
 Comme pour Facebook, Parship demande de prendre un selfie vidéo lors de la création d'un compte. Cependant, aucun mouvement n'est demandé, il faut simplement centrer son visage dans un oval puis se rapprocher de la caméra. Ainsi, il n'y a pas besoin de se filmer préalablement, nous pouvons directement demander à l'IA de générer une vidéo d'une personne en train de se filmer. Pour cela, il faut commencer par générer l'image d'une personne.
 
@@ -129,6 +135,104 @@ Résultat : #link("../videos/08-attaques-non-reussies/google-result.mp4")[#under
 
 == Tests effectués pour les selfies vidéo
 
+Comme l'ont montré le #underline[@08-facebook] et le #underline[@08-parship], le contournement de la vérification d'identité par selfie vidéo ne fonctionne pas avec une vidéo IA simple diffusée sur une caméra virtuelle. Ainsi, plusieurs tests ont été effectués pour tenter de comprendre ces systèmes de vérification et trouver une méthode pour les contourner, mais aucun n'a abouti à un contournement réussi.
+
+=== Comparaison des caméras
+
+Une caméra virtuelle et une caméra réelle ont été comparées à l'aide du site #underline[#link("https://webcamtests.com/")]. Cependant, aucune différence notable n'a été identifiée entre les caractéristiques (mégapixels, résolution, etc.) d'une caméra virtuelle et d'une caméra réelle.
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 2.1 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
+=== Analyse des métadonnées des vidéos
+
+Les modèles d'IA chinois sont soumis à une réglementation qui les oblige à indiquer dans les métadonnées que le contenu a été généré par une IA @covington. Malgré cette réglementation, le modèle chinois Kling 3.0 s'avère ne pas respecter cette obligation car aucune indication n'est présente dans les métadonnées des vidéos générées avec ce modèle. Cependant, que les métadonnées indiquent que le contenu a été généré par une IA ou non, cela n'affecte pas le système de vérification d'identité car la vidéo est capturée en temps réel par le navigateur.
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 2.2 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
+=== Ajout de bruit dans les vidéos
+
+Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de bruit dus aux capteurs, contrairement à une vidéo ou une image capturée par une caméra réelle. Ainsi, un filtre FFmpeg a été appliqué aux selfies vidéo générés pour ajouter du bruit afin de rendre les vidéos plus réalistes @ffmpeg-noise. Cependant, cela n'a pas changé le résultat de la vérification.
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 2.3 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
+=== Utilisation d'un modèle en 3D
+
+Certains articles sur internet mentionnent qu'il serait possible contourner le selfie vidéo de vérification de Facebook en utilisant le modèle 3D d'une personne généré par une IA @procpa.
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/3d.png", width: 40%), stroke: 0.1pt),
+  caption: [Modèle 3D généré par l'IA.],
+)
+
+Cependant, après avoir généré le modèle 3D puis effectué la vérification d'identité, le résultat est le même que pour une vidéo générée par IA classique, Facebook a désactivé le compte.
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 2.4 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
+=== Utilisation d'un échangeur de visage en temps réel
+
+Il existe un projet appelé Deep-Live-Cam permettant de remplacer son visage par celui d'une autre personne en temps réel @deep-live-cam. L'outil est un programme Python qui tourne en local et qui fonctionne avec des modèles d'IA pré-entrainés comme `inswapper` et `GFPGAN` @hugging-face. Cependant, l'outil nécessite une configuration matérielle très puissante et n'est donc pas accessible à tous.
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/deeplivecam.png"), stroke: 0.1pt),
+  caption: "Système recommandé pour le bon fonctionnement de Deep-Live-Cam.",
+)
+
+// TODO
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 2.5 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
+=== Modification du module `v4l2loopback`
+
+Contrairement à Facebook, Parship explique pourquoi la vérification d'identité échoue, en l'occurrence il semblerait que les systèmes de vérification ne se contentent pas juste d'analyser les vidéos, ils analysent également le type de caméra utilisée.
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/parship-2.png", width: 80%), stroke: 0.1pt),
+  caption: "Échec de la vérification d'identité en utilisant une caméra virtuelle.",
+)
+
+Ce test consistait donc à modifier le module `v4l2loopback` pour qu'il ne divulgue pas qu'il s'agit d'une caméra virtuelle, notamment en modifiant les informations affichées par des `snprintf` dans le code source du module.
+
+#figure(
+  rect(image("../../images/08-attaques-non-reussies/v4l2loopback.png"), stroke: 0.1pt),
+  caption: "Modification du module v4l2loopback.",
+)
+
+Cependant, même en modifiant le module, la vérification échoue et Parship détecte toujours que la vidéo est diffusée sur une caméra virtuelle.
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 2.6 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
 == Tests effectués pour la falsification de documents d'identité
 
-== Hypothèses
+Pour analyser la résistance des systèmes de vérification d'identité à la falsification de documents d'identité, des tests ont été effectués sur le site Roblox, qui propose une seconde méthode pour permettre à l'utilisateur de vérifier son âge.
+
+À l'aide du CLI développé pour ce projet, un exemple de carte d'identité suisse a été modifié pour tenter de faire croire au système que le document d'identité est authentique.
+
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../../images/08-attaques-non-reussies/id-front.jpg"), stroke: 0.1pt),
+    caption: "Exemple de carte d'identité suisse (recto).",
+  ),
+  figure(
+    rect(image("../../images/08-attaques-non-reussies/id-front-fake.jpeg"), stroke: 0.1pt),
+    caption: "Carte d'identité suisse modifiée à l'aide de l'IA (recto).",
+  ),
+)
+
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../../images/08-attaques-non-reussies/id-back.jpg"), stroke: 0.1pt),
+    caption: "Exemple de carte d'identité suisse (verso).",
+  ),
+  figure(
+    rect(image("../../images/08-attaques-non-reussies/id-back-fake.jpeg"), stroke: 0.1pt),
+    caption: "Carte d'identité suisse modifiée à l'aide de l'IA (verso).",
+  ),
+)
+
+Malheureusement, le système de vérification d'âge de Roblox a détecté que les documents d'identité étaient falsifiés et la vérification a échoué.
+
+Des informations détaillées sur ce test sont disponibles dans le chapitre 3 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
