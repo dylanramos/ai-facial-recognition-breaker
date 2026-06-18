@@ -274,7 +274,10 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
 #include "chapitres/08-attaques-non-reussies.typ"
 #pagebreak(to: "odd")
 
-#include "chapitres/09-conclusion.typ"
+#include "chapitres/09-mecanismes-de-defense.typ"
+#pagebreak(to: "odd")
+
+#include "chapitres/10-conclusion.typ"
 #pagebreak(to: "odd")
 
 #set heading(numbering: none)
