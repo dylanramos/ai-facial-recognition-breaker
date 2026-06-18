@@ -7,7 +7,7 @@
 
 #let author = "Dylan Oliveira Ramos"
 #let professor = "Prof. Jean-Marc Bost"
-#let title = "Casser la reconnaissance faciale grâce à l'IA"
+#let title = "Contourner la vérification d'identité en ligne à l'aide de l'intelligence artificielle"
 #let location_and_date = [Yverdon-les-Bains, le #datetime.today().display("[day].[month].[year]")]
 #let academic_year = "2025-2026"
 
@@ -27,7 +27,7 @@
 #v(4cm)
 #align(center, text(weight: "bold", size: 14pt)[Travail de Bachelor])
 #align(center, text(weight: "bold", size: 26pt)[#title])
-#v(4cm)
+#v(3cm)
 
 #align(left, [#block(width: 70%, [
   #table(

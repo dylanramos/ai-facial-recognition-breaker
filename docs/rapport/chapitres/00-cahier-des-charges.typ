@@ -2,9 +2,9 @@
 
 #text(weight: "bold", size: 14pt)[Contexte]
 
-Dans un monde de plus en plus numérisé, les technologies de reconnaissance faciale sont devenues omniprésentes. Du simple déverrouillage de smartphone à la surveillance de masse, ces systèmes sont utilisés dans une variété d'applications. C'est notamment le cas pour les services sensibles qui proposent un enregistrement en ligne, comme les banques ou les services gouvernementaux qui utilisent la reconnaissance faciale pour vérifier l'identité des utilisateurs @swisscom-video-identification.
+Dans un monde de plus en plus numérisé, les technologies de vérification d'identité sont devenues omniprésentes. Du simple déverrouillage de smartphone à la création de comptes en ligne, ces systèmes sont utilisés dans une variété d'applications. C'est notamment le cas pour les services sensibles qui proposent un enregistrement en ligne, comme les banques ou les services gouvernementaux qui utilisent la vérification d'identité pour déterminer si un utilisateur est bien celui qu'il prétend être @swisscom-video-identification.
 
-Avec l'essor de l'intelligence artificielle, il est désormais possible de générer des vidéos à la demande, ce qui ouvre la porte à de nouvelles formes d'attaques contre les systèmes de reconnaissance faciale. En particulier, les techniques de génération de visages synthétiques et de deepfakes permettent de reproduire de manière très réaliste l'apparence et les expressions d'une personne à partir de quelques images seulement @sumsub. Un attaquant pourrait ainsi créer une vidéo crédible d'un individu et tenter de tromper un système d'authentification biométrique basé sur le visage @securing-pl.
+Avec l'essor de l'intelligence artificielle, il est désormais possible de générer des vidéos à la demande, ce qui ouvre la porte à de nouvelles formes d'attaques contre les systèmes de vérification d'identité. En particulier, les techniques de génération de visages synthétiques et de deepfakes permettent de reproduire de manière très réaliste l'apparence et les expressions d'une personne à partir de quelques images seulement @sumsub. Un attaquant pourrait ainsi créer une vidéo crédible d'un individu et tenter de tromper un système d'identification biométrique basée sur le visage @securing-pl.
 
 Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les systèmes de vérification d'identité doivent désormais être capables de distinguer un visage réel capturé en direct d'un contenu généré artificiellement. La compréhension de ces vulnérabilités et le développement de mécanismes de défense robustes constituent aujourd'hui un enjeu majeur pour la sécurité des systèmes numériques.
 
@@ -12,7 +12,7 @@ Ces nouvelles capacités soulèvent d'importants enjeux de sécurité. Les syst�
 
 #text(weight: "bold", size: 14pt)[Objectifs]
 
-Ce travail de Bachelor cherche à comprendre et à démontrer les risques associés à l'utilisation de la reconnaissance faciale dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
+Ce travail de Bachelor cherche à comprendre et à démontrer les risques associés à l'utilisation de la vérification d'identité dans les services en ligne face à la menace croissante des vidéos générées par IA. Les objectifs sont les suivants :
 
 + Connaître les offres de génération de vidéos IA disponibles sur le marché.
 + Connaître les différentes méthodes de vérification d'identité par reconnaissance faciale utilisées par les sites en ligne.
