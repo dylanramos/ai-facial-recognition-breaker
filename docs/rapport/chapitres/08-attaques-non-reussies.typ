@@ -123,6 +123,10 @@ Comme le montre la #underline[@08-google] ci-dessous la vérification doit se fa
   caption: "Demande d'effectuer la vérification via un smartphone pour modifier l'âge sur un compte Google.",
 )<08-google>
 
+En copiant le lien sur le navigateur de l'émulateur, nous pouvons accéder à la page de vérification d'identité. Cependant, une erreur survient lorsque nous essayons de lancer la vérification, comme le montre la vidéo ci-dessous.
+
+Résultat : #link("../videos/08-attaques-non-reussies/google-result.mp4")[#underline("videos/08-attaques-non-reussies/google-result.mp4")]
+
 == Tests effectués pour les selfies vidéo
 
 == Tests effectués pour la falsification de documents d'identité

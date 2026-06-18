@@ -121,7 +121,7 @@
 
 = Introduction
 
-Certains sites candidats n'ont pas pu être contournés, soit parce qu'ils utilisent une technologie de vérification d'identité plus avancée que les autres, soit parce que la vérification d'identité est intégrée à un processus plus complexe qui rend le contournement plus difficile. Ce document présente les différents tests effectués dans l'ordre chronologique pour tenter de comprendre et de contourner les systèmes de vérification par selfie vidéo et par scan de documents d'identité.
+Certains sites candidats n'ont pas pu être contournés, soit parce qu'ils utilisent une technologie de vérification d'identité plus avancée que les autres, soit parce que la vérification d'identité est intégrée à un processus plus complexe qui rend le contournement plus difficile. Ce document présente les tests effectués pour tenter de contourner la vérification d'identité par selfie vidéo sur les sites Facebook et Parship ainsi que les tests effectués pour tenter de contourner la vérification d'âge sur le site Roblox en falsifiant un document d'identité.
 
 = Tests effectués pour les selfies vidéo
 
@@ -477,5 +477,102 @@ sudo modprobe v4l2loopback devices=1 video_nr=0 card_label="AUKEY PC-W1: AUKEY P
 
 Cependant, malgré toutes ces modifications, j'obtiens le même résultat, Parship détecte toujours que la caméra utilisée est une caméra virtuelle.
 
-
 = Tests effectués pour la falsification de documents d'identité
+
+Pour analyser la résistance des systèmes de vérification d'identité à la falsification de documents d'identité, j'ai tenté de contourner la vérification d'âge sur le site Roblox en falsifiant un document d'identité. Pour cela, j'ai utilisé un document d'identité suisse trouvé sur internet et j'ai modifié son recto et son verso à l'aide de l'IA.
+
+#figure(
+  rect(image("../images/08-attaques-non-reussies/man.jpg", width: 30%), stroke: 0.1pt),
+  caption: "Image de référence utilisée pour modifier le document d'identité.",
+)
+
+#sourcecode[```sh
+aifrb edit-image "Modify the ID card by replacing the name 'de Maienfeld Muste' by 'Pick', the name 'Lara Sample' by 'Simon', the date of birth '01 08 1991' by '07 02 2000' and the signature 'Signature' by 'S. Pick'. Replace the pictures on the ID card by the man on the second image. The pictures should keep their black and white color and the triangles at the end of the names should not be removed." templates/id-front.jpeg -a "auto" -i templates/man-portrait.jpg
+```]
+
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../images/08-attaques-non-reussies/id-front.jpg"), stroke: 0.1pt),
+    caption: "Exemple de carte d'identité suisse (recto).",
+  ),
+  figure(
+    rect(image("../images/08-attaques-non-reussies/id-front-fake.jpeg"), stroke: 0.1pt),
+    caption: "Carte d'identité suisse modifiée à l'aide de l'IA (recto).",
+  ),
+)
+
+#sourcecode[```sh
+aifrb edit-image "Modify the ID card by replacing 'DE<MAIENFELD<MUSTER<<LARA<SAMP' by 'PICK<<SIMON' and the place of origin 'Le Lieu VD' by 'Lausanne VD'. Replace the face on the ID card by the man on the second image. The picture should keep its black and white color." templates/id-back.jpeg -a "auto" -i templates/man-portrait.jpg
+```]
+
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../images/08-attaques-non-reussies/id-back.jpg"), stroke: 0.1pt),
+    caption: "Exemple de carte d'identité suisse (verso).",
+  ),
+  figure(
+    rect(image("../images/08-attaques-non-reussies/id-back-fake.jpeg"), stroke: 0.1pt),
+    caption: "Carte d'identité suisse modifiée à l'aide de l'IA (verso).",
+  ),
+)
+
+Une fois les images modifiées, je les ai diffusées sur une caméra virtuelle puis j'ai lancé la vérification.
+
+#sourcecode[```sh
+aifrb create-camera "Roblox ID Attack" 0
+```]
+
+#sourcecode[```sh
+aifrb broadcast downloads/id-front.jpeg /dev/video0
+```]
+
+#sourcecode[```sh
+aifrb broadcast downloads/id-back.jpeg /dev/video0
+```]
+
+Résultat : #link("../videos/08-attaques-non-reussies/roblox-id.mp4")[#underline("videos/08-attaques-non-reussies/roblox-id.mp4")]
+
+Malheureusement, la vérification d'âge a échoué, je suis donc parti sur une autre piste : poser la carte sur une table afin d'ajouter de la profondeur à la vidéo. Pour cela, j'ai commencé par prendre en photo une carte réelle posée sur une table.
+
+#figure(
+  rect(image("../images/08-attaques-non-reussies/carte-sur-table.jpg", width: 40%), stroke: 0.1pt),
+  caption: "Carte réelle posée sur une table.",
+)
+
+J'ai ensuite demandé à l'IA de remplacer la carte réelle par les images du recto et du verso de la carte d'identité générée précédemment.
+
+#sourcecode[```sh
+aifrb edit-image "Replace the card on the table by the ID card." templates/card-on-table.jpg -a "auto" -i downloads/id-front.jpeg
+```]
+
+#figure(
+  rect(image("../images/08-attaques-non-reussies/carte-sur-table-recto.png", width: 40%), stroke: 0.1pt),
+  caption: "Carte d'identité modifiée à l'aide de l'IA posée sur une table (recto).",
+)
+
+#sourcecode[```sh
+aifrb edit-image "Replace the card on the table by the ID card." templates/card-on-table.jpg -a "auto" -i downloads/id-back.jpeg
+```]
+
+#figure(
+  rect(image("../images/08-attaques-non-reussies/carte-sur-table-verso.png", width: 40%), stroke: 0.1pt),
+  caption: "Carte d'identité modifiée à l'aide de l'IA posée sur une table (verso).",
+)
+
+Puis j'ai diffusé les images sur la caméra virtuelle et j'ai lancé la vérification d'âge.
+
+#sourcecode[```sh
+aifrb broadcast downloads/id-on-table-front.jpeg /dev/video0
+```]
+
+#sourcecode[```sh
+aifrb broadcast downloads/id-on-table-back.jpeg /dev/video0
+```]
+
+Résultat : #link("../videos/08-attaques-non-reussies/roblox-id-on-table.mp4")[#underline("videos/08-attaques-non-reussies/roblox-id-on-table.mp4")]
+
+Une fois encore, la vérification d'âge a échoué.
