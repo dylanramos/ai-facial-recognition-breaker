@@ -205,3 +205,11 @@ De plus, comme pour le pattern précédent, la création du compte se fait via l
   rect(image("../images/05-conception/appel-2.png"), stroke: 0.1pt),
   caption: "Scénario 2 : l'attaquant attend les instructions de l'employé, puis demande au démonstrateur de générer une vidéo de la personne en train d'effectuer les actions demandées. En attendant la génération, l'attaquant simule des problèmes de caméra.",
 )
+
+= Conclusion
+
+Ce rapport a défini l'ensemble des scénarios d'attaque que le démonstrateur devra être capable de couvrir. Au total, sept scénarios distincts ont été identifiés, répartis sur les quatre patterns de vérification d'identité étudiés, chacun représentant un niveau de difficulté croissant pour l'attaquant.
+
+Le pattern le plus accessible est la vérification par selfie vidéo car il ne nécessite ni document d'identité ni correspondance avec une photo. Il est suivi par la vérification par scan de document et selfie vidéo sur ordinateur, puis sur smartphone, cette dernière ajoutant la contrainte de l'environnement mobile. Le pattern le plus difficile reste la vérification par appel vidéo avec un agent humain, qui impose soit de préparer une vidéo en avance, soit de réagir en temps réel aux instructions de l'employé, avec une dimension d'ingénierie sociale.
+
+Ces scénarios constituent la base fonctionnelle du démonstrateur et permettront d'évaluer concrètement, site par site, dans quelle mesure les outils d'IA actuels sont capables de tromper des systèmes de vérification d'identité réels, qu'ils soient automatisés ou supervisés par un humain.
