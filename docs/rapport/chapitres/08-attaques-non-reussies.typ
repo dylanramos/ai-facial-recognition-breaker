@@ -10,7 +10,7 @@
 
 == Introduction
 
-Ce chapitre présente les attaques effectuées sur les sites dont la vérification d'identité n'a pas pu être contournée. Il commence par expliquer la marche à suivre pour tenter de contourner la vérification d'identité sur les sites Facebook, Parship et Google, puis présente les différents tests effectués en suivant à chaque fois la même marche à suivre.
+Ce chapitre documente les tentatives de contournement des systèmes de vérification d'identité qui n'ont pas abouti. Les plateformes Facebook, Parship et Google sont d'abord examinées individuellement, en détaillant la démarche adoptée pour chacune. Le chapitre présente ensuite les tests complémentaires réalisés pour comprendre les mécanismes de détection, notamment la comparaison de caméras, l'analyse des métadonnées, l'ajout de bruit, l'usage de modèles 3D, l'échange de visage en temps réel, la modification du module `v4l2loopback` ainsi que les tentatives de falsification de documents d'identité effectuées sur Roblox.
 
 == Facebook <08-facebook>
 
@@ -153,6 +153,19 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.2 
 
 Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de bruit dus aux capteurs, contrairement à une vidéo ou une image capturée par une caméra réelle. Ainsi, un filtre FFmpeg a été appliqué aux selfies vidéo générés pour ajouter du bruit afin de rendre les vidéos plus réalistes @ffmpeg-noise. Cependant, cela n'a pas changé le résultat de la vérification.
 
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../../images/08-attaques-non-reussies/without-noise.png"), stroke: 0.1pt),
+    caption: "Frame d'une vidéo générée par IA sans bruit ajouté.",
+  ),
+  figure(
+    rect(image("../../images/08-attaques-non-reussies/with-noise.png"), stroke: 0.1pt),
+    caption: "Frame d'une vidéo générée par IA avec du bruit ajouté.",
+  ),
+)
+
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.3 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
 === Utilisation d'un modèle en 3D
@@ -166,6 +179,8 @@ Certains articles sur internet mentionnent qu'il serait possible contourner le s
 
 Cependant, après avoir généré le modèle 3D puis effectué la vérification d'identité, le résultat est le même que pour une vidéo générée par IA classique, Facebook a désactivé le compte.
 
+Résultat : #link("../videos/08-attaques-non-reussies/facebook-3d.mp4")[#underline("videos/08-attaques-non-reussies/facebook-3d.mp4")]
+
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.4 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
 === Utilisation d'un échangeur de visage en temps réel
@@ -176,6 +191,8 @@ Il existe un projet appelé Deep-Live-Cam permettant de remplacer son visage par
   rect(image("../../images/08-attaques-non-reussies/deeplivecam.png"), stroke: 0.1pt),
   caption: "Système recommandé pour le bon fonctionnement de Deep-Live-Cam.",
 )
+
+Résultat :
 
 // TODO
 
@@ -236,3 +253,9 @@ Pour analyser la résistance des systèmes de vérification d'identité à la fa
 Malheureusement, le système de vérification d'âge de Roblox a détecté que les documents d'identité étaient falsifiés et la vérification a échoué.
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 3 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
+
+== Conclusion
+
+Les systèmes de vérification de Facebook, Parship et Google ont résisté à toutes les approches testées. Pour le selfie vidéo, l'obstacle principal est la détection de la caméra virtuelle. En effet, même après modification du module `v4l2loopback`, Parship identifie que le flux ne provient pas d'une caméra physique. Les pistes explorées comme l'ajout de bruit, l'analyse des métadonnées, l'utilisation d'un modèle 3D et l'utilisation d'un échangeur de visage en temps réel n'ont pas permis de surmonter ces défenses. Pour la falsification de documents d'identité, les systèmes actuels détectent les modifications générées par IA malgré leur réalisme visuel.
+
+Ces échecs délimitent clairement le périmètre de vulnérabilité, seuls les systèmes qui ne vérifient pas la nature de la caméra utilisée, comme ceux rencontrés dans le chapitre précédent, restent contournables.

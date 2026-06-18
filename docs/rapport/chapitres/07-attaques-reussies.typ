@@ -4,7 +4,7 @@
 
 == Introduction
 
-Ce chapitre présente les deux attaques réussies sur des systèmes de vérification d'identité par selfie vidéo. Pour chacune de ces attaques, une description détaillée de l'attaque est fournie, ainsi qu'une discussion sur la nécessité de l'utilisation de l'IA et sur la sécurité du fournisseur de la solution de vérification d'identité utilisée par le site ciblé. Les vidéos des attaques sont également disponibles pour illustrer les différentes étapes de chaque attaque.
+Ce chapitre détaille deux attaques ayant permis de contourner avec succès des systèmes de vérification d'identité par selfie vidéo. Pour chacune, la démarche est décrite étape par étape, accompagnée d'une analyse du rôle joué par l'IA et d'une évaluation de la robustesse du fournisseur de solution de vérification d'identité concerné. Des vidéos illustrent le déroulement de chaque attaque.
 
 == Tea for Women
 
@@ -229,3 +229,9 @@ Comme le montrent les deux vidéos ci-dessus, ce type d'attaque ne fonctionne pa
 Lors de la vérification d'identité, nous pouvons voir que la solution de vérification d'identité utilisée par le site Roblox est #link("https://withpersona.com/")[#underline[Persona]]. Persona est une société américaine spécialisée dans la vérification d'identité qui propose une plateforme d'infrastructure d'identité unifiée qui aide les entreprises à vérifier l'identité des particuliers et des organisations à se conformer aux normes KYC @persona. Parmi les clients de Persona, on retrouve des entreprises telles que LinkedIn, Reddit ou encore OpenAI.
 
 Pour utiliser leurs solutions, une API est mise à disposition des développeurs afin de les intégrer dans leurs applications. Contrairement à Regula, Persona ne fournit pas de SDK pour des applications web, ce qui signifie que les mises à jour de leurs solutions sont directement appliquées sur leur plateforme et que les clients n'ont pas à faire quoi que ce soit pour en bénéficier. Ainsi, nous pouvons en déduire que *la vérification d'âge à l'aide de la solution de Persona est vulnérable* et que le problème ne vient pas de Roblox.
+
+== Conclusion
+
+Les deux attaques présentées dans ce chapitre ont permis de contourner avec succès la vérification d'identité par selfie vidéo sur Tea for Women et Roblox. Dans les deux cas, l'IA s'est avérée utile mais non indispensable, une caméra virtuelle diffusant du contenu approprié suffit à condition que le système ne détecte pas le manque de profondeur propre aux photos ou vidéos affichées sur un écran.
+
+L'analyse des fournisseurs révèle des situations contrastées. Tea for Women utilise une version obsolète du SDK de Regula, une version à jour résiste probablement à l'attaque, tandis que la vulnérabilité de Roblox provient directement de la solution Persona, indépendamment de l'intégration faite par Roblox. Le chapitre suivant examine les cas où ces mêmes approches ont échoué et les pistes explorées pour tenter de les surmonter.

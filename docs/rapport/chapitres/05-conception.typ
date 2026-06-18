@@ -1,5 +1,9 @@
 = Conception
 
+== Introduction
+
+Ce chapitre traduit les patterns de vérification d'identité identifiés précédemment en scénarios d'attaque concrets. Pour chaque pattern, un scénario typique est défini, décrivant comment un attaquant pourrait exploiter les failles du système. Ces scénarios permettent ensuite de dériver les fonctionnalités nécessaires au démonstrateur et d'en définir l'architecture.
+
 == User Stories <user_stories>
 
 Suite aux patterns de vérification d'identité identifiés au #underline()[@patterns], des scénarios d'attaque ont été définis pour chaque pattern. Ces scénarios décrivent comment un attaquant pourrait contourner les mécanismes de vérification d'identité et permettent de définir les fonctionnalités nécessaires au démonstrateur pour simuler ces attaques.
@@ -91,3 +95,7 @@ La #underline()[@architecture] ci-dessous présente l'architecture du démonstra
   rect(image("../../images/05-conception/architecture.png"), stroke: 0.1pt),
   caption: "Architecture du démonstrateur.",
 ) <architecture>
+
+== Conclusion
+
+Ce chapitre a permis de définir les fonctionnalités du démonstrateur à partir des scénarios d'attaque : modification d'images, génération de vidéos (Image-to-Video et Video-to-Video) et diffusion sur caméra virtuelle. Ces fonctionnalités s'appuient directement sur les briques techniques sélectionnées dans les chapitres précédents, KIE AI pour la génération IA et `v4l2loopback` + `pyvirtualcam` pour la diffusion vidéo. Le chapitre suivant décrit la mise en œuvre concrète du démonstrateur.

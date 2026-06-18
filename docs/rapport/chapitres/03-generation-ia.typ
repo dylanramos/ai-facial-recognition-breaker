@@ -299,3 +299,9 @@ Le tableau ci-dessous résume les résultats obtenus lors des tests pour une vid
 )
 
 Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.6 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].
+
+== Conclusion
+
+Ce chapitre a permis de sélectionner les modèles d'IA les plus performants pour chacun des usages nécessaires aux attaques : *Nano Banana 2* pour la modification de documents d'identité, *Grok Imagine Video 1.5* pour la génération de selfies vidéo à partir d'une image, et *Kling Motion Control 3.0* pour le remplacement d'une personne dans une vidéo existante.
+
+Ces modèles sont accessibles via KIE AI, qui centralise l'accès à l'ensemble des fournisseurs et simplifie leur intégration dans le démonstrateur. Le chapitre suivant aborde la mise en place des caméras virtuelles, indispensables pour injecter ces contenus générés dans les systèmes de vérification d'identité.

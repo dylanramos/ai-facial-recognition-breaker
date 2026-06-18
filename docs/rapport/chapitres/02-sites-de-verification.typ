@@ -201,3 +201,9 @@ Comme le montre le chapitre 5.3 du rapport détaillé #link("../rapports-detaill
   rect(image("../../images/02-sites-de-verification/neon-bank.jpg", width: 30%), stroke: 0.1pt),
   caption: "Processus de vérification d'identité de Neon Bank.",
 )
+
+== Conclusion
+
+Ce chapitre a permis de dresser un panorama des systèmes de vérification d'identité en ligne et d'identifier quatre patterns distincts, allant du simple selfie vidéo sans document jusqu'à l'appel vidéo avec un employé. Sur la base de ces patterns, les sites candidats ont été classés en quatre niveaux de difficulté d'attaque.
+
+Les chapitres suivants se concentrent sur les sites les plus accessibles, c'est-à-dire ceux qui n'exigent qu'un selfie vidéo sans document d'identité, avant d'aborder progressivement des cas plus complexes.

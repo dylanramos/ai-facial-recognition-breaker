@@ -10,9 +10,9 @@
 
 == Introduction
 
-Pour pouvoir tromper les sites de vérification d'identité, il faut trouver un moyen de diffuser la vidéo générée vers une caméra détectée comme réelle par ceux-ci. La solution la plus simple est d'utiliser une caméra virtuelle, qui est un périphérique logiciel simulant une caméra physique.
+Contourner un système de vérification d'identité nécessite de pouvoir injecter une vidéo générée par IA dans le flux capturé par le navigateur comme si elle provenait d'une caméra physique. La caméra virtuelle est la solution retenue : il s'agit d'un périphérique logiciel qui se comporte, du point de vue du système, comme une webcam réelle.
 
-Chaque OS a sa propre manière de gérer les caméras virtuelles. Sous Linux, il faut passer par un module du noyau dédié, alors que sous Windows, il faut développer son propre pilote de caméra virtuelle @virtual-camera.
+La prise en charge des caméras virtuelles varie selon les systèmes d'exploitation. Sous Linux, elle repose sur un module du noyau dédié, tandis que sous Windows, elle requiert le développement d'un pilote spécifique @virtual-camera.
 
 == Solutions
 
@@ -158,3 +158,9 @@ Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même
   rect(image("../../images/04-cameras-virtuelles/libs-compare.png"), stroke: 0.1pt),
   caption: [Comparaison de `pyvirtualcam` et `ffmpeg-python` pour diffuser un flux vidéo vers une caméra virtuelle.],
 )
+
+== Conclusion
+
+Ce chapitre a établi que la combinaison `v4l2loopback` + `ffmpeg-python` sous Linux est la solution la plus adaptée au démonstrateur car elle est entièrement automatisable, sans latence notable et sans dépendance à un logiciel tiers. 
+
+Avec les modèles de génération IA sélectionnés au chapitre précédent et la couche de diffusion vidéo désormais définie, les éléments techniques nécessaires aux attaques sont en place. Le chapitre suivant présente le démonstrateur qui les intègre.

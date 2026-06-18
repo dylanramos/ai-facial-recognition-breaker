@@ -374,6 +374,19 @@ ffmpeg_input.filter("noise", c0s=8, c0f="t+u", c1s=2, c1f="t", c2s=2, c2f="t")
 
 Ce filtre imite l'aspect typique du bruit d'une caméra réelle, plus fort sur la luminance, présent mais plus faible sur la chrominance et vacillant d'une frame à l'autre.
 
+#grid(
+  columns: (1fr, 1fr),
+  inset: 3pt,
+  figure(
+    rect(image("../images/08-attaques-non-reussies/without-noise.png"), stroke: 0.1pt),
+    caption: "Frame d'une vidéo générée par IA sans bruit ajouté.",
+  ),
+  figure(
+    rect(image("../images/08-attaques-non-reussies/with-noise.png"), stroke: 0.1pt),
+    caption: "Frame d'une vidéo générée par IA avec du bruit ajouté.",
+  ),
+)
+
 Malheureusement le résultat est le même, Facebook détecte que la vérification d'identité a échoué et désactive le compte.
 
 == Utilisation d'un modèle en 3D

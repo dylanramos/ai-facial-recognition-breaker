@@ -2,6 +2,10 @@
 
 = Développement
 
+== Introduction
+
+Ce chapitre présente le démonstrateur développé pour réaliser les attaques : un CLI Python nommé `aifrb` (AI Facial Recognition Breaker), conçu exclusivement pour Linux. Sont abordés successivement les choix technologiques, les dépendances retenues, la structure du projet, la procédure d'installation et les fonctionnalités disponibles.
+
 == Choix technologiques
 
 Le démonstrateur est un *CLI développé en Python* qui fonctionne *uniquement sur Linux*.
@@ -114,3 +118,7 @@ Pour savoir ce que fait une commande et comment l'utiliser, il suffit de taper `
 )
 
 Des informations détaillées sur l'utilisation de chaque commande sont disponibles dans le rapport détaillé #link("../rapports-detailles/utilisation-cli.pdf")[#underline("utilisation-cli.pdf")].
+
+== Conclusion
+
+Le démonstrateur est opérationnel : il expose via la commande `aifrb` l'ensemble des fonctionnalités nécessaires aux attaques, génération d'images et de vidéos via KIE AI et diffusion de contenu multi-média sur une caméra virtuelle. Le choix de Python sur Linux, combiné à `v4l2loopback` et `FFmpeg` garantit une intégration fluide et sans latence. Les chapitres suivants mettent ce démonstrateur à l'épreuve sur les cinq premiers sites cibles identifiés précédemment.
