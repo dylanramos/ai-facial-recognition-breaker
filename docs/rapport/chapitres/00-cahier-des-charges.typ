@@ -80,22 +80,25 @@ En option :
 
 - Cahier des charges.
 - Rapport intermédiaire.
-- rapports détaillés :
-  - Génération d'images et de vidéos IA.
+- Rapports détaillés :
   - Sites de vérification d'identité.
-  - Caméras virtuelles et redirection de flux vidéo.
+  - Génération d'images et de vidéos IA.
+  - Caméras virtuelles et diffusion de flux vidéo.
   - User Stories.
 
 *Livrables finaux*
 
 - Rapport final.
-- Dépôt GitHub contenant le code source du démonstrateur ainsi que :
+- Rapports détaillés :
+  - Sites de vérification d'identité.
+  - Génération d'images et de vidéos IA.
+  - Caméras virtuelles et diffusion de flux vidéo.
+  - User Stories.
+  - Utilisation du démonstrateur.
+  - Tests effectués.
+- Dépôt GitHub contenant :
+  - Le code source du démonstrateur.
   - Le guide d'installation du démonstrateur.
-  - Le guide d'utilisation du démonstrateur.
-  - La documentation de maintenance.
-  - La documentation de mise en place de l'environnement de test.
-  - La synthèse des succès et des échecs rencontrés lors des attaques.
-  - La documentation des pistes d'amélioration possibles.
 
 #v(0.5cm)
 

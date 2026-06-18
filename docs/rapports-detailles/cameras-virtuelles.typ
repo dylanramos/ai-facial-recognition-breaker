@@ -249,17 +249,17 @@ Pour l'utiliser, il suffit de lancer la commande suivante :
 = Caméras virtuelles sous Windows
 
 Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
-`OBS Studio` par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci.
+OBS Studio par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci.
 
 Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 10 22H2*.
 
 == Installation <obs-install>
 
-Télécharger et installer `OBS Studio` : #underline(link("https://obsproject.com/")). Une fois le logiciel installé, la caméra virtuelle est automatiquement créée et est disponible sous le nom de `OBS Virtual Camera`.
+Télécharger et installer OBS Studio : #underline(link("https://obsproject.com/")). Une fois le logiciel installé, la caméra virtuelle est automatiquement créée et est disponible sous le nom de `OBS Virtual Camera`.
 
 == Diffusion d'un flux vidéo vers la caméra virtuelle
 
-+ Lancer `OBS Studio`.
++ Lancer OBS Studio.
 + Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner `Media Source`.
 + Insérer le nom de la source.
 + Cocher `Local File` et `Loop`, sélectionner la vidéo à lancer dans `Local File`, puis cliquer sur `OK`.
@@ -278,11 +278,11 @@ En effet, cela est dû au fait que c'est une caméra logicielle qui utilise le f
 
 == Automatisation
 
-Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible de diffuser un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec `OBS Studio`, le flux doit être envoyé via le protocole `UDP`, ce qui ajoute de la latence.
+Comme vu dans le point précédent, la création de la source vidéo nécessite des actions manuelles, mais une fois celle-ci créée, il est tout à fait possible d'automatiser le lancement des vidéos via la ligne de commande. Comme pour Linux, il est possible de diffuser un flux vidéo vers la caméra virtuelle en utilisant `FFmpeg`, cependant, pour que cela fonctionne avec OBS Studio, le flux doit être envoyé via le protocole `UDP`, ce qui ajoute de la latence.
 
 === Création de la source vidéo
 
-+ Lancer `OBS Studio`.
++ Lancer OBS Studio.
 + Dans la section `Sources`, cliquer sur le bouton `+` et sélectionner `Media Source`.
 + Insérer le nom de la source.
 + Décocher `Local File`.
@@ -292,7 +292,7 @@ Cette source vidéo est maintenant prête à recevoir un flux vidéo via `UDP` s
 
 === Diffusion d'un flux vidéo vers la caméra virtuelle
 
-La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle de `OBS Studio` :
+La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtuelle de OBS Studio :
 
 #figure(
   sourcecode[```sh
@@ -312,7 +312,7 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 
 = Comparaison des solutions
 
-Comme vu dans les chapitres précédents, l'utilisation d'une caméra virtuelle sous Linux est relativement simple grâce à `v4l2loopback` et `FFmpeg`, tandis que sous Windows, il est nécessaire d'utiliser un logiciel tiers comme `OBS Studio` pour créer une caméra virtuelle, ce qui ajoute des étapes manuelles ou de la latence si l'on souhaite automatiser le processus avec `FFmpeg`.
+Comme vu dans les chapitres précédents, l'utilisation d'une caméra virtuelle sous Linux est relativement simple grâce à `v4l2loopback` et `FFmpeg`, tandis que sous Windows, il est nécessaire d'utiliser un logiciel tiers comme OBS Studio pour créer une caméra virtuelle, ce qui ajoute des étapes manuelles ou de la latence si l'on souhaite automatiser le processus avec `FFmpeg`.
 
 #set par(justify: false)
 
@@ -378,11 +378,11 @@ Pour développer le démonstrateur, il est nécessaire de pouvoir diffuser un fl
 
 == pyvirtualcam
 
-La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux ou Windows. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de `OBS Studio`, le tout en étant compatible avec tous les OS.
+La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux ou Windows. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de OBS Studio, le tout en étant compatible avec tous les OS.
 
 Mais attention, `pyvirtualcam` nécessite que les caméras virtuelles soient déjà créées, ce qui implique de devoir installer une solution de caméra virtuelle adaptée à son OS (voir #underline()[@v4l2loopback-install] pour Linux et #underline()[@obs-install] pour Windows).
 
-L'exemple ci-dessous montre comment utiliser `pyvirtualcam` sur Windows. Dans cet exemple, la caméra virtuelle de `OBS Studio` est utilisée (voir le #underline()[@obs-install] pour l'installation).
+L'exemple ci-dessous montre comment utiliser `pyvirtualcam` sur Windows. Dans cet exemple, la caméra virtuelle de OBS Studio est utilisée (voir le #underline()[@obs-install] pour l'installation).
 
 Création de l'environnement virtuel :
 
@@ -460,11 +460,11 @@ Utilisation :
   caption: [Lancement du script Python pour diffuser une vidéo sur la caméra virtuelle.],
 )
 
-La vidéo `video.mp4` est maintenant diffusée en boucle sur la caméra virtuelle de `OBS Studio`.
+La vidéo `video.mp4` est maintenant diffusée en boucle sur la caméra virtuelle de OBS Studio.
 
 == ffmpeg-python
 
-La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scanant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu précédemment, l'utilisation de `FFmpeg` avec `OBS Studio` sur Windows implique de devoir diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scanant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu précédemment, l'utilisation de `FFmpeg` avec OBS Studio sur Windows implique de devoir diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
 
 L'exemple ci-dessous montre comment utiliser `ffmpeg-python` sur Linux. Pour que cet exemple fonctionne, il faut avoir une caméra virtuelle disponible (voir le #underline()[@v4l2loopback-install] pour l'installation) ainsi que `FFmpeg` installé.
 
@@ -514,7 +514,7 @@ La vidéo passée en argument est maintenant diffusée en boucle sur la caméra 
 
 == Comparaison des librairies
 
-Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec `OBS Studio` car elle nécessite de diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec OBS Studio car elle nécessite de diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
 
 #figure(
   rect(image("../images/04-cameras-virtuelles/libs-compare.png"), stroke: 0.1pt),

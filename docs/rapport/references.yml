@@ -27,8 +27,9 @@ virtual-camera:
   url: https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796
 
 swiss-id-template:
-  type: Web
-  title: Swiss ID template
+  type: Article
+  title: Carte d'identité suisse
+  author: Le Matin
   url: https://media.lematin.ch/4/image/2025/11/12/d10f8b1e-512b-4e61-9ccb-6a391f05621f.jpg?auto=format%2Ccompress%2Cenhance&fit=max&w=1200&h=1200&rect=0%2C0%2C1024%2C640&fp-x=0.2265625&fp-y=0.44375&s=5c24eb000b8b1c27d35d5c4e9d79d9bd
 
 presentation-attack:
@@ -39,23 +40,27 @@ presentation-attack:
   url: https://shuftipro.com/blog/presentation-attacks/
 
 regula:
-  type: Web
+  type: Article
   title: Regula
+  author: Regula
   url: https://regulaforensics.com/
 
 tea:
-  type: Web
+  type: Article
   title: Tea for Women
+  author: Tea for Women
   url: https://www.teaforwomen.com/
 
 roblox:
-  type: Web
+  type: Article
   title: Roblox
+  author: Roblox
   url: https://about.roblox.com/what-is-roblox
 
 persona:
-  type: Web
+  type: Article
   title: Persona
+  author: Persona
   url: https://withpersona.com/
 
 covington:
@@ -88,3 +93,51 @@ hugging-face:
   title: Deep-Live-Cam
   author: hacksider
   url: https://huggingface.co/hacksider/deep-live-cam/tree/main
+
+kie-ai-ref:
+  type: Article
+  title: KIE AI
+  author: KIE AI
+  url: https://kie.ai/fr
+
+v4l2loopback-ref:
+  type: Article
+  title: v4l2loopback
+  author: v4l2loopback
+  url: https://github.com/v4l2loopback/v4l2loopback
+
+pyvirtualcam-ref:
+  type: Article
+  title: pyvirtualcam
+  author: letmaik
+  url: https://github.com/letmaik/pyvirtualcam
+
+ffmpeg-python-ref:
+  type: Article
+  title: ffmpeg-python
+  author: kkroening
+  url: https://github.com/kkroening/ffmpeg-python
+
+uv-ref:
+  type: Article
+  title: uv
+  author: astral-sh
+  url: https://github.com/astral-sh/uv
+
+typer-ref:
+  type: Article
+  title: typer
+  author: fastapi
+  url: https://github.com/fastapi/typer
+
+requests-ref:
+  type: Article
+  title: requests
+  author: psf
+  url: https://github.com/psf/requests
+
+python-dotenv-ref:
+  type: Article
+  title: python-dotenv
+  author: theskumar
+  url: https://github.com/theskumar/python-dotenv
