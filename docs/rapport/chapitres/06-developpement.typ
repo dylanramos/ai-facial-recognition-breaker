@@ -69,6 +69,8 @@ Note : `aifrb` est le nom du CLI, il s'agit d'un acronyme pour "AI Facial Recogn
 - Python 3.12 ou supérieur.
 - Un compte KIE AI avec une clé d'API valide.
 
+#emph[Note : le démonstrateur fonctionne également sur une machine virtuelle.]
+
 *Installation :*
 
 Les commandes suivantes doivent être exécutées à la racine du projet.

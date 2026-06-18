@@ -1,6 +1,6 @@
 # AI facial recognition breaker (aifrb)
 
-This repository contains my bachelor's thesis project. This work aims to understand and demonstrate the risks associated with the use of facial recognition in online services in light of the growing threat posed by AI-generated videos.
+This repository contains my bachelor's thesis project. This work aims to understand and demonstrate the risks associated with the use of identity verification in online services in light of the growing threat posed by AI-generated media.
 
 ## Repository structure
 
@@ -54,6 +54,33 @@ aifrb/
    ```bash
    aifrb
    ```
+
+## Usage & Commands
+
+```
+Usage: aifrb [OPTIONS] COMMAND [ARGS]...                                                                                      
+                                                                                                                               
+ AI Facial Recognition Breaker CLI.                                                                                            
+                                                                                                                               
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --install-completion          Install completion for the current shell.                                                     │
+│ --show-completion             Show completion for the current shell, to copy it or customize the installation.              │
+│ --help                        Show this message and exit.                                                                   │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Camera Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ create-camera      Create or replace a virtual camera.                                                                      │
+│ broadcast          Broadcast an image or a video file to a virtual camera.                                                  │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ AI Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ generate-image     Generate an image and download it to the local filesystem.                                               │
+│ edit-image         Edit an image and download it to the local filesystem.                                                   │
+│ generate-video     Generate a video and download it to the local filesystem.                                                │
+│ edit-video         Edit a video using a reference image and download it to the local filesystem.                            │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ KIE AI Account Commands ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ remaining-credits  Get the current credit balance available in the KIE AI account.                                          │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 ## Important notice
 
