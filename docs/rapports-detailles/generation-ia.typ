@@ -121,9 +121,9 @@
 
 = Introduction
 
-Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant un selfie vidéo, il doit utiliser des modèles de génération d'images et de vidéos IA. Les modèles sont en constante évolution, il est donc impossible de choisir un modèle de manière définitive car celui-ci risque de très vite être dépassé par de nouveaux modèles ou des modèles d'autres fournisseurs.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Dans ce contexte, la capacité à modifier des documents d'identité ou à générer des selfies vidéo convaincants constitue le cœur technique des attaques étudiées. Pour y parvenir, un attaquant doit s'appuyer sur des modèles de génération d'images et de vidéos IA dont l'offre évolue très rapidement, ce qui rend tout choix définitif rapidement obsolète.
 
-Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez chaque fournisseur directement.
+Plutôt que de souscrire à chaque fournisseur individuellement et de s'adapter à chaque API, ce rapport explore l'utilisation d'un service agrégateur appelé #link("https://kie.ai/")[#underline("KIE AI")]. Ce service regroupe les APIs de nombreux fournisseurs et expose une interface unifiée plus simple à intégrer et souvent moins coûteuse. Ce rapport présente les tests menés sur les modèles disponibles, tant pour la génération d'images que pour la génération de vidéos afin d'identifier les plus adaptés aux scénarios d'attaque.
 
 #figure(
   rect(image("../images/03-generation-ia/kieai.png", width: 80%), stroke: 0.1pt),
@@ -538,3 +538,11 @@ Le tableau ci-dessous résume les résultats obtenus au chapitre précédent pou
   ),
   caption: "Comparaison des modèles de type Video-to-Video.",
 )
+
+#set par(justify: true)
+
+= Conclusion
+
+Ce rapport a permis d'identifier les modèles de génération d'images et de vidéos IA les plus adaptés aux scénarios d'attaque contre les systèmes de vérification d'identité en ligne. Trois catégories de tâches ont été évaluées : la modification de documents d'identité, la génération de selfies vidéo à partir d'une image et le remplacement d'une personne dans une vidéo existante.
+
+Pour la modification de documents d'identité, le modèle *Nano Banana 2* s'est distingué comme le plus fiable car il est le seul à avoir conservé le design et les motifs de la carte tout en appliquant correctement les modifications demandées. Pour la génération de selfies vidéo à partir d'une image, *Grok Imagine Video 1.5* a fourni les meilleurs résultats en respectant l'ordre des mouvements et préservant les traits de l'image de référence. Enfin, pour le remplacement d'une personne dans une vidéo, *Kling Motion Control 3.0* s'est montré le plus convaincant grâce à la bonne préservation de l'arrière-plan et au réalisme des mouvements générés. Ces résultats permettent ainsi d'établir les outils qui seront utilisés dans les phases d'attaque du travail de bachelor.
