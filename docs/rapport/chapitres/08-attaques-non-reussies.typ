@@ -256,6 +256,6 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 3 du
 
 == Conclusion
 
-Les systèmes de vérification de Facebook, Parship et Google ont résisté à toutes les approches testées. Pour le selfie vidéo, l'obstacle principal est la détection de la caméra virtuelle. En effet, même après modification du module `v4l2loopback`, Parship identifie que le flux ne provient pas d'une caméra physique. Les pistes explorées comme l'ajout de bruit, l'analyse des métadonnées, l'utilisation d'un modèle 3D et l'utilisation d'un échangeur de visage en temps réel n'ont pas permis de surmonter ces défenses. Pour la falsification de documents d'identité, les systèmes actuels détectent les modifications générées par IA malgré leur réalisme visuel.
+Les systèmes de vérification de Facebook, Parship et Google ont résisté à toutes les approches testées. Parship, en particulier, s'est révélé capable d'identifier qu'une caméra virtuelle était utilisée et de bloquer la vérification en conséquence. Alors que Facebook a systématiquement bloqué les selfies vidéo générés par IA, et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel. Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification.
 
-Ces échecs délimitent clairement le périmètre de vulnérabilité, seuls les systèmes qui ne vérifient pas la nature de la caméra utilisée, comme ceux rencontrés dans le chapitre précédent, restent contournables.
+Ces échecs indiquent que ces systèmes ne s'arrêtent pas juste à l'analyse du type de caméra utilisée. En effet, ils intègrent probablement une analyse de liveness ou une détection de cohérence visuelle plus élaborée.

@@ -121,7 +121,7 @@
 
 = Introduction
 
-Certains sites candidats n'ont pas pu être contournés, soit parce qu'ils utilisent une technologie de vérification d'identité plus avancée que les autres, soit parce que la vérification d'identité est intégrée à un processus plus complexe qui rend le contournement plus difficile. Ce document présente les tests effectués pour tenter de contourner la vérification d'identité par selfie vidéo sur les sites Facebook et Parship ainsi que les tests effectués pour tenter de contourner la vérification d'âge sur le site Roblox en falsifiant un document d'identité.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Si plusieurs sites ont pu être contournés avec succès, d'autres ont résisté aux tentatives d'attaque, soit parce qu'ils utilisent une technologie de vérification plus avancée, soit parce que le processus de vérification intègre des mécanismes de détection supplémentaires. Ce rapport documente ces tentatives infructueuses afin de comprendre les limites actuelles des outils d'IA face à des systèmes de vérification d'identité plus robustes. Les tests ont porté sur le contournement du selfie vidéo sur Facebook et Parship, ainsi que sur la falsification de documents d'identité pour tromper la vérification d'âge de Roblox.
 
 = Tests effectués pour les selfies vidéo
 
@@ -589,3 +589,13 @@ aifrb broadcast downloads/id-on-table-back.jpeg /dev/video0
 Résultat : #link("../videos/08-attaques-non-reussies/roblox-id-on-table.mp4")[#underline("videos/08-attaques-non-reussies/roblox-id-on-table.mp4")]
 
 Une fois encore, la vérification d'âge a échoué.
+
+= Conclusion
+
+Les tests présentés dans ce rapport illustrent les limites rencontrées lors des tentatives de contournement de certains systèmes de vérification d'identité. Deux catégories de défenses ont été identifiées.
+
+La première concerne la détection des caméras virtuelles. Parship, en particulier, s'est révélé capable d'identifier qu'une caméra virtuelle était utilisée et de bloquer la vérification en conséquence. Les tentatives pour contourner cette détection en modifiant les chaînes de caractères exposées par le module `v4l2loopback` n'ont pas suffi, ce qui suggère que le système ne se contente pas d'analyser le nom ou les métadonnées de la caméra mais recourt à des mécanismes de détection plus profonds.
+
+La seconde concerne la détection des vidéos générées par IA. Facebook a systématiquement bloqué les selfies vidéo générés par IA, et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel. 
+
+Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification, même lorsque la profondeur de la scène a été simulée. Ces échecs indiquent que ces systèmes intègrent probablement une analyse de liveness ou une détection de cohérence visuelle plus élaborée.
