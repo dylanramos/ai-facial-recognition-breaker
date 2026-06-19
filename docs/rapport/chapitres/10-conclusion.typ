@@ -14,17 +14,20 @@ Enfin, ce travail a également montré que les outils de génération IA sont au
 
 == Suites possibles
 
-Ce travail s'est concentré sur les patterns de vérification les plus accessibles, c'est-à-dire ceux ne requérant qu'un selfie vidéo sans document d'identité. Plusieurs axes d'approfondissement restent à explorer.
+=== Approfondir les mécanismes d'injection
 
-=== Amélioration de la qualité des vidéos générées
-Les modèles évolueront rapidement. Des attaques qui échouent aujourd'hui pourraient réussir avec des modèles plus récents produisant moins d'artefacts visuels et des mouvements plus cohérents. Un suivi régulier des nouveaux modèles disponibles sur KIE AI ou d'autres plateformes permettrait de réévaluer les attaques sur Facebook et Parship.
+=== Utiliser un smartphone physique
 
-=== Échange de visage en temps réel
-L'outil Deep-Live-Cam, testé mais non concluant faute de matériel suffisamment puissant, mériterait d'être réévalué sur une configuration disposant d'un GPU performant. La capacité à remplacer un visage en temps réel sans passer par une vidéo préenregistrée changerait fondamentalement la dynamique des attaques, notamment pour le pattern 4.
+L'utilisation d'un émulateur Android a été détectée par Google. Tester les mêmes attaques sur un vrai smartphone permettrait de vérifier si la détection provient de l'émulation elle-même ou d'une analyse plus large du flux vidéo.
 
-=== Utilisation d'un smartphone physique
+=== Échanger de visage en temps réel lors d'un appel vidéo
 
-L'utilisation d'un émulateur Android a été détectée par Google. Tester les mêmes attaques sur un vrai smartphone rooté permettrait de vérifier si la détection provient de l'émulation elle-même ou d'une analyse plus large du flux vidéo.
+L'outil Deep-Live-Cam s'est avéré fonctionnel et très réaliste, malgré son échec sur Facebook et Parship. Il serait intéressant de tester un tel outil lors d'un appel vidéo avec un employé pour vérifier si intégrer un humain dans le processus de vérification rend le système moins fiable que lorsqu'il est automatisé.
 
-=== Évaluation de la résistance dans le temps
-Les systèmes de vérification sont mis à jour régulièrement. Une réévaluation des attaques réussies sur Tea for Women et Roblox après mise à jour de leurs SDKs permettrait de confirmer si ces contournements sont durables ou s'ils constituent des vulnérabilités temporaires liées à une version spécifique.
+=== Évaluer la robustesse d'un système avec l'accord d'une entreprise
+
+Les patterns de vérification d'identité plus complexes combinant analyse d'un document d'identité et selfie vidéo n'ont pas pu être testés. Il serait pertinent de tester le système d'une entreprise partenaire, telle que Migros Bank, avec un vrai document d'identité pour simuler le cas d'un attaquant qui l'aurait volé. Cela permettrait de vérifier la robustesse d'un système de vérification d'identité dans un scénario plus réaliste, tout en respectant les contraintes légales et éthiques.
+
+=== Améliorer la qualité des vidéos générées
+
+Les modèles d'IA évoluent rapidement. Des attaques qui échouent aujourd'hui pourraient réussir avec des modèles plus récents produisant moins d'artefacts visuels et des mouvements plus cohérents. Un suivi régulier des nouveaux modèles disponibles sur KIE AI ou d'autres plateformes permettrait de réévaluer les attaques échouées.

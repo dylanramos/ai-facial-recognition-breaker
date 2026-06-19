@@ -6,7 +6,7 @@
   fill: (x, y) => if x == 0 or y == 0 { silver },
 )
 
-= Attaques non réussies <08-attaques-non-reussies>
+= Attaques échouées <08-attaques-echouees>
 
 == Introduction
 
@@ -30,7 +30,7 @@ aifrb generate-image "A headshot portrait of a young man in his early 20s, calm 
 ```]
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/facebook-1.png", width: 40%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/facebook-1.png", width: 40%), stroke: 0.1pt),
   caption: "Personne générée par l'IA pour tenter de contourner la vérification d'identité sur le site Facebook.",
 )
 
@@ -39,7 +39,7 @@ aifrb edit-image "Replace the man on the first image by the man on the second im
 ```]
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/facebook-2.png", width: 60%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/facebook-2.png", width: 60%), stroke: 0.1pt),
   caption: "Résultat de l'édition de l'image de référence pour tenter de contourner la vérification d'identité sur le site Facebook.",
 )
 
@@ -49,7 +49,7 @@ Il faut ensuite se filmer en train de faire les mouvements, puis remplacer son v
 aifrb edit-video "No distortion, the character's movements are consistent with the video." downloads/video.mp4 downloads/new-face.png
 ```]
 
-Résultat : #link("../videos/08-attaques-non-reussies/facebook-edit.mp4")[#underline("videos/08-attaques-non-reussies/facebook-edit.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/facebook-edit.mp4")[#underline("videos/08-attaques-echouees/facebook-edit.mp4")]
 
 Pour des questions de vie privée, l'image et la vidéo de référence de ma personne n'est pas publiée sur GitHub et n'est donc pas disponible dans ce rapport.
 Une fois la vidéo générée, il suffit de créer une caméra virtuelle et d'y diffuser la vidéo.
@@ -62,12 +62,12 @@ aifrb create-camera "Facebook Attack" 0
 aifrb broadcast downloads/new-video.mp4 /dev/video0
 ```]
 
-Résultat : #link("../videos/08-attaques-non-reussies/facebook-result.mp4")[#underline("videos/08-attaques-non-reussies/facebook-result.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/facebook-result.mp4")[#underline("videos/08-attaques-echouees/facebook-result.mp4")]
 
 Enfin, après environ une heure d'attente, un e-mail a été envoyé par Facebook informant que la vérification d'identité a échoué et que le compte a été désactivé. Cette méthode ne permet donc pas de contourner la vérification d'identité.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/facebook-3.png", width: 40%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/facebook-3.png", width: 40%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité sur le site Facebook.",
 )
 
@@ -80,7 +80,7 @@ aifrb generate-image "A headshot portrait of a young woman in her early 20s, cal
 ```]
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/parship-1.png", width: 40%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/parship-1.png", width: 40%), stroke: 0.1pt),
   caption: "Personne générée par l'IA pour tenter de contourner la vérification d'identité sur le site Parship.",
 )
 
@@ -90,7 +90,7 @@ Une fois l'image générée, nous pouvons générer la vidéo de la personne en 
 aifrb generate-video "The woman in the image looks into the camera for a while, her body is not moving. Then the camera slowly zooms to her face and the woman continues to look at the camera. Then the camera zoom more and the woman is still looking at the camera. Then the camera slowly goes back." -m "Kling 3.0" -d 15 -s downloads/face.jpeg
 ```]
 
-Résultat : #link("../videos/08-attaques-non-reussies/parship-edit.mp4")[#underline("videos/08-attaques-non-reussies/parship-edit.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/parship-edit.mp4")[#underline("videos/08-attaques-echouees/parship-edit.mp4")]
 
 Il suffit maintenant de créer une caméra virtuelle et d'y diffuser la vidéo.
 
@@ -102,12 +102,12 @@ aifrb create-camera "Parship Attack" 0
 aifrb broadcast downloads/video.mp4 /dev/video0
 ```]
 
-Résultat : #link("../videos/08-attaques-non-reussies/parship-result.mp4")[#underline("videos/08-attaques-non-reussies/parship-result.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/parship-result.mp4")[#underline("videos/08-attaques-echouees/parship-result.mp4")]
 
 La vidéo ci-dessus nous montre que la vérification d'identité a échoué, mais contrairement à Facebook, Parship nous dit pourquoi la vérification a échoué.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/parship-2.png", width: 75%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/parship-2.png", width: 75%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité sur le site Parship en utilisant une caméra virtuelle.",
 )
 
@@ -118,20 +118,20 @@ En effet, il semble que le système de vérification de Parship analyse égaleme
 Lorsqu'un utilisateur mineur souhaite modifier son âge sur son compte Google, celui-ci doit effectuer un selfie vidéo.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/google-1.png", width: 50%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/google-1.png", width: 50%), stroke: 0.1pt),
   caption: "Demande de selfie vidéo pour modifier l'âge sur un compte Google.",
 )
 
 Comme le montre la #underline[@08-google] ci-dessous la vérification doit se faire via un smartphone, il faut donc passer par un émulateur Android de la même manière que pour Roblox au #underline[@07-roblox].
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/google-2.png", width: 50%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/google-2.png", width: 50%), stroke: 0.1pt),
   caption: "Demande d'effectuer la vérification via un smartphone pour modifier l'âge sur un compte Google.",
 )<08-google>
 
 En copiant le lien sur le navigateur de l'émulateur, nous pouvons accéder à la page de vérification d'identité. Cependant, une erreur survient lorsque nous essayons de lancer la vérification, comme le montre la vidéo ci-dessous.
 
-Résultat : #link("../videos/08-attaques-non-reussies/google-result.mp4")[#underline("videos/08-attaques-non-reussies/google-result.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/google-result.mp4")[#underline("videos/08-attaques-echouees/google-result.mp4")]
 
 == Tests effectués pour les selfies vidéo
 
@@ -157,11 +157,11 @@ Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de 
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../../images/08-attaques-non-reussies/without-noise.png"), stroke: 0.1pt),
+    rect(image("../../images/08-attaques-echouees/without-noise.png"), stroke: 0.1pt),
     caption: "Frame d'une vidéo générée par IA sans bruit ajouté.",
   ),
   figure(
-    rect(image("../../images/08-attaques-non-reussies/with-noise.png"), stroke: 0.1pt),
+    rect(image("../../images/08-attaques-echouees/with-noise.png"), stroke: 0.1pt),
     caption: "Frame d'une vidéo générée par IA avec du bruit ajouté.",
   ),
 )
@@ -173,13 +173,13 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.3 
 Certains articles sur internet mentionnent qu'il serait possible contourner le selfie vidéo de vérification de Facebook en utilisant le modèle 3D d'une personne généré par une IA @procpa.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/3d.png", width: 40%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/3d.png", width: 40%), stroke: 0.1pt),
   caption: [Modèle 3D généré par l'IA.],
 )
 
 Cependant, après avoir généré le modèle 3D puis effectué la vérification d'identité, le résultat est le même que pour une vidéo générée par IA classique, Facebook a désactivé le compte.
 
-Résultat : #link("../videos/08-attaques-non-reussies/facebook-3d.mp4")[#underline("videos/08-attaques-non-reussies/facebook-3d.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/facebook-3d.mp4")[#underline("videos/08-attaques-echouees/facebook-3d.mp4")]
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.4 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
@@ -188,7 +188,7 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.4 
 Il existe un projet appelé Deep-Live-Cam permettant de remplacer son visage par celui d'une autre personne en temps réel @deep-live-cam. L'outil est un programme Python qui tourne en local et qui fonctionne avec des modèles d'IA pré-entrainés comme `inswapper` et `GFPGAN` @hugging-face. Cependant, l'outil nécessite une configuration matérielle très puissante et n'est donc pas accessible à tous.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/deeplivecam.png"), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/deeplivecam.png"), stroke: 0.1pt),
   caption: "Système recommandé pour le bon fonctionnement de Deep-Live-Cam.",
 )
 
@@ -203,14 +203,14 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.5 
 Contrairement à Facebook, Parship explique pourquoi la vérification d'identité échoue, en l'occurrence il semblerait que les systèmes de vérification ne se contentent pas juste d'analyser les vidéos, ils analysent également le type de caméra utilisée.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/parship-2.png", width: 80%), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/parship-2.png", width: 80%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité en utilisant une caméra virtuelle.",
 )
 
 Ce test consistait donc à modifier le module `v4l2loopback` pour qu'il ne divulgue pas qu'il s'agit d'une caméra virtuelle, notamment en modifiant les informations affichées par des `snprintf` dans le code source du module.
 
 #figure(
-  rect(image("../../images/08-attaques-non-reussies/v4l2loopback.png"), stroke: 0.1pt),
+  rect(image("../../images/08-attaques-echouees/v4l2loopback.png"), stroke: 0.1pt),
   caption: "Modification du module v4l2loopback.",
 )
 
@@ -228,11 +228,11 @@ Pour analyser la résistance des systèmes de vérification d'identité à la fa
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../../images/08-attaques-non-reussies/id-front.jpg"), stroke: 0.1pt),
+    rect(image("../../images/08-attaques-echouees/id-front.jpg"), stroke: 0.1pt),
     caption: "Exemple de carte d'identité suisse (recto).",
   ),
   figure(
-    rect(image("../../images/08-attaques-non-reussies/id-front-fake.jpeg"), stroke: 0.1pt),
+    rect(image("../../images/08-attaques-echouees/id-front-fake.jpeg"), stroke: 0.1pt),
     caption: "Carte d'identité suisse modifiée à l'aide de l'IA (recto).",
   ),
 )
@@ -241,11 +241,11 @@ Pour analyser la résistance des systèmes de vérification d'identité à la fa
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../../images/08-attaques-non-reussies/id-back.jpg"), stroke: 0.1pt),
+    rect(image("../../images/08-attaques-echouees/id-back.jpg"), stroke: 0.1pt),
     caption: "Exemple de carte d'identité suisse (verso).",
   ),
   figure(
-    rect(image("../../images/08-attaques-non-reussies/id-back-fake.jpeg"), stroke: 0.1pt),
+    rect(image("../../images/08-attaques-echouees/id-back-fake.jpeg"), stroke: 0.1pt),
     caption: "Carte d'identité suisse modifiée à l'aide de l'IA (verso).",
   ),
 )

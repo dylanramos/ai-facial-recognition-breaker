@@ -133,11 +133,11 @@ Il est possible que le système de vérification analyse les caractéristiques d
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/08-attaques-non-reussies/real-camera.png"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/real-camera.png"), stroke: 0.1pt),
     caption: "Caractéristiques de la caméra physique.",
   ),
   [#figure(
-    rect(image("../images/08-attaques-non-reussies/fake-camera.png"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/fake-camera.png"), stroke: 0.1pt),
     caption: "Caractéristiques de la caméra virtuelle.",
   )<fake-camera>],
 )
@@ -314,7 +314,7 @@ Nous pouvons voir que, bien que la vidéo soit générée par un modèle chinois
 Par curiosité, nous pouvons récupérer la vidéo qui est capturée par le navigateur lors du selfie vidéo sur Facebook pour analyser ses métadonnées. Pour cela, il faut effectuer le selfie vidéo une première fois, inspecter la page du navigateur, puis aller dans l'onglet "Application".
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/facebook-page.png"), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/facebook-page.png"), stroke: 0.1pt),
   caption: "Récupération de la vidéo capturée par Facebook lors du selfie vidéo.",
 )
 
@@ -378,11 +378,11 @@ Ce filtre imite l'aspect typique du bruit d'une caméra physique, plus fort sur 
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/08-attaques-non-reussies/without-noise.png"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/without-noise.png"), stroke: 0.1pt),
     caption: "Frame d'une vidéo générée par IA sans bruit ajouté.",
   ),
   figure(
-    rect(image("../images/08-attaques-non-reussies/with-noise.png"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/with-noise.png"), stroke: 0.1pt),
     caption: "Frame d'une vidéo générée par IA avec du bruit ajouté.",
   ),
 )
@@ -397,16 +397,16 @@ Certains articles sur internet mentionnent qu'il serait possible contourner le s
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/08-attaques-non-reussies/man.jpg", width: 70%), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/man.jpg", width: 70%), stroke: 0.1pt),
     caption: "Image de référence utilisée pour générer le modèle 3D.",
   ),
   figure(
-    rect(image("../images/08-attaques-non-reussies/3d.png", width: 78%), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/3d.png", width: 78%), stroke: 0.1pt),
     caption: "Modèle 3D généré par l'IA à partir de l'image de référence.",
   ),
 )
 
-Résultat : #link("../videos/08-attaques-non-reussies/facebook-3d.mp4")[#underline("videos/08-attaques-non-reussies/facebook-3d.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/facebook-3d.mp4")[#underline("videos/08-attaques-echouees/facebook-3d.mp4")]
 
 Sans surprise, cette méthode ne fonctionne pas non plus, Facebook détecte que la vérification d'identité a échoué et désactive le compte.
 
@@ -417,7 +417,7 @@ Plutôt que de générer ou d'éditer une vidéo, j'ai tenté d'utiliser Deep-Li
 Le problème est que pour utiliser cet outil, il faut avoir un système très puissant avec une bonne carte graphique, comme le montre la #underline[@deeplivecam] ci-dessous.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/deeplivecam.png"), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/deeplivecam.png"), stroke: 0.1pt),
   caption: "Système recommandé pour le bon fonctionnement de Deep-Live-Cam.",
 )<deeplivecam>
 
@@ -430,18 +430,18 @@ J'ai donc dû faire appel à un ami qui possède une machine avec une carte grap
 Lorsque nous tentons de contourner la vérification d'identité du site Parship, nous voyons le message d'erreur ci-dessous.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/parship-2.png", width: 80%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/parship-2.png", width: 80%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité en utilisant une caméra virtuelle.",
 )
 
 Contrairement à Facebook, Parship nous dit pourquoi la vérification a échoué, nous pouvons donc en déduire que le système analyse également le type de caméra qui est utilisé. J'ai donc essayé de refaire la vérification, mais cette fois-ci avec une caméra physique pour voir si le résultat était différent. Pour cela, j'ai affiché l'image de la personne fictive sur mon écran et j'ai filmé cette image avec ma caméra.
 
-Résultat : #link("../videos/08-attaques-non-reussies/parship-real-camera.mp4")[#underline("videos/08-attaques-non-reussies/parship-real-camera.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/parship-real-camera.mp4")[#underline("videos/08-attaques-echouees/parship-real-camera.mp4")]
 
 Le résultat est bien différent, cela confirme donc que le système de vérification de Parship analyse le type de caméra utilisé et que la diffusion d’une vidéo sur une caméra virtuelle est détectée et bloquée.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/parship-3.png", width: 80%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/parship-3.png", width: 80%), stroke: 0.1pt),
   caption: "Échec de la vérification d'identité avec une caméra physique.",
 )
 
@@ -457,7 +457,7 @@ cd v4l2loopback
 *Étape 2 :* ouvrir le fichier `v4l2loopback.c` et modifier les chaînes de caractères affichées par des `snprintf`.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/v4l2loopback.png"), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/v4l2loopback.png"), stroke: 0.1pt),
   caption: "Modification du module v4l2loopback.",
 )
 
@@ -479,11 +479,11 @@ sudo modprobe v4l2loopback devices=1 video_nr=0 card_label="AUKEY PC-W1: AUKEY P
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/08-attaques-non-reussies/old-module.png"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/old-module.png"), stroke: 0.1pt),
     caption: "Caméra créée avec le module original.",
   ),
   figure(
-    rect(image("../images/08-attaques-non-reussies/new-module.png"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/new-module.png"), stroke: 0.1pt),
     caption: "Caméra créée avec le module modifié.",
   ),
 )
@@ -495,7 +495,7 @@ Cependant, malgré toutes ces modifications, j'obtiens le même résultat, Parsh
 Pour analyser la résistance des systèmes de vérification d'identité à la falsification de documents d'identité, j'ai tenté de contourner la vérification d'âge sur le site Roblox en falsifiant un document d'identité. Pour cela, j'ai utilisé un document d'identité suisse trouvé sur internet et j'ai modifié son recto et son verso à l'aide de l'IA.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/man.jpg", width: 30%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/man.jpg", width: 30%), stroke: 0.1pt),
   caption: "Image de référence utilisée pour modifier le document d'identité.",
 )
 
@@ -507,11 +507,11 @@ aifrb edit-image "Modify the ID card by replacing the name 'de Maienfeld Muste' 
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/08-attaques-non-reussies/id-front.jpg"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/id-front.jpg"), stroke: 0.1pt),
     caption: "Exemple de carte d'identité suisse (recto).",
   ),
   figure(
-    rect(image("../images/08-attaques-non-reussies/id-front-fake.jpeg"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/id-front-fake.jpeg"), stroke: 0.1pt),
     caption: "Carte d'identité suisse modifiée à l'aide de l'IA (recto).",
   ),
 )
@@ -524,11 +524,11 @@ aifrb edit-image "Modify the ID card by replacing 'DE<MAIENFELD<MUSTER<<LARA<SAM
   columns: (1fr, 1fr),
   inset: 3pt,
   figure(
-    rect(image("../images/08-attaques-non-reussies/id-back.jpg"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/id-back.jpg"), stroke: 0.1pt),
     caption: "Exemple de carte d'identité suisse (verso).",
   ),
   figure(
-    rect(image("../images/08-attaques-non-reussies/id-back-fake.jpeg"), stroke: 0.1pt),
+    rect(image("../images/08-attaques-echouees/id-back-fake.jpeg"), stroke: 0.1pt),
     caption: "Carte d'identité suisse modifiée à l'aide de l'IA (verso).",
   ),
 )
@@ -547,12 +547,12 @@ aifrb broadcast downloads/id-front.jpeg /dev/video0
 aifrb broadcast downloads/id-back.jpeg /dev/video0
 ```]
 
-Résultat : #link("../videos/08-attaques-non-reussies/roblox-id.mp4")[#underline("videos/08-attaques-non-reussies/roblox-id.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/roblox-id.mp4")[#underline("videos/08-attaques-echouees/roblox-id.mp4")]
 
 Malheureusement, la vérification d'âge a échoué, je suis donc parti sur une autre piste : poser la carte sur une table afin d'ajouter de la profondeur à la vidéo. Pour cela, j'ai commencé par prendre en photo une carte réelle posée sur une table.
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/carte-sur-table.jpg", width: 40%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/carte-sur-table.jpg", width: 40%), stroke: 0.1pt),
   caption: "Carte réelle posée sur une table.",
 )
 
@@ -563,7 +563,7 @@ aifrb edit-image "Replace the card on the table by the ID card." templates/card-
 ```]
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/carte-sur-table-recto.png", width: 40%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/carte-sur-table-recto.png", width: 40%), stroke: 0.1pt),
   caption: "Carte d'identité modifiée à l'aide de l'IA posée sur une table (recto).",
 )
 
@@ -572,7 +572,7 @@ aifrb edit-image "Replace the card on the table by the ID card." templates/card-
 ```]
 
 #figure(
-  rect(image("../images/08-attaques-non-reussies/carte-sur-table-verso.png", width: 40%), stroke: 0.1pt),
+  rect(image("../images/08-attaques-echouees/carte-sur-table-verso.png", width: 40%), stroke: 0.1pt),
   caption: "Carte d'identité modifiée à l'aide de l'IA posée sur une table (verso).",
 )
 
@@ -586,7 +586,7 @@ aifrb broadcast downloads/id-on-table-front.jpeg /dev/video0
 aifrb broadcast downloads/id-on-table-back.jpeg /dev/video0
 ```]
 
-Résultat : #link("../videos/08-attaques-non-reussies/roblox-id-on-table.mp4")[#underline("videos/08-attaques-non-reussies/roblox-id-on-table.mp4")]
+Résultat : #link("../videos/08-attaques-echouees/roblox-id-on-table.mp4")[#underline("videos/08-attaques-echouees/roblox-id-on-table.mp4")]
 
 Une fois encore, la vérification d'âge a échoué.
 
@@ -596,6 +596,6 @@ Les tests présentés dans ce rapport illustrent les limites rencontrées lors d
 
 La première concerne la détection des caméras virtuelles. Parship, en particulier, s'est révélé capable d'identifier qu'une caméra virtuelle était utilisée et de bloquer la vérification en conséquence. Les tentatives pour contourner cette détection en modifiant les chaînes de caractères exposées par le module `v4l2loopback` n'ont pas suffi, ce qui suggère que le système ne se contente pas d'analyser le nom ou les métadonnées de la caméra mais recourt à des mécanismes de détection plus profonds.
 
-La seconde concerne la détection des vidéos générées par IA. Facebook a systématiquement bloqué les selfies vidéo générés par IA, et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel. 
+La seconde concerne la détection des vidéos générées par IA. Facebook a systématiquement bloqué les selfies vidéo générés par IA, et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel.
 
 Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification, même lorsque la profondeur de la scène a été simulée. Ces échecs indiquent que ces systèmes intègrent probablement une analyse de liveness ou une détection de cohérence visuelle plus élaborée.

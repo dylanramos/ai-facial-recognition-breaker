@@ -14,9 +14,9 @@ Une attaque par injection consiste à insérer un flux vidéo synthétique ou pr
 
 == Hypothèses concernant les attaques échouées
 
-Pour des raisons de sécurité, les systèmes de vérification d'identité ne divulguent généralement pas les détails de leur implémentation, nous ne pouvons donc pas savoir pourquoi exactement les attaques du #underline[@08-attaques-non-reussies] ont échoué. Néanmoins, nous pouvons émettre des hypothèses basées sur les tests effectués et les mécanismes de défense mentionnés précédemment.
+Pour des raisons de sécurité, les systèmes de vérification d'identité ne divulguent généralement pas les détails de leur implémentation, nous ne pouvons donc pas savoir pourquoi exactement les attaques du #underline[@08-attaques-echouees] ont échoué. Néanmoins, nous pouvons émettre des hypothèses basées sur les tests effectués et les mécanismes de défense mentionnés précédemment.
 
-=== Détection de l'IA par l'IA
+=== Détection de l'utilisation d'IA
 
 La plupart des systèmes de vérification d'identité utilisent des modèles d'IA entraînés sur des exemples de contenus réels pour détecter des contenus synthétiques. Pour du contenu multimédia par exemple, les modèles tentent de détecter la présence de flous anormaux, d'incohérences dans l'éclairage ou d'expressions faciales incohérentes d'une image, notamment en analysant des patterns de pixels predictibles, répétitifs et structurés @aivideodetector.
 
