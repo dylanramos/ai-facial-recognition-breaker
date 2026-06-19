@@ -1,7 +1,7 @@
 [project]
 name = "aifrb"
 version = "0.1.0"
-description = "A CLI tool that generates AI media content and streams its frames to a virtual camera in attempt to bypass face-recognition on online services."
+description = "A CLI tool that generates AI media content and streams its frames to a virtual camera in attempt to bypass identity verification on online services."
 readme = "README.md"
 authors = [
     { name = "Dylan Ramos", email = "github.5mwg9@simplelogin.com" }
