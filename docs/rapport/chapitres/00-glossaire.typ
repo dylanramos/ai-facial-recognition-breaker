@@ -18,6 +18,8 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *Deepfake :* contenu multimédia synthétique créé ou modifié à l'aide de l'intelligence artificielle représentant une personne en train de faire quelque chose qu'elle n'a jamais fait.
 
+*Device fingerprinting :* technique permettant d'identifier de manière unique un appareil en analysant ses caractéristiques matérielles et logicielles.
+
 *FFmpeg :* outil en ligne de commande permettant de manipuler des fichiers multimédia.
 
 *IA (Intelligence Artificielle) :* capacité des machines ou des systèmes informatiques à accomplir des tâches qui requièrent généralement l'intelligence humaine.
@@ -39,3 +41,5 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 *SDK (Software Development Kit) :* ensemble d'outils et de bibliothèques permettant aux développeurs de créer des applications pour une plateforme spécifique.
 
 *Selfie :* photo ou une courte vidéo de soi-même, généralement prise à l'aide d'un smartphone ou d'une webcam.
+
+*Vérification d'identité :* processus permettant de confirmer qu'une personne est bien réelle à l'aide d'un système de reconnaissance faciale.

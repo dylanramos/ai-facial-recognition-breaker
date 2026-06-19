@@ -155,3 +155,23 @@ biometricupdate:
   author: Joel R. McConvey
   date: 2026-05-27
   url: https://www.biometricupdate.com/202605/injection-attack-detection-critical-to-digital-security-yet-often-misunderstood
+
+playintegrity:
+  type: Article
+  title: "Overview of the Play Integrity API"
+  author: Google
+  url: https://developer.android.com/google/play/integrity/overview
+
+emergentmind:
+  type: Article
+  title: "Virtual Camera Detection (VCD)"
+  author: Emergent Mind
+  date: 2025-12-18
+  url: https://www.emergentmind.com/topics/virtual-camera-detection-vcd
+
+stytch:
+  type: Article
+  title: "What Is device fingerprinting? Guide and implementation techniques"
+  author: Stytch Team
+  date: 2025-08-12
+  url: https://stytch.com/blog/what-is-device-fingerprinting/
