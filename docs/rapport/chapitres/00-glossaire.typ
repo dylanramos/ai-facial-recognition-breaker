@@ -6,6 +6,8 @@ Ce glossaire présente les termes techniques utilisés dans ce travail de Bachel
 
 *API (Application Programming Interface) :* ensemble de règles et de protocoles permettant à différentes applications de communiquer entre elles.
 
+*Artefact :* élément ou caractéristique indésirable dans une image ou une vidéo.
+
 *Attaque par présentation :* technique visant à tromper un système de vérification d'identité en présentant à une caméra physique un élément autre qu'une personne réelle.
 
 *Attaque par injection :* technique visant à tromper un système de vérification d'identité en insérant un flux vidéo synthétique ou préenregistré directement dans le processus de capture d'un logiciel.

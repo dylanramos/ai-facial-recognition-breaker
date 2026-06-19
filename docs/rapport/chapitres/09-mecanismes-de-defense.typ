@@ -2,6 +2,7 @@
 
 == Introduction
 
+Les chapitres précédents ont mis en évidence que certains systèmes de vérification d'identité résistent aux attaques même lorsque le contenu généré est visuellement convaincant. Ce chapitre examine les mécanismes qui expliquent ces résistances : la détection des attaques par présentation (PAD), la détection des attaques par injection (IAD), puis les hypothèses formulées à partir des tests effectués pour comprendre pourquoi les attaques contre Facebook, Parship et Google n'ont pas abouti.
 
 == Détection des attaques par présentation (PAD)
 
@@ -17,11 +18,13 @@ Pour des raisons de sécurité, les systèmes de vérification d'identité ne di
 
 === Détection de l'IA par l'IA
 
+La plupart des systèmes de vérification d'identité utilisent des modèles d'IA entraînés sur des exemples de contenus réels pour détecter des contenus synthétiques. Pour du contenu multimédia par exemple, les modèles tentent de détecter la présence de flous anormaux, d'incohérences dans l'éclairage ou d'expressions faciales incohérentes d'une image, notamment en analysant des patterns de pixels predictibles, répétitifs et structurés @aivideodetector.
 
+Ainsi, il est fort probable que les systèmes de vérification des sites Facebook et Parship aient été entraînés pour détecter les artefacts spécifiques générés par les modèles d'IA utilisés dans les chapitres précédents, ce qui expliquerait pourquoi ces attaques ont échoué.
 
 === Détection d'appareils virtuels
 
-Une caméra physique produit du bruit de capteur et des variations naturelles de luminosité, peut-être que l'ajout de bruit artificiel effectué au #underline[@08-noise] n'était pas assez réaliste pour tromper les systèmes de vérification. En effet, un flux injecté à partir d'une vidéo préenregistrée risque de présenter une absence de bruit cohérent, des artéfacts de recompression ou encore un framerate trop régulier, ce qui peut faciliter la détection d'une caméra virtuelle @emergentmind.
+Une caméra physique produit du bruit de capteur et des variations naturelles de luminosité, peut-être que l'ajout de bruit artificiel effectué au #underline[@08-noise] n'était pas assez réaliste pour tromper les systèmes de vérification. En effet, un flux injecté à partir d'une vidéo préenregistrée risque de présenter une absence de bruit cohérent, des artefacts de recompression ou encore un framerate trop régulier, ce qui peut faciliter la détection d'une caméra virtuelle @emergentmind.
 
 Lors de la tentative de contournement sur Google au #underline[@08-google-title], le système de vérification a probablement détecté l'utilisation d'un appareil Android émulé. En effet, les vrais téléphones Android disposent généralement d'une clé matérielle permettant de signer cryptographiquement une attestation que le système d'exploitation tourne sur un appareil certifié non modifié, notamment graĉe à l'API Play Integrity @playintegrity.
 
@@ -33,5 +36,8 @@ Le device fingerprinting consiste à identifier un appareil en collectant des at
 
 Comme vu dans le #underline[@08-facebook], il est impossible de connaître les mouvements qui seront demandés par le système de vérification de Facebook à l'avance. Ainsi, il est probable que le système compare les tentatives entre elles pour détecter les incohérences. Par exemple, si lors de la première tentative, la personne ne bouge pas ou effectue des mouvements complètement différents de ceux demandés, le système peut conclure que la personne n'est pas réelle et ce, même si la seconde tentative est correcte.
 
-
 == Conclusion
+
+Les systèmes de vérification d'identité modernes ne se limitent pas à analyser le contenu visuel, ils opèrent sur plusieurs couches défensives simultanément. C'est cette combinaison de mécanismes qui explique l'échec des attaques sur Facebook, Parship et Google, malgré la qualité du contenu généré par IA.
+
+Ces observations montrent que la robustesse d'un système dépend autant de la qualité de son intégration et de la mise à jour régulière de son SDK que des capacités de la solution de vérification. Un fournisseur solide dont le SDK est obsolète, comme dans le cas de Tea for Women, reste vulnérable.

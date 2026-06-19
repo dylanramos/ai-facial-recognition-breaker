@@ -175,3 +175,24 @@ stytch:
   author: Stytch Team
   date: 2025-08-12
   url: https://stytch.com/blog/what-is-device-fingerprinting/
+
+aivideodetector:
+  type: Article
+  title: "What Is AI Detection: Core Techniques & Best Practices 2026"
+  author: Ivan Jackson
+  date: 2026-06-05
+  url: https://www.aivideodetector.com/blog/what-is-ai-detection
+
+regulaforensicsvideostick:
+  type: Article
+  title: "Video Injection Attacks in Remote IDV: Scenarios & Solutions"
+  author: Andrey Terekhin
+  date: 2025-09-02
+  url: https://regulaforensics.com/blog/video-injection-attacks/
+
+miteksystems:
+  type: Article
+  title: "Biometric injection attacks: the hidden threat to face authentication"
+  author: Anastasia Molotkova
+  date: 2025-05-28
+  url: https://www.miteksystems.com/blog/biometric-injection

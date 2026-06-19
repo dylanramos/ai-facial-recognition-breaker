@@ -3,4 +3,6 @@
   it
 }
 
+#set par(justify: true)
+
 #bibliography("../references.yml")
