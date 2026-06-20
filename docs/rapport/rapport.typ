@@ -115,7 +115,13 @@
 
 *Résumé publiable*
 
-#text(fill: red)[TODO]
+Ce travail analyse en profondeur cinq sites demandant une vérification d'identité par selfie vidéo, à savoir Facebook, Tea for Women, Roblox, Parship et Google. Des attaques concrètes ont été menées sur ceux-ci à l'aide d'un outil Python développé qui génère du contenu IA via la plateforme KIE AI et l'injecte dans une caméra virtuelle Linux.
+
+Parmis les cinq sites, deux se sont révélés vulnérables. Tea for Women, dont l'objectif est de protéger les femmes dans le monde des rencontres en ligne, s'est avéré vulnérable à l'utilisation d'une vidéo IA lors de la création d'un compte. Roblox, une plateforme de jeux en ligne très populaire auprès des enfants, a également été contournée avec des images IA lors d'une vérification d'âge pour accéder à des fonctionnalités de chat déstinées aux adultes.
+
+Facebook, Parship et Google ont en revanche résisté à toutes les tentatives grâce à des mécanismes multicouches, notamment la détection de contenus multimédia synthétiques, la détection d'appareils virtuels et l'analyse comportementale.
+
+Ces résultats montrent que la robustesse d'un système dépend autant de la qualité de la solution tierce que de la rigueur de sa maintenance. Les outils de génération IA étant désormais accessibles à faible coût, la question n'est plus de savoir si ces attaques sont techniquement faisables, mais si les systèmes en place sont suffisamment à jour pour y résister.
 
 #v(0.5cm)
 
@@ -129,7 +135,7 @@
   [#line(stroke: (dash: "dotted", thickness: 1pt), length: 100%)],
   [#line(stroke: (dash: "dotted", thickness: 1pt), length: 100%)],
 )
-#v(0.5cm)
+#v(0.2cm)
 #table(
   stroke: none,
   columns: (40%, 30%, 30%),
@@ -193,6 +199,12 @@ Le soussigné, #author, atteste par la présente avoir réalisé ce travail et n
   columns: (60%, 40%),
   [], [#author],
 )
+
+#pagebreak(to: "odd")
+
+= Remerciements
+
+Je tiens à remercier sincèrement mon enseignant responsable, Jean-Marc Bost, pour son suivi régulier, sa disponibilité et ses relectures tout au long de ce travail. Ses retours constructifs ont été précieux pour orienter mes recherches et améliorer la qualité de ce rapport.
 
 #pagebreak(to: "odd")
 
