@@ -185,16 +185,16 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.4 
 
 === Utilisation d'un échangeur de visage en temps réel
 
-Il existe un projet appelé Deep-Live-Cam permettant de remplacer son visage par celui d'une autre personne en temps réel @deep-live-cam. L'outil est un programme Python qui tourne en local et qui fonctionne avec des modèles d'IA pré-entrainés comme `inswapper` et `GFPGAN` @hugging-face. Cependant, l'outil nécessite une configuration matérielle très puissante et n'est donc pas accessible à tous.
+Il existe un projet appelé #underline[#link("https://github.com/hacksider/deep-live-cam")[Deep-Live-Cam]] permettant de remplacer son visage par celui d'une autre personne en temps réel @deep-live-cam. L'outil est un programme Python qui tourne en local et qui fonctionne avec des modèles d'IA pré-entrainés comme `inswapper` et `GFPGAN` @hugging-face. Cependant, l'outil nécessite une configuration matérielle très puissante et n'est donc pas accessible à tous comme le montre la #underline[@deep-live-cam-fig] ci-dessous.
 
 #figure(
   rect(image("../../images/08-attaques-echouees/deeplivecam.png"), stroke: 0.1pt),
   caption: "Système recommandé pour le bon fonctionnement de Deep-Live-Cam.",
-)
+)<deep-live-cam-fig>
 
-Résultat :
+Néanmoins, grâce à l'utilisation de la machine d'un proche, il a été possible de tester l'outil et d'effectuer la vérification d'identité sur Facebook. Cependant, le résultat est le même que pour les autres méthodes, Facebook a détecté une anomalie et a désactivé le compte.
 
-// TODO
+Résultat : #link("../videos/08-attaques-echouees/deep-live-cam.mp4")[#underline("videos/08-attaques-echouees/deep-live-cam.mp4")]
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.5 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 

@@ -64,12 +64,12 @@ Note : `aifrb` est le nom du CLI, il s'agit d'un acronyme pour "AI Facial Recogn
 
 == Installation du démonstrateur
 
+Comme indiqué précédemment, le démonstrateur ne fonctionne que sur Linux. Pour pouvoir l'utiliser sur un autre système d'exploitation, il faut obligatoirement utiliser une machine virtuelle Linux. En effet, l'utilisation d'un conteneur Docker ou de WSL directement ne fonctionne pas car ceux-ci ne possèdent pas les headers du noyau Linux requis pour faire fonctionner le module `v4l2loopback` @wsl2.
+
 *Prérequis :*
 - Une machine Ubuntu 26.04 ou supérieure (les autres distributions n'ont pas été testées).
 - Python 3.12 ou supérieur.
 - Un compte KIE AI avec une clé d'API valide.
-
-#emph[Note : le démonstrateur fonctionne également sur une machine virtuelle.]
 
 *Installation :*
 

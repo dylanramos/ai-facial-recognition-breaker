@@ -387,7 +387,7 @@ Ce filtre imite l'aspect typique du bruit d'une caméra physique, plus fort sur 
   ),
 )
 
-Malheureusement le résultat est le même, Facebook détecte que la vérification d'identité a échoué et désactive le compte.
+Malheureusement le résultat est le même, Facebook détecte une anomalie suite à la vérification et désactive le compte.
 
 == Utilisation d'un modèle en 3D
 
@@ -412,7 +412,7 @@ Sans surprise, cette méthode ne fonctionne pas non plus, Facebook détecte que 
 
 == Utilisation d'un échangeur de visage en temps réel
 
-Plutôt que de générer ou d'éditer une vidéo, j'ai tenté d'utiliser Deep-Live-Cam, un échangeur de visage en temps réel permettant de remplacer son visage par celui d'une autre personne #footnote[https://github.com/hacksider/deep-live-cam]. L'outil est un programme Python qui tourne sur la machine locale et qui s'appuie sur des modèles pré-entraînés comme `inswapper` pour l'échange de visages  et `GFPGAN` pour l'amélioration des visages #footnote[https://huggingface.co/hacksider/deep-live-cam/tree/main].
+Plutôt que de générer ou d'éditer une vidéo, j'ai tenté d'utiliser #underline[#link("https://github.com/hacksider/deep-live-cam")[Deep-Live-Cam]], un échangeur de visage en temps réel permettant de remplacer son visage par celui d'une autre personne #footnote[https://github.com/hacksider/deep-live-cam]. L'outil est un programme Python qui tourne sur la machine locale et qui s'appuie sur des modèles pré-entraînés comme `inswapper` pour l'échange de visages  et `GFPGAN` pour l'amélioration des visages #footnote[https://huggingface.co/hacksider/deep-live-cam/tree/main].
 
 Le problème est que pour utiliser cet outil, il faut avoir un système très puissant avec une bonne carte graphique, comme le montre la #underline[@deeplivecam] ci-dessous.
 
@@ -423,7 +423,25 @@ Le problème est que pour utiliser cet outil, il faut avoir un système très pu
 
 J'ai donc dû faire appel à un ami qui possède une machine avec une carte graphique NVIDIA RTX 3080 pour tester cet outil.
 
-// TODO
+Une fois l'outil installé, nous l'avons lancé puis remplacé le visage de mon ami par celui d'une personne générée par l'IA.
+
+#figure(
+  rect(image("../images/08-attaques-echouees/man.jpeg", width: 40%), stroke: 0.1pt),
+  caption: "Visage utilisé pour remplacer le visage de mon ami.",
+)
+
+Ensuite, nous avons configuré OBS Studio pour qu'il diffuse le flux en direct de la webcam sur sa caméra virtuelle. En effet, l'utilisation de OBS Studio est nécessaire dans ce cas car Deep-Live-Cam diffuse le flux vidéo sur sa propre interface, il n'est donc pas possible de rediriger celui-ci sans modifier le code source de l'outil.
+
+#figure(
+  rect(image("../images/08-attaques-echouees/obs.png"), stroke: 0.1pt),
+  caption: "Résultat de l'échange de visage en temps réel avec Deep-Live-Cam sur OBS Studio.",
+)
+
+Une fois la configuration terminée, nous avons procédé à la vérification d'identité sur Facebook en utilisant la caméra virtuelle de OBS Studio.
+
+Résultat : #link("../videos/08-attaques-echouees/deep-live-cam.mp4")[#underline("videos/08-attaques-echouees/deep-live-cam.mp4")]
+
+Mais comme pour les autres méthodes, Facebook détecte une anomalie et désactive le compte.
 
 == Modification du module `v4l2loopback`
 

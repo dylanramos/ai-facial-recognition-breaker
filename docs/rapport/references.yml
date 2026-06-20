@@ -196,3 +196,10 @@ miteksystems:
   author: Anastasia Molotkova
   date: 2025-05-28
   url: https://www.miteksystems.com/blog/biometric-injection
+
+wsl2:
+  type: Article
+  title: "WSL 2 does not have /lib/modules/"
+  author: Carlos Garcia
+  date: 2021-04-26
+  url: https://unix.stackexchange.com/questions/594470/wsl-2-does-not-have-lib-modules
