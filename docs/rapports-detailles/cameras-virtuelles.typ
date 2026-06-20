@@ -249,7 +249,7 @@ Pour l'utiliser, il suffit de lancer la commande suivante :
 Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
 OBS Studio par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci.
 
-Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 10 22H2*.
+Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 11 25H2*.
 
 == Installation <obs-install>
 
