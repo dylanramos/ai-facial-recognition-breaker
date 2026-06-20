@@ -183,13 +183,6 @@ aivideodetector:
   date: 2026-06-05
   url: https://www.aivideodetector.com/blog/what-is-ai-detection
 
-regulaforensicsvideostick:
-  type: Article
-  title: "Video Injection Attacks in Remote IDV: Scenarios & Solutions"
-  author: Andrey Terekhin
-  date: 2025-09-02
-  url: https://regulaforensics.com/blog/video-injection-attacks/
-
 miteksystems:
   type: Article
   title: "Biometric injection attacks: the hidden threat to face authentication"
@@ -203,3 +196,9 @@ wsl2:
   author: Carlos Garcia
   date: 2021-04-26
   url: https://unix.stackexchange.com/questions/594470/wsl-2-does-not-have-lib-modules
+
+ebay:
+  type: Article
+  title: "USB Stick/Dongle Video Capture Devices for Computers"
+  author: eBay
+  url: https://www.ebay.com/b/USB-Stick-Dongle-Video-Capture-Devices-for-Computers/175679/bn_8956404

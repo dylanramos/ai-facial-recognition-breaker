@@ -14,11 +14,17 @@ Enfin, ce travail a également montré que les outils de génération IA sont au
 
 == Suites possibles
 
-=== Approfondir les mécanismes d'injection
+=== Utiliser un mécanisme d'injection physique
+
+Il existe des périphériques USB de capture vidéo permettant de diffuser un flux vidéo sur un ordinateur depuis un autre ordinateur @ebay. Ainsi, étant donné qu'un périphérique physique est utilisé pour la capture vidéo, il serait intéressant d'essayer de diffuser une vidéo IA depuis un ordinateur vers un autre afin de vérifier si Parship par exemple, détecte l'utilisation d'une fausse caméra ou non.
+
+=== Intercepter les appels API du navigateur
+
+La plupart des vérifications d'identité s'effectuent via un navigateur web, il serait possible d'écrire un script ou un plugin pour intercepter les appels API du navigateur afin de remplacer la vidéo transmise par une caméra physique par une vidéo générée par IA @miteksystems.
 
 === Utiliser un smartphone physique
 
-L'utilisation d'un émulateur Android a été détectée par Google. Tester les mêmes attaques sur un vrai smartphone permettrait de vérifier si la détection provient de l'émulation elle-même ou d'une analyse plus large du flux vidéo.
+L'utilisation d'un émulateur Android a été détectée par Google. Tester les mêmes attaques sur un vrai smartphone permettrait de vérifier si la détection provient de l'émulation elle-même ou d'une analyse plus large du flux vidéo. Cependant, cela nécessiterait de développer un autre outil que celui développé pour ce projet.
 
 === Échanger de visage en temps réel lors d'un appel vidéo
 
