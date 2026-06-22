@@ -12,7 +12,7 @@
 
 Contourner un système de vérification d'identité nécessite de pouvoir injecter une vidéo générée par IA dans le flux capturé par l'application comme si elle provenait d'une caméra physique. La caméra virtuelle est la solution retenue, il s'agit d'un périphérique logiciel qui se comporte du point de vue du système, comme une webcam réelle.
 
-La prise en charge des caméras virtuelles varie selon les systèmes d'exploitation. Sous Linux, elle repose sur un module du noyau dédié, tandis que sous Windows, elle requiert le développement d'un pilote spécifique @virtual-camera.
+La prise en charge des caméras virtuelles varie selon les systèmes d'exploitation. Sur Linux, elle repose sur un module du noyau dédié, tandis que sur Windows, elle requiert le développement d'un pilote spécifique @virtual-camera.
 
 == Solutions
 
@@ -20,13 +20,13 @@ L'objectif n'est pas de développer une caméra virtuelle de zéro, mais plutôt
 
 === Linux
 
-Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels @v4l2loopback-ref. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
+Sur Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels @v4l2loopback-ref. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras réelles par les applications.
 
 Le chapitre 2 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")] explique en détail comment installer `v4l2loopback` et comment utiliser `FFmpeg` pour diffuser un flux vidéo vers la caméra virtuelle créée.
 
 === Windows <04-windows>
 
-Sous Windows, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé @virtual-camera, soit utiliser un logiciel proposant cette fonctionnalité. OBS Studio par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci. Le problème avec ce type de logiciels, c'est qu'ils nécessitent des actions manuelles, notamment pour créer la caméra virtuelle et pour y diffuser un flux vidéo.
+Sur Windows, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé @virtual-camera, soit utiliser un logiciel proposant cette fonctionnalité. OBS Studio par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci. Le problème avec ce type de logiciels, c'est qu'ils nécessitent des actions manuelles, notamment pour créer la caméra virtuelle et pour y diffuser un flux vidéo.
 
 Comme l'explique le chapitre 3.3 du rapport détaillé #link("../rapports-detailles/cameras-virtuelles.pdf")[#underline("cameras-virtuelles.pdf")], l'utilisation de `FFmpeg` combinée à OBS Studio pour automatiser la diffusion d'un flux vidéo est possible, cependant, cela nécessite de devoir envoyer le flux via le protocole `UDP` à OBS Studio, ce qui engendre une latence importante.
 
@@ -53,7 +53,7 @@ Le tableau ci-dessous résume les différentes possibilités de création de cam
 
     [*OBS Studio*], [Linux, Windows], [Abstraction de l'OS, multi-plateforme], [Pas d'automatisation possible],
   ),
-  caption: "Comparaison des solutions de caméras virtuelles et de diffusion de flux vidéo sous Linux et Windows.",
+  caption: "Comparaison des solutions de caméras virtuelles et de diffusion de flux vidéo sur Linux et Windows.",
 )
 
 #set par(justify: true)
@@ -161,6 +161,6 @@ Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même
 
 == Conclusion
 
-Ce chapitre a établi que la combinaison `v4l2loopback` + `ffmpeg-python` sous Linux est la solution la plus adaptée au démonstrateur, car elle est entièrement automatisable, sans latence notable et sans dépendance à un logiciel tiers.
+Ce chapitre a établi que la combinaison `v4l2loopback` + `ffmpeg-python` sur Linux est la solution la plus adaptée au démonstrateur, car elle est entièrement automatisable, sans latence notable et sans dépendance à un logiciel tiers.
 
 Avec les modèles de génération IA sélectionnés au chapitre précédent et la couche de diffusion vidéo désormais définie, les éléments techniques nécessaires aux attaques sont en place. Le chapitre suivant présente les scénarios d'attaque du démonstrateur qui les intègre.

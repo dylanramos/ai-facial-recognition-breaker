@@ -121,13 +121,13 @@
 
 = Introduction
 
-Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Une fois la vidéo générée par IA, encore faut-il pouvoir la présenter à un site de vérification d'identité comme si elle provenait d'une vraie caméra. Le maillon technique entre la vidéo générée et le système de vérification est la caméra virtuelle, un périphérique logiciel qui simule une caméra physique aux yeux du système d'exploitation et des applications.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de Bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avènement des outils d'IA. Une fois la vidéo générée par IA, encore faut-il pouvoir la présenter à un site de vérification d'identité comme si elle provenait d'une vraie caméra. Le maillon technique entre la vidéo générée et le système de vérification est la caméra virtuelle, un périphérique logiciel qui simule une caméra physique aux yeux du système d'exploitation et des applications.
 
-Chaque système d'exploitation gère les caméras virtuelles différemment. Sous Linux, un module noyau dédié suffit #footnote[https://github.com/v4l2loopback/v4l2loopback], tandis que sous Windows, il faut recourir à un logiciel tiers ou développer un pilote personnalisé #footnote[https://medium.com/deelvin-machine-learning/how-does-obs-virtual-camera-plugin-work-on-windows-e92ab8986c4e#0878]. Ce rapport présente les solutions existantes pour créer des caméras virtuelles sur Linux et Windows, les étapes pour y diffuser un flux vidéo, leur utilisation dans un émulateur Android pour les sites imposant une vérification sur smartphone ainsi que les librairies Python disponibles pour automatiser l'ensemble du processus dans le cadre du démonstrateur.
+Chaque système d'exploitation gère les caméras virtuelles différemment. Sur Linux, un module noyau dédié suffit #footnote[https://github.com/v4l2loopback/v4l2loopback], tandis que sur Windows, il faut recourir à un logiciel tiers ou développer un pilote personnalisé #footnote[https://medium.com/deelvin-machine-learning/how-does-obs-virtual-camera-plugin-work-on-windows-e92ab8986c4e#0878]. Ce rapport présente les solutions existantes pour créer des caméras virtuelles sur Linux et Windows, les étapes pour y diffuser un flux vidéo, leur utilisation dans un émulateur Android pour les sites imposant une vérification sur smartphone ainsi que les librairies Python disponibles pour automatiser l'ensemble du processus dans le cadre du démonstrateur.
 
-= Caméras virtuelles sous Linux
+= Caméras virtuelles sur Linux
 
-Sous Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras physiques par les applications.
+Sur Linux, il existe un module noyau appelé `v4l2loopback` permettant de créer des périphériques vidéo virtuels. Avec `FFmpeg`, il est ensuite possible de diffuser un flux vidéo vers ces périphériques, qui seront détectés comme des caméras physiques par les applications.
 
 Les commandes qui vont suivre ont été effectuées sur une machine *Ubuntu 26.04*.
 
@@ -174,7 +174,7 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
   sourcecode[```sh
   ffmpeg -re -stream_loop -1 -i video.mp4 -f v4l2 -pix_fmt yuv420p /dev/video2
   ```],
-  caption: [Diffusion d'une vidéo sur une caméra virtuelle sous Linux.],
+  caption: [Diffusion d'une vidéo sur une caméra virtuelle sur Linux.],
 )
 
 - `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois).
@@ -232,7 +232,7 @@ Le script ci-dessous automatise le processus de rechargement du module et de dif
   echo "Press Ctrl+C to stop streaming"
   ffmpeg -re -stream_loop -1 -i "$VIDEO_FILE" -f v4l2 -pix_fmt yuv420p /dev/video2
   ```],
-  caption: [Script d'automatisation pour diffuser une vidéo sur une caméra virtuelle sous Linux.],
+  caption: [Script d'automatisation pour diffuser une vidéo sur une caméra virtuelle sur Linux.],
 )
 
 Pour l'utiliser, il suffit de lancer la commande suivante :
@@ -244,9 +244,9 @@ Pour l'utiliser, il suffit de lancer la commande suivante :
   caption: [Lancement du script d'automatisation pour diffuser une vidéo sur la caméra virtuelle.],
 )
 
-= Caméras virtuelles sous Windows
+= Caméras virtuelles sur Windows
 
-Sous Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote customisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
+Sur Windows, contrairement à Linux, il n'existe pas d'outils en ligne de commande permettant de créer des caméras virtuelles. Pour pouvoir créer une caméra virtuelle, il faut soit développer un pilote personnalisé #footnote[https://medium.com/@sbonnet.dev/how-to-build-a-virtual-camera-under-linux-and-windows-7af0e6433796#3914], soit utiliser un logiciel proposant cette fonctionnalité.
 OBS Studio par exemple, utilise la scène comme caméra virtuelle et permet de diffuser un flux vidéo vers celle-ci.
 
 Les instructions qui vont suivre ont été effectuées sur une machine virtuelle *Windows 11 25H2*.
@@ -296,7 +296,7 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
   sourcecode[```sh
   ffmpeg.exe -re -stream_loop -1 -i video.mp4 -c:v libx264 -preset ultrafast -tune zerolatency -f mpegts "udp://127.0.0.1:1234?pkt_size=1316"
   ```],
-  caption: [Diffusion d'une vidéo sur une caméra virtuelle sous Windows en utilisant `FFmpeg`.],
+  caption: [Diffusion d'une vidéo sur une caméra virtuelle sur Windows en utilisant `FFmpeg`.],
 )
 
 - `re` : temps réél (simule une vraie caméra sans envoyer toutes les images en une fois).
@@ -310,7 +310,7 @@ La commande ci-dessous joue la vidéo `video.mp4` en boucle sur la caméra virtu
 
 = Comparaison des solutions
 
-Comme vu dans les chapitres précédents, l'utilisation d'une caméra virtuelle sous Linux est relativement simple grâce à `v4l2loopback` et `FFmpeg`, tandis que sous Windows, il est nécessaire d'utiliser un logiciel tiers comme OBS Studio pour créer une caméra virtuelle, ce qui ajoute des étapes manuelles ou de la latence si l'on souhaite automatiser le processus avec `FFmpeg`.
+Comme vu dans les chapitres précédents, l'utilisation d'une caméra virtuelle sur Linux est relativement simple grâce à `v4l2loopback` et `FFmpeg`, tandis que sur Windows, il est nécessaire d'utiliser un logiciel tiers comme OBS Studio pour créer une caméra virtuelle, ce qui ajoute des étapes manuelles ou de la latence si l'on souhaite automatiser le processus avec `FFmpeg`.
 
 #set par(justify: false)
 
@@ -331,16 +331,16 @@ Comme vu dans les chapitres précédents, l'utilisation d'une caméra virtuelle 
 
     [*OBS Studio*], [Linux, Windows], [Abstraction de l'OS, multi-plateforme], [Pas d'automatisation possible],
   ),
-  caption: "Comparaison des solutions de caméras virtuelles et de diffusion de flux vidéo sous Linux et Windows.",
+  caption: "Comparaison des solutions de caméras virtuelles et de diffusion de flux vidéo sur Linux et Windows.",
 )
 
 #set par(justify: true)
 
-Ainsi, la solution v4l2loopback + FFmpeg sous Linux semble être la plus adaptée pour le développement du démonstrateur (CLI), car elle permet d'automatiser entièrement le processus de création de la caméra virtuelle et de diffusion du flux vidéo, le tout avec une latence faible et sans dépendance à un logiciel tiers.
+Ainsi, la solution v4l2loopback + FFmpeg sur Linux semble être la plus adaptée pour le développement du démonstrateur (CLI), car elle permet d'automatiser entièrement le processus de création de la caméra virtuelle et de diffusion du flux vidéo, le tout avec une latence faible et sans dépendance à un logiciel tiers.
 
 = Utilisation d'une caméra virtuelle sur un émulateur Android (Linux)
 
-Certains sites demandent de vérifier l'identité de l'utilisateur sur un téléphone plutôt que sur un ordinateur, il faut donc que la caméra virtuelle de la machine hôte soit détectée par les émulateurs Android. L'exemple ci-dessous utilise `Genymotion` comme émulateur Android (sous Linux) car il est plus rapide et plus léger que l'émulateur de Android Studio.
+Certains sites demandent de vérifier l'identité de l'utilisateur sur un téléphone plutôt que sur un ordinateur, il faut donc que la caméra virtuelle de la machine hôte soit détectée par les émulateurs Android. L'exemple ci-dessous utilise `Genymotion` comme émulateur Android (sur Linux) car il est plus rapide et plus léger que l'émulateur de Android Studio.
 
 == Installation de Genymotion
 
@@ -462,7 +462,7 @@ La vidéo `video.mp4` est maintenant diffusée en boucle sur la caméra virtuell
 
 == ffmpeg-python
 
-La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scanant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu précédemment, l'utilisation de `FFmpeg` avec OBS Studio sur Windows implique de devoir diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scannant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu précédemment, l'utilisation de `FFmpeg` avec OBS Studio sur Windows implique de devoir diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
 
 L'exemple ci-dessous montre comment utiliser `ffmpeg-python` sur Linux. Pour que cet exemple fonctionne, il faut avoir une caméra virtuelle disponible (voir le #underline()[@v4l2loopback-install] pour l'installation) ainsi que `FFmpeg` installé.
 
@@ -523,6 +523,6 @@ Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même
 
 Ce rapport a permis d'identifier et de valider les solutions techniques nécessaires pour diffuser un flux vidéo généré par IA vers une caméra virtuelle, condition indispensable pour mener les attaques contre les systèmes de vérification d'identité en ligne.
 
-Pour la plateforme Linux, la combinaison `v4l2loopback` et `FFmpeg` s'est imposée comme la solution la plus adaptée au démonstrateur. En effet, elle est entièrement automatisable, a une faible latence et ne dépend pas d'un logiciel tiers. Sous Windows, OBS Studio constitue l'alternative principale, au prix d'étapes manuelles ou d'une latence accrue lors de l'automatisation via UDP. Pour les sites exigeant une vérification sur smartphone, l'émulateur `Genymotion` sous Linux permet d'injecter le flux de la caméra virtuelle de la machine hôte directement dans l'appareil Android virtuel, couvrant ainsi ce cas d'usage sans nécessiter de vrai téléphone.
+Pour la plateforme Linux, la combinaison `v4l2loopback` et `FFmpeg` s'est imposée comme la solution la plus adaptée au démonstrateur. En effet, elle est entièrement automatisable, a une faible latence et ne dépend pas d'un logiciel tiers. Sur Windows, OBS Studio constitue l'alternative principale, au prix d'étapes manuelles ou d'une latence accrue lors de l'automatisation via UDP. Pour les sites exigeant une vérification sur smartphone, l'émulateur `Genymotion` sur Linux permet d'injecter le flux de la caméra virtuelle de la machine hôte directement dans l'appareil Android virtuel, couvrant ainsi ce cas d'usage sans nécessiter de vrai téléphone.
 
 Côté librairies Python, `ffmpeg-python` a été retenue pour le développement du démonstrateur en raison de sa flexibilité, notamment pour la possibilité de diffuser des images statiques et d'éditer les vidéos à la volée. L'ensemble de ces briques techniques forme le socle d'injection vidéo sur lequel s'appuieront les attaques décrites dans les rapports suivants.

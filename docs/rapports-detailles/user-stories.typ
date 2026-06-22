@@ -119,7 +119,7 @@
 
 = Introduction
 
-Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Il présente les scénarios d'attaque dont nous voulons vérifier la faisabilité dans un démonstrateur. Les scénarios d'attaque ainsi que tous les sites cités se basent sur les quatre patterns de vérification d'identité identifiés au chapitre 7 du rapport détaillé #underline[#link("sites-de-verification.pdf")].
+Ce rapport détaillé est rédigé dans le cadre de mon travail de Bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avènement des outils d'IA. Il présente les scénarios d'attaque dont nous voulons vérifier la faisabilité dans un démonstrateur. Les scénarios d'attaque ainsi que tous les sites cités se basent sur les quatre patterns de vérification d'identité identifiés au chapitre 7 du rapport détaillé #underline[#link("sites-de-verification.pdf")].
 
 À noter que seuls les scénarios impliquant l'utilisation de l'IA sont pris en compte. En effet, l'objectif de ce travail est de démontrer les risques face aux progrès et à la démocratisation de l'IA dans les processus de vérification d'identité en ligne. Ainsi, les sites qui ne demandent que d'envoyer une photo d'un document d'identité par exemple ne sont pas pris en compte, car le document peut être facilement falsifié avec des outils de retouche d'image classiques.
 
@@ -208,8 +208,8 @@ De plus, comme pour le pattern précédent, la création du compte se fait via l
 
 = Conclusion
 
-Ce rapport a défini l'ensemble des scénarios d'attaque que le démonstrateur devra être capable de couvrir. Au total, sept scénarios distincts ont été identifiés, répartis sur les quatre patterns de vérification d'identité étudiés, chacun représentant un niveau de difficulté croissant pour l'attaquant.
+Ce rapport a défini l'ensemble des scénarios d'attaque que le démonstrateur devra être capable de couvrir. Au total, sept scénarios distincts ont été identifiés, répartis sur les quatre patterns de vérification d'identité étudiés.
 
-Le pattern le plus accessible est la vérification par selfie vidéo car il ne nécessite ni document d'identité ni correspondance avec une photo. Il est suivi par la vérification par scan de document et selfie vidéo sur ordinateur, puis sur smartphone, cette dernière ajoutant la contrainte de l'environnement mobile. Le pattern le plus difficile reste la vérification par appel vidéo avec un agent humain, qui impose soit de préparer une vidéo en avance, soit de réagir en temps réel aux instructions de l'employé, avec une dimension d'ingénierie sociale.
+Le pattern le plus accessible est la vérification par selfie vidéo car il ne nécessite ni document d'identité ni correspondance avec une photo. Il est suivi par la vérification par scan de document et selfie vidéo sur ordinateur, puis sur smartphone, cette dernière ajoutant la contrainte de l'environnement mobile. Le pattern le plus difficile reste la vérification par appel vidéo avec un agent humain, qui impose de réagir en temps réel aux instructions de l'employé, avec une dimension d'ingénierie sociale.
 
 Ces scénarios constituent la base fonctionnelle du démonstrateur et permettront d'évaluer concrètement, site par site, dans quelle mesure les outils d'IA actuels sont capables de tromper des systèmes de vérification d'identité réels, qu'ils soient automatisés ou supervisés par un humain.

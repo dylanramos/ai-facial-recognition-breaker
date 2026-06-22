@@ -119,7 +119,7 @@
 
 = Introduction
 
-Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Dans ce contexte, il est essentiel d'identifier les plateformes qui imposent une vérification d'identité et de comprendre les mécanismes qu'elles mettent en œuvre pour authentifier leurs utilisateurs. En effet, avant de pouvoir évaluer la robustesse de ces systèmes face aux attaques basées sur l'intelligence artificielle, il convient de dresser un panorama des pratiques actuelles. Ce rapport présente donc les résultats d'une investigation menée sur un large éventail de sites afin de recenser leurs exigences en matière d'identité et d'établir une classification par niveau de difficulté d'attaque.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de Bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avènement des outils d'IA. Dans ce contexte, il est essentiel d'identifier les plateformes qui imposent une vérification d'identité et de comprendre les mécanismes qu'elles mettent en œuvre pour authentifier leurs utilisateurs. En effet, avant de pouvoir évaluer la robustesse de ces systèmes face aux attaques basées sur l'intelligence artificielle, il convient de dresser un panorama des pratiques actuelles. Ce rapport présente donc les résultats d'une investigation menée sur un large éventail de sites afin de recenser leurs exigences en matière d'identité et d'établir une classification par niveau de difficulté d'attaque.
 
 = Synthèse des recherches <synthese>
 
@@ -591,7 +591,7 @@ Le reste des sites sont ceux qui seront testés lors des attaques, car ils impli
 
 = Patterns de vérification des sites cibles <patterns>
 
-Parmis les sites identifiés au #underline()[@sites-cibles], plusieurs d'entre utilisent un même processus de vérification d'identité.
+Parmi les sites identifiés au #underline()[@sites-cibles], plusieurs d'entre utilisent un même processus de vérification d'identité.
 
 == Vérification par selfie vidéo uniquement <selfie-video>
 
@@ -665,4 +665,4 @@ Ce rapport a permis d'établir un panorama complet des pratiques de vérificatio
 
 Quatre patterns de vérification distincts ont été identifiés, allant du simple selfie vidéo sans document d'identité jusqu'à l'appel vidéo avec un agent humain sur smartphone. Les sites ne demandant qu'un selfie vidéo sont a priori les plus vulnérables à un contournement de vérification d'identité par IA, alors que les plateformes imposant un appel vidéo avec un employé constituent le niveau de protection le plus difficile à contourner.
 
-Ces résultats fournissent la base nécessaire aux expérimentations à venir dans le cadre de ce travail de bachelor. Les 21 sites retenus comme cibles couvrent l'ensemble des patterns identifiés et permettront d'évaluer dans quelle mesure les outils d'IA actuels sont capables de tromper des systèmes de vérification d'identité réels.
+Ces résultats fournissent la base nécessaire aux expérimentations à venir dans le cadre de ce travail de Bachelor. Les 21 sites retenus comme cibles couvrent l'ensemble des patterns identifiés et permettront d'évaluer dans quelle mesure les outils d'IA actuels sont capables de tromper des systèmes de vérification d'identité réels.

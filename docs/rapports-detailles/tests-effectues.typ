@@ -121,7 +121,7 @@
 
 = Introduction
 
-Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Si plusieurs sites ont pu être contournés avec succès, d'autres ont résisté aux tentatives d'attaque, soit parce qu'ils utilisent une technologie de vérification plus avancée, soit parce que le processus de vérification intègre des mécanismes de détection supplémentaires. Ce rapport documente ces tentatives infructueuses afin de comprendre les limites actuelles des outils d'IA face à des systèmes de vérification d'identité plus robustes. Les tests ont porté sur le contournement du selfie vidéo sur Facebook et Parship, ainsi que sur la falsification de documents d'identité pour tromper la vérification d'âge de Roblox.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de Bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avènement des outils d'IA. Si plusieurs sites ont pu être contournés avec succès, d'autres ont résisté aux tentatives d'attaque, soit parce qu'ils utilisent une technologie de vérification plus avancée, soit parce que le processus de vérification intègre des mécanismes de détection supplémentaires. Ce rapport documente ces tentatives infructueuses afin de comprendre les limites actuelles des outils d'IA face à des systèmes de vérification d'identité plus robustes. Les tests ont porté sur le contournement du selfie vidéo sur Facebook et Parship, ainsi que sur la falsification de documents d'identité pour tromper la vérification d'âge de Roblox.
 
 = Tests effectués pour les selfies vidéo
 
@@ -144,11 +144,11 @@ Il est possible que le système de vérification analyse les caractéristiques d
 
 Nous pouvons voir que mis à part le nom de la caméra, rien n'indique que la #underline[@fake-camera] est une caméra virtuelle, en effet, les caméras ont les mêmes megapixels (0.31 MP), résolutions (640x480) et formats d'image (1.33). D'autre part, toutes les informations en dessous de "Aspect Ratio" sont différentes, mais cela est normal car elles dépendent du contenu de la vidéo et non de la caméra elle-même. Un point intéressant à noter est que la caméra virtuelle a une fréquence d'images de 31 fps alors que la caméra physique en a une de 30 fps, ce qui pourrait suggérer une source logicielle dont la synchronisation n'est pas liée à une horloge matérielle. Mais cela n'est pas suffisant pour conclure que la caméra virtuelle est détectée comme telle car une instabilité de mesure pourrait faire passer une valeur réelle de 30 à une valeur affichée de 31.
 
-== Analyse des métadonnées des vidéos
+== Analyse des méta-données des vidéos
 
-Étant donné que les caractéristiques des deux caméras sont plutôt similaires, je me suis penché sur l'analyse des métadonnées des vidéos diffusées. Pour cela, j'ai commencé par installer ExifTool, un outil en ligne de commande qui permet d'extraire et de modifier les métadonnées des fichiers multimédias #footnote[https://exiftool.org/].
+Étant donné que les caractéristiques des deux caméras sont plutôt similaires, je me suis penché sur l'analyse des méta-données des vidéos diffusées. Pour cela, j'ai commencé par installer ExifTool, un outil en ligne de commande qui permet d'extraire et de modifier les méta-données des fichiers multimédias #footnote[https://exiftool.org/].
 
-J'ai ensuite repris une vidéo générée par le modèle HappyHorse 1.0 pour analyser ses métadonnées.
+J'ai ensuite repris une vidéo générée par le modèle HappyHorse 1.0 pour analyser ses méta-données.
 
 #sourcecode[```sh
 exiftool happyhorse-1-0.mp4
@@ -232,9 +232,9 @@ Avg Bitrate                     : 2.99 Mbps
 Rotation                        : 0
 ```]
 
-Les métadonnées ci-dessus nous montrent qu'effectivement, la vidéo a été générée par une IA, en effet, le champ `AIGC` signifie "AI-Generated Content". Cette mesure découle du cadre réglementaire chinois relatif à l'étiquetage obligatoire des contenus générés par l'IA, qui depuis septembre 2025, impose aux services d'IA générative d'intégrer une balise lisible par machine dans les métadonnées du fichier #footnote[https://www.insideprivacy.com/international/china/china-releases-new-labeling-requirements-for-ai-generated-content/]. Les vidéos générées par ce modèle risquent donc d'être détectées par les systèmes de vérification d'identité, mais qu'en est-il des autres modèles ?
+Les méta-données ci-dessus nous montrent qu'effectivement, la vidéo a été générée par une IA, en effet, le champ `AIGC` signifie "AI-Generated Content". Cette mesure découle du cadre réglementaire chinois relatif à l'étiquetage obligatoire des contenus générés par l'IA, qui depuis septembre 2025, impose aux services d'IA générative d'intégrer une balise lisible par machine dans les méta-données du fichier #footnote[https://www.insideprivacy.com/international/china/china-releases-new-labeling-requirements-for-ai-generated-content/]. Les vidéos générées par ce modèle risquent donc d'être détectées par les systèmes de vérification d'identité, mais qu'en est-il des autres modèles ?
 
-Après avoir analysé les métadonnées de HappyHorse 1.0, j'ai analysé celles d'une vidéo générée par le modèle Kling 3.0.
+Après avoir analysé les méta-données de HappyHorse 1.0, j'ai analysé celles d'une vidéo générée par le modèle Kling 3.0.
 
 #sourcecode[```sh
 exiftool kling-3-0.mp4
@@ -309,16 +309,16 @@ Avg Bitrate                     : 3.68 Mbps
 Rotation                        : 0
 ```]
 
-Nous pouvons voir que, bien que la vidéo soit générée par un modèle chinois, les métadonnées ne contiennent pas de champ `AIGC`. Cependant, lors d'une vérification d'identité sur Facebook par exemple, la vidéo n'est pas uploadée telle quelle, elle est capturée en temps réel par le navigateur et probablement réencodée avant d'être envoyée au serveur.
+Nous pouvons voir que, bien que la vidéo soit générée par un modèle chinois, les méta-données ne contiennent pas de champ `AIGC`. Cependant, lors d'une vérification d'identité sur Facebook par exemple, la vidéo n'est pas uploadée telle quelle, elle est capturée en temps réel par le navigateur et probablement réencodée avant d'être envoyée au serveur.
 
-Par curiosité, nous pouvons récupérer la vidéo qui est capturée par le navigateur lors du selfie vidéo sur Facebook pour analyser ses métadonnées. Pour cela, il faut effectuer le selfie vidéo une première fois, inspecter la page du navigateur, puis aller dans l'onglet "Application".
+Par curiosité, nous pouvons récupérer la vidéo qui est capturée par le navigateur lors du selfie vidéo sur Facebook pour analyser ses méta-données. Pour cela, il faut effectuer le selfie vidéo une première fois, inspecter la page du navigateur, puis aller dans l'onglet "Application".
 
 #figure(
   rect(image("../images/08-attaques-echouees/facebook-page.png"), stroke: 0.1pt),
   caption: "Récupération de la vidéo capturée par Facebook lors du selfie vidéo.",
 )
 
-Nous pouvons ensuite lancer ExifTool pour analyser les métadonnées de cette vidéo.
+Nous pouvons ensuite lancer ExifTool pour analyser les méta-données de cette vidéo.
 
 #sourcecode[```sh
 exiftool 94b92281-7599-4059-973a-4cfdf231a4ec.webm
@@ -355,13 +355,13 @@ Image Size                      : 640x480
 Megapixels                      : 0.307
 ```]
 
-Nous pouvons voir que dans les métadonnées de la vidéo qui sera envoyée à Facebook, il n'y a aucune mention d'IA. En effet, la vidéo a été créée par le navigateur Chrome et encodée avec le codec VP8, les métadonnées seront donc toujours similaires quel que soit la caméra ou la vidéo utilisée.
+Nous pouvons voir que dans les méta-données de la vidéo qui sera envoyée à Facebook, il n'y a aucune mention d'IA. En effet, la vidéo a été créée par le navigateur Chrome et encodée avec le codec VP8, les méta-données seront donc toujours similaires quel que soit la caméra ou la vidéo utilisée.
 
-Nous pouvons donc conclure que même si une vidéo contient des métadonnées informant que celle-ci a été générée avec de l'IA, cela n'aura aucun impact sur la vérification d'identité car elle est capturée en temps réel par le navigateur avant d'être envoyée au serveur.
+Nous pouvons donc conclure que même si une vidéo contient des méta-données informant que celle-ci a été générée avec de l'IA, cela n'aura aucun impact sur la vérification d'identité, car elle est capturée en temps réel par le navigateur avant d'être envoyée au serveur.
 
 == Ajout de bruit dans les vidéos
 
-Une vidéo générée par IA est souvent très "parfaite", c'est-à-dire qu'elle ne contient pas de bruit ou d'imperfections dus aux capteurs d'une caméra physique. Il est donc possible que les systèmes de vérification repèrent les vidéos générées par IA en analysant le manque d'imperfections dans une vidéo. Pour tester cette hypothèse, j'ai ajouté du bruit #footnote[https://ffmpeg.org/ffmpeg-filters.html#noise] dans les vidéos à l'aide d'un filtre FFmpeg lors des diffusions sur la caméra virtuelle.
+Une vidéo générée par IA est souvent très "parfaite", c'est-à-dire qu'elle ne contient pas de bruit ou d'imperfections dûs aux capteurs d'une caméra physique. Il est donc possible que les systèmes de vérification repèrent les vidéos générées par IA en analysant le manque d'imperfections dans une vidéo. Pour tester cette hypothèse, j'ai ajouté du bruit #footnote[https://ffmpeg.org/ffmpeg-filters.html#noise] dans les vidéos à l'aide d'un filtre FFmpeg lors des diffusions sur la caméra virtuelle.
 
 #sourcecode[```py
 ffmpeg_input.filter("noise", c0s=8, c0f="t+u", c1s=2, c1f="t", c2s=2, c2f="t")
@@ -412,7 +412,7 @@ Sans surprise, cette méthode ne fonctionne pas non plus, Facebook détecte que 
 
 == Utilisation d'un échangeur de visage en temps réel
 
-Plutôt que de générer ou d'éditer une vidéo, j'ai tenté d'utiliser #underline[#link("https://github.com/hacksider/deep-live-cam")[Deep-Live-Cam]], un échangeur de visage en temps réel permettant de remplacer son visage par celui d'une autre personne #footnote[https://github.com/hacksider/deep-live-cam]. L'outil est un programme Python qui tourne sur la machine locale et qui s'appuie sur des modèles pré-entraînés comme `inswapper` pour l'échange de visages  et `GFPGAN` pour l'amélioration des visages #footnote[https://huggingface.co/hacksider/deep-live-cam/tree/main].
+Plutôt que de générer ou d'éditer une vidéo, j'ai tenté d'utiliser #underline[#link("https://github.com/hacksider/deep-live-cam")[Deep-Live-Cam]], un échangeur de visage en temps réel permettant de remplacer son visage par celui d'une autre personne #footnote[https://github.com/hacksider/deep-live-cam]. L'outil est un programme Python qui tourne sur la machine locale et qui s'appuie sur des modèles préentraînés comme `inswapper` pour l'échange de visages  et `GFPGAN` pour l'amélioration des visages #footnote[https://huggingface.co/hacksider/deep-live-cam/tree/main].
 
 Le problème est que pour utiliser cet outil, il faut avoir un système très puissant avec une bonne carte graphique, comme le montre la #underline[@deeplivecam] ci-dessous.
 
@@ -616,4 +616,4 @@ La première concerne la détection des caméras virtuelles. Parship, en particu
 
 La seconde concerne la détection des vidéos générées par IA. Facebook a systématiquement bloqué les selfies vidéo générés par IA, et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel.
 
-Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification, même lorsque la profondeur de la scène a été simulée. Ces échecs indiquent que ces systèmes intègrent probablement une analyse de liveness ou une détection de cohérence visuelle plus élaborée.
+Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification, même lorsque la profondeur de la scène a été simulée. Ces échecs indiquent que ces systèmes intègrent probablement une détection de cohérence visuelle plus élaborée.

@@ -121,7 +121,7 @@
 
 = Introduction
 
-Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Pour rendre ces risques concrets et reproductibles, un démonstrateur sous forme de CLI (Command Line Interface) a été développé. Cet outil regroupe en une seule interface les différentes briques techniques explorées dans les rapports précédents comme la création de caméras virtuelles, la génération et l'édition d'images et de vidéos via des modèles d'IA et la diffusion de flux vidéo vers des sites de vérification d'identité.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de Bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avènement des outils d'IA. Pour rendre ces risques concrets et reproductibles, un démonstrateur sous forme de CLI (Command Line Interface) a été développé. Cet outil regroupe en une seule interface les différentes briques techniques explorées dans les rapports précédents comme la création de caméras virtuelles, la génération et l'édition d'images et de vidéos via des modèles d'IA et la diffusion de flux vidéo vers des sites de vérification d'identité.
 
 Ce rapport présente les différentes commandes disponibles avec des exemples d'utilisation concrets. La #underline[@available-cmds] ci-dessous illustre les commandes disponibles après l'installation du démonstrateur.
 
@@ -357,4 +357,4 @@ La commande `remaining-credits` permet d'afficher le nombre de crédits restants
 
 Ce rapport a présenté l'ensemble des commandes du démonstrateur `aifrb`, organisées en trois catégories : les commandes de gestion de caméra virtuelle, les commandes de génération et d'édition d'images et de vidéos via l'API de KIE AI et la commande de consultation du solde de crédits.
 
-Le démonstrateur constitue ainsi le point d'entrée opérationnel du travail de bachelor en permettant de reproduire les attaques décrites dans les User Stories et de mesurer concrètement dans quelle mesure les systèmes de vérification d'identité en ligne résistent à ces techniques basées sur l'IA.
+Le démonstrateur constitue ainsi le point d'entrée opérationnel du travail de Bachelor en permettant de reproduire les attaques décrites dans les User Stories et de mesurer concrètement dans quelle mesure les systèmes de vérification d'identité en ligne résistent à ces techniques basées sur l'IA.

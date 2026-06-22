@@ -121,7 +121,7 @@
 
 = Introduction
 
-Ce rapport détaillé est rédigé dans le cadre de mon travail de bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avénement des outils d'IA. Dans ce contexte, la capacité à modifier des documents d'identité ou à générer des selfies vidéo convaincants constitue le cœur technique des attaques étudiées. Pour y parvenir, un attaquant doit s'appuyer sur des modèles de génération d'images et de vidéos IA dont l'offre évolue très rapidement, ce qui rend tout choix définitif rapidement obsolète.
+Ce rapport détaillé est rédigé dans le cadre de mon travail de Bachelor qui vise à démontrer les risques de la vérification d'identité en ligne avec l'avènement des outils d'IA. Dans ce contexte, la capacité à modifier des documents d'identité ou à générer des selfies vidéo convaincants constitue le cœur technique des attaques étudiées. Pour y parvenir, un attaquant doit s'appuyer sur des modèles de génération d'images et de vidéos IA dont l'offre évolue très rapidement, ce qui rend tout choix définitif rapidement obsolète.
 
 Plutôt que de souscrire à chaque fournisseur individuellement et de s'adapter à chaque API, ce rapport explore l'utilisation d'un service agrégateur appelé #link("https://kie.ai/")[#underline("KIE AI")]. Ce service regroupe les APIs de nombreux fournisseurs et expose une interface unifiée plus simple à intégrer et souvent moins coûteuse. Ce rapport présente les tests menés sur les modèles disponibles, tant pour la génération d'images que pour la génération de vidéos afin d'identifier les plus adaptés aux scénarios d'attaque.
 
@@ -235,7 +235,7 @@ Les modèles de génération d'images doivent être capables de modifier des ima
 
 == Text-to-Image
 
-Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les visuels à partir de zéro. Ils sont utiles pour générer des images de personnes fictives mais ne sont pas adaptés pour modifier des images existantes.
+Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les visuels à partir de zéro. Ils sont utiles pour générer des images de personnes fictives, mais ne sont pas adaptés pour modifier des images existantes.
 
 == Image-to-Image
 
@@ -288,7 +288,7 @@ La photo d'identité de la #underline[@face] a été générée à l'aide d'un m
   ),
 )
 
-La modification de la carte d'identité est plutôt bien réussie, tous les changements demandés ont été effectués et les motifs de la carte sont conservés, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
+La modification de la carte d'identité est plutôt bien réussie, tous les changements demandés ont été effectués et les motifs de la carte sont conservés, notamment sur les photos. Par contre, les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
 
 === GPT Image 2 (OpenAI)
 
@@ -305,7 +305,7 @@ La modification de la carte d'identité est plutôt bien réussie, tous les chan
   ),
 )
 
-La modification de la carte d'identité n'est pas dutout réussie, le design de la carte a complètement été modifié et le modèle a explicitement indiqué sur la carte que celle-ci n'est pas valide.
+La modification de la carte d'identité n'est pas du tout réussie, le design de la carte a complètement été modifié et le modèle a explicitement indiqué sur la carte que celle-ci n'est pas valide.
 
 === Grok Imagine (xAI)
 
@@ -339,7 +339,7 @@ La modification de la carte d'identité est plutôt moyenne, les images n'ont pa
   ),
 )
 
-La modification de la carte d'identité est plutôt mauvaise, les images ont été modifiées mais les motifs n'ont pas été conservés. De plus, le format de la carte a été modifié et les noms ainsi que la date de naissance sont malformés.
+La modification de la carte d'identité est plutôt mauvaise, les images ont été modifiées, mais les motifs n'ont pas été conservés. De plus, le format de la carte a été modifié et les noms ainsi que la date de naissance sont mal formés.
 
 === Seedream 4.5 (ByteDance)
 
@@ -394,15 +394,15 @@ Les modèles de génération de vidéos doivent permettre de générer des vidé
 
 == Text-to-Video
 
-Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les visuels et les mouvements à partir de zéro. Cela leur laisse beaucoup de créativité mais rend plus difficile le contrôle du résultat final, ce qui peut être problématique pour la vérification d'identité.
+Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les visuels et les mouvements à partir de zéro. Cela leur laisse beaucoup de créativité, mais rend plus difficile le contrôle du résultat final, ce qui peut être problématique pour la vérification d'identité.
 
 == Image-to-Video
 
-Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt en les reliant. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
+Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt en les reliant. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité, car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
 
 == Video-to-Video
 
-Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
+Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles, car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
 
 == Génération de selfies vidéo à partir d'une image <generation-selfie>
 
@@ -421,7 +421,7 @@ Plusieurs modèles de type Image-to-Video ont été testés pour vérifier leur 
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[videos/03-generation-ia/grok-imagine-video-1-5.mp4]]
 
-Le résultat est bon, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
+Le résultat est bon, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de cinq secondes.
 
 === HappyHorse 1.0 (Alibaba)
 
@@ -433,7 +433,7 @@ Le résultat est plutôt moyen, la personne effectue les actions demandées mais
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0.mp4")[videos/03-generation-ia/kling-3-0.mp4]]
 
-Le résultat est plutôt mauvais, la personne effectue les mouvements haut et droite en même temps et les cheuveux sont trop brillants comme pour le modèle HappyHorse 1.0, ce qui rend la vidéo peu réaliste. De plus, l'ordre des mouvements n'est pas respecté.
+Le résultat est plutôt mauvais, la personne effectue les mouvements haut et droite en même temps et les cheveux sont trop brillants comme pour le modèle HappyHorse 1.0, ce qui rend la vidéo peu réaliste. De plus, l'ordre des mouvements n'est pas respecté.
 
 === Veo 3.1 (Google)
 
@@ -501,7 +501,7 @@ Le résultat est plutôt moyen, nous pouvons voir à la seconde 1 qu'il y a un l
 
 Vidéo : #underline[#link("../videos/03-generation-ia/wan-2-7-edit.mp4")[videos/03-generation-ia/wan-2-7-edit.mp4]]
 
-Le résultat est plutôt moyen, la caméra est tremblante et la machoîre change de forme au début de la vidéo. Néanmoins, les mouvements de la personne sont corrects et les cheveux sont réalistes.
+Le résultat est plutôt moyen, la caméra est tremblante et la mâchoire change de forme au début de la vidéo. Néanmoins, les mouvements de la personne sont corrects et les cheveux sont réalistes.
 
 === Kling Motion Control 3.0 (Kuaishou) <kling-motion-control>
 
@@ -545,4 +545,4 @@ Le tableau ci-dessous résume les résultats obtenus au chapitre précédent pou
 
 Ce rapport a permis d'identifier les modèles de génération d'images et de vidéos IA les plus adaptés aux scénarios d'attaque contre les systèmes de vérification d'identité en ligne. Trois catégories de tâches ont été évaluées : la modification de documents d'identité, la génération de selfies vidéo à partir d'une image et le remplacement d'une personne dans une vidéo existante.
 
-Pour la modification de documents d'identité, le modèle *Nano Banana 2* s'est distingué comme le plus fiable car il est le seul à avoir conservé le design et les motifs de la carte tout en appliquant correctement les modifications demandées. Pour la génération de selfies vidéo à partir d'une image, *Grok Imagine Video 1.5* a fourni les meilleurs résultats en respectant l'ordre des mouvements et préservant les traits de l'image de référence. Enfin, pour le remplacement d'une personne dans une vidéo, *Kling Motion Control 3.0* s'est montré le plus convaincant grâce à la bonne préservation de l'arrière-plan et au réalisme des mouvements générés. Ces résultats permettent ainsi d'établir les outils qui seront utilisés dans les phases d'attaque du travail de bachelor.
+Pour la modification de documents d'identité, le modèle *Nano Banana 2* s'est distingué comme le plus fiable car il est le seul à avoir conservé le design et les motifs de la carte tout en appliquant correctement les modifications demandées. Pour la génération de selfies vidéo à partir d'une image, *Grok Imagine Video 1.5* a fourni les meilleurs résultats en respectant l'ordre des mouvements et préservant les traits de l'image de référence. Enfin, pour le remplacement d'une personne dans une vidéo, *Kling Motion Control 3.0* s'est montré le plus convaincant grâce à la bonne préservation de l'arrière-plan et au réalisme des mouvements générés. Ces résultats permettent ainsi d'établir les outils qui seront utilisés dans les phases d'attaque du travail de Bachelor.
