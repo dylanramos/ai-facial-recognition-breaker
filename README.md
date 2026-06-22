@@ -11,7 +11,8 @@ aifrb/
 │   ├── rapports-detailles/       # Topic-specific detailed reports
 │   ├── diagrammes/               # Draw.io architecture and workflow diagrams
 │   ├── images/                   # Images used in the reports
-│   └── videos/                   # Videos used in the reports
+│   ├── videos/                   # Videos used in the reports
+│   └── affiche/                  # Poster for the bachelor's thesis presentation
 ├── src/
 │   └── aifrb/
 │       ├── main.py               # CLI entry point (Typer app)

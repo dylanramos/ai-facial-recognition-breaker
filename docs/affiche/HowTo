@@ -1,0 +1,2 @@
+# Compile with local fonts and new entry file
+typst compile --font-path ./affiche/fonts ./affiche/affiche.typ

@@ -47,6 +47,7 @@ Le projet est organisé de la manière suivante :
 - `docs/diagrammes/`: diagrammes Draw.io (architecture et workflows).
 - `docs/images/`: images utilisées dans les rapports.
 - `docs/videos/`: vidéos utilisées dans les rapports.
+- `docs/affiche/`: affiche de présentation du travail de Bachelor.
 - `src/aifrb/main.py`: point d'entrée du CLI (application `typer`).
 - `src/aifrb/api/`: fournisseurs d'API (actuellement uniquement KIE AI).
 - `src/aifrb/api/kieai/`: implémentation de l'API de KIE AI.
@@ -68,8 +69,6 @@ Comme indiqué précédemment, le démonstrateur ne fonctionne que sur Linux. Po
 - Une machine Ubuntu 26.04 ou supérieure (les autres distributions n'ont pas été testées).
 - Python 3.12 ou supérieur.
 - Un compte KIE AI avec une clé d'API valide.
-
-#pagebreak()
 
 *Installation :*
 
