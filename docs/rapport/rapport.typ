@@ -117,7 +117,7 @@
 
 Ce travail analyse en profondeur cinq sites demandant une vérification d'identité par selfie vidéo, à savoir Facebook, Tea for Women, Roblox, Parship et Google. Des attaques concrètes ont été menées sur ceux-ci à l'aide d'un outil Python développé qui génère du contenu IA via la plateforme KIE AI et l'injecte dans une caméra virtuelle Linux.
 
-Parmis les cinq sites, deux se sont révélés vulnérables. Tea for Women, dont l'objectif est de protéger les femmes dans le monde des rencontres en ligne, s'est avéré vulnérable à l'utilisation d'une vidéo IA lors de la création d'un compte. Roblox, une plateforme de jeux en ligne très populaire auprès des enfants, a également été contournée avec des images IA lors d'une vérification d'âge pour accéder à des fonctionnalités de chat déstinées aux adultes.
+Parmi les cinq sites, deux se sont révélés vulnérables. Tea for Women, dont l'objectif est de protéger les femmes dans le monde des rencontres en ligne, s'est avéré vulnérable à l'utilisation d'une vidéo IA lors de la création d'un compte. Roblox, une plateforme de jeux en ligne très populaire auprès des enfants, a également été contournée avec des images IA lors d'une vérification d'âge pour accéder à des fonctionnalités de chat destinées aux adultes.
 
 Facebook, Parship et Google ont en revanche résisté à toutes les tentatives grâce à des mécanismes multicouches, notamment la détection de contenus multimédia synthétiques, la détection d'appareils virtuels et l'analyse comportementale.
 

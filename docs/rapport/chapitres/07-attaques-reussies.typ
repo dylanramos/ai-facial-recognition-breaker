@@ -10,7 +10,7 @@ Ce chapitre détaille deux attaques ayant permis de contourner avec succès des 
 
 === Qu'est-ce que c'est ?
 
-Tea for Women est une plateforme de sécurité dédiée aux rencontres conçue pour protéger les femmes dans le monde des rencontres modernes. Elle permet aux utilisatrices d'effectuer des recherches d'antécédents crowdsourcées, de vérifier les numéros de téléphone pour détecter les mariages cachés et de consulter des avis anonymes sur des hommes spécifiques @tea. L'objectif de la plateforme est de répondre à la question « Sortons-nous avec le même garçon ? » avant même le premier rendez-vous.
+Tea for Women est une plateforme de sécurité conçue pour protéger les femmes dans le monde des rencontres en ligne. Elle permet aux utilisatrices d'effectuer des recherches d'antécédents, de vérifier les numéros de téléphone pour détecter les mariages cachés et de consulter des avis anonymes sur des hommes spécifiques @tea. L'objectif de la plateforme est de répondre à la question « Sortons-nous avec le même garçon ? » avant même le premier rendez-vous.
 
 === Attaque
 
@@ -21,7 +21,7 @@ En allant sur le site #underline(link("https://www.teaforwomen.com")) et en cliq
   caption: "Page d'inscription du site Tea for Women.",
 )
 
-Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'email ou de numéro de téléphone n'est demandée. Une fois le formulaire rempli et soumis, nous arrivons sur la page de vérification d'identité et nous constatons que l'option recommandée est la plus simple à attaquer.
+Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'e-mail ou de numéro de téléphone n'est demandée. Une fois le formulaire rempli et soumis, nous arrivons sur la page de vérification d'identité et nous constatons que l'option recommandée est la plus simple à attaquer.
 
 #figure(
   rect(image("../../images/07-attaques-reussies/tea-2.png"), stroke: 0.1pt),
@@ -85,11 +85,11 @@ Pour répondre à cette question, nous pouvons donc commencer par l'attaque la p
 
 Résultat : #link("../videos/07-attaques-reussies/tea-printed.mp4")[#underline[videos/07-attaques-reussies/tea-printed.mp4]]
 
-Comme le montre la vidéo ci-dessus, montrer un simple visage sur une feuille de papier ne suffit pas, nous pouvons donc tenter une autre approche, présenter une vidéo préenregistrée directement devant la caméra.
+Comme le montre la vidéo ci-dessus, le visage est bien détecté, mais lorsque les mouvements sont demandés une seule feuille ne suffit pas. Cette méthode fonctionne probablement, mais il faudrait imprimer une feuille par mouvement. Nous pouvons tenter une approche moins coûteuse en présentant une vidéo préenregistrée directement devant la caméra à l'aide d'un smartphone.
 
 Résultat : #link("../videos/07-attaques-reussies/tea-phone.mp4")[#underline[videos/07-attaques-reussies/tea-phone.mp4]]
 
-Effectivement, cette approche fonctionne. Pour des raisons de simplicité, la vidéo utilisée pour cette attaque est la même que celle utilisée au chapitre précédent, soit la vidéo générée par IA. Mais cette approche a démontré que l'utilisation de l'IA n'est pas nécessaire, en effet, un attaquant pourrait très bien trouver une vidéo sur internet d'une personne effectuant ces mouvements ou bien simplement se filmer en utilisant un masque en silicone.
+Effectivement, cette approche fonctionne. Pour des raisons de simplicité, la vidéo utilisée pour cette attaque est la même que celle utilisée au chapitre précédent, soit la vidéo générée par IA. Mais cette approche a démontré que *l'utilisation de l'IA n'est pas nécessaire*, en effet, un attaquant pourrait très bien trouver une vidéo sur internet d'une personne effectuant ces mouvements ou bien simplement se filmer en utilisant un masque en silicone.
 
 === Le fournisseur de la solution de vérification d'identité est-il vraiment sûr ?
 
@@ -121,7 +121,7 @@ En allant sur le site #underline(link("https://www.roblox.com")) nous arrivons s
   caption: "Page d'inscription du site Roblox.",
 )
 
-Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'email ou de numéro de téléphone n'est demandée. Un enfant peut donc facilement créer un compte avec un faux âge sans l'intervention d'un adulte.
+Nous pouvons voir que toutes les informations demandées sur cette page peuvent être faussées et qu'aucune vérification d'e-mail ou de numéro de téléphone n'est demandée. Un enfant peut donc facilement créer un compte avec un faux âge sans l'intervention d'un adulte.
 
 Une fois le formulaire rempli et soumis, nous pouvons aller dans "Paramètres", puis "Infos sur le compte" pour accéder à la page permettant de confirmer son âge.
 
@@ -214,7 +214,7 @@ La vérification d'âge par selfie vidéo est *contournée avec succès*.
 
 === L'utilisation de l'IA est-elle vraiment nécessaire ?
 
-Comme l'a démontré le chapitre précédent, il a suffit de trois images pour contourner la vérification d'âge sur le site Roblox. Donc l'utilisation de l'IA n'est pas nécessaire dans ce cas précis car les images de n'importe quelle personne font l'affaire tant que les mouvements sont corrects, que ce soit généré par IA ou non.
+Comme l'a démontré le chapitre précédent, il a suffi de trois images pour contourner la vérification d'âge sur le site Roblox. Donc, l'utilisation de l'IA n'est pas nécessaire dans ce cas précis, car les images de n'importe quelle personne font l'affaire tant que les mouvements sont corrects, que ce soit généré par IA ou non.
 
 Comme pour le site Tea for Women, nous pouvons également essayer d'effectuer une attaque par présentation pour vérifier si l'utilisation d'une caméra virtuelle apporte réellement quelque chose à l'attaque. Pour ce faire, nous présentons simplement les photos à une caméra physique, une fois imprimées sur papier, puis une seconde fois affichées sur un téléphone.
 

@@ -10,7 +10,7 @@
 
 == Introduction
 
-Contourner un système de vérification d'identité nécessite de pouvoir injecter une vidéo générée par IA dans le flux capturé par le navigateur comme si elle provenait d'une caméra physique. La caméra virtuelle est la solution retenue : il s'agit d'un périphérique logiciel qui se comporte, du point de vue du système, comme une webcam réelle.
+Contourner un système de vérification d'identité nécessite de pouvoir injecter une vidéo générée par IA dans le flux capturé par l'application comme si elle provenait d'une caméra physique. La caméra virtuelle est la solution retenue, il s'agit d'un périphérique logiciel qui se comporte du point de vue du système, comme une webcam réelle.
 
 La prise en charge des caméras virtuelles varie selon les systèmes d'exploitation. Sous Linux, elle repose sur un module du noyau dédié, tandis que sous Windows, elle requiert le développement d'un pilote spécifique @virtual-camera.
 
@@ -32,7 +32,7 @@ Comme l'explique le chapitre 3.3 du rapport détaillé #link("../rapports-detail
 
 === Comparaison des solutions
 
-Le tableau ci-dessous résume les différentes possibilités de création de caméras virtuelles et de diffusion de flux vidéo, avec leurs avantages et inconvénients.
+Le tableau ci-dessous résume les différentes possibilités de création de caméras virtuelles et de diffusion de flux vidéo.
 
 #set par(justify: false)
 
@@ -60,11 +60,11 @@ Le tableau ci-dessous résume les différentes possibilités de création de cam
 
 == Librairies Python pour la diffusion de flux vidéo vers une caméra virtuelle
 
-Pour développer le démonstrateur, il est nécessaire de pouvoir diffuser un flux vidéo vers une caméra virtuelle de manière programmatique. Il existe plusieurs librairies Python permettant de faire cela, avec chacune leurs avantages et leurs inconvénients.
+Pour développer le démonstrateur, il est nécessaire de pouvoir diffuser un flux vidéo vers une caméra virtuelle de manière programmatique. Il existe plusieurs librairies Python permettant de faire cela.
 
 === pyvirtualcam
 
-La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux ou Windows @pyvirtualcam-ref. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement redirigé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de OBS Studio, le tout en étant compatible avec tous les OS.
+La librairie Python `pyvirtualcam` permet d'envoyer un flux vidéo vers une caméra virtuelle existante, que ce soit sur Linux ou Windows @pyvirtualcam-ref. Elle a le grand avantage de gérer automatiquement les différentes étapes nécessaires pour que le flux vidéo soit correctement diffusé vers la caméra virtuelle. Ainsi, il est possible de s'affranchir de l'utilisation de `FFmpeg` et de la configuration de OBS Studio, le tout en étant compatible avec tous les OS.
 
 L'exemple de code Python ci-dessous montre comment diffuser un flux vidéo en boucle vers une caméra virtuelle en utilisant `pyvirtualcam` :
 
@@ -124,7 +124,7 @@ Une marche à suivre pour installer `pyvirtualcam` et utiliser cet exemple de co
 
 === ffmpeg-python
 
-La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique @ffmpeg-python-ref. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scanant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu au #underline[@04-windows], l'utilisation de `FFmpeg` avec OBS Studio sur Windows implique de devoir diffuser le flux vidéo via `UDP`, ce qui ajoute de la latence.
+La librairie `ffmpeg-python` est une interface Python qui permet de construire des commandes `FFmpeg` de manière programmatique @ffmpeg-python-ref. L'avantage de cette librairie est qu'elle offre plus de flexibilité que `pyvirtualcam`, notamment en permettant de rogner la vidéo, changer sa résolution, changer le format des pixels, etc. Un autre avantage est qu'elle permet de diffuser une image statique comme une vidéo, ce qui est utile pour simuler une caméra scannant une pièce d'identité. Par contre, elle implique l'utilisation de `FFmpeg` or, comme vu au #underline[@04-windows], l'utilisation de `FFmpeg` avec OBS Studio sur Windows implique de devoir diffuser le flux vidéo via le protocole `UDP`, ce qui ajoute de la latence.
 
 L'exemple de code Python ci-dessous montre comment diffuser un flux vidéo en boucle vers la caméra virtuelle `/dev/video2` en utilisant `ffmpeg-python` :
 
@@ -152,7 +152,7 @@ Une marche à suivre pour installer `ffmpeg-python` et utiliser cet exemple de c
 
 === Comparaison des librairies
 
-Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec OBS Studio car elle nécessite de diffuser le flux vidéo via `UDP`, ce qui engendre une latence importante.
+Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même objectif, diffuser une vidéo sur une caméra virtuelle créée préalablement. `pyvirtualcam` est multiplateforme mais moins flexible que `ffmpeg-python` car elle ne permet pas d'éditer les vidéos ni de diffuser des images statiques. Cependant, `ffmpeg-python` bien que multiplateforme également, est moins efficace sur Windows lorsqu'elle est utilisée avec OBS Studio car elle nécessite de diffuser le flux vidéo via le protocole `UDP`, ce qui engendre une latence importante.
 
 #figure(
   rect(image("../../images/04-cameras-virtuelles/libs-compare.png"), stroke: 0.1pt),
@@ -161,6 +161,6 @@ Les librairies `pyvirtualcam` et `ffmpeg-python` permettent d'atteindre le même
 
 == Conclusion
 
-Ce chapitre a établi que la combinaison `v4l2loopback` + `ffmpeg-python` sous Linux est la solution la plus adaptée au démonstrateur car elle est entièrement automatisable, sans latence notable et sans dépendance à un logiciel tiers.
+Ce chapitre a établi que la combinaison `v4l2loopback` + `ffmpeg-python` sous Linux est la solution la plus adaptée au démonstrateur, car elle est entièrement automatisable, sans latence notable et sans dépendance à un logiciel tiers.
 
-Avec les modèles de génération IA sélectionnés au chapitre précédent et la couche de diffusion vidéo désormais définie, les éléments techniques nécessaires aux attaques sont en place. Le chapitre suivant présente le démonstrateur qui les intègre.
+Avec les modèles de génération IA sélectionnés au chapitre précédent et la couche de diffusion vidéo désormais définie, les éléments techniques nécessaires aux attaques sont en place. Le chapitre suivant présente les scénarios d'attaque du démonstrateur qui les intègre.

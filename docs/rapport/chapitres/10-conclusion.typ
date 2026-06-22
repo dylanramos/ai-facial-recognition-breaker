@@ -4,7 +4,7 @@
 
 Ce travail de Bachelor avait pour objectif d'évaluer la résistance des systèmes de vérification d'identité en ligne aux attaques basées sur l'intelligence artificielle. En raison des contraintes de temps, seul le premier pattern de vérification d'identité par selfie vidéo sans document d'identité a pu être étudié en profondeur, les patterns plus complexes comme l'appel vidéo avec un employé restent à explorer.
 
-Parmi les cinq sites relevant de ce pattern, Facebook, Tea for Women, Roblox, Parship et Google, deux se sont révélés vulnérables. Dans les deux cas, la faiblesse identifiée tient à l'absence de détection des attaques par injection (IAD), Tea for Women utilisait une version obsolète du SDK de Regula, tandis que la vulnérabilité de Roblox provenait directement de la solution Persona, indépendamment de son intégration.
+Parmi les cinq sites relevant de ce pattern, Facebook, Tea for Women, Roblox, Parship et Google, deux se sont révélés vulnérables. Dans les deux cas, la faiblesse identifiée n'était pas due à l'IA, mais à l'absence de détection des attaques par injection. En effet, Tea for Women utilisait une version obsolète du SDK de Regula, tandis que la vulnérabilité de Roblox provenait directement de la solution Persona, indépendamment de son intégration.
 
 Ces résultats montrent que la robustesse d'un système de vérification dépend de deux facteurs indépendants : la qualité de la solution tierce utilisée et la rigueur de son intégration et de sa maintenance. Un fournisseur solide dont le SDK est obsolète, comme dans le cas de Tea for Women avec Regula, reste vulnérable. À l'inverse, même une solution à jour, comme Persona sur le site de Roblox, peut présenter des failles.
 
@@ -24,15 +24,15 @@ La plupart des vérifications d'identité s'effectuent via un navigateur web, il
 
 === Utiliser un smartphone physique
 
-L'utilisation d'un émulateur Android a été détectée par Google. Tester les mêmes attaques sur un vrai smartphone permettrait de vérifier si la détection provient de l'émulation elle-même ou d'une analyse plus large du flux vidéo. Cependant, cela nécessiterait de développer un autre outil que celui développé pour ce projet.
+L'utilisation d'un émulateur Android a été détectée par Google. Tester les mêmes attaques sur un vrai smartphone permettrait de vérifier si la détection provient bien de l'émulation elle-même, cependant, cela nécessiterait de développer un autre outil que celui développé pour ce projet.
 
-=== Échanger de visage en temps réel lors d'un appel vidéo
+=== Changer de visage en temps réel lors d'un appel vidéo
 
 L'outil Deep-Live-Cam s'est avéré fonctionnel et très réaliste, malgré son échec sur Facebook et Parship. Il serait intéressant de tester un tel outil lors d'un appel vidéo avec un employé pour vérifier si intégrer un humain dans le processus de vérification rend le système moins fiable que lorsqu'il est automatisé.
 
 === Évaluer la robustesse d'un système avec l'accord d'une entreprise
 
-Les patterns de vérification d'identité plus complexes combinant analyse d'un document d'identité et selfie vidéo n'ont pas pu être testés. Il serait pertinent de tester le système d'une entreprise partenaire, telle que Migros Bank, avec un vrai document d'identité pour simuler le cas d'un attaquant qui l'aurait volé. Cela permettrait de vérifier la robustesse d'un système de vérification d'identité dans un scénario plus réaliste, tout en respectant les contraintes légales et éthiques.
+Les patterns de vérification d'identité plus complexes combinant l'analyse d'un document d'identité avec un selfie vidéo n'ont pas pu être testés. Il serait pertinent de tester le système d'une entreprise partenaire, telle que Migros Bank, avec un vrai document d'identité pour simuler le cas d'un attaquant qui l'aurait volé. Cela permettrait de vérifier la robustesse d'un système de vérification d'identité dans un scénario plus réaliste, tout en respectant les contraintes légales et éthiques.
 
 === Améliorer la qualité des vidéos générées
 

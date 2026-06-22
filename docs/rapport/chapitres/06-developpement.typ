@@ -12,11 +12,11 @@ Le démonstrateur est un *CLI développé en Python* qui fonctionne *uniquement 
 
 === Pourquoi le langage Python ?
 
-Le langage Python a été choisi car il permet de prototyper et développer une application rapidement grâce à sa syntaxe concise et lisible. De plus, Python est disponible par défaut sur la plupart des distributions Linux, ce qui facilite l'installation et l'utilisation du démonstrateur. Il est vrai qu'il existe des langages plus performants, mais l'objectif de ce projet n'est pas de développer une application haute performance, ici, la fonctionnalité prime sur la performance.
+Le langage Python a été choisi, car il permet de prototyper et développer une application rapidement grâce à sa syntaxe concise et lisible. De plus, Python est disponible par défaut sur la plupart des distributions Linux, ce qui facilite l'installation et l'utilisation du démonstrateur. Il est vrai qu'il existe des langages plus performants, mais l'objectif de ce projet n'est pas de développer une application haute performance, ici, la fonctionnalité prime sur la performance.
 
 === Pourquoi uniquement Linux ?
 
-Le #underline[@04-windows] a montré que l'utilisation de `FFmpeg` combinée à OBS Studio engendre une latence importante, or, l'utilisation de `FFmpeg` s'avère nécessaire pour pouvoir diffuser des images statiques et éditer les vidéos. C'est pourquoi la compatibilité du démonstrateur a été limitée à Linux, en effet, `FFmpeg` s'intégre parfaitement avec le module `v4l2loopback` et permet d'avoir une latence très faible, le tout sans dépendance à un logiciel tiers.
+Le #underline[@04-windows] a montré que l'utilisation de `FFmpeg` combinée à OBS Studio engendre une latence importante, or, l'utilisation de `FFmpeg` s'avère nécessaire pour pouvoir diffuser des images statiques et éditer les vidéos. C'est pourquoi la compatibilité du démonstrateur a été limitée à Linux, en effet, `FFmpeg` s'intègre parfaitement avec le module `v4l2loopback` et permet d'avoir une latence très faible, le tout sans dépendance à un logiciel tiers.
 
 == Dépendances
 
@@ -44,18 +44,16 @@ Le projet est organisé de la manière suivante :
 
 - `docs/rapport/`: rapport principal et sources des chapitres.
 - `docs/rapports-detailles/`: rapports détaillés par thème.
-- `docs/diagrammes/`: diagrammes Draw.io (architecture & workflows).
-- `docs/images/`: images utilisées dans le rapport.
-- `docs/videos/`: vidéos utilisées dans le rapport.
-- `src/aifrb/main.py`: point d'entrée du CLI (application Typer).
+- `docs/diagrammes/`: diagrammes Draw.io (architecture et workflows).
+- `docs/images/`: images utilisées dans les rapports.
+- `docs/videos/`: vidéos utilisées dans les rapports.
+- `src/aifrb/main.py`: point d'entrée du CLI (application `typer`).
 - `src/aifrb/api/`: fournisseurs d'API (actuellement uniquement KIE AI).
 - `src/aifrb/api/kieai/`: implémentation de l'API de KIE AI.
 - `src/aifrb/commands/`: implémentation des commandes.
 - `src/aifrb/utils/`: fonctions utilitaires (ex : téléchargement de fichiers).
 - `templates/`: images et vidéos utilisées pour générer du contenu fictif (ex : modèle de carte d'identité).
-- `downloads/`: destination du contenu généré par l'IA (créé automatiquement).
-
-Note : `aifrb` est le nom du CLI, il s'agit d'un acronyme pour "AI Facial Recognition Breaker".
+- `downloads/`: destination du contenu généré par IA (créé automatiquement).
 
 #figure(
   rect(image("../../images/06-developpement/structure.png", width: 40%), stroke: 0.1pt),
@@ -70,6 +68,8 @@ Comme indiqué précédemment, le démonstrateur ne fonctionne que sur Linux. Po
 - Une machine Ubuntu 26.04 ou supérieure (les autres distributions n'ont pas été testées).
 - Python 3.12 ou supérieur.
 - Un compte KIE AI avec une clé d'API valide.
+
+#pagebreak()
 
 *Installation :*
 
@@ -123,4 +123,4 @@ Des informations détaillées sur l'utilisation de chaque commande sont disponib
 
 == Conclusion
 
-Le démonstrateur est opérationnel : il expose via la commande `aifrb` l'ensemble des fonctionnalités nécessaires aux attaques, génération d'images et de vidéos via KIE AI et diffusion de contenu multi-média sur une caméra virtuelle. Le choix de Python sur Linux, combiné à `v4l2loopback` et `FFmpeg` garantit une intégration fluide et sans latence. Les chapitres suivants mettent ce démonstrateur à l'épreuve sur les cinq premiers sites cibles identifiés précédemment.
+Le démonstrateur expose via la commande `aifrb` l'ensemble des fonctionnalités nécessaires aux attaques, génération d'images et de vidéos via KIE AI et diffusion de contenu multi-média sur une caméra virtuelle. Le choix de Python sur Linux, combiné à `v4l2loopback` et `FFmpeg` garantit une intégration fluide et sans latence. Les chapitres suivants mettent ce démonstrateur à l'épreuve sur les cinq premiers sites ne demandant qu'une vérification d'identité par selfie vidéo identifiés précédemment.

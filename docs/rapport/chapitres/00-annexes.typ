@@ -17,3 +17,9 @@
 - Vidéos mentionnées au chapitre 6 : #link("../videos/06-developpement")[#underline("videos/06-developpement")].
 - Vidéos mentionnées au chapitre 7 : #link("../videos/07-attaques-reussies")[#underline("videos/07-attaques-reussies")].
 - Vidéos mentionnées au chapitre 8 : #link("../videos/08-attaques-echouees")[#underline("videos/08-attaques-echouees")].
+
+#v(0.5cm)
+
+*Code source du démonstrateur :*
+
+- #link("../../src/aifrb")[#underline("src/aifrb")].

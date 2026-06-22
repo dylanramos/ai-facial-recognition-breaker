@@ -14,7 +14,7 @@ Ce chapitre présente les sites candidats pour nos tests, c'est-à-dire ceux qui
 
 == Synthèse des recherches
 
-Les critères ci-dessous ont été analysés pour chaque site, ceux-ci ont permis par la suite d'établir une échelle de difficulté pour les attaques :
+Les critères ci-dessous ont été analysés pour chaque site, ceux-ci ont permis de selectionner les sites candidats et d'établir une échelle de difficulté pour les attaquer :
 
 - *Type* :
   - vérification par photo (ex : envoi d'une photo d'un document d'identité)
@@ -84,7 +84,7 @@ Les critères ci-dessous ont été analysés pour chaque site, ceux-ci ont permi
   table.cell(fill: green)[*Google*], [Vidéo], [Non], [Non], [-],
 )
 
-Les sites candidats sont donc :
+Les sites candidats sont les sites surlignés en vert, soit :
 
 #set par(justify: false)
 
@@ -195,7 +195,7 @@ Comme le montre le chapitre 5.1 du rapport détaillé #link("../rapports-detaill
 
 === Exemple 2 : pourquoi Neon Bank semble très difficile à attaquer ?
 
-Comme le montre le chapitre 5.3 du rapport détaillé #link("../rapports-detailles/sites-de-verification.pdf")[#underline("sites-de-verification.pdf")], Neon Bank demande une vérification d'identité lors d'un appel vidéo avec un employé. Cela complique grandement la tâche pour un attaquant car il doit non seulement obtenir un document d'identité, mais aussi faire correspondre le visage sur le document d'identité avec celui de l'appel vidéo, le tout en réussissant à tromper l'employé en temps réel sur un smartphone.
+Comme le montre le chapitre 5.3 du rapport détaillé #link("../rapports-detailles/sites-de-verification.pdf")[#underline("sites-de-verification.pdf")], Neon Bank demande une vérification d'identité lors d'un appel vidéo avec un employé. Cela complique grandement la tâche pour un attaquant, car il doit non seulement obtenir un document d'identité, mais aussi faire correspondre le visage sur le document d'identité avec celui de l'appel vidéo, le tout en réussissant à tromper l'employé en temps réel sur un smartphone.
 
 #figure(
   rect(image("../../images/02-sites-de-verification/neon-bank.jpg", width: 30%), stroke: 0.1pt),
@@ -204,6 +204,6 @@ Comme le montre le chapitre 5.3 du rapport détaillé #link("../rapports-detaill
 
 == Conclusion
 
-Ce chapitre a permis de dresser un panorama des systèmes de vérification d'identité en ligne et d'identifier quatre patterns distincts, allant du simple selfie vidéo sans document jusqu'à l'appel vidéo avec un employé. Sur la base de ces patterns, les sites candidats ont été classés en quatre niveaux de difficulté d'attaque.
+Ce chapitre a permis de dresser un panorama des systèmes de vérification d'identité en ligne, de sélectionner les sites candidats et d'identifier quatre patterns distincts, allant du simple selfie vidéo à l'appel vidéo avec un employé. Sur la base de ces patterns, les sites candidats ont été classés en quatre niveaux de difficulté d'attaque.
 
-Les chapitres suivants se concentrent sur les sites les plus accessibles, c'est-à-dire ceux qui n'exigent qu'un selfie vidéo sans document d'identité, avant d'aborder progressivement des cas plus complexes.
+Le chapitre suivant aborde la génération de contenu IA, ce qui va permettre d'identifier les modèles d'IA les plus adaptés pour mener les attaques contre les sites candidats.

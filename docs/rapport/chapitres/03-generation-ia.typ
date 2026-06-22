@@ -12,7 +12,7 @@
 
 Pour qu'un attaquant puisse modifier la photo d'une personne sur un document d'identité ou générer une vidéo d'une personne effectuant un selfie vidéo, il doit utiliser des modèles de génération d'images et de vidéos IA. Les modèles sont en constante évolution, il est donc impossible de choisir un modèle de manière définitive car celui-ci risque de très vite être dépassé par de nouveaux modèles ou des modèles d'autres fournisseurs.
 
-Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez chaque fournisseur directement @kie-ai-ref.
+Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle et de devoir s'adapter à chaque API, il est possible de passer par un service aggrégateur comme #link("https://kie.ai/")[#underline("KIE AI")]. KIE AI est une plateforme qui regroupe les APIs des différents fournisseurs de modèles d'IA et qui met à disposition une API unique qui permet de les utiliser de manière centralisée et moins coûteuse que chez chaque fournisseur directement @kie-ai-ref.
 
 #figure(
   rect(image("../../images/03-generation-ia/kieai.png", width: 71%), stroke: 0.1pt),
@@ -21,7 +21,7 @@ Ainsi, plutôt que de souscrire à chaque fournisseur de manière individuelle e
 
 == KIE AI
 
-KIE AI a été choisi pour sa large gamme de modèles, sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles gratuitement et offre 80 (0.40\$) crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants.
+KIE AI a été choisi pour sa large gamme de modèles, sa simplicité d'utilisation, sa documentation claire et son prix compétitif. De plus, il propose un "bac à sable" permettant de tester les APIs des modèles sans développement préalable et offre 80 (0.40\$) crédits lors de l'inscription. C'est donc sur cette plateforme que vont se baser les chapitres suivants.
 
 #figure(
   rect(image("../../images/03-generation-ia/kieai-features.png", width: 33%), stroke: 0.1pt),
@@ -120,7 +120,7 @@ Les modèles de génération d'images doivent être capables de modifier des ima
 
 === Text-to-Image
 
-Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les visuels à partir de zéro. Ils sont utiles pour générer des images de personnes fictives mais ne sont pas adaptés pour modifier des images existantes.
+Les modèles de type Text-to-Image analysent le prompt et créent eux-mêmes les visuels à partir de zéro. Ils sont utiles pour générer des images de personnes fictives, mais ne sont pas adaptés pour modifier des images existantes.
 
 === Image-to-Image
 
@@ -170,7 +170,7 @@ Le modèle qui s'est avéré être le plus réaliste pour modifier une carte d'i
   ),
 )
 
-En effet, ce modèle a effectué tous les changements demandés tout en conservant les motifs de la carte, notamment sur les photos. Par contre les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
+En effet, ce modèle a effectué tous les changements demandés tout en conservant les motifs de la carte, notamment sur les photos. Par contre, les petits triangles à la fin du nom et du prénom ont considérablement été agrandis.
 
 Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 3.3 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
@@ -206,15 +206,15 @@ Les modèles de génération de vidéos doivent permettre de générer des vidé
 
 === Text-to-Video
 
-Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les visuels et les mouvements à partir de zéro. Cela leur laisse beaucoup de créativité mais rend plus difficile le contrôle du résultat final, ce qui peut être problématique pour la vérification d'identité.
+Les modèles de type Text-to-Video analysent le prompt et créent eux-mêmes les visuels et les mouvements à partir de zéro. Cela leur laisse beaucoup de créativité, mais rend plus difficile le contrôle du résultat final, ce qui peut être problématique pour une vérification d'identité.
 
 === Image-to-Video
 
-Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt en les reliant. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur les documents d'identité.
+Les modèles de type Image-to-Video prennent généralement une image de début et une image de fin puis génèrent la séquence demandée dans le prompt en les reliant. Ce type de modèle est plus contrôlable visuellement et est plus adapté à la vérification d'identité, car il permet de faire correspondre le visage de la personne dans la vidéo avec celui sur le document d'identité.
 
 === Video-to-Video
 
-Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
+Les modèles de type Video-to-Video (édition de vidéos) modifient une vidéo fournie en fonction du prompt et d'une image de référence. Ils sont particulièrement utiles, car ils permettent d'enregistrer une vidéo au préalable puis de remplacer la vraie personne par une autre personne.
 
 === Génération de selfies vidéo à partir d'une image <generation-selfie>
 
@@ -236,7 +236,7 @@ Le modèle qui s'est avéré être le plus réaliste pour générer des selfies 
 
 - Vidéo : #underline[#link("../videos/03-generation-ia/grok-imagine-video-1-5.mp4")[videos/03-generation-ia/grok-imagine-video-1-5.mp4]]
 
-En effet, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de 5 secondes.
+En effet, la personne effectue les actions demandées et les caractéristiques de l'image de référence sont préservées. Les mouvements sont un peu rapides, mais cela est dû à la durée de la vidéo qui est de cinq secondes.
 
 Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.4 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
@@ -273,11 +273,11 @@ Les trois modèles de type Video-to-Video disponibles sur KIE AI ont été test�
 
 L'objectif était de remplacer ma personne dans une vidéo par une autre personne à partir d'une vidéo de référence de ma personne face caméra qui tourne la tête à droite, en haut, à droite puis à gauche. L'image de référence utilisée est la même que pour le #underline[@generation-selfie], à savoir la #underline[@image-ref]. Pour des questions de vie privée, la vidéo de référence de ma personne n'est pas publiée sur GitHub et n'est donc pas disponible dans ce rapport.
 
-Le modèle qui s'est avéré être le plus réaliste pour générer des selfies vidéo à partir d'une vidéo est *Kling Motion Control 3.0*.
+Le modèle qui s'est avéré être le plus réaliste pour éditer des selfies vidéo à partir d'une vidéo est *Kling Motion Control 3.0*.
 
 Vidéo : #underline[#link("../videos/03-generation-ia/kling-3-0-edit.mp4")[videos/03-generation-ia/kling-3-0-edit.mp4]]
 
-En effet, l'arrière-plan est préservé, les mouvements sont corrects et l'aspect général de la personne est réaliste. Par contre, la position des yeux à la toute dernière seconde de la vidéo est un peu étrange, mais cela reste un détail.
+En effet, l'arrière-plan est préservé, les mouvements sont corrects et l'aspect général de la personne est réaliste. Par contre, la position des yeux à la toute dernière seconde de la vidéo est un peu étrange, mais cela reste acceptable.
 
 === Comparaison des modèles de type Video-to-Video
 
@@ -298,10 +298,12 @@ Le tableau ci-dessous résume les résultats obtenus lors des tests pour une vid
   caption: "Comparaison des modèles de type Video-to-Video.",
 )
 
+#set par(justify: true)
+
 Les résultats obtenus avec les autres modèles sont disponibles dans le chapitre 4.6 du rapport détaillé #link("../rapports-detailles/generation-ia.pdf")[#underline("generation-ia.pdf")].
 
 == Conclusion
 
 Ce chapitre a permis de sélectionner les modèles d'IA les plus performants pour chacun des usages nécessaires aux attaques : *Nano Banana 2* pour la modification de documents d'identité, *Grok Imagine Video 1.5* pour la génération de selfies vidéo à partir d'une image, et *Kling Motion Control 3.0* pour le remplacement d'une personne dans une vidéo existante.
 
-Ces modèles sont accessibles via KIE AI, qui centralise l'accès à l'ensemble des fournisseurs et simplifie leur intégration dans le démonstrateur. Le chapitre suivant aborde la mise en place des caméras virtuelles, indispensables pour injecter ces contenus générés dans les systèmes de vérification d'identité.
+Ces modèles sont accessibles via KIE AI, qui centralise l'accès à l'ensemble des fournisseurs et simplifie leur intégration dans le démonstrateur. Le chapitre suivant aborde la mise en place de caméras virtuelles, indispensables pour injecter ces contenus générés dans les systèmes de vérification d'identité.

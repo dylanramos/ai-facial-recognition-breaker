@@ -10,7 +10,7 @@
 
 == Introduction
 
-Ce chapitre documente les tentatives de contournement des systèmes de vérification d'identité qui n'ont pas abouti. Les plateformes Facebook, Parship et Google sont d'abord examinées individuellement, en détaillant la démarche adoptée pour chacune. Le chapitre présente ensuite les tests complémentaires réalisés pour comprendre les mécanismes de détection, notamment la comparaison de caméras, l'analyse des métadonnées, l'ajout de bruit, l'usage de modèles 3D, l'échange de visage en temps réel, la modification du module `v4l2loopback` ainsi que les tentatives de falsification de documents d'identité effectuées sur Roblox.
+Ce chapitre documente les tentatives de contournement des systèmes de vérification d'identité qui n'ont pas abouti. Les plateformes Facebook, Parship et Google sont d'abord examinées individuellement, en détaillant la démarche adoptée pour chacune. Le chapitre présente ensuite les tests complémentaires réalisés pour comprendre les mécanismes de détection, notamment la comparaison de caméras, l'analyse des méta-données, l'ajout de bruit, l'usage de modèles 3D, l'échange de visage en temps réel, la modification du module `v4l2loopback` ainsi que les tentatives de falsification de documents d'identité effectuées sur Roblox.
 
 == Facebook <08-facebook>
 
@@ -21,7 +21,7 @@ Lors de la création d'un compte, Facebook demande systématiquement de prendre 
   caption: "Exemple de selfie vidéo demandé par Facebook.",
 )
 
-Les directions étant aléatoires, il est impossible de savoir à l'avance quelles directions seront demandées, ce qui nous oblige à lancer la vérification une première fois pour connaître les directions demandées. Une fois les directions connues, la solution la plus simple est de se filmer en train de faire les mouvements, puis de remplacer sa personne par une personne générée à l'aide de l'IA. En effet, générer une vidéo de ce type uniquement à partir d'un prompt est très difficile car il y a tout un timing à respecter pour que les mouvements soient synchronisés avec les instructions.
+Les directions étant aléatoires, il est impossible de savoir à l'avance quelles directions seront demandées, ce qui nous oblige à lancer la vérification une première fois pour connaître les directions demandées. Une fois les directions connues, la solution la plus simple est de se filmer en train de faire les mouvements, puis de remplacer sa personne par une personne générée à l'aide de l'IA. En effet, générer une vidéo de ce type uniquement à partir d'un prompt est très difficile, car il y a tout un timing à respecter pour que les mouvements soient synchronisés avec les instructions.
 
 Comme vu dans le #underline[@03-generation-selfie], le meilleur modèle pour éditer une vidéo est Kling Motion Control 3.0, c'est donc avec celui-ci que nous allons générer la vidéo. Pour cela, il faut tout d'abord se prendre en photo, puis remplacer son visage par une personne générée.
 
@@ -73,7 +73,7 @@ Enfin, après environ une heure d'attente, un e-mail a été envoyé par Faceboo
 
 == Parship <08-parship>
 
-Comme pour Facebook, Parship demande de prendre un selfie vidéo lors de la création d'un compte. Cependant, aucun mouvement n'est demandé, il faut simplement centrer son visage dans un oval puis se rapprocher de la caméra. Ainsi, il n'y a pas besoin de se filmer préalablement, nous pouvons directement demander à l'IA de générer une vidéo d'une personne en train de se filmer. Pour cela, il faut commencer par générer l'image d'une personne.
+Comme pour Facebook, Parship demande de prendre un selfie vidéo lors de la création d'un compte. Cependant, aucun mouvement n'est demandé, il faut simplement centrer son visage dans un ovale puis se rapprocher de la caméra. Ainsi, il n'y a pas besoin de se filmer préalablement, nous pouvons directement demander à l'IA de générer une vidéo d'une personne en train de se filmer. Pour cela, il faut commencer par générer l'image d'une personne.
 
 #sourcecode[```sh
 aifrb generate-image "A headshot portrait of a young woman in her early 20s, calm and neutral facial expression, looking directly forward at the viewer, sharp focus on the face, passport-style portrait photography." -a "auto"
@@ -143,15 +143,15 @@ Une caméra virtuelle et une caméra physique ont été comparées à l'aide du 
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.1 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
-=== Analyse des métadonnées des vidéos
+=== Analyse des méta-données des vidéos
 
-Les modèles d'IA chinois sont soumis à une réglementation qui les oblige à indiquer dans les métadonnées que le contenu a été généré par une IA @covington. Malgré cette réglementation, le modèle chinois Kling 3.0 s'avère ne pas respecter cette obligation car aucune indication n'est présente dans les métadonnées des vidéos générées avec ce modèle. Cependant, que les métadonnées indiquent que le contenu a été généré par une IA ou non, cela n'affecte pas le système de vérification d'identité car la vidéo est capturée en temps réel par le navigateur.
+Les modèles d'IA chinois sont soumis à une réglementation qui les oblige à indiquer dans les méta-données que le contenu a été généré par une IA @covington. Malgré cette réglementation, le modèle chinois Kling 3.0 s'avère ne pas respecter cette obligation, car aucune indication n'est présente dans les méta-données des vidéos générées avec ce modèle. Cependant, que les méta-données indiquent que le contenu a été généré par une IA ou non, cela n'affecte pas le système de vérification d'identité, car la vidéo est capturée en temps réel par le navigateur.
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 2.2 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
 === Ajout de bruit dans les vidéos <08-noise>
 
-Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de bruit dus aux capteurs, contrairement à une vidéo ou une image capturée par une caméra physique. Ainsi, un filtre FFmpeg a été appliqué aux selfies vidéo générés pour ajouter du bruit afin de rendre les vidéos plus réalistes @ffmpeg-noise. Cependant, cela n'a pas changé le résultat de la vérification.
+Une vidéo ou une image générée par IA ne contient pas d'imperfections ou de bruit dûs aux capteurs, contrairement à une vidéo ou une image capturée par une caméra physique. Ainsi, un filtre FFmpeg a été appliqué aux selfies vidéo générés pour ajouter du bruit afin de rendre les vidéos plus réalistes @ffmpeg-noise. Cependant, cela n'a pas changé le résultat de la vérification.
 
 #grid(
   columns: (1fr, 1fr),
@@ -185,7 +185,7 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.4 
 
 === Utilisation d'un échangeur de visage en temps réel
 
-Il existe un projet appelé #underline[#link("https://github.com/hacksider/deep-live-cam")[Deep-Live-Cam]] permettant de remplacer son visage par celui d'une autre personne en temps réel @deep-live-cam. L'outil est un programme Python qui tourne en local et qui fonctionne avec des modèles d'IA pré-entrainés comme `inswapper` et `GFPGAN` @hugging-face. Cependant, l'outil nécessite une configuration matérielle très puissante et n'est donc pas accessible à tous comme le montre la #underline[@deep-live-cam-fig] ci-dessous.
+Il existe un projet appelé #underline[#link("https://github.com/hacksider/deep-live-cam")[Deep-Live-Cam]] permettant de remplacer son visage par celui d'une autre personne en temps réel @deep-live-cam. L'outil est un programme Python qui tourne en local et qui fonctionne avec des modèles d'IA préentrainés comme `inswapper` et `GFPGAN` @hugging-face. Cependant, l'outil nécessite une configuration matérielle très puissante et n'est donc pas accessible à tous comme le montre la #underline[@deep-live-cam-fig] ci-dessous.
 
 #figure(
   rect(image("../../images/08-attaques-echouees/deeplivecam.png"), stroke: 0.1pt),
@@ -200,7 +200,7 @@ Des informations détaillées sur ce test sont disponibles dans le chapitre 2.5 
 
 === Modification du module `v4l2loopback`
 
-Contrairement à Facebook, Parship explique pourquoi la vérification d'identité échoue, en l'occurrence il semblerait que les systèmes de vérification ne se contentent pas juste d'analyser les vidéos, ils analysent également le type de caméra utilisée.
+Contrairement à Facebook, Parship explique pourquoi la vérification d'identité échoue, en l'occurrence il semblerait que le système de vérification ne se contente pas juste d'analyser les vidéos, il analyse également le type de caméra utilisée.
 
 #figure(
   rect(image("../../images/08-attaques-echouees/parship-2.png", width: 80%), stroke: 0.1pt),
@@ -250,12 +250,12 @@ Pour analyser la résistance des systèmes de vérification d'identité à la fa
   ),
 )
 
+Résultat : #link("../videos/08-attaques-echouees/roblox-id.mp4")[#underline("videos/08-attaques-echouees/roblox-id.mp4")]
+
 Malheureusement, le système de vérification d'âge de Roblox a détecté que les documents d'identité étaient falsifiés et la vérification a échoué.
 
 Des informations détaillées sur ce test sont disponibles dans le chapitre 3 du rapport détaillé #link("../rapports-detailles/tests-effectues.pdf")[#underline("tests-effectues.pdf")].
 
 == Conclusion
 
-Les systèmes de vérification de Facebook, Parship et Google ont résisté à toutes les approches testées. Parship, en particulier, s'est révélé capable d'identifier qu'une caméra virtuelle était utilisée et de bloquer la vérification en conséquence. Alors que Facebook a systématiquement bloqué les selfies vidéo générés par IA, et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel. Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification.
-
-Ces échecs indiquent que ces systèmes ne s'arrêtent pas juste à l'analyse du type de caméra utilisée. En effet, ils intègrent probablement une analyse de liveness ou une détection de cohérence visuelle plus élaborée.
+Les systèmes de vérification de Facebook, Parship et Google ont résisté à toutes les approches testées. Parship, en particulier, s'est révélé capable d'identifier qu'une caméra virtuelle était utilisée et de bloquer la vérification en conséquence. Alors que Facebook a systématiquement bloqué les selfies vidéo générés par IA et ce malgré les tentatives d'ajout de bruit dans les vidéos et l'utilisation d'un échangeur de visage en temps réel. Pour la falsification de documents d'identité sur Roblox, les images générées par IA n'ont pas convaincu le système de vérification. Ces échecs indiquent que ces systèmes ne s'arrêtent pas juste à l'analyse d'une vidéo, mais implémentent probablement des mécanismes de détection plus avancés.
