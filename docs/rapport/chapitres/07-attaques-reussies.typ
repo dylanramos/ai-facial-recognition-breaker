@@ -214,7 +214,7 @@ La vérification d'âge par selfie vidéo est *contournée avec succès*.
 
 === L'utilisation de l'IA est-elle vraiment nécessaire ?
 
-Comme l'a démontré le chapitre précédent, il a suffi de trois images pour contourner la vérification d'âge sur le site Roblox. Donc, l'utilisation de l'IA n'est pas nécessaire dans ce cas précis, car les images de n'importe quelle personne font l'affaire tant que les mouvements sont corrects, que ce soit généré par IA ou non.
+Comme l'a démontré le chapitre précédent, il a suffi de trois images pour contourner la vérification d'âge sur le site Roblox. Donc, *l'utilisation de l'IA n'est pas nécessaire* dans ce cas précis, car les images de n'importe quelle personne font l'affaire tant que les mouvements sont corrects, que ce soit généré par IA ou non.
 
 Comme pour le site Tea for Women, nous pouvons également essayer d'effectuer une attaque par présentation pour vérifier si l'utilisation d'une caméra virtuelle apporte réellement quelque chose à l'attaque. Pour ce faire, nous présentons simplement les photos à une caméra physique, une fois imprimées sur papier, puis une seconde fois affichées sur un téléphone.
 
